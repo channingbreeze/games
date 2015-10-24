@@ -1,0 +1,15 @@
+.cache
+.sass-cache
+.idea
+.package
+.log
+node_modules
+temp/
+logs/
+.settings
+uploads
+.buildpath
+.project
+config
+inter/config
+crawler/config.ini
