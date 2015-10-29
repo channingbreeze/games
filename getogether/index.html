@@ -1,0 +1,106 @@
+<!DOCTYPE html> 
+<head> 
+	<meta charset="UTF-8" />
+	<title>getogether</title>
+    <script src="../phaser.min.js"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<script>
+
+var game = new Phaser.Game(480, 270, Phaser.AUTO, '');
+
+game.States = {};
+
+game.States.boot = function() {
+    this.preload = function() {
+        if(!game.device.desktop){
+            this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+            this.scale.forcePortrait = true;
+            this.scale.refresh();
+        }
+        game.load.image('loading', 'assets/preloader.gif');
+    };
+    this.create = function() {
+        game.state.start('preload');
+    };
+};
+
+game.States.preload = function() {
+    this.preload = function() {
+        var preloadSprite = game.add.sprite(130, game.height/2, 'loading');
+        game.load.setPreloadSprite(preloadSprite);
+        game.load.image('background', 'assets/background.png');
+        game.load.image('heart', 'assets/heart.png');
+        game.load.spritesheet('man', 'assets/man.png', 20, 60);
+        game.load.spritesheet('woman', 'assets/woman.png', 20, 60);
+    };
+    this.create = function() {
+        game.state.start('start');
+    };
+};
+
+game.States.start = function() {
+    this.create = function() {
+        game.add.sprite(0, 0, 'background');
+        this.man = game.add.sprite(100, 157, 'man');
+        this.woman = game.add.sprite(365, 157, 'woman');
+        this.man.animations.add('left', [0, 1, 2, 3], 10, true);
+        this.man.animations.add('right', [5, 6, 7, 8], 10, true);
+        this.woman.animations.add('left', [0, 1, 2, 3], 10, true);
+        this.woman.animations.add('right', [5, 6, 7, 8], 10, true);
+        this.man.frame = 4;
+        this.woman.frame = 4;
+        game.physics.arcade.enable(this.man);
+        game.physics.arcade.enable(this.woman);
+        game.time.events.add(1000, function() {
+            this.man.animations.play('right');
+            this.woman.animations.play('left');
+            this.man.body.velocity.x = 60;
+            this.woman.body.velocity.x = -60;
+        }, this);
+    };
+    this.update = function() {
+        game.physics.arcade.collide(this.man, this.woman, this.met, null, this);
+    };
+    this.met = function() {
+        this.man.animations.stop();
+        this.woman.animations.stop();
+        this.man.frame = 4;
+        this.woman.frame = 4;
+        game.add.sprite(this.man.position.x, this.man.position.y + 10, 'heart');
+        game.time.events.add(1000, function() {
+            game.state.start('prescene1');
+        }, this);
+    };
+};
+
+game.States.prescene1 = function() {
+    this.create = function() {
+        
+    };
+};
+
+game.States.scene1 = function() {
+    
+};
+
+game.state.add('boot', game.States.boot);
+game.state.add('preload', game.States.preload);
+game.state.add('start', game.States.start);
+game.state.add('prescene1', game.States.prescene1);
+game.state.add('scene1', game.States.scene1);
+
+game.state.start('boot');
+
+</script>
+
+</body>
