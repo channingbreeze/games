@@ -24,7 +24,7 @@ game.States.boot = function() {
     this.preload = function() {
         if(!game.device.desktop){
             this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
-            this.scale.forcePortrait = true;
+            this.scale.forceLandscape = true;
             this.scale.refresh();
         }
         game.load.image('loading', 'assets/preloader.gif');
