@@ -1,0 +1,5 @@
+body {
+    margin: 0px 0px 1px 0px; /* the extra 1px allows the iOS inner/outer check to work */
+    background: #000;
+    overflow: hidden;
+}
