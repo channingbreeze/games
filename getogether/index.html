@@ -46,10 +46,11 @@ game.States.preload = function() {
         game.load.spritesheet('woman', 'assets/woman.png', 20, 60);
         game.load.image('leftpad', 'assets/leftpad.png');
         game.load.image('rightpad', 'assets/rightpad.png');
+        game.load.image('uppad', 'assets/uppad.png');
     };
     this.create = function() {
-        //game.state.start('start');
-        game.state.start('scene1');
+        game.state.start('start');
+        //game.state.start('scene1');
     };
 };
 
@@ -99,6 +100,7 @@ game.States.prescene1 = function() {
 
 game.States.scene1 = function() {
     var left = false;
+    var right = false;
     this.create = function() {
         game.add.sprite(0, 0, 'scene1');
         this.man = game.add.sprite(20, 292, 'man');
@@ -107,19 +109,32 @@ game.States.scene1 = function() {
         this.man.animations.add('right', [5, 6, 7, 8], 10, true);
         this.woman.animations.add('left', [0, 1, 2, 3], 10, true);
         this.woman.animations.add('right', [5, 6, 7, 8], 10, true);
-        //leftpad = game.add.sprite(game.width/2, game.height/2, 'leftpad');
-        leftpad = game.add.button(game.width/2, game.height/2, 'leftpad');
-        leftpad.fixedToCamera = true;
+        
+        leftpad = game.add.button(10, 400, 'leftpad');
+        uppad = game.add.button(100, 400, 'uppad');
+        rightpad = game.add.button(190, 400, 'rightpad');
         
         leftpad.events.onInputOver.add(function(){left = true;});
         leftpad.events.onInputOut.add(function(){left = false;});
         leftpad.events.onInputDown.add(function(){left = true;});
         leftpad.events.onInputUp.add(function(){left = false;});
+        rightpad.events.onInputOver.add(function(){right = true;});
+        rightpad.events.onInputOut.add(function(){right = false;});
+        rightpad.events.onInputDown.add(function(){right = true;});
+        rightpad.events.onInputUp.add(function(){right = false;});
+        
+        game.physics.arcade.enable(this.man);
+        game.physics.arcade.enable(this.woman);
     };
     this.update = function() {
         if(left) {
+            this.man.body.velocity.x = -60;
             this.man.animations.play('left');
+        } else if(right) {
+            this.man.body.velocity.x = 60;
+            this.man.animations.play('right');
         } else {
+            this.man.body.velocity.x = 0;
             this.man.animations.stop();
             this.man.frame = 4;
         }
