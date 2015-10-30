@@ -98,9 +98,15 @@ game.States.prescene1 = function() {
 };
 
 game.States.scene1 = function() {
-    var left = true;
+    var left = false;
     this.create = function() {
         game.add.sprite(0, 0, 'scene1');
+        this.man = game.add.sprite(20, 292, 'man');
+        this.woman = game.add.sprite(230, 292, 'woman');
+        this.man.animations.add('left', [0, 1, 2, 3], 10, true);
+        this.man.animations.add('right', [5, 6, 7, 8], 10, true);
+        this.woman.animations.add('left', [0, 1, 2, 3], 10, true);
+        this.woman.animations.add('right', [5, 6, 7, 8], 10, true);
         //leftpad = game.add.sprite(game.width/2, game.height/2, 'leftpad');
         leftpad = game.add.button(game.width/2, game.height/2, 'leftpad');
         leftpad.fixedToCamera = true;
@@ -112,7 +118,10 @@ game.States.scene1 = function() {
     };
     this.update = function() {
         if(left) {
-            console.log('aaa');
+            this.man.animations.play('left');
+        } else {
+            this.man.animations.stop();
+            this.man.frame = 4;
         }
     };
 };
