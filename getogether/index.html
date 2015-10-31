@@ -41,6 +41,7 @@ game.States.preload = function() {
         game.load.image('background', 'assets/background.png');
         game.load.image('prescene1', 'assets/prescene1.png');
         game.load.image('scene1', 'assets/scene1.png');
+        game.load.image('ground', 'assets/ground.png');
         game.load.image('heart', 'assets/heart.png');
         game.load.spritesheet('man', 'assets/man.png', 20, 60);
         game.load.spritesheet('woman', 'assets/woman.png', 20, 60);
@@ -49,8 +50,8 @@ game.States.preload = function() {
         game.load.image('uppad', 'assets/uppad.png');
     };
     this.create = function() {
-        game.state.start('start');
-        //game.state.start('scene1');
+        //game.state.start('start');
+        game.state.start('scene1');
     };
 };
 
@@ -101,10 +102,12 @@ game.States.prescene1 = function() {
 game.States.scene1 = function() {
     var left = false;
     var right = false;
+    var up = false;
     this.create = function() {
         game.add.sprite(0, 0, 'scene1');
-        this.man = game.add.sprite(20, 292, 'man');
-        this.woman = game.add.sprite(230, 292, 'woman');
+        this.ground = game.add.sprite(7, 352, 'ground');
+        this.man = game.add.sprite(20, 272, 'man');
+        this.woman = game.add.sprite(230, 272, 'woman');
         this.man.animations.add('left', [0, 1, 2, 3], 10, true);
         this.man.animations.add('right', [5, 6, 7, 8], 10, true);
         this.woman.animations.add('left', [0, 1, 2, 3], 10, true);
@@ -122,17 +125,33 @@ game.States.scene1 = function() {
         rightpad.events.onInputOut.add(function(){right = false;});
         rightpad.events.onInputDown.add(function(){right = true;});
         rightpad.events.onInputUp.add(function(){right = false;});
+        uppad.events.onInputOver.add(function(){up = true;});
+        uppad.events.onInputOut.add(function(){up = false;});
+        uppad.events.onInputDown.add(function(){up = true;});
+        uppad.events.onInputUp.add(function(){up = false;});
         
         game.physics.arcade.enable(this.man);
         game.physics.arcade.enable(this.woman);
+        game.physics.arcade.enable(this.ground);
+        
+        this.man.body.gravity.y = 200;
+        this.woman.body.gravity.y = 200;
+        this.ground.body.immovable = true;
     };
     this.update = function() {
+        game.physics.arcade.collide(this.man, this.ground);
+        game.physics.arcade.collide(this.woman, this.ground);
         if(left) {
             this.man.body.velocity.x = -60;
             this.man.animations.play('left');
         } else if(right) {
             this.man.body.velocity.x = 60;
             this.man.animations.play('right');
+        } else if(up && this.man.body.touching.down) {
+            this.man.body.velocity.x = 0;
+            this.man.body.velocity.y = -150;
+            this.man.animations.stop();
+            this.man.frame = 4;
         } else {
             this.man.body.velocity.x = 0;
             this.man.animations.stop();
