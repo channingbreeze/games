@@ -1,5 +1,5 @@
 
-var game = new Phaser.Game(288, 505, Phaser.AUTO, 'game');
+var game = new Phaser.Game(288, 505, Phaser.CANVAS, 'game');
 
 game.States = {};
 
