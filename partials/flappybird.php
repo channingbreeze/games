@@ -1,1 +1,1 @@
-<script src="flappybird/js/main.js"></script>
+<script src="flappybird/js/main.js?rand=<?php echo rand(1000,50000);?>"></script>
