@@ -19,7 +19,7 @@ if(isset($_GET['game'])) {
 	<meta http-equiv="Expires" content="0" />
 	<meta name ="viewport" content ="width=device-width, initial-scale=1, user-scalable=no">
 	<title><?php echo $game;?></title>
-    <script src="phaser.min.js"></script>
+    <script src="phaser.min.js?rand=<?php echo rand(1000,50000);?>"></script>
     <script>
 		var GAME = "<?php echo $game;?>";
     </script>
