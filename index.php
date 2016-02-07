@@ -3,7 +3,8 @@
 if(isset($_GET['game'])) {
 	$game = $_GET['game'];
 	if($game != "flappybird" &&
-		$game != "getogether") {
+		$game != "getogether" &&
+		$game != "plane") {
 		exit(0);
 	}
 } else {
