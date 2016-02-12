@@ -71,6 +71,15 @@ game.States = {};
 // 分数
 var score = 0;
 
+// 生成Title
+var makeTitle = function(score) {
+  if(score < 1000) {
+    return "简版飞机大战，还挺难的，我才" + score + "分，你能得多少分呢？";
+  } else {
+    return "简版飞机大战，我是天才，得了" + score + "分，你能得多少分呢？";
+  }
+}
+
 game.States.boot = function() {
   this.preload = function() {
     if(typeof(GAME) !== "undefined") {
@@ -108,6 +117,8 @@ game.States.preload = function() {
     game.load.spritesheet('explode3', 'assets/explode3.png', 30, 30, 3);
     game.load.spritesheet('myexplode', 'assets/myexplode.png', 40, 40, 3);
     game.load.image('award', 'assets/award.png');
+    game.load.image('share', 'assets/share.png');
+    game.load.image('close', 'assets/close.png');
   };
   this.create = function() {
     game.state.start('main');
@@ -364,6 +375,9 @@ game.States.over = function() {
     this.replaybutton = game.add.button(30, 300, 'replaybutton', this.onReplayClick, this, 0, 0, 1);
     // 分享按钮
     this.sharebutton = game.add.button(130, 300, 'sharebutton', this.onShareClick, this, 0, 0, 1);
+    // 分享
+    this.share = game.add.image(0, game.height, 'share');
+    this.share.addChild(game.make.button(0, 0, 'close', this.onCloseShare, this, 0, 0, 0));
   };
   // 重来
   this.onReplayClick = function() {
@@ -371,7 +385,12 @@ game.States.over = function() {
   };
   // 分享
   this.onShareClick = function() {
-    
+    document.title = makeTitle(score);
+    game.add.tween(this.share).to({y: 0}, 500, Phaser.Easing.Cubic.Out, true, 0, 0, false);
+  };
+  // 关闭分享
+  this.onCloseShare = function() {
+    game.add.tween(this.share).to({y: game.height}, 500, Phaser.Easing.Cubic.Out, true, 0, 0, false);
   };
 }
 
