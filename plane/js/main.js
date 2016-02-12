@@ -99,7 +99,7 @@ game.States.boot = function() {
 
 game.States.preload = function() {
   this.preload = function() {
-    var preloadSprite = game.add.sprite(34, game.height/2, 'loading');
+    var preloadSprite = game.add.sprite(10, game.height/2, 'loading');
     game.load.setPreloadSprite(preloadSprite);
     game.load.image('background', 'assets/bg.jpg');
     game.load.image('copyright', 'assets/copyright.png');
