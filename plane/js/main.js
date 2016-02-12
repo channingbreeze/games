@@ -80,6 +80,11 @@ var makeTitle = function(score) {
   }
 }
 
+// 关闭分享
+var onCloseShare = function() {
+  document.getElementById('share').style.display = 'none';
+};
+
 game.States.boot = function() {
   this.preload = function() {
     if(typeof(GAME) !== "undefined") {
@@ -117,8 +122,6 @@ game.States.preload = function() {
     game.load.spritesheet('explode3', 'assets/explode3.png', 30, 30, 3);
     game.load.spritesheet('myexplode', 'assets/myexplode.png', 40, 40, 3);
     game.load.image('award', 'assets/award.png');
-    game.load.image('share', 'assets/share.png');
-    game.load.image('close', 'assets/close.png');
   };
   this.create = function() {
     game.state.start('main');
@@ -386,11 +389,7 @@ game.States.over = function() {
   // 分享
   this.onShareClick = function() {
     document.title = makeTitle(score);
-    game.add.tween(this.share).to({y: 0}, 500, Phaser.Easing.Cubic.Out, true, 0, 0, false);
-  };
-  // 关闭分享
-  this.onCloseShare = function() {
-    game.add.tween(this.share).to({y: game.height}, 500, Phaser.Easing.Cubic.Out, true, 0, 0, false);
+    document.getElementById('share').style.display = 'block';
   };
 }
 
