@@ -26,7 +26,7 @@ if(isset($_GET['game'])) {
 		var GAME = "<?php echo $game;?>";
     </script>
     <?php 
-		include_once 'partials/' . $game . '.php';
+		include_once 'partials/' . $game . '.script.php';
 	?>
     <style type="text/css">
         body {
@@ -36,8 +36,13 @@ if(isset($_GET['game'])) {
         canvas {
             margin: 0 auto;
         }
+    <?php 
+		include_once 'partials/' . $game . '.css.php';
+	?>
     </style>
 </head>
 <body>
-
+	<?php 
+		include_once 'partials/' . $game . '.body.php';
+	?>
 </body>
