@@ -119,7 +119,7 @@ game.States.preload = function() {
     game.load.image('enemy3', 'assets/enemy3.png');
     game.load.spritesheet('explode1', 'assets/explode1.png', 20, 20, 3);
     game.load.spritesheet('explode2', 'assets/explode2.png', 30, 30, 3);
-    game.load.spritesheet('explode3', 'assets/explode3.png', 30, 30, 3);
+    game.load.spritesheet('explode3', 'assets/explode3.png', 50, 50, 3);
     game.load.spritesheet('myexplode', 'assets/myexplode.png', 40, 40, 3);
     game.load.image('award', 'assets/award.png');
   };
