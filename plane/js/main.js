@@ -49,9 +49,11 @@ function Enemy(config) {
   };
   // 打中了敌人
   this.hitEnemy = function(myBullet, enemy) {
+    config.firesound.play();
     myBullet.kill();
     enemy.life--;
     if(enemy.life <= 0) {
+      config.crashsound.play();
       enemy.kill();
       var explosion = this.explosions.getFirstExists(false);
       explosion.reset(enemy.body.x, enemy.body.y);
@@ -122,6 +124,15 @@ game.States.preload = function() {
     game.load.spritesheet('explode3', 'assets/explode3.png', 50, 50, 3);
     game.load.spritesheet('myexplode', 'assets/myexplode.png', 40, 40, 3);
     game.load.image('award', 'assets/award.png');
+    game.load.audio('normalback', 'assets/normalback.mp3');
+    game.load.audio('playback', 'assets/playback.mp3');
+    game.load.audio('fashe', 'assets/fashe.mp3');
+    game.load.audio('crash1', 'assets/crash1.mp3');
+    game.load.audio('crash2', 'assets/crash2.mp3');
+    game.load.audio('crash3', 'assets/crash3.mp3');
+    game.load.audio('ao', 'assets/ao.mp3');
+    game.load.audio('pi', 'assets/pi.mp3');
+    game.load.audio('deng', 'assets/deng.mp3');
   };
   this.create = function() {
     game.state.start('main');
@@ -140,9 +151,13 @@ game.States.main = function() {
     this.myplane.animations.play('fly', 12, true);
     // 开始按钮
     this.startbutton = game.add.button(70, 200, 'startbutton', this.onStartClick, this, 1, 1, 0);
+    // 背景音乐
+    this.normalback = game.add.audio('normalback', 0.2, true);
+    this.normalback.play();
   };
   this.onStartClick = function() {
     game.state.start('start');
+    this.normalback.stop();
   };
 };
 
@@ -163,6 +178,21 @@ game.States.start = function() {
     // 动画
     var tween = game.add.tween(this.myplane).to({y: game.height - 40}, 1000, Phaser.Easing.Sinusoidal.InOut, true);
     tween.onComplete.add(this.onStart, this);
+    // 背景音乐
+    this.playback = game.add.audio('playback', 0.2, true);
+    this.playback.play();
+    // 开火音乐
+    this.pi = game.add.audio('pi', 1, false);
+    // 打中敌人音乐
+    this.firesound = game.add.audio('fashe', 5, false);
+    // 爆炸音乐
+    this.crash1 = game.add.audio('crash1', 10, false);
+    this.crash2 = game.add.audio('crash2', 10, false);
+    this.crash3 = game.add.audio('crash3', 20, false);
+    // 挂了音乐
+    this.ao = game.add.audio('ao', 10, false);
+    // 接到了奖音乐
+    this.deng = game.add.audio('deng', 10, false);
   };
   this.onStart = function() {
     // 我的子弹
@@ -205,7 +235,9 @@ game.States.start = function() {
         bulletVelocity: 200,
         selfTimeInterval: 2,
         bulletTimeInterval: 1000,
-        score: 10
+        score: 10,
+        firesound: this.firesound,
+        crashsound: this.crash1
       },
       enemy2: {
         game: this,
@@ -222,7 +254,9 @@ game.States.start = function() {
         bulletVelocity: 250,
         selfTimeInterval: 3,
         bulletTimeInterval: 1200,
-        score: 20
+        score: 20,
+        firesound: this.firesound,
+        crashsound: this.crash2
       },
       enemy3: {
         game: this,
@@ -239,7 +273,9 @@ game.States.start = function() {
         bulletVelocity: 300,
         selfTimeInterval: 10,
         bulletTimeInterval: 1500,
-        score: 50
+        score: 50,
+        firesound: this.firesound,
+        crashsound: this.crash3
       }
     }
     this.enemy1 = new Enemy(enemyTeam.enemy1);
@@ -260,6 +296,7 @@ game.States.start = function() {
   // 自己开火
   this.myFireBullet = function() {
     if(this.myplane.alive && game.time.now > this.bulletTime) {
+      this.pi.play();
       var bullet;
       bullet = this.mybullets.getFirstExists(false);
       if(bullet) {
@@ -319,6 +356,7 @@ game.States.start = function() {
   // 得奖了
   this.getAward = function(myplane, award) {
     award.kill();
+    this.deng.play();
     if(myplane.level < 3) {
       myplane.level++;
     }
@@ -329,6 +367,7 @@ game.States.start = function() {
   };
   // 挂了
   this.dead = function() {
+    this.ao.play();
     var myexplode = game.add.sprite(this.myplane.x, this.myplane.y, 'myexplode');
     var anim = myexplode.animations.add('myexplode');
     myexplode.animations.play('myexplode', 30, false, true);
@@ -336,6 +375,7 @@ game.States.start = function() {
   };
   // 跳转到Over场景
   this.gotoOver = function() {
+    this.playback.stop();
     game.state.start('over');
   };
   // 更新函数
@@ -381,9 +421,13 @@ game.States.over = function() {
     // 分享
     this.share = game.add.image(0, game.height, 'share');
     this.share.addChild(game.make.button(0, 0, 'close', this.onCloseShare, this, 0, 0, 0));
+    // 背景音乐
+    this.normalback = game.add.audio('normalback', 0.2, true);
+    this.normalback.play();
   };
   // 重来
   this.onReplayClick = function() {
+    this.normalback.stop();
     game.state.start('start');
   };
   // 分享
