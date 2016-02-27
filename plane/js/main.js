@@ -49,11 +49,15 @@ function Enemy(config) {
   };
   // 打中了敌人
   this.hitEnemy = function(myBullet, enemy) {
-    config.firesound.play();
+    try {
+      config.firesound.play();
+    } catch(e) {}
     myBullet.kill();
     enemy.life--;
     if(enemy.life <= 0) {
-      config.crashsound.play();
+      try {
+        config.crashsound.play();
+      } catch(e) {}
       enemy.kill();
       var explosion = this.explosions.getFirstExists(false);
       explosion.reset(enemy.body.x, enemy.body.y);
@@ -296,7 +300,9 @@ game.States.start = function() {
   // 自己开火
   this.myFireBullet = function() {
     if(this.myplane.alive && game.time.now > this.bulletTime) {
-      this.pi.play();
+      try {
+        this.pi.play();
+      } catch(e) {}
       var bullet;
       bullet = this.mybullets.getFirstExists(false);
       if(bullet) {
@@ -356,7 +362,9 @@ game.States.start = function() {
   // 得奖了
   this.getAward = function(myplane, award) {
     award.kill();
-    this.deng.play();
+    try {
+      this.deng.play();
+    } catch(e) {}
     if(myplane.level < 3) {
       myplane.level++;
     }
@@ -367,7 +375,9 @@ game.States.start = function() {
   };
   // 挂了
   this.dead = function() {
-    this.ao.play();
+    try {
+      this.ao.play();
+    } catch(e) {}
     var myexplode = game.add.sprite(this.myplane.x, this.myplane.y, 'myexplode');
     var anim = myexplode.animations.add('myexplode');
     myexplode.animations.play('myexplode', 30, false, true);
@@ -418,9 +428,6 @@ game.States.over = function() {
     this.replaybutton = game.add.button(30, 300, 'replaybutton', this.onReplayClick, this, 0, 0, 1);
     // 分享按钮
     this.sharebutton = game.add.button(130, 300, 'sharebutton', this.onShareClick, this, 0, 0, 1);
-    // 分享
-    this.share = game.add.image(0, game.height, 'share');
-    this.share.addChild(game.make.button(0, 0, 'close', this.onCloseShare, this, 0, 0, 0));
     // 背景音乐
     this.normalback = game.add.audio('normalback', 0.2, true);
     this.normalback.play();
