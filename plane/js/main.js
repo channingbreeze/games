@@ -128,15 +128,15 @@ game.States.preload = function() {
     game.load.spritesheet('explode3', 'assets/explode3.png', 50, 50, 3);
     game.load.spritesheet('myexplode', 'assets/myexplode.png', 40, 40, 3);
     game.load.image('award', 'assets/award.png');
-    game.load.audio('normalback', 'assets/normalback.wav');
-    game.load.audio('playback', 'assets/playback.wav');
-    game.load.audio('fashe', 'assets/fashe.wav');
-    game.load.audio('crash1', 'assets/crash1.wav');
-    game.load.audio('crash2', 'assets/crash2.wav');
-    game.load.audio('crash3', 'assets/crash3.wav');
-    game.load.audio('ao', 'assets/ao.wav');
-    game.load.audio('pi', 'assets/pi.wav');
-    game.load.audio('deng', 'assets/deng.wav');
+    game.load.audio('normalback', 'assets/normalback.mp3');
+    game.load.audio('playback', 'assets/playback.mp3');
+    game.load.audio('fashe', 'assets/fashe.mp3');
+    game.load.audio('crash1', 'assets/crash1.mp3');
+    game.load.audio('crash2', 'assets/crash2.mp3');
+    game.load.audio('crash3', 'assets/crash3.mp3');
+    game.load.audio('ao', 'assets/ao.mp3');
+    game.load.audio('pi', 'assets/pi.mp3');
+    game.load.audio('deng', 'assets/deng.mp3');
   };
   this.create = function() {
     game.state.start('main');
