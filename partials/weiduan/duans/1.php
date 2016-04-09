@@ -50,6 +50,6 @@ var GSENS = [{
     name: 'weiduan_1_1',
     str: '。。。',
     me: false,
-    time: 2
+    time: 5
   }];
 </script>
