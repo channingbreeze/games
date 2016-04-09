@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<head> 
+	<meta charset="UTF-8" />
+	<title>exam1</title>
+    <script src="../phaser.min.js"></script>
+</head>
+<body>
+
+<script>
+
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+function preload() {
+    console.log('preload');
+}
+
+function create() {
+    console.log('create');
+}
+
+function update() {
+    console.log('update');
+}
+
+</script>
+
+</body>

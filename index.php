@@ -1,11 +1,32 @@
 <?php 
 
+require_once dirname ( __FILE__ ) . '/services/GsStatisticsService.class.php';
+
 if(isset($_GET['game'])) {
 	$game = $_GET['game'];
 	if($game != "flappybird" &&
 		$game != "getogether" &&
-		$game != "plane") {
+		$game != "plane" &&
+		$game != "weiduan") {
 		exit(0);
+	} else {
+		$gameName = $game;
+		if($gameName == "weiduan") {
+			if(isset($_GET['id'])) {
+				$gameName = $gameName . "_" . $_GET['id'];
+			} else {
+				$gameName = $gameName . "_1";
+			}
+		}
+		$gsStatisticsService = new GsStatisticsService();
+		$ip = $_SERVER['REMOTE_ADDR'];
+		$gs = $gsStatisticsService->selectByGameAndIp($gameName, $ip);
+		if(count($gs) == 0) {
+			$gsStatisticsService->add($gameName, $ip, 1);
+		} else {
+			$count = $gs[0]['count'] + 1;
+			$gsStatisticsService->updateCount($count, $gs[0]['id']);
+		}
 	}
 } else {
 	exit(0);
@@ -26,7 +47,7 @@ if(isset($_GET['game'])) {
 		var GAME = "<?php echo $game;?>";
     </script>
     <?php 
-		include_once 'partials/' . $game . '.script.php';
+		include_once 'partials/' . $game . '/script.php';
 	?>
     <style type="text/css">
         body {
@@ -37,12 +58,12 @@ if(isset($_GET['game'])) {
             margin: 0 auto;
         }
     <?php 
-		include_once 'partials/' . $game . '.css.php';
+		include_once 'partials/' . $game . '/css.php';
 	?>
     </style>
 </head>
 <body>
 	<?php 
-		include_once 'partials/' . $game . '.body.php';
+		include_once 'partials/' . $game . '/body.php';
 	?>
 </body>

@@ -26,10 +26,11 @@ game.States.preload = function() {
     game.load.setPreloadSprite(preloadSprite);
     game.load.image('whitejian', 'assets/whitejian.png');
     game.load.image('greenjian', 'assets/greenjian.png');
-    game.load.image('liuqiangdong', 'assets/liuqiangdong.jpg');
-    game.load.image('kehu', 'assets/kehu.jpg');
-    game.load.audio('laugh', 'assets/laugh.mp3');
-    game.load.audio('message', 'assets/message.mp3');
+    for(var i=0; i<PERSONS.length; i++) {
+      game.load.image(PERSONS[i], 'assets/' + PERSONS[i] + '.jpg');
+    }
+    //game.load.audio('laugh', 'assets/laugh.mp3');
+    //game.load.audio('message', 'assets/message.mp3');
   };
   this.create = function() {
     game.state.start('main');
@@ -57,71 +58,28 @@ game.States.main = function() {
     this.ellipse = 30;
     // 数组
     this.words = [];
-    this.sens = [{
-      name: 'liuqiangdong',
-      str: '你好，你是做UI设计的 吗？',
-      me: false,
-      time: 4
-    }, {
-      name: 'kehu',
-      str: '你好，是的，请问你有 什么需求？',
-      me: true,
-      time: 3
-    }, {
-      name: 'liuqiangdong',
-      str: '我们公司想做个App，要 高端大气上档次，我们的 预算比较高，1000左右',
-      me: false,
-      time: 5
-    }, {
-      name: 'kehu',
-      str: '你刚才问什么？',
-      me: true,
-      time: 3
-    }, {
-      name: 'liuqiangdong',
-      str: '我们公司想做个App，要 高端大气上档次，预算 1000左右',
-      me: false,
-      time: 3
-    }, {
-      name: 'kehu',
-      str: '不是这句，是前面一句',
-      me: true,
-      time: 4
-    }, {
-      name: 'liuqiangdong',
-      str: '你好，你是做UI设计的 吗？',
-      me: false,
-      time: 2
-    }, {
-      name: 'kehu',
-      str: '不是',
-      me: true,
-      time: 2
-    }, {
-      name: 'liuqiangdong',
-      str: '。。。',
-      me: false,
-      time: 1
-    }];
-    this.message = game.add.audio('message', 1, false);
-    this.laugh = game.add.audio('laugh', 0.5, false);
+    //this.message = game.add.audio('message', 1, false);
+    //this.laugh = game.add.audio('laugh', 0.5, false);
     var count = -1;
     var $this = this;
     var ran = function() {
       if(count < 0) {
         var ranTime = 1;
       } else {
-        var ranTime = $this.sens[count].time;
+        var ranTime = GSENS[count].time;
       }
       game.time.events.add(Phaser.Timer.SECOND * ranTime, function() {
         count++;
-        if(count >= $this.sens.length) {
-          $this.laugh.play();
+        if(count >= GSENS.length) {
+          //$this.laugh.play();
+          document.getElementById('game').onclick = function() {
+            document.getElementById('share').style.display = 'block';
+          }
           return;
         }
-        $this.say($this.sens[count].name, $this.sens[count].str, $this.sens[count].me);
+        $this.say(GSENS[count].name, GSENS[count].str, GSENS[count].me);
         if(count == 0) {
-          $this.message.play();
+          //$this.message.play();
         }
         ran();
       }, this);
@@ -193,3 +151,10 @@ game.state.add('preload', game.States.preload);
 game.state.add('main', game.States.main);
 
 game.state.start('boot');
+
+if(TITLE) {
+	document.title = TITLE;
+}
+if(LOGO) {
+	document.getElementById('logo').src = LOGO;
+}
