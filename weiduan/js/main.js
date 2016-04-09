@@ -153,8 +153,11 @@ game.state.add('main', game.States.main);
 game.state.start('boot');
 
 if(TITLE) {
-	document.title = TITLE;
+  document.title = TITLE;
 }
-if(LOGO) {
-	document.getElementById('logo').src = LOGO;
+
+window.onload = function() {
+  if(LOGO) {
+    document.getElementById('logo').src = LOGO;
+  }
 }
