@@ -72,9 +72,7 @@ game.States.main = function() {
         count++;
         if(count >= GSENS.length) {
           //$this.laugh.play();
-          document.getElementById('game').onclick = function() {
-            document.getElementById('share').style.display = 'block';
-          }
+          document.getElementById('share').style.display = 'block';
           return;
         }
         $this.say(GSENS[count].name, GSENS[count].str, GSENS[count].me);
