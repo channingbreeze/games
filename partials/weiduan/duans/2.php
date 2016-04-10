@@ -29,7 +29,7 @@ var GSENS = [{
     name: 'weiduan_2_1',
     str: '新买的自行车被我撞散 架了',
     me: false,
-    time: 3
+    time: 5
   }, {
     name: 'weiduan_2_me',
     str: '老公没事的，你若安好 便是晴天',
