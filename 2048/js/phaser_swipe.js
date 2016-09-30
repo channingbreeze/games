@@ -23,8 +23,8 @@ function Swipe(game, model) {
 
   self.game = game;
   self.model = model !== undefined ? model : null;
-  self.dragLength = 100;
-  self.diagonalDelta = 50;
+  self.dragLength = 10;
+  self.diagonalDelta = 5;
   self.swiping = false;
   self.direction = null;
   self.tmpDirection = null;
@@ -176,7 +176,7 @@ Swipe.prototype.check = function () {
   var deltaXabs = Math.abs(deltaX);
   var deltaYabs = Math.abs(deltaY);
 
-  if (!this.diagonalDisabled && deltaXabs > (this.dragLength-this.diagonalDelta) && deltaYabs > (this.dragLength-this.diagonalDelta)) {
+  /*if (!this.diagonalDisabled && deltaXabs > (this.dragLength-this.diagonalDelta) && deltaYabs > (this.dragLength-this.diagonalDelta)) {
     if (deltaX > 0 && deltaY > 0) {
       direction = this.DIRECTION_DOWN_RIGHT;
       this.model !== null && this.model.downRight && this.model.downRight(result);
@@ -190,7 +190,7 @@ Swipe.prototype.check = function () {
       direction = this.DIRECTION_UP_LEFT;
       this.model !== null && this.model.upLeft && this.model.upLeft(result);
     }
-  } else if (deltaXabs > this.dragLength || deltaYabs > this.dragLength) {
+  } else */if (deltaXabs > this.dragLength || deltaYabs > this.dragLength) {
     if (deltaXabs > deltaYabs) {
       if (deltaX > 0) {
         direction = this.DIRECTION_RIGHT;

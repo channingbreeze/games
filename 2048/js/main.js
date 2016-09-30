@@ -108,7 +108,8 @@ game.States.start = function() {
       128: 0xBF71B3,
       256: 0x9F71BF,
       512: 0x7183BF,
-      1024: 0x71BFAF
+      1024: 0x71BFAF,
+      2048: 0xFF7C80
     };
     // 初始化
     this.rerunGame();
