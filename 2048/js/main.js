@@ -150,10 +150,10 @@ game.States.start = function() {
   };
   // 坐标转换
   this.transX = function(x) {
-    return 10+8*(x+1)+(x+0)*45;
+    return 10+8*(x+1)+x*45+45/2;
   };
   this.transY = function(y) {
-    return 80+8*(y+1)+(y+0)*45;
+    return 80+8*(y+1)+y*45+45/2;
   };
   // 随机产生一个方块
   this.generateSquare = function() {
@@ -174,18 +174,18 @@ game.States.start = function() {
     var squareStyle = { font: "bold 20px Arial", fill: "#FFFFFF", boundsAlignH: "center", boundsAlignV: "middle" };
     var square = game.add.sprite();
     square.reset(this.transX(x), this.transY(y));
-    var squareBackground = game.add.graphics(0, 0);
+    var squareBackground = game.add.graphics(-45/2, -45/2);
     squareBackground.beginFill(this.colors[value]);
     squareBackground.drawRoundedRect(0, 0, 45, 45, 5);
     squareBackground.endFill();
     square.addChild(squareBackground);
-    var squareText = game.add.text(0, 0, value, squareStyle);
+    var squareText = game.add.text(-45/2, -45/2, value, squareStyle);
     squareText.setTextBounds(0, 0, 45, 45);
     square.addChild(squareText);
     this.array[x][y].value = value;
     this.array[x][y].sprite = square;
     square.anchor.setTo(0.5, 0.5);
-    square.scale.setTo(0, 0);
+    square.scale.setTo(0.0, 0.0);
     var tween = game.add.tween(square.scale).to({x:1.0, y:1.0}, 100, Phaser.Easing.Sinusoidal.InOut, true);
     tween.onComplete.add(function() {
       if(this.checkGameover()) {
@@ -198,8 +198,9 @@ game.States.start = function() {
     var that = this;
     var duration = 100;
     // 遇到了可以合并的
-    if(arrNode.value == this.array[i][j].value) {
+    if(!arrNode.newNode && arrNode.value == this.array[i][j].value) {
       arrNode.value = arrNode.value * 2;
+      arrNode.newNode = true;
       this.array[i][j].value = 0;
       this.score = this.score + arrNode.value;
       this.scoreText.text = this.score;
@@ -250,13 +251,25 @@ game.States.start = function() {
       this.array[i][j].sprite = undefined;
     }
   };
-  this.swipeLeft = function() {
+  // swipe的初始逻辑抽出
+  this.swipeInit = function() {
     this.canSwipe = false;
     game.time.events.add(Phaser.Timer.SECOND * 0.5, function() {
       if(!this.canSwipe) {
         this.canSwipe = true;
       }
     }, this);
+  };
+  // swipe的结尾逻辑抽出
+  this.swipeDone = function() {
+    for(var i=0; i<this.array.length; i++) {
+      for(var j=0; j<this.array.length; j++) {
+        this.array[i][j].newNode = undefined;
+      }
+    }
+  };
+  this.swipeLeft = function() {
+    this.swipeInit();
     for(var i=1; i<this.array.length; i++) {
       for(var j=0; j<this.array.length; j++) {
         if(this.array[i][j].value != 0) {
@@ -269,14 +282,10 @@ game.States.start = function() {
         }
       }
     }
+    this.swipeDone();
   };
   this.swipeUp = function() {
-    this.canSwipe = false;
-    game.time.events.add(Phaser.Timer.SECOND * 0.5, function() {
-      if(!this.canSwipe) {
-        this.canSwipe = true;
-      }
-    }, this);
+    this.swipeInit();
     for(var i=0; i<this.array.length; i++) {
       for(var j=1; j<this.array.length; j++) {
         if(this.array[i][j].value != 0) {
@@ -289,14 +298,10 @@ game.States.start = function() {
         }
       }
     }
+    this.swipeDone();
   };
   this.swipeRight = function() {
-    this.canSwipe = false;
-    game.time.events.add(Phaser.Timer.SECOND * 0.5, function() {
-      if(!this.canSwipe) {
-        this.canSwipe = true;
-      }
-    }, this);
+    this.swipeInit();
     for(var i=this.array.length-2; i>=0; i--) {
       for(var j=0; j<this.array.length; j++) {
         if(this.array[i][j].value != 0) {
@@ -309,14 +314,10 @@ game.States.start = function() {
         }
       }
     }
+    this.swipeDone();
   };
   this.swipeDown = function() {
-    this.canSwipe = false;
-    game.time.events.add(Phaser.Timer.SECOND * 0.5, function() {
-      if(!this.canSwipe) {
-        this.canSwipe = true;
-      }
-    }, this);
+    this.swipeInit();
     for(var i=0; i<this.array.length; i++) {
       for(var j=this.array.length-2; j>=0; j--) {
         if(this.array[i][j].value != 0) {
@@ -329,6 +330,7 @@ game.States.start = function() {
         }
       }
     }
+    this.swipeDone();
   };
   // swipe检测
   this.swipeCheck = {
