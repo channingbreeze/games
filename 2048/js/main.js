@@ -204,6 +204,10 @@ game.States.start = function() {
       this.array[i][j].value = 0;
       this.score = this.score + arrNode.value;
       this.scoreText.text = this.score;
+      if(this.score > this.best) {
+        this.best = this.score;
+        this.bestText.text = this.best;
+      }
       // 渐渐透明后被kill掉
       var t1 = game.add.tween(arrNode.sprite).to({alpha: 0}, duration, Phaser.Easing.Linear.None, true);
       t1.onComplete.add(function() {
@@ -379,10 +383,6 @@ game.States.start = function() {
       this.gameOverMask.addChild(gameOverText);
       var gameOverBtn = game.add.button((game.width-206)/2, 200, 'btnTryagain', this.tryAgain, this);
       this.gameOverMask.addChild(gameOverBtn);
-      if(this.score > this.best) {
-        this.best = this.score;
-        this.bestText.text = this.best;
-      }
     }
   };
   // try again
