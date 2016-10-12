@@ -7,6 +7,7 @@
 * [打飞机](http://game.webxinxin.com/plane/)
 * [Flappybird](http://game.webxinxin.com/flappybird/)
 * [高仿微信聊天界面](http://game.webxinxin.com/?game=weiduan&id=1)
+* [2048](http://game.webxinxin.com/2048)
 
 ###问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
