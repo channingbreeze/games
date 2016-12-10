@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Monster Wants Candy</title>
+	<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+	<meta name="description" content="Monster Wants Candy - mobile HTML5 game from Enclave Games" />
+	<meta property="og:image" content="img/game-candy-square.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+	<style>
+		body { margin: 0; background: #B4D9E7; }
+		@font-face {
+			font-family: 'ComicBook';
+			src: url('fonts/comicbook.eot');
+			src: url('fonts/comicbook.eot?#iefix') format('embedded-opentype'),
+				url('fonts/comicbook.woff') format('woff'),
+				url('fonts/comicbook.ttf') format('truetype'),
+				url('fonts/comicbook.svg#comic_booknormal') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+	</style>
+	<script src="candy.min.js"></script>
+</head>
+<body>
+<img style="display: none;" src="img/game-candy-square.png" />
+<script>
+(function(){
+	var game = new Phaser.Game(640, 960, Phaser.CANVAS, 'game');
+	game.state.add('Boot', Candy.Boot);
+	game.state.add('Preloader', Candy.Preloader);
+	game.state.add('StoryHowto', Candy.StoryHowto);
+	game.state.add('Achievements', Candy.Achievements);
+	game.state.add('MainMenu', Candy.MainMenu);
+	game.state.add('Game', Candy.Game);
+	game.state.start('Boot');
+})();
+</script>
+</body>
+</html>
