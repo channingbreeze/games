@@ -1,0 +1,6 @@
+<TextureAtlas imagePath="sprites.png">
+	<SubTexture name="glod.png" x="0" y="247" width="110" height="121"/>
+	<SubTexture name="mu1.png" x="0" y="0" width="537" height="245"/>
+	<SubTexture name="mu2.png" x="539" y="0" width="182" height="389"/>
+	<SubTexture name="p1.png" x="0" y="370" width="107" height="128"/>
+</TextureAtlas>
