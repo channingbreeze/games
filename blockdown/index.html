@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>blockDown</title>
+  <style>
+    html,body{ height:100%; margin: 0; padding: 0;}
+    #container{ height:100%; padding-top: 1px; box-sizing:border-box; -webkt-box-sizing:border-box;}
+  </style>
+  <script src="../phaser.min.js"></script>
+  <script src="js/jsonFile.js"></script>
+  <script src="js/state/load.js"></script>
+  <script src="js/state/play.js"></script>
+  <script src="js/state/menu.js"></script>
+  <script src="js/state/play_2.js"></script>
+  <script>
+    var game;
+    var flage;
+    goPC();
+    function goPC()
+    {
+      var userAgentInfo = navigator.userAgent;
+      var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+      flage = true;
+
+      for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0)
+        { flage = false;
+          break; }
+      }
+      return flage;
+    }
+    if(flage){
+      game = new Phaser.Game(800,592,Phaser.AUTO,'container');
+    }else{
+      game = new Phaser.Game(Math.floor(window.innerWidth/16)*16,Math.floor(window.innerHeight/16)*16,Phaser.AUTO,'container');
+    }
+    game.state.add('load',loadState);
+    game.state.add('play',playState);
+    game.state.add('menu',menuState);
+    game.state.add('playTwo',play_2State);
+    game.state.start('load');
+  </script>
+</head>
+<body>
+<script>
+</script>
+<div id='container'></div>
+
+</body>
+</html>

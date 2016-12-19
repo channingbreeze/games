@@ -1,0 +1,84 @@
+{"frames": [
+
+{
+	"filename": "0",
+	"frame": {"x":0,"y":0,"w":184,"h":184},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":184,"h":184},
+	"sourceSize": {"w":184,"h":184}
+},
+{
+	"filename": "1",
+	"frame": {"x":184,"y":0,"w":184,"h":184},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":184,"h":184},
+	"sourceSize": {"w":184,"h":184}
+},
+{
+	"filename": "2",
+	"frame": {"x":368,"y":0,"w":184,"h":184},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":184,"h":184},
+	"sourceSize": {"w":184,"h":184}
+},
+{
+	"filename": "3",
+	"frame": {"x":552,"y":0,"w":184,"h":184},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":184,"h":184},
+	"sourceSize": {"w":184,"h":184}
+},
+{
+	"filename": "4",
+	"frame": {"x":736,"y":0,"w":184,"h":184},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":184,"h":184},
+	"sourceSize": {"w":184,"h":184}
+},
+{
+	"filename": "5",
+	"frame": {"x":920,"y":0,"w":184,"h":184},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":184,"h":184},
+	"sourceSize": {"w":184,"h":184}
+},
+{
+	"filename": "6",
+	"frame": {"x":1104,"y":0,"w":184,"h":184},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":184,"h":184},
+	"sourceSize": {"w":184,"h":184}
+},
+{
+	"filename": "7",
+	"frame": {"x":1288,"y":0,"w":184,"h":184},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":184,"h":184},
+	"sourceSize": {"w":184,"h":184}
+},
+{
+	"filename": "8",
+	"frame": {"x":1472,"y":0,"w":184,"h":184},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":184,"h":184},
+	"sourceSize": {"w":184,"h":184}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "pintu",
+	"format": "RGBA8888",
+	"size": {"w":1656,"h":184},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a0a5e160d8c243b79e5ea0489f1bbd44$"
+}
+}
