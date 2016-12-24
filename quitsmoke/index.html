@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quit Smoking</title>
+    <style>
+        body{
+            background-color: black;
+            margin: 0;
+        }
+        #content{
+            margin: 0 auto;
+        }
+    </style>
+    <script src="../phaser.min.js"></script>
+</head>
+<body>
+    <div id="game">
+        <div id="content"></div>
+    </div>
+
+    <script src="js/helper.js"></script>
+    <script src="js/boot.js"></script>
+    <script src="js/mainmenu.js"></script>
+    <script src="js/preload.js"></script>
+    <script src="js/gameplay.js"></script>
+
+    <script>
+        (function(){
+            var gameBestWidth = 520;
+            var gameBestHeight = 720;
+            var gameBestRatio = gameBestWidth / gameBestHeight;
+
+            // Get viewport ratio.
+            var viewport_w = window.innerWidth;
+            var viewport_h = window.innerHeight - 10;
+            var viewportRatio = viewport_w / viewport_h;
+
+            var content = document.getElementById("content");
+
+            if(gameBestRatio > viewportRatio){
+                // take viewport height as base value
+                content.style.width  = viewport_w + "px";
+                content.style.height = (viewport_w / gameBestRatio) + "px";
+            } else if(gameBestRatio < viewportRatio){
+                // take viewport width as base value
+                content.style.height = viewport_h + "px";
+                content.style.width  = (viewport_h * gameBestRatio) + "px";
+            } 
+
+            var game = new Phaser.Game(gameBestWidth, gameBestHeight, Phaser.CANVAS , "content");
+            game.state.add('Boot', boot);
+            game.state.add('MainMenu', mainMenu);
+            game.state.add('Preload', preload);
+            game.state.add('Gameplay', gameplay);
+            game.state.start('Boot');
+        })();
+    </script>
+</body>
+</html>

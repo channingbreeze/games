@@ -15,6 +15,8 @@
 * [拆散小情侣](http://game.webxinxin.com/breaklovers)
 * [拼图](http://game.webxinxin.com/puzzle)
 * [弹珠儿](http://game.webxinxin.com/hitball)
+* [别抽烟](http://game.webxinxin.com/quitsmoke)
+* [往上走](http://game.webxinxin.com/circlepath)
 
 ###问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流

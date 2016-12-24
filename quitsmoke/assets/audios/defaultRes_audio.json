@@ -1,0 +1,9 @@
+{
+    "spritemap":{
+        "menu":{ "start": 0, "end": 59.5, "loop": true },
+        "beep":{ "start": 59.5, "end": 60, "loop": false},
+        "bounce": { "start": 60, "end": 60.5, "loop": false},
+        "hit" :{ "start": 60.5, "end": 61, "loop": false},
+        "death": { "start": 61, "end": 62, "loop": false}
+    }
+}
