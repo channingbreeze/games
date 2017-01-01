@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+	<title>放风筝</title>
+    <style>
+        body { margin: 0; background:url('assets/bacground-img.jpg') repeat;}
+    </style>
+    <script src="../phaser.min.js"></script>
+    <script src="js/phaser-touch-control.js"></script>
+    <script src="js/Boot.js"></script>
+    <script src="js/Preloader.js"></script>
+    <script src="js/MainMenu.js"></script>
+    <script src="js/Game.js"></script>
+</head>
+<body>
+<script>
+    (function() {
+        var game = new Phaser.Game(640, 1036, Phaser.AUTO, 'game');
+        game.state.add('Boot', Kiteflying.Boot);
+        game.state.add('Preloader', Kiteflying.Preloader);
+        game.state.add('MainMenu', Kiteflying.MainMenu);
+        game.state.add('Game', Kiteflying.Game);
+        game.state.start('Boot');
+    })();
+</script>
+</body>
+</html>

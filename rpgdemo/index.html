@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Phaser RPG</title>
+	<script src="../phaser.min.js"></script>
+	<script src="js/main.js"></script>
+</head>
+<body>
+<center><div id="gamebox"></div></center>
+<script type="text/javascript">
+function Boot(game){
+	this.preload = function() {
+		game.load.spritesheet('loading', 'assets/loading.png', 80, 24);  
+	};
+	this.create = function() {
+		game.state.start('loading');
+	}
+}
+function Loading(game){
+	var loadingSprite;
+	this.preload = function() {
+		loadingSprite = game.add.sprite(280, 200, 'loading');
+		loadingSprite.animations.add('loadingplay', [0, 1, 2], 5, true);
+		loadingSprite.animations.play('loadingplay');
+
+		game.load.spritesheet('sheet-hero', 'assets/heros.png', 32, 32);  
+		game.load.spritesheet('sheet-monster', 'assets/monsters.png',32,32);
+
+		game.load.image('talkboximg', 'assets/talkbox.png');
+		
+		game.load.spritesheet('button-arrow', 'assets/button-arrow.png', 64, 64);  
+		game.load.spritesheet('button-x', 'assets/button-x.png', 64, 64);  
+		game.load.spritesheet('button-menu', 'assets/button-menu.png', 64, 64);  
+		game.load.spritesheet('button-a', 'assets/button-a.png', 96, 96);  
+		game.load.spritesheet('button-att', 'assets/button-att.png', 64, 64);  
+		game.load.spritesheet('button-leave', 'assets/button-leave.png', 64, 64);  
+		game.load.spritesheet('button-start', 'assets/button-start.png', 64, 64);  
+
+		game.load.image('tiles-2', 'assets/tiles-2.png');
+		game.load.image('world-ground', 'assets/world-background.png');
+		game.load.image('world-fore', 'assets/world-fore.png');
+		game.load.tilemap('world-1', 'assets/world-1.json', null, Phaser.Tilemap.TILED_JSON);
+
+		game.load.image('fightingback', 'assets/fightingback.png');
+		game.load.spritesheet('monster', 'assets/monsters.png',32,32);
+		game.load.spritesheet('fire', 'assets/fire.png',80,40);
+		game.load.spritesheet('fire2', 'assets/fire2.png',58,100);
+	}
+	this.create=function () {
+		game.state.start('gamemenu');
+	};
+}
+function GameMenu(game){
+	this.create = function() {
+		var box = game.add.sprite(0,200,game.make.bitmapData(game.width, game.height));
+		box.addChild(game.add.text(180, 0, "从前，有一个小村庄……",{fontSize:'20px',fill:'#fff'}));
+		box.addChild(game.add.text(180, 30, "好了，点击下面按钮开始吧！",{fontSize:'20px',fill:'#fff'}));
+		box.alpha = 0;
+		game.add.tween(box).to({alpha:1,y:150},3000,"Linear",true);
+
+		var buttonClose = game.add.button(285, 300, 'button-start', null, this, 0, 1, 0, 1);
+		buttonClose.events.onInputDown.add(function(){game.state.start('gamemain');});
+	}
+}
+function GameWin(game){
+	this.create = function() {
+		var box = game.add.sprite(0, 200, game.make.bitmapData(game.width, game.height));
+		box.addChild(game.add.text(180, 0, "传说中的倚天剑重现江湖！",{fontSize:'20px',fill:'#fff'}));
+		box.addChild(game.add.text(180, 30, "张有忌从此踏上了一条不归路……",{fontSize:'20px',fill:'#fff'}));
+		box.addChild(game.add.text(180, 60, "英雄，保重！",{fontSize:'20px',fill:'#fff'}));
+		box.alpha = 0;
+		game.add.tween(box).to({alpha:1,y:120},3000,"Linear",true);
+
+		var buttonClose = game.add.button(285, 300, 'button-x', null, this, 0, 1, 0, 1);
+		buttonClose.events.onInputDown.add(function(){
+			//game.state.start('gamemenu');
+			location.reload();
+		});
+	}
+}
+function GameOver(game){
+	this.create = function() {
+		var box = game.add.sprite(0, 200, game.make.bitmapData(game.width, game.height));
+		box.addChild(game.add.text(180, 0, "啥？死了？……",{fontSize:'20px',fill:'#fff'}));
+		box.addChild(game.add.text(180, 30, "壮志未酬身先死，刷新一下又再来……",{fontSize:'20px',fill:'#fff'}));
+		box.alpha = 0;
+		game.add.tween(box).to({alpha:1,y:150},3000,"Linear",true);
+
+		var buttonClose = game.add.button(285, 300, 'button-x', null, this, 0, 1, 0, 1);
+		buttonClose.events.onInputDown.add(function(){
+			//game.state.start('gamemenu');
+			location.reload();
+		});
+	}
+}
+
+window.onload = function() {
+	var game = new Phaser.Game(640, 480, Phaser.CANVAS, 'gamebox');
+	game.state.add("boot",Boot);
+	game.state.add("loading",Loading);
+	game.state.add("gamemain",GameMain);
+	game.state.add("viewinfo",ViewInfo);
+	game.state.add("fighting",Fighting);
+	game.state.add("gamemenu",GameMenu);
+	game.state.add("gamewin",GameWin);
+	game.state.add("gameover",GameOver);
+	game.state.start('boot');
+};
+
+</script>
+</body>
+</html>

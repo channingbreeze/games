@@ -10,6 +10,7 @@
 * [2048](http://game.webxinxin.com/2048)
 * [怪物要糖果(中间版)](http://game.webxinxin.com/candytbc)
 * [怪物要糖果](http://game.webxinxin.com/candy)
+* [星星狗](http://game.webxinxin.com/stardog)
 * [跑男](http://game.webxinxin.com/run)
 * [掉方块](http://game.webxinxin.com/blockdown)
 * [拆散小情侣](http://game.webxinxin.com/breaklovers)
@@ -17,6 +18,11 @@
 * [弹珠儿](http://game.webxinxin.com/hitball)
 * [别抽烟](http://game.webxinxin.com/quitsmoke)
 * [往上走](http://game.webxinxin.com/circlepath)
+* [下楼](http://game.webxinxin.com/downfloor)
+* [RPG小游戏](http://game.webxinxin.com/rpgdemo)
+* [酷跑](http://game.webxinxin.com/kupao)
+* [风筝](http://game.webxinxin.com/kite)
+* [别碰钉子](http://game.webxinxin.com/nail)
 
 ###问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流

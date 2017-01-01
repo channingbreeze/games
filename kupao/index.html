@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+	<title>Phaser</title>
+  <style>
+      *{margin:0;padding:0}
+      html, body
+      {
+          -webkit-text-size-adjust:none;
+          overflow: hidden;
+          height:100%;
+          margin: 0px 0px 1px 0px;
+          background-color: #000;
+      }
+      
+  </style>
+    <script>
+    	(function(doc,win){var docEl=doc.documentElement,resizeEvt='orientationchange'in window?'orientationchange':'resize',recalc=function(){var clientWidth=docEl.clientWidth;if(!clientWidth)return;docEl.style.fontSize=20*(clientWidth/375)+'px'};if(!doc.addEventListener)return;win.addEventListener(resizeEvt,recalc,false);doc.addEventListener('DOMContentLoaded',recalc,false)})(document,window);
+    </script>
+    <script src="../phaser.min.js"></script>
+    <script src="js/Boot.js"></script>
+    <script src="js/Preloader.js"></script>
+    <script src="js/UI.js"></script>
+    <script src="js/MainMenu.js"></script>
+    <script src="js/Game.js"></script>
+</head>
+<body>
+	<div id="game"></div>
+<script>
+
+	var config = {
+		baseURL : 'assets/', //游戏资源路径
+		
+		change : 50 //中奖概率
+	}
+	
+	var user = {
+		ispoil : false, //是否已经中奖
+		poil : '小米手环', //中奖的奖品
+	}
+
+	document.getElementById('game').style.height = document.body.clientHeight + 'px';
+  var game = new Phaser.Game(784, 1260, Phaser.CANVAS, 'game');
+  game.state.add('Boot', MyGame.Boot);
+  game.state.add('Preloader', MyGame.Preloader);
+  game.state.add('MainMenu', MyGame.MainMenu);
+  game.state.add('Game', MyGame.Game);
+  game.state.start('Boot');
+      
+</script>
+<!--<script src="inpMusic.js"></script>-->
+</body>
+</html>
