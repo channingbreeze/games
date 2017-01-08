@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+	<title>测试版-启迪方舟抢福袋</title>
+    <style>
+        *{margin:0;padding:0}
+        html, body
+        {
+            -webkit-text-size-adjust:none;
+            overflow: hidden;
+            height:100%;
+            margin: 0px 0px 1px 0px;
+            background-color: #000
+        }
+        
+        
+        #cover{
+            position: absolute;
+            left:0;
+            top:0;
+            right:0;
+            bottom:0;
+            z-index: 2;
+            background-color: rgba(0,0,0,.8);
+            display: none;
+        }
+        #login{
+            width:17.95rem;
+            height:13.075rem;
+            background-image:url('assets/sub_box.png');
+            background-size: 17.95rem 13.075rem;
+            position: absolute;
+            left:50%;
+            top:50%;
+            margin-left:-8.975rem;
+            margin-top:-6.5375rem;
+        }
+        #login input.ipt{
+            width:10.2rem;
+            height:1.8rem;
+            position: absolute;
+            border:none;
+            color:#ffffff;
+            font-size:.7rem;
+            line-height: 1.3rem;
+            text-indent: .2rem;
+            background-color: #ec5f4f;
+            -webkit-border-radius: .3rem;
+        }
+        input::-webkit-input-placeholder {
+		    color: #ffffff;
+		}
+        #name{
+            left:3.6rem;
+            top:5.8rem;
+        }
+        #phone{
+            left:3.6rem;
+            top:8.3rem;
+        }
+        button#subBtn{
+            width:9.575rem;
+            height:1.75rem;
+            background-image:url('assets/sub_btn.png');
+            background-color: transparent;
+            background-size: 9.575rem 1.75rem;
+            position: absolute;
+            left:4rem;
+            top:10.6rem;
+            border: none;
+            font-size:.7rem;
+            color:#fff;
+        }
+        
+        
+    </style>
+    
+    <script>
+    (function(doc,win){var docEl=doc.documentElement,resizeEvt='orientationchange'in window?'orientationchange':'resize',recalc=function(){var clientWidth=docEl.clientWidth;if(!clientWidth)return;docEl.style.fontSize=20*(clientWidth/375)+'px'};if(!doc.addEventListener)return;win.addEventListener(resizeEvt,recalc,false);doc.addEventListener('DOMContentLoaded',recalc,false)})(document,window);
+    </script>
+    
+    
+    
+    <script src="../phaser.min.js"></script>
+    <script src="js/Boot.js"></script>
+    <script src="js/Preloader.js"></script>
+    <script src="js/UI.js"></script>
+    <script src="js/MainMenu.js"></script>
+    <script src="js/Game.js"></script>
+    <script src="js/Result.js"></script>
+</head>
+<body>
+	<div id="game"></div>
+	
+<script>
+	document.getElementById('game').style.height = document.body.clientHeight + 'px';
+    var game = new Phaser.Game(750, 1206, Phaser.CANVAS, 'game');
+	    game.state.add('Boot', MyGame.Boot);
+	    game.state.add('Preloader', MyGame.Preloader);
+	    game.state.add('MainMenu', MyGame.MainMenu);
+	    game.state.add('Game', MyGame.Game);
+	    game.state.add('Result', MyGame.Result);
+	    game.state.start('Boot');
+	    
+</script>
+<script src="js/inpMusic.js"></script>
+</body>
+</html>

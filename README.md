@@ -1,28 +1,32 @@
 ###基于Phaser的小游戏集
 这是一个基于Phaser的小游戏集，目的是方便大家学习Phaser。大家也可以访问Phaser小站的官方网站：[http://www.phaser-china.com/](http://www.phaser-china.com) 
 
+###源码
+每一个游戏的源码都在对应的文件夹中，如 fruit - 切水果 ，源码在fruit文件夹中
+
 ###游戏列表
-* [官方案例](http://game.webxinxin.com/learn/exam8.html)
-* [切水果](http://game.webxinxin.com/fruit/)
-* [打飞机](http://game.webxinxin.com/plane/)
-* [Flappybird](http://game.webxinxin.com/flappybird/)
-* [高仿微信聊天界面](http://game.webxinxin.com/?game=weiduan&id=1)
-* [2048](http://game.webxinxin.com/2048)
-* [怪物要糖果(中间版)](http://game.webxinxin.com/candytbc)
-* [怪物要糖果](http://game.webxinxin.com/candy)
-* [星星狗](http://game.webxinxin.com/stardog)
-* [跑男](http://game.webxinxin.com/run)
-* [掉方块](http://game.webxinxin.com/blockdown)
-* [拆散小情侣](http://game.webxinxin.com/breaklovers)
-* [拼图](http://game.webxinxin.com/puzzle)
-* [弹珠儿](http://game.webxinxin.com/hitball)
-* [别抽烟](http://game.webxinxin.com/quitsmoke)
-* [往上走](http://game.webxinxin.com/circlepath)
-* [下楼](http://game.webxinxin.com/downfloor)
-* [RPG小游戏](http://game.webxinxin.com/rpgdemo)
-* [酷跑](http://game.webxinxin.com/kupao)
-* [风筝](http://game.webxinxin.com/kite)
-* [别碰钉子](http://game.webxinxin.com/nail)
+* [learn - 官方案例](http://game.webxinxin.com/learn/exam8.html)
+* [fruit - 切水果](http://game.webxinxin.com/fruit/)
+* [plane - 打飞机](http://game.webxinxin.com/plane/)
+* [flappybird - Flappybird](http://game.webxinxin.com/flappybird/)
+* [weiduan - 高仿微信聊天界面](http://game.webxinxin.com/?game=weiduan&id=1)
+* [2048 - 2048](http://game.webxinxin.com/2048)
+* [candytbc - 怪物要糖果(中间版)](http://game.webxinxin.com/candytbc)
+* [candy - 怪物要糖果](http://game.webxinxin.com/candy)
+* [stardog - 星星狗](http://game.webxinxin.com/stardog)
+* [run - 跑男](http://game.webxinxin.com/run)
+* [blockdown - 掉方块](http://game.webxinxin.com/blockdown)
+* [breaklovers - 拆散小情侣](http://game.webxinxin.com/breaklovers)
+* [puzzle - 拼图](http://game.webxinxin.com/puzzle)
+* [hitball - 弹珠儿](http://game.webxinxin.com/hitball)
+* [quitsmoke - 别抽烟](http://game.webxinxin.com/quitsmoke)
+* [circlepath - 往上走](http://game.webxinxin.com/circlepath)
+* [downfloor - 下楼](http://game.webxinxin.com/downfloor)
+* [rpgdemo - RPG小游戏](http://game.webxinxin.com/rpgdemo)
+* [kupao - 酷跑](http://game.webxinxin.com/kupao)
+* [kite - 风筝](http://game.webxinxin.com/kite)
+* [nail - 别碰钉子](http://game.webxinxin.com/nail)
+* [fubag - 接福袋](http://game.webxinxin.com/fubag)
 
 ###问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
