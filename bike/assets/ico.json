@@ -1,0 +1,100 @@
+{"frames": [
+
+{
+	"filename": "backIndex_btn.png",
+	"frame": {"x":365,"y":404,"w":355,"h":114},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":114},
+	"sourceSize": {"w":355,"h":114}
+},
+{
+	"filename": "close.png",
+	"frame": {"x":517,"y":520,"w":66,"h":66},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":66},
+	"sourceSize": {"w":66,"h":66}
+},
+{
+	"filename": "lottery_btn.png",
+	"frame": {"x":365,"y":288,"w":355,"h":114},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":114},
+	"sourceSize": {"w":355,"h":114}
+},
+{
+	"filename": "mylotto_btn.png",
+	"frame": {"x":2,"y":599,"w":313,"h":93},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":313,"h":93},
+	"sourceSize": {"w":313,"h":93}
+},
+{
+	"filename": "obstacle.png",
+	"frame": {"x":517,"y":588,"w":61,"h":65},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":65},
+	"sourceSize": {"w":61,"h":65}
+},
+{
+	"filename": "rankingBtn.png",
+	"frame": {"x":2,"y":504,"w":313,"h":93},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":313,"h":93},
+	"sourceSize": {"w":313,"h":93}
+},
+{
+	"filename": "rule_btn.png",
+	"frame": {"x":317,"y":520,"w":198,"h":145},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":198,"h":145},
+	"sourceSize": {"w":198,"h":145}
+},
+{
+	"filename": "score_bar.png",
+	"frame": {"x":2,"y":2,"w":717,"h":151},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":717,"h":151},
+	"sourceSize": {"w":717,"h":151}
+},
+{
+	"filename": "sider.png",
+	"frame": {"x":2,"y":155,"w":750,"h":131},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":750,"h":131},
+	"sourceSize": {"w":750,"h":131}
+},
+{
+	"filename": "start.png",
+	"frame": {"x":2,"y":407,"w":340,"h":95},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":340,"h":95},
+	"sourceSize": {"w":340,"h":95}
+},
+{
+	"filename": "start_btn.png",
+	"frame": {"x":2,"y":288,"w":361,"h":117},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":361,"h":117},
+	"sourceSize": {"w":361,"h":117}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "ico.png",
+	"format": "RGBA8888",
+	"size": {"w":754,"h":694},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3f621134903e8c4e7358c6a5ccd463e9$"
+}
+}

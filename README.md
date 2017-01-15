@@ -27,6 +27,7 @@
 * [kite - 风筝](http://game.webxinxin.com/kite)
 * [nail - 别碰钉子](http://game.webxinxin.com/nail)
 * [fubag - 接福袋](http://game.webxinxin.com/fubag)
+* [bike - 骑单车](http://game.webxinxin.com/bike)
 
 ###问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流

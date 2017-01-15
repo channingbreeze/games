@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+	<title>Phaser</title>
+    <script src="../phaser.min.js"></script>
+    <script src="js/Boot.js"></script>
+    <script src="js/Preloader.js"></script>
+    <script src="js/MainMenu.js"></script>
+    <script src="js/UI.js"></script>
+    <script src="js/MyLotto.js"></script>
+    <script src="js/Rank.js"></script>
+    <script src="js/Game.js"></script>
+    <script src="js/Result.js"></script>
+</head>
+<body>
+	<div id="game" style="height: 603px;"></div>
+  <script>
+    var game = new Phaser.Game(750, 1206, Phaser.CANVAS, 'game');
+    game.state.add('Boot', MyGame.Boot);
+    game.state.add('Preloader', MyGame.Preloader);
+    game.state.add('MainMenu', MyGame.MainMenu);
+    game.state.add('MyLotto', MyGame.MyLotto);
+    game.state.add('Rank', MyGame.Rank);
+    game.state.add('Game', MyGame.Game);
+    game.state.add('Result', MyGame.Result);
+    game.state.start('Boot');
+  </script>
+</body>
+</html>
