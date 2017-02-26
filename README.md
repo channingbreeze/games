@@ -28,6 +28,8 @@
 * [nail - 别碰钉子](http://game.webxinxin.com/nail)
 * [fubag - 接福袋](http://game.webxinxin.com/fubag)
 * [bike - 骑单车](http://game.webxinxin.com/bike)
+* [fctank - FC坦克大战](http://game.webxinxin.com/fctank)
+* [tank - 坦克大战](http://game.webxinxin.com/tank)
 
 ###问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
