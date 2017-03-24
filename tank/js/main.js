@@ -37,6 +37,8 @@ function Loading(game){
 
 		game.load.spritesheet("tank", "assets/img/player1.png", 16, 16);  
 		game.load.spritesheet("enemy", "assets/img/enemy.png", 16, 16); 
+		game.load.spritesheet("button-arrow", "assets/img/button-arrow.png", 32, 32);  
+		game.load.spritesheet("button-a", "assets/img/button-a.png", 48, 48);  
 		
 		game.load.spritesheet("bonus", "assets/img/bonus.png", 16, 15);  
 		game.load.spritesheet("bore", "assets/img/bore.png", 16, 16);  
