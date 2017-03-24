@@ -61,6 +61,11 @@ function Menu(game) {
 				[2,50,5],
 				[3,100,5]
 			]};
+		if(!game.device.desktop){
+			this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+			this.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+			this.scale.startFullScreen();
+		}
 	};
 	this.create = function() {
 		game.add.sprite((game.width)/2, (game.height)/2, "title").anchor.setTo(0.5);
@@ -83,6 +88,10 @@ function Main(game){
 
 	var cursors;  
 	var actKey;
+	var touchLeft  = false;
+	var touchRight = false;
+	var touchUp    = false;
+	var touchDown  = false;
 
 	var myFires;  
 	var enemyFires;  
@@ -103,7 +112,7 @@ function Main(game){
 		_levelInfo = game.levelData.levels[game.levelData.current];
 		enemyNum = _levelInfo[1];
 		facing = 0;
-		score = 0;
+		score = enemyNum;
 		isOver = false;
 	}
 	this.create = function(){
@@ -169,7 +178,10 @@ function Main(game){
 		bores.enableBody = true;
 		bores.create(0,0,"bore",0).kill();
 
-		scoreText = game.add.text(16, 16, "Score: " + score, { fontSize: "16px", fill: "#fff" });  
+		if(!game.device.desktop){
+			this.addTouchKey(); //移动端显示虚拟按键
+		}
+		scoreText = game.add.text(16, 16, "Enemy: " + score, { fontSize: "16px", fill: "#fff" });  
 		scoreText.fixedToCamera=true;  
 	};
 	this.update = function(){
@@ -185,19 +197,19 @@ function Main(game){
 
 		player.body.velocity.setTo(0,0);
 		if(!isOver){
-			if(cursors.right.isDown){ 
+			if(cursors.right.isDown || touchRight){ 
 				this.playerMove(8,0);
 				player.animations.play("right");
 				facing=1;
-			}else if(cursors.left.isDown){
+			}else if(cursors.left.isDown || touchLeft){
 				this.playerMove(-8,0);
 				player.animations.play("left");
 				facing=3;
-			}else if(cursors.up.isDown){
+			}else if(cursors.up.isDown || touchUp){
 				this.playerMove(0,-8);
 				player.animations.play("up");
 				facing=0;
-			}else if(cursors.down.isDown){
+			}else if(cursors.down.isDown || touchDown){
 				this.playerMove(0,8);
 				player.animations.play("down");
 				facing=2;
@@ -221,13 +233,14 @@ function Main(game){
 			enemy.body.velocity.setTo((go==1?8:go==3?-8:0)*5,(go==0?-8:go==2?8:0)*5);
 			enemy.animations.play(["up","right","down","left"][go]);
 			enemy.timeToMove=game.time.now+Math.random()*2000;
-			if(Math.random()*10 < 5){  // 随机开炮...
-				var facing = ["up","right","down","left"].indexOf(enemy.animations.name);
-				var xx = enemy.x+(facing==3?0:facing==1?10:5);
-				var yy = enemy.y+(facing==0?0:facing==2?10:5);
+			if(Math.random() < 0.5){  // 随机开炮...
+				var xx = enemy.x+(go==3?0:go==1?10:5);
+				var yy = enemy.y+(go==0?0:go==2?10:5);
 				soundFire.play();
-				var fire = enemyFires.getFirstDead(true, xx, yy,"bullet",facing);
-				fire.body.velocity.setTo((facing==1?8:facing==3?-8:0)*20,(facing==2?8:facing==0?-8:0)*20);
+				var fire = enemyFires.getFirstDead(true, xx, yy,"bullet",go);
+				fire.body.velocity.setTo((go==1?8:go==3?-8:0)*20,(go==2?8:go==0?-8:0)*20);
+				fire.checkWorldBounds = true;
+				fire.outOfBoundsKill = true;
 			}
 		}
 	};
@@ -253,9 +266,9 @@ function Main(game){
 		this.explodePlay(tank.x+8,tank.y+8,"explode2","boom1");
 		tank.kill();
 		if(player.alive){ // 因为这个方法是共用的，先判断一下死的是谁
-			score++;
-			scoreText.text = "Score: " + score;
-			if(score==_levelInfo[1]){
+			score--;
+			scoreText.text = "Enemy: " + score;
+			if(score==0){
 				this.gameWin();
 			}
 		}else{
@@ -296,7 +309,7 @@ function Main(game){
 			map.swap(12,14,tile.x-1,tile.y-1,3,3);
 			map.swap(25,27,tile.x-1,tile.y-1,3,3);
 			map.swap(26,28,tile.x-1,tile.y-1,3,3);
-			this.explodePlay(tile.worldx,tile.worldy,"explode2",300);
+			this.explodePlay(tile.worldx,tile.worldy,"explode2","boom2",300);
 			player.kill();
 			this.gameOver();
 		}
@@ -333,7 +346,7 @@ function Main(game){
 			var xx = parseInt(Math.random()*4)*152;
 			var bore = bores.getFirstDead(true,xx,0,"bore",0);
 			var anim = bore.animations.add("go", [0,1,2,3,2,1,0,1,2,3,2,1,0]);
-			anim.onComplete.add(function(sprite,anim){
+			anim.onComplete.add(function(sprite){
 				enemies.getFirstDead(false,sprite.x,sprite.y);
 				enemyNum--;
 				sprite.kill();
@@ -362,4 +375,43 @@ function Main(game){
 		game.levelData.current++;
 		isOver = true;
 	}; 
+	this.addTouchKey = function(){
+		var buttonfire = game.add.button(game.width-50, game.height-50, 'button-a', null, this, 0, 1, 0, 1);
+		buttonfire.fixedToCamera = true;
+		buttonfire.events.onInputDown.add(this.actKeyDown,this);
+
+		var buttonleft = game.add.button(0, game.height-55, 'button-arrow', null, this, 0, 1, 0, 1);
+		buttonleft.fixedToCamera = true;
+		buttonleft.events.onInputOver.add(function(){touchLeft=true;});
+		buttonleft.events.onInputDown.add(function(){touchLeft=true;});
+		buttonleft.events.onInputOut.add(function(){touchLeft=false;});
+		buttonleft.events.onInputUp.add(function(){touchLeft=false;});
+
+		var buttonright = game.add.button(98, game.height-55, 'button-arrow', null, this, 0, 1, 0, 1);
+		buttonright.fixedToCamera = true;
+		buttonright.scale.setTo(-1,1);
+		buttonright.events.onInputOver.add(function(){touchRight=true;});
+		buttonright.events.onInputDown.add(function(){touchRight=true;});
+		buttonright.events.onInputOut.add(function(){touchRight=false;});
+		buttonright.events.onInputUp.add(function(){touchRight=false;});
+
+		var buttonup = game.add.button(65, game.height-65-14, 'button-arrow', null, this, 0, 1, 0, 1);
+		buttonup.angle = 90;
+		buttonup.scale.x = 1.2;
+		buttonup.fixedToCamera = true;
+		buttonup.events.onInputOver.add(function(){touchUp=true;});
+		buttonup.events.onInputDown.add(function(){touchUp=true;});
+		buttonup.events.onInputOut.add(function(){touchUp=false;});
+		buttonup.events.onInputUp.add(function(){touchUp=false;});
+
+		var buttondown = game.add.button(33, game.height, 'button-arrow', null, this, 0, 1, 0, 1);
+		buttondown.angle = 270;
+		buttondown.scale.x = 1.2;
+		buttondown.fixedToCamera = true;
+		buttondown.events.onInputOver.add(function(){touchDown=true;});
+		buttondown.events.onInputDown.add(function(){touchDown=true;});
+		buttondown.events.onInputOut.add(function(){touchDown=false;});
+		buttondown.events.onInputUp.add(function(){touchDown=false;});
+	};
+
 }
