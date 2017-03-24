@@ -74,6 +74,7 @@ function Menu(game) {
 		game.add.text((game.width)/2, 300, "按空格键开始", {fontSize: "16px", fill: "#fff" }).anchor.setTo(0.5);  
 		var enterKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		enterKey.onDown.add(function(){game.state.start("main");}, this);
+		game.input.onTap.addOnce(function(){game.state.start("main");}, this);
 	};
 }
 
