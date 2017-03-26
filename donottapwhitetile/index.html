@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		html,body{
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		#container canvas{
+			margin: auto;
+		}
+	</style>
+	<script src="../phaser.min.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+	<script>
+	onload=function(){
+		
+		var startText;
+		var restartText;
+		var welcome;
+		var gameover;
+
+		var bootState = function(game){
+			this.preload=function(){
+				game.load.image('loading','assets/preloader.gif');
+			};
+			this.create=function(){
+				game.state.start('loader');
+			};
+		}
+
+		var loaderState=function(game){
+			var progressText;
+			this.init=function(){
+				var sprite=game.add.image(game.world.centerX,game.world.centerY,'loading');
+				sprite.anchor={x:0.5,y:0.5};
+				progressText=game.add.text(game.world.centerX,game.world.centerY+30,'0%',{fill:'#fff',fontSize:'16px'});
+				progressText.anchor={x:0.5,y:0.5};
+			};
+			this.preload=function(){
+				game.load.image('welcome','assets/background.png');
+				game.load.image('gameover','assets/background.png');
+				game.load.onFileComplete.add(function(progress){
+					progressText.text=progress+'%';
+				});
+
+			};
+			this.create=function(){
+				if (progressText.text=="100%") {
+					game.state.start('welcome');
+				}
+			};
+		}
+
+		var welcomeState = function(game){
+			this.create=function(){
+				welcome=game.add.image(0,0,'welcome');
+				welcome.scale.setTo(0.7,0.6);
+				startText=game.add.text(game.world.centerX,game.world.centerY,'Click anywhere on the screen to start',{fill:'#fff',fontSize:'16px'});
+				startText.anchor={x:0.5,y:0.5};
+				game.input.onDown.addOnce(Down, this);
+			};
+		}
+		var gameoverState = function(game){
+			this.create=function(){
+				gameover=game.add.image(0,0,'gameover');
+				gameover.scale.setTo(0.7,0.6);
+				restartText=game.add.text(game.world.centerX,game.world.centerY,'Click anywhere on the screen to restart',{fill:'#fff',fontSize:'16px'});
+				restartText.anchor={x:0.5,y:0.5};
+				game.input.onDown.addOnce(reDown, this);
+			};
+		}
+
+		var gameState = function(game){
+			var bmd=[];
+			var block=[];
+			var top;
+			this.create=function(){
+			    var width=game.world.width/4;
+			    var height=game.world.height/4;
+			    for (var i = 0; i < 200; i++) {
+				    bmd[i] = game.add.bitmapData(width,height);
+				    bmd[i].ctx.beginPath();
+				    bmd[i].ctx.rect(0, 0, width, height);
+				    bmd[i].ctx.strokeStyle = "black";
+					bmd[i].ctx.strokeRect(0,0,width,height);
+					bmd[i].ctx.fillStyle='#fff';
+			    	bmd[i].ctx.fill();
+					bmd[i].ctx.stroke();
+				    block[i]=game.add.sprite(0, 0, bmd[i]);
+				    block[i].inputEnabled = true;
+					block[i].tint=0xffffff;
+			    }
+			    for (var i = 0; i < block.length-1; i=i+4) {
+			    	block[GetRandomNum(i,i+3)].tint=0x778899;
+			    }
+			    for (var i = 1; i < block.length; i++) {
+			    	if (i%4==0) {
+				    	block[i].x=block[0].x;
+				    	block[i].y=block[i-1].y+block[i-1].height;
+				    } else {
+				    	block[i].x=block[i-1].x+block[i-1].width;
+				    	block[i].y=block[i-1].y
+				    }
+			    }
+			    top=block[block.length-1].y+block[block.length-1].height;
+				for (var i = 0; i < block.length; i++) {
+					block[i].y-=top;
+				}
+			};
+			this.update=function(){
+				for (var i = 0; i < block.length; i++) {
+					block[i].y=block[i].y+5;
+					block[i].events.onInputDown.add(onDown, this);
+				}
+				for (var i = 0; i < block.length; i++) {
+					if (block[i].tint==0xff0000) {
+						alert('you are lost!');
+						game.state.start('gameover');
+					} 
+				}
+				if (block[0].y==0) {
+					if (tag==block.length/4) {
+						alert('you are win!');
+					}else {
+						alert('you are lost!');
+					}
+					game.state.start('gameover');
+				}
+			}
+		}
+
+		var tag=0;
+		function onDown(block){
+			if (block.tint==0x778899) {
+				block.tint=0x00ff00;
+				tag++;
+				return;
+			}
+			block.tint=0xff0000;
+		}
+
+		function Down(){
+			startText.destroy();
+			game.state.start('main');
+		}
+		
+		function reDown(){
+			restartText.destroy();
+			game.state.start('main');
+		}
+
+		var game=new Phaser.Game(320,480,Phaser.AUTO,'container');
+		game.state.add('boot',bootState);
+		game.state.add('loader',loaderState);
+		game.state.add('welcome',welcomeState);
+		game.state.add('main',gameState);
+		game.state.add('gameover',gameoverState);
+		game.state.start('boot');
+	}
+
+
+	function GetRandomNum(Min,Max){
+		var Range = Max - Min; 
+		var Rand = Math.random(); 
+		return(Min + Math.round(Rand * Range)); 
+	} 
+	</script>
+</body>
+</html>

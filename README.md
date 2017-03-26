@@ -1,10 +1,10 @@
-###基于Phaser的小游戏集
+### 基于Phaser的小游戏集
 这是一个基于Phaser的小游戏集，目的是方便大家学习Phaser。大家也可以访问Phaser小站的官方网站：[http://www.phaser-china.com/](http://www.phaser-china.com) 
 
-###源码
+### 源码
 每一个游戏的源码都在对应的文件夹中，如 fruit - 切水果 ，源码在fruit文件夹中
 
-###游戏列表
+### 游戏列表
 * [learn - 官方案例](http://game.webxinxin.com/learn/exam8.html)
 * [fruit - 切水果](http://game.webxinxin.com/fruit/)
 * [plane - 打飞机](http://game.webxinxin.com/plane/)
@@ -31,8 +31,12 @@
 * [fctank - FC坦克大战](http://game.webxinxin.com/fctank)
 * [tank - 坦克大战](http://game.webxinxin.com/tank)
 * [getcockscomb - 接鸡冠](http://game.webxinxin.com/getcockscomb)
+* [marathon - 社区跑](http://game.webxinxin.com/marathon)
+* [collectstar - 接星星](http://game.webxinxin.com/collectstar)
+* [donottapwhitetile - 别踩白块儿](http://game.webxinxin.com/donottapwhitetile)
+* [dragandmatch - 拖一拖](http://game.webxinxin.com/dragandmatch)
 
-###问题反馈
+### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 
 * 微信: xin874058

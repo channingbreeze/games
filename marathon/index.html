@@ -4,69 +4,15 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<title>pahser社区跑</title>
-		<link rel="stylesheet" href="assets/act.run.css">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
 	</head>
 	<body>
-		<div id="wrap_main">
-			<div id="main_wrap" class="sect"></div>
-			
-		</div>
-		<div id="wrap_popup" class="wrap-popup dn">
-			<div id="popup_info" class="dn"></div>
-			<div id="popup_confirm" class="dn"></div>
-			<div id="popup_wechat" class="dn"><a class="popup wechat mask js-close-popup"></a></div>
-			<div id="popup_rule" data-hide class="dn">
-				<div class="mask popup">
-					<div class="inner">
-						<div class="inner-bk">
-							<h2>活动规则</h2>
-							<div class="text-inner">
-								<p>1、本活动时间无限期</p>
-								<p>2、在跑马拉松过程中跑的速度越快，领到大奖的几率越高，途中还有一些惊喜哦。</p>
-								<p>3、对以上活动有疑问请联系开发者QQ：848910019。</p>
-								<p>4、本活动解释权归phaser社区所有。</p>
-							</div><a href="javascript:;" data-close class="SF s-close js-close-popup"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="popup_prize" class="dn">
-				<div class="mask popup">
-					<div class="inner">
-						<div class="inner-bk">
-							<h2>活动奖品</h2>
-							<div class="text-inner"><img src="assets/prize.jpg"></div><a href="javascript:;" data-close class="SF s-close js-close-popup"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="wrap_data">
-			<script id="template_info" type="text/x-template">
-				<div class="popup info">
-					<div class="inner">
-						<div class="text <%= obj.classhook %>"><%= obj.message %></div>
-					</div>
-				</div>
-			</script>
-			<script id="template_confirm" type="text/x-template">
-				<div class="popup alert">
-					<div class="inner">
-						<div class="table-row">
-							<div class="text">
-								<div class="text-inner"><%= obj.message %></div>
-							</div>
-						</div>
-						<div class="table-row">
-							<div class="btn-wrap"><% if (obj.hasCancel) { %> <a href="javascript:;" class="btn js-close-popup">取消</a><% } %> <a href="javascript:;" class="btn js-close-popup <%= obj.classhook %>">确定</a></div>
-						</div>
-					</div>
-				</div>
-			</script>
-		</div>
-		<script src="js/underscore.js"></script>
-		<script src="js/phaser.min.js"></script>
-		<script src="js/md5.min.js"></script>
-		<script src="js/act.run.js"></script>
+		<script src="../phaser.min.js"></script>
+		<script src="js/main.js"></script>
 	</body>
 </html>
