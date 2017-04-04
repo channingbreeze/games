@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>看谁能坚持五十秒</title>
+	<style>
+		html,body{
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			background-color: black;
+		}
+		#container{
+			overflow: hidden;
+		}
+		#container canvas{
+			margin: 4% auto;
+		}
+	</style>
+	<script src="../phaser.min.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+	<script>
+	onload=function(){
+		/////////////////////////////SET///////////////////////////////////////////
+		var loading;
+		var progressText;
+		var timeStr;
+		////////////////////////////BOOTSTATE//////////////////////////////////////
+		var bootState = function(game){
+			this.preload=function(){
+				game.load.image('loading','./assets/preloader.gif');
+			};
+			this.create=function(){
+				game.stage.backgroundColor = '#2384e7';
+				game.state.start('loader');
+			};
+		}
+		////////////////////////////LOADERSTATE////////////////////////////////////
+		var loaderState=function(game){
+			this.init=function(){
+				loading=game.add.image(game.world.centerX,game.world.centerY,'loading');
+				loading.anchor={x:0.5,y:0.5};
+				progressText=game.add.text(game.world.centerX,game.world.centerY+30,'0%',{fill:'#fff',fontSize:'16px'});
+				progressText.anchor={x:0.5,y:0.5};
+			};
+			this.preload=function(){
+				game.load.image('background','assets/background.png');
+				game.load.image('around_h','assets/around_h.png');
+				game.load.image('around_v','assets/around_v.png');
+				game.load.image('enemy','assets/enemy.png');
+				game.load.image('player','assets/player.png');
+				game.load.image('logo','assets/logo.png');
+				game.load.image('button','assets/restart.png');
+				game.load.onFileComplete.add(function(progress){
+					progressText.text=progress+'%';
+				});
+			}
+			this.create=function(){
+				loading.kill();
+				progressText.destroy();
+				var text = game.add.text(0,game.world.height/4,'Click sprite to start');
+				text.x=(game.world.width-text.width)/2;
+				text.alpha=1;
+				game.add.tween(text).from( { alpha: 0 }, 4000, Phaser.Easing.Bounce.Out, true);
+			    var sprite = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
+			    sprite.anchor.set(0.5);
+			    game.add.tween(sprite).from( { y: -200 }, 2000, Phaser.Easing.Bounce.Out, true);
+			    sprite.inputEnabled = true;
+			    sprite.events.onInputDown.add(function(){
+			    	game.state.start('main');
+			    }, this);
+			}
+		}
+		//////////////////////////MAINSTATE////////////////////////////////
+		var mainState=function(game){
+			var enemy=[];
+			var enemys;
+			var player;
+			var around;
+			this.create=function(){
+				game.physics.startSystem(Phaser.ARCADE);
+				game.add.image(0,0,'background');
+				enemys=game.add.group();
+				enemys.enableBody=true;
+				enemys.create(75,35,'enemy');
+				enemys.create(0,50,'enemy');
+				enemys.getChildAt(1).scale.setTo(2,1);
+				enemys.getChildAt(1).x=game.world.width-enemys.getChildAt(1).width-50;
+				enemys.create(80,330,'enemy');
+				enemys.getChildAt(2).scale.setTo(1,2);
+				enemys.create(400,300,'enemy');
+				enemys.getChildAt(3).scale.setTo(1.5);
+				around=game.add.group();
+				around.enableBody=true;
+				around.create(0,0,'around_h');
+				around.create(game.world.width-30,0,'around_h');
+				around.create(0,0,'around_v');
+				around.create(0,game.world.height-30,'around_v');
+				player=game.add.sprite(0,0,'player');
+				game.physics.arcade.enable(player);
+				player.x=(game.world.width-player.width)/2;
+				player.y=(game.world.height-player.height)/2;
+				player.scale.setTo(0.7);
+				player.inputEnabled=true;
+				player.input.enableDrag(false);
+				loopMove(enemys.getChildAt(0),3,3);	
+				loopMove(enemys.getChildAt(1),3,3);	
+				loopMove(enemys.getChildAt(2),3,3);	
+				loopMove(enemys.getChildAt(3),3,3);	
+				timeStr = game.add.text(0,game.world.height/9);
+			}
+			this.update=function(){	
+				game.physics.arcade.overlap(player,around,function(){
+					game.state.start('theEnd');
+				});		
+				game.physics.arcade.overlap(player,enemys,function(){
+					game.state.start('theEnd');
+				});
+			}
+			this.render=function(){
+				
+				timeStr.text = game.time.totalElapsedSeconds().toFixed(3)+"s";
+				timeStr.x=(game.world.width-timeStr.width)/2;
+			}
+		}
+		//////////////////////////THEENDSTATE///////////////////////////////////////
+		var theEndState = function(game){
+			this.create=function(){
+				var text = game.add.text(0,game.world.height/4);
+				text.text='你坚持了'+timeStr.text;
+				text.x=(game.world.width-text.width)/2;
+				var button=game.add.button(0,-200,'button',function(){
+					location.reload();
+				});
+				button.x=(game.world.width-button.width)/2;
+				game.add.tween(button).to( { y: game.world.centerY }, 2000, Phaser.Easing.Bounce.Out, true);
+			};
+		}
+		///////////////////////////PUBLIC/////////////////////////////////////////////////
+		var game=new Phaser.Game(579,528,Phaser.AUTO,'container');
+		game.state.add('boot',bootState);
+		game.state.add('loader',loaderState);
+		game.state.add('main',mainState);
+		game.state.add('theEnd',theEndState);
+		game.state.start('boot');		
+		///////////////////////////FUNCTION////////////////////////////////////////////////
+		function loopMove(obj,x,y){	
+			game.time.events.loop(Phaser.Timer.SECOND/70, function(){
+				if (obj.x <= 30  ) {x = -x}
+				if (obj.y <= 30  ) {y = -y}
+				if (obj.x > game.world.width -30-obj.width) {x = -x}
+				if (obj.y > game.world.height - 30-obj.height) {y = -y}
+				obj.x = obj.x + x;
+				obj.y = obj.y + y;
+			}, this);
+		}
+	}
+	</script>
+</body>
+</html>
