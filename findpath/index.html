@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title> FindTilePath Demo</title>
+	<script src="../phaser.min.js"></script>
+	<script src="js/TilemapLayer.findTilePath.js"></script>
+	<style>
+		body {margin: 0;padding: 0;	}
+		canvas {margin: 0 auto;	}
+		#gamebox {position: absolute;width: 100%;height: 100%;}
+	</style>
+</head>
+<body>
+<div id="gamebox"></div>
+
+<script type="text/javascript">
+
+function Boot(game){
+	this.preload = function() {
+		game.load.spritesheet("loading", "assets/loading.png", 80, 24);  
+	};
+	this.create = function() {
+		game.state.start("main");
+	}
+}
+
+function Main(game) {
+	var map;
+	var mapLayer;
+	var hero;
+
+	this.preload=function () {
+		var loading = game.add.sprite(game.width/2, game.height/2, "loading");
+		loading.anchor.setTo(0.5);
+		loading.animations.add("loading", [0, 1, 2], 5, true);
+		loading.animations.play("loading");
+
+		game.load.spritesheet("hero", "assets/hero.png", 32, 32);
+		game.load.image("maptiles", "assets/maptiles.png");  
+		game.load.tilemap("worldmap", "assets/worldmap.json", null, Phaser.Tilemap.TILED_JSON);
+
+	};
+
+	this.create = function(){
+		map = game.add.tilemap("worldmap");
+		map.addTilesetImage("maptiles");
+		mapLayer = map.createLayer("layer-1");
+		mapLayer.resizeWorld();
+		map.setCollision([2,3,4], true, mapLayer);
+
+		hero = game.add.sprite(5*32, 3*32, "hero");
+		hero.animations.add("down", [1, 0, 1, 2] , 8, true);
+		hero.animations.add("left", [4, 3, 4, 5] , 8, true);
+		hero.animations.add("right", [7, 6, 7, 8] , 8, true);
+		hero.animations.add("up", [10, 9, 10, 11] , 8, true);
+		hero.goingX = hero.x;
+		hero.goingY = hero.y;
+		hero.isMoving = false;
+		hero.movePath = [];
+		hero.moveTween = game.add.tween(hero);
+		hero.moveTween.onComplete.add(function(){hero.isMoving = false;}, this);
+
+		game.camera.follow(hero);
+
+		mapLayer.inputEnabled = true;;
+		mapLayer.events.onInputDown.add(function(){
+			var x0 = mapLayer.getTileX(hero.goingX);
+			var y0 = mapLayer.getTileY(hero.goingY);
+			var x1 = mapLayer.getTileX(game.input.activePointer.worldX);
+			var y1 = mapLayer.getTileY(game.input.activePointer.worldY);
+			hero.movePath = mapLayer.findTilePath(x0, y0, x1, y1, map.collideIndexes) || hero.movePath;
+		}, this);
+
+	};
+	this.update = function(){
+		if(!hero.isMoving){
+			if(hero.movePath.length>0){ // 有路要走？
+				hero.isMoving = true;
+				var nextTile = hero.movePath.pop(); // 从路径数组中取出下一步的tile
+				hero.goingX = nextTile.worldX;
+				hero.goingY = nextTile.worldY;
+				hero.moveTween.timeline = []; // 重复使用tween,清空timeline即可
+				hero.moveTween.to({x : hero.goingX, y : hero.goingY}, 200, "Linear", true);
+
+				if(hero.goingX < hero.x){
+					hero.animations.play("left");
+				}else if(hero.goingX > hero.x){
+					hero.animations.play("right");
+				}else if(hero.goingY < hero.y){
+					hero.animations.play("up");
+				}else if(hero.goingY > hero.y){
+					hero.animations.play("down");
+				}
+			}else{
+				hero.animations.stop();
+			}
+		}
+	};
+}
+
+window.onload = function(){
+	var game = new Phaser.Game(640, 480, Phaser.CANVAS, "gamebox");
+	game.state.add("boot", Boot);
+	game.state.add("main", Main);
+	game.state.start("boot");
+};
+
+</script>
+
+</body>
+</html>

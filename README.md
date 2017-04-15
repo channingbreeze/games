@@ -36,6 +36,7 @@
 * [donottapwhitetile - 别踩白块儿](http://game.webxinxin.com/donottapwhitetile)
 * [dragandmatch - 拖一拖](http://game.webxinxin.com/dragandmatch)
 * [fifty - 看谁能坚持50秒](http://game.webxinxin.com/fifty)
+* [findpath - 自动寻路示例](http://game.webxinxin.com/findpath)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
