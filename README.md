@@ -39,6 +39,8 @@
 * [findpath - 自动寻路示例](http://game.webxinxin.com/findpath)
 * [hearthstone - 炉石传说](http://game.webxinxin.com/hearthstone)
 * [ballgame - 撞球](http://game.webxinxin.com/ballgame)
+* [shoot - 射击](http://game.webxinxin.com/shoot)
+* [susliks - 打地鼠](http://game.webxinxin.com/susliks)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流

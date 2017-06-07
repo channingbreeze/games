@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+</body>
+</html>
+<script src="../phaser.min.js"></script>
+<script src="js/bg.js"></script>
+<script src="js/ground.js"></script>
+<script src="js/monster.js"></script>
+<script src="js/tips.js"></script>
+<script src="js/countdown.js"></script>
+<script src="js/count.js"></script>
+<script src="js/over.js"></script>
+<script>
+	var game = new Phaser.Game(800,600,Phaser.CANVAS,'');
+	var w = game.width;
+	var h = game.height;
+	var ar;
+	var bg,ground;
+	var msarr = [];
+	var last = Date.now();
+	var delta = 0;
+	var tipsarr=[];
+	var score = 0;
+	var time = 30;
+	var countdown;
+	var count;
+	var over;
+	function main(){
+		this.init = function(){
+			game.physics.startSystem(Phaser.Physics.ARCADE);
+			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		}
+		this.preload = function(){
+			game.load.atlasXML("s","assets/s.png","assets/s.xml");
+			game.load.image('over',"assets/gameover.png");
+		}
+		this.create = function(){
+			ar = game.physics.arcade;
+			bg = new bgobj();
+			ground = new groundobj();
+			pushMs();
+			game.world.bringToTop(ground.s);
+			countdown = new countdownobj();
+			count = new countobj();
+
+		}
+		this.update = function(){
+			var now = Date.now();
+			delta = now - last;
+			last = now;
+			if(msarr.length>0){
+				for(var i=msarr.length;i--;){
+					msarr[i].update();
+				}
+			}
+			if(tipsarr.length>0){
+				for(var i=tipsarr.length;i--;){
+					tipsarr[i].update();
+				}
+			}
+			countdown.update();
+			count.update();
+		}
+	}
+	game.state.add("main",main);
+	game.state.start("main");
+</script>

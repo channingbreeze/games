@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+</body>
+</html>
+<script src="../phaser.min.js"></script>
+<script src="js/bg.js"></script>
+<script src="js/player.js"></script>
+<script src="js/bullet.js"></script>
+<script src="js/enemy.js"></script>
+<script src="js/halo.js"></script>
+<script src="js/killall.js"></script>
+<script src="js/life.js"></script>
+<script src="js/bomb.js"></script>
+<script src="js/gameover.js"></script>
+<script>
+	var game = new Phaser.Game(800,600,Phaser.CANVAS,"");
+	var w = game.width;
+	var h = game.height;
+	var ar;
+	var bg;
+	var player;
+	var bullet;
+	var enemyarr = [];
+	var enemytimer = 0;
+	var enemyinterval = 1000;
+	var enemyleavel = 0;
+	var last = Date.now();
+	var delta = 0;
+	var haloarr=[];
+	var killall;
+	var space;
+	var life;
+	var lifevalue = 200;
+	var bomb;
+	var bombvalue = 3;
+	var gameover;
+	game.kill = 0;
+	function main(){
+		this.init = function(){
+			ar = game.physics.arcade;
+			game.physics.startSystem(game.physics.arcade);
+			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		}
+		this.preload = function(){
+			game.load.atlasXML("s","assets/s.png","assets/s.xml");
+			game.load.image("b","assets/bullet.png")
+		}
+		this.create  = function(){
+			bg = new bgobj();
+			player = new playerobj();
+			bullet = new bulletobj();
+			life = new lifeobj();
+			bomb = new bombobj();
+			game.input.onDown.add(function(){
+				bullet.sa.fire();
+				bullet.sb.fire();
+				bullet.sc.fire();
+			})
+			space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+			space.onDown.add(function(){
+				killall = new killallobj();
+				bombvalue--;
+			})
+		}
+		this.update = function(){
+			var now = Date.now();
+			delta = now - last;
+			last = now;
+			bg.update();
+			player.update();
+			bullet.update();
+			enemytimer+=delta;
+			bomb.update();
+			if(enemytimer>enemyinterval){
+				var enemy = new enemyobj();
+				enemyarr.push(enemy);
+				enemytimer = 0;
+			}
+			if(enemyarr.length>0){
+				for(var i=enemyarr.length;i--;){
+					enemyarr[i].update();
+				}
+				for(var i =enemyarr.length;i--;){
+					if(!enemyarr[i].s.exists){
+						enemyarr.splice(i,1);
+						break;
+					}
+				}
+
+			}
+			if(game.kill>=10 && game.kill<20){
+				enemyinterval = 400;
+			}else if(game.kill >= 20 && game.kill<30){
+				enemyinterval = 300;
+			}else if(game.kill>=30 && game.kill<=40){
+				enemyinterval =200;
+			}
+
+			if(haloarr.length>0){
+				for(var i = haloarr.length;i--;){
+					haloarr[i].update();
+				}
+				for(var i=haloarr.length;i--;){
+					if(!haloarr[i].s.exists){
+						haloarr.splice(i,1);
+						break;
+					}
+				}
+				console.log(haloarr.length)
+			}
+			if(bombvalue<=0){
+				game.input.keyboard.removeKey(Phaser.Keyboard.SPACEBAR);
+			}
+
+		}
+	}
+	function gameover(){
+		this.init = function(){
+			ar = game.physics.arcade;
+			game.physics.startSystem(game.physics.arcade);
+			lifevalue = 200;
+			kill=0;
+			bombvalue=3;
+		}
+		this.create = function(){
+			gameover = new gameoverobj();
+		}
+		this.update = function(){
+
+		}
+	}
+	game.state.add("main",main);
+	game.state.add("gameover",gameover);
+	game.state.start("main");
+</script>

@@ -1,0 +1,9 @@
+<TextureAtlas imagePath="sprites.png">
+	<SubTexture name="bg.png" x="0" y="206" width="1024" height="583"/>
+	<SubTexture name="ground.png" x="0" y="0" width="1024" height="204"/>
+	<SubTexture name="monster1.png" x="1026" y="540" width="80" height="268"/>
+	<SubTexture name="monster2.png" x="1026" y="0" width="80" height="268"/>
+	<SubTexture name="monster3.png" x="1026" y="270" width="80" height="268"/>
+	<SubTexture name="monster4.png" x="1108" y="270" width="80" height="268"/>
+	<SubTexture name="monster5.png" x="1108" y="0" width="80" height="268"/>
+</TextureAtlas>

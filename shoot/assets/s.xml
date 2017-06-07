@@ -1,0 +1,12 @@
+<TextureAtlas imagePath="sprites.png">
+	<SubTexture name="bg.jpg" x="0" y="0" width="884" height="792"/>
+	<SubTexture name="bomb.png" x="0" y="1751" width="10" height="15"/>
+	<SubTexture name="bullet.png" x="0" y="1663" width="46" height="41"/>
+	<SubTexture name="enemy0.png" x="0" y="1543" width="64" height="59"/>
+	<SubTexture name="enemy1.png" x="0" y="1387" width="80" height="80"/>
+	<SubTexture name="enemy2.png" x="0" y="1604" width="60" height="57"/>
+	<SubTexture name="fog.png" x="0" y="1129" width="256" height="256"/>
+	<SubTexture name="p1.png" x="0" y="794" width="338" height="333"/>
+	<SubTexture name="p2.png" x="0" y="1469" width="71" height="72"/>
+	<SubTexture name="player.png" x="0" y="1706" width="43" height="43"/>
+</TextureAtlas>
