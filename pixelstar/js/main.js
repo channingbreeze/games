@@ -320,7 +320,9 @@ onload=function(){
 
   function Down(){
     startText.destroy();
-    game.state.start('main');
+    setTimeout(function() {
+      game.state.start('main');
+    }, 100)
   }
 
   function onDown(){

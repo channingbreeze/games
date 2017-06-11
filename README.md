@@ -42,6 +42,7 @@
 * [shoot - 射击大战](http://game.webxinxin.com/shoot)
 * [susliks - 打地鼠](http://game.webxinxin.com/susliks)
 * [pixelstar - 像素接星星](http://game.webxinxin.com/pixelstar)
+* [memory - 记忆翻牌游戏](http://game.webxinxin.com/memory)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
