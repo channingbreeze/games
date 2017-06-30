@@ -26,15 +26,12 @@ Tacit.BootState.prototype.constructor = Tacit.BootState;
 
 Tacit.BootState.prototype.preload = function () {
   "use strict";
+  game.scale.pageAlignHorizontally = true;
+  game.scale.pageAlignVertically = true;
+  game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
   game.load.image('loading', 'assets/loading.png');
   game.load.spritesheet('dian', 'assets/dian-sheet.png', 60, 12);
   game.load.image("background", "assets/background.png");
-  game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-};
-
-Tacit.BootState.prototype.create = function () {
-  "use strict";
-  game.scale.forceOrientation(true, false);
   if(game.scale.isLandscape) {
     game.scale.correct = true;
     game.scale.setGameSize(WIDTH, HEIGHT);
@@ -42,6 +39,10 @@ Tacit.BootState.prototype.create = function () {
     game.scale.correct = false;
     game.scale.setGameSize(HEIGHT, WIDTH);
   }
+};
+
+Tacit.BootState.prototype.create = function () {
+  "use strict";
   game.scale.onOrientationChange.add(function(scale, orientation, rightOrientation) {
     if(rightOrientation) {
       game.scale.correct = true;
