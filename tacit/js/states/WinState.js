@@ -1,30 +1,25 @@
 
 var Phaser = Phaser || {};
-var Tatic = Tatic || {};
+var Tacit = Tacit || {};
 
-var WIDTH = 1920;
-var HEIGHT = 1080;
-
-Tatic.WinState = function () {
+Tacit.WinState = function () {
   "use strict";
-  Tatic.BaseState.call(this);
+  Tacit.BaseState.call(this);
 };
 
-Tatic.WinState.prototype = Object.create(Tatic.BaseState.prototype);
-Tatic.WinState.prototype.constructor = Tatic.WinState;
+Tacit.WinState.prototype = Object.create(Tacit.BaseState.prototype);
+Tacit.WinState.prototype.constructor = Tacit.WinState;
 
-Tatic.WinState.prototype.create = function () {
+Tacit.WinState.prototype.create = function () {
   "use strict";
-  //this.autoScreen();
   game.add.tileSprite(0, 0, WIDTH, HEIGHT, 'background');
   game.add.image(0, 0, 'mask');
 
-  this.allPast = game.add.sprite(0, 0);
-
-  this.leftScore = game.add.bitmapText(20, 10, 'taticNum', game.leftScore + "", 64);
-  this.rightScore = game.add.bitmapText(0, 10, 'taticNum', game.rightScore + "", 64);
-  this.rightScore.x = 1920 - this.rightScore.width - 20;
-  var totalSc = game.add.bitmapText(20, 10, 'taticNum', (game.leftScore + game.rightScore) + "", 64);
+  // 上一个场景的元素全部搬过来
+  this.leftScore = game.add.bitmapText(20, 10, 'TacitNum', game.leftScore + "", 64);
+  this.rightScore = game.add.bitmapText(0, 10, 'TacitNum', game.rightScore + "", 64);
+  this.rightScore.x = WIDTH - this.rightScore.width - 20;
+  var totalSc = game.add.bitmapText(20, 10, 'TacitNum', (game.leftScore + game.rightScore) + "", 64);
   totalSc.x = WIDTH / 2 - totalSc.width / 2;
   totalSc.y = 100;
   this.circleMask = game.add.sprite(0, 0, 'circleMask');
@@ -36,6 +31,7 @@ Tatic.WinState.prototype.create = function () {
   this.brain.anchor.setTo(0.5, 0.5);
   this.brain.scale.setTo(0.5, 0.5);
 
+  this.allPast = game.add.sprite(0, 0);
   this.allPast.addChild(this.leftScore);
   this.allPast.addChild(this.rightScore);
   this.allPast.addChild(totalSc);
@@ -46,28 +42,26 @@ Tatic.WinState.prototype.create = function () {
 
   pass_group.addChild(this.allPast);
 
-  var tree_left = pass_group.create(120, game.world.centerY - game.height, 'tree_left');
-
+  var tree_left = pass_group.create(120, -HEIGHT/2, 'tree_left');
   tree_left.anchor.setTo(0.5, 0.5);
 
-  var tree_right = pass_group.create(game.width - 120, game.world.centerY - game.height, 'tree_right');
+  var tree_right = pass_group.create(WIDTH - 120, -HEIGHT/2, 'tree_right');
   tree_right.anchor.setTo(0.5, 0.5);
 
-  var name = pass_group.create(game.world.centerX, game.world.centerY - game.height, 'name');
+  var name = pass_group.create(WIDTH/2, -HEIGHT/2, 'name');
   name.anchor.setTo(0.5, 0.5);
 
-  var org = pass_group.create(game.world.centerX, game.world.centerY * 1.75 - game.height, 'org');
+  var org = pass_group.create(WIDTH/2, -HEIGHT/8, 'org');
   org.anchor.setTo(0.5, 0.5);
 
-  // over = pass_group.create(game.world.centerX, game.world.centerY * 0.75, 'tree_left');
-  var theme = pass_group.create(game.world.centerX, game.world.centerY * 0.25 - game.height + 100, 'small_theme');
+  var theme = pass_group.create(WIDTH/2, -HEIGHT*7/8 + 100, 'small_theme');
   theme.anchor.setTo(0.5, 0.5);
 
-  var e = game.add.tween(pass_group).to({y: game.height}, 6000, Phaser.Easing.Linear.None, true);
+  var e = game.add.tween(pass_group).to({y: HEIGHT}, 6000, Phaser.Easing.Linear.None, true);
   e.onComplete.add(this.restart, this);
 };
 
-Tatic.WinState.prototype.restart = function() {
+Tacit.WinState.prototype.restart = function() {
   game.input.onTap.add(function () {
     game.state.start('MenuState');
   }, this);

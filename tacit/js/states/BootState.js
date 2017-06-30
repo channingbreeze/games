@@ -1,16 +1,30 @@
 
 var Phaser = Phaser || {};
-var Tatic = Tatic || {};
+var Tacit = Tacit || {};
 
-Tatic.BootState = function () {
+Tacit.BootState = function () {
   "use strict";
-  Tatic.BaseState.call(this);
+  Tacit.BaseState.call(this);
 };
 
-Tatic.BootState.prototype = Object.create(Tatic.BaseState.prototype);
-Tatic.BootState.prototype.constructor = Tatic.BootState;
+Phaser.World.prototype.displayObjectUpdateTransform = function() {
+  if(!game.scale.correct) {
+    this.x = game.camera.y + game.width;
+    this.y = -game.camera.x;
+    this.rotation = Phaser.Math.degToRad(Phaser.Math.wrapAngle(90));
+  } else {
+    this.x = -game.camera.x;
+    this.y = -game.camera.y;
+    this.rotation = 0;
+  }
 
-Tatic.BootState.prototype.preload = function () {
+  PIXI.DisplayObject.prototype.updateTransform.call(this);
+}
+
+Tacit.BootState.prototype = Object.create(Tacit.BaseState.prototype);
+Tacit.BootState.prototype.constructor = Tacit.BootState;
+
+Tacit.BootState.prototype.preload = function () {
   "use strict";
   game.load.image('loading', 'assets/loading.png');
   game.load.spritesheet('dian', 'assets/dian-sheet.png', 60, 12);
@@ -18,8 +32,24 @@ Tatic.BootState.prototype.preload = function () {
   game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 };
 
-Tatic.BootState.prototype.create = function () {
+Tacit.BootState.prototype.create = function () {
   "use strict";
-  //this.autoScreen();
+  game.scale.forceOrientation(true, false);
+  if(game.scale.isLandscape) {
+    game.scale.correct = true;
+    game.scale.setGameSize(WIDTH, HEIGHT);
+  } else {
+    game.scale.correct = false;
+    game.scale.setGameSize(HEIGHT, WIDTH);
+  }
+  game.scale.onOrientationChange.add(function(scale, orientation, rightOrientation) {
+    if(rightOrientation) {
+      game.scale.correct = true;
+      game.scale.setGameSize(WIDTH, HEIGHT);
+    } else {
+      game.scale.correct = false;
+      game.scale.setGameSize(HEIGHT, WIDTH);
+    }
+  }, this)
   game.state.start('PreloadState');
 };

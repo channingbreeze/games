@@ -1,8 +1,8 @@
 var Phaser = Phaser || {};
-var Tatic = Tatic || {};
+var Tacit = Tacit || {};
 
 // TODO: if no group, prefab will not display, for not added in world
-Tatic.Prefab = function(gameState, position, texture, group, properties) {
+Tacit.Prefab = function(gameState, position, texture, group, properties) {
   "use strict";
   Phaser.Sprite.call(this, gameState.game, position.x, position.y, texture);
   this.anchor.setTo(0.5, 0.5);
@@ -12,5 +12,5 @@ Tatic.Prefab = function(gameState, position, texture, group, properties) {
   }
 };
 
-Tatic.Prefab.prototype = Object.create(Phaser.Sprite.prototype);
-Tatic.Prefab.prototype.constructor = Tatic.Prefab;
+Tacit.Prefab.prototype = Object.create(Phaser.Sprite.prototype);
+Tacit.Prefab.prototype.constructor = Tacit.Prefab;
