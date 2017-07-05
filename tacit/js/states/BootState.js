@@ -43,8 +43,8 @@ Tacit.BootState.prototype.preload = function () {
 
 Tacit.BootState.prototype.create = function () {
   "use strict";
-  game.scale.onOrientationChange.add(function(scale, orientation, rightOrientation) {
-    if(rightOrientation) {
+  game.scale.onOrientationChange.add(function() {
+    if(game.scale.isLandscape) {
       game.scale.correct = true;
       game.scale.setGameSize(WIDTH, HEIGHT);
     } else {
