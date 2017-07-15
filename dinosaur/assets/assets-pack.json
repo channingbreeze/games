@@ -1,0 +1,46 @@
+{
+    "level": [
+        {
+            "type": "spritesheet",
+            "key": "player",
+            "url": "assets/images/fufu.png",
+            "frameWidth": 207,
+            "frameHeight": 140,
+            "frameMax": -1,
+            "margin": 0,
+            "spacing": 0
+        },
+        {
+            "type": "image",
+            "key": "BG",
+            "url": "assets/images/BG.png",
+            "overwrite": false
+        },
+        {
+            "type": "atlas",
+            "key": "objects",
+            "textureURL": "assets/textures/objects.png",
+            "atlasURL": "assets/textures/objects.json",
+            "format": "TEXTURE_ATLAS_JSON_HASH"
+        },
+        {
+            "type": "atlas",
+            "key": "tiles",
+            "textureURL": "assets/textures/tiles.png",
+            "atlasURL": "assets/textures/tiles.json",
+            "format": "TEXTURE_ATLAS_JSON_HASH"
+        },
+        {
+            "type": "script",
+            "key": "scene1",
+            "url": "assets/scenes/Scene1.js"
+        }
+    ],
+    "meta": {
+        "generated": "1474557782721",
+        "app": "Phaser Editor",
+        "url": "http://phasereditor.boniatillo.com",
+        "version": "1.0",
+        "copyright": "Arian Fornaris (c) 2015,2016"
+    }
+}

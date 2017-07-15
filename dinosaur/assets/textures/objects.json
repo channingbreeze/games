@@ -1,0 +1,289 @@
+{
+  "frames": {
+    "Bush (1)": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 570,
+        "y": 242,
+        "w": 133,
+        "h": 65
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 133,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 133,
+        "h": 65
+      }
+    },
+    "Bush (2)": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 570,
+        "y": 175,
+        "w": 133,
+        "h": 65
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 133,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 133,
+        "h": 65
+      }
+    },
+    "Bush (3)": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 649,
+        "y": 24,
+        "w": 73,
+        "h": 47
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 47
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 47
+      }
+    },
+    "Bush (4)": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 570,
+        "y": 2,
+        "w": 73,
+        "h": 46
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 46
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 46
+      }
+    },
+    "Crate": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 570,
+        "y": 50,
+        "w": 77,
+        "h": 77
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 77,
+        "h": 77
+      },
+      "sourceSize": {
+        "w": 77,
+        "h": 77
+      }
+    },
+    "Mushroom_1": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 688,
+        "y": 132,
+        "w": 49,
+        "h": 41
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 41
+      }
+    },
+    "Mushroom_2": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 724,
+        "y": 30,
+        "w": 50,
+        "h": 41
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 50,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 41
+      }
+    },
+    "Sign_1": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 705,
+        "y": 242,
+        "w": 63,
+        "h": 65
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 63,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 63,
+        "h": 65
+      }
+    },
+    "Sign_2": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 705,
+        "y": 176,
+        "w": 62,
+        "h": 64
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 62,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 62,
+        "h": 64
+      }
+    },
+    "Stone": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 649,
+        "y": 73,
+        "w": 90,
+        "h": 54
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 90,
+        "h": 54
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 54
+      }
+    },
+    "Tree_1": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 570,
+        "y": 129,
+        "w": 116,
+        "h": 44
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 116,
+        "h": 44
+      },
+      "sourceSize": {
+        "w": 116,
+        "h": 44
+      }
+    },
+    "Tree_2": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 2,
+        "y": 6,
+        "w": 282,
+        "h": 301
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 282,
+        "h": 301
+      },
+      "sourceSize": {
+        "w": 282,
+        "h": 301
+      }
+    },
+    "Tree_3": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 286,
+        "y": 32,
+        "w": 282,
+        "h": 275
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 282,
+        "h": 275
+      },
+      "sourceSize": {
+        "w": 282,
+        "h": 275
+      }
+    },
+    "fruit": {
+      "trimmed": false,
+      "rotated": false,
+      "frame": {
+        "x": 739,
+        "y": 139,
+        "w": 30,
+        "h": 35
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 35
+      }
+    }
+  },
+  "meta": {
+    "app": "Phaser Editor",
+    "version": "1",
+    "image": "objects.png"
+  }
+}

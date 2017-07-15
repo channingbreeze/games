@@ -1,0 +1,2621 @@
+{
+  "settings": {
+    "sceneWidth": 2200,
+    "sceneHeight": 1800,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "stepWidth": 25,
+    "stepHeight": 25
+  },
+  "world": {
+    "type": "group",
+    "id": "8398e36e-f3f0-4bf8-afe0-7fbd32a1e65b",
+    "info": {
+      "editorName": "Scene1",
+      "editorClosed": false,
+      "physicsGroup": false,
+      "children": [
+        {
+          "type": "tileSprite",
+          "id": "fa4ae831-d595-401a-b407-396745ad929b",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "BG"
+          },
+          "info": {
+            "editorName": "BG",
+            "editorPublic": true,
+            "scale.x": 1.1289946683730876,
+            "scale.y": 1.0275188997398834,
+            "width": 1712.9580078125,
+            "height": 750,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "BG",
+              "sprite": "BG"
+            }
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "69772187-b2ef-428c-ad1b-14ad5b47a1cb",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Bush (2)"
+          },
+          "info": {
+            "editorName": "Bush__2_",
+            "x": 114,
+            "y": 1466,
+            "scale.x": 1.2436090513997489,
+            "scale.y": 1.4061541519275604,
+            "width": 133,
+            "height": 65,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "objects",
+              "sprite": "Bush (2)"
+            }
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "c5a55d9f-dde7-47cc-98c6-d99467aa3992",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Crate"
+          },
+          "info": {
+            "editorName": "Crate31",
+            "x": 1125,
+            "y": 500
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "e7e713c5-7977-49a0-b634-069e82b7a06c",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "1"
+          },
+          "info": {
+            "editorName": "_17",
+            "x": 1085,
+            "y": 1150
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "f5d2d299-47b0-4900-a319-e44c77100dd6",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "2"
+          },
+          "info": {
+            "editorName": "_18",
+            "x": 1213,
+            "y": 1150,
+            "width": 512,
+            "height": 128,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "2"
+            }
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "2c7ee3b8-6beb-45f2-9404-6cd0530d210c",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "3"
+          },
+          "info": {
+            "editorName": "_24",
+            "x": 1725,
+            "y": 1150
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "2e0f02f3-a2ae-46f3-89b1-6f055c923a6a",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "16"
+          },
+          "info": {
+            "editorName": "_613",
+            "x": 1725,
+            "y": 1534
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "5b1dc73e-037b-44b1-a646-80b40d900c2b",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "12"
+          },
+          "info": {
+            "editorName": "_213",
+            "x": 1085,
+            "y": 1534
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "b4fbcdb7-2658-4840-9a6c-1c6ee6f6ee47",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "9"
+          },
+          "info": {
+            "editorName": "_83",
+            "x": 1213,
+            "y": 1534,
+            "width": 512,
+            "height": 128,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "9"
+            }
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "b98d3049-5906-450b-89b6-f7336f9adf5d",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "4"
+          },
+          "info": {
+            "editorName": "_101",
+            "x": 1085,
+            "y": 1278,
+            "width": 129,
+            "height": 256,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "4"
+            }
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "4bf93167-c5d2-4d0d-840f-781c199d954b",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "6"
+          },
+          "info": {
+            "editorName": "_19",
+            "x": 1725,
+            "y": 1278,
+            "width": 128,
+            "height": 256,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "6"
+            }
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "b0d54190-b317-475c-b35d-96d9b6bdd706",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "5"
+          },
+          "info": {
+            "editorName": "_20",
+            "x": 1213,
+            "y": 1278,
+            "width": 512,
+            "height": 256,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "5"
+            }
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "79c0d1af-a1dd-40db-a529-6404ac28a720",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "1"
+          },
+          "info": {
+            "editorName": "_",
+            "y": 1536
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "6fb8e288-3012-4c4f-b7cf-1b36afaec220",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "2"
+          },
+          "info": {
+            "editorName": "_1",
+            "x": 128,
+            "y": 1536,
+            "width": 512,
+            "height": 128,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "2"
+            }
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "6d42c7e1-20dd-49a2-912a-73b2e55bc860",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "3"
+          },
+          "info": {
+            "editorName": "_2",
+            "x": 640,
+            "y": 1536
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "7b49941b-4160-436a-b978-b46aace9a45a",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "16"
+          },
+          "info": {
+            "editorName": "_61",
+            "x": 640,
+            "y": 1664
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "fe80118d-95bf-4891-a686-2e4241a8724a",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Mushroom_2"
+          },
+          "info": {
+            "editorName": "Mushroom_2",
+            "x": 265,
+            "y": 1502
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "0f6868f4-c488-41ee-a5b3-f1cfaad3c856",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "12"
+          },
+          "info": {
+            "editorName": "_21",
+            "y": 1664
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "dc56f6f0-e39a-4653-82bb-e0143fe55289",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "9"
+          },
+          "info": {
+            "editorName": "_8",
+            "x": 128,
+            "y": 1664,
+            "width": 512,
+            "height": 128,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "9"
+            }
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "9fc9e1e1-bf46-4729-93db-7f72572cee53",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "1"
+          },
+          "info": {
+            "editorName": "_6",
+            "x": 1024,
+            "y": 1280
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "01755307-48bd-42f0-a37f-a2a323b60029",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "2"
+          },
+          "info": {
+            "editorName": "_11",
+            "x": 1152,
+            "y": 1280,
+            "width": 512,
+            "height": 128,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "2"
+            }
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "04e30b0b-b731-4ca1-9c46-43061d806e6f",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "3"
+          },
+          "info": {
+            "editorName": "_22",
+            "x": 1664,
+            "y": 1280
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "2e6ce3f2-a1da-4b9a-aa62-2a9714f28a2c",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "16"
+          },
+          "info": {
+            "editorName": "_611",
+            "x": 2048,
+            "y": 1664
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "756b16c0-c347-4157-b400-5c751e991a33",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "12"
+          },
+          "info": {
+            "editorName": "_211",
+            "x": 1024,
+            "y": 1664
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "2ffddf7a-4ff9-4b55-a8a8-c560d006446b",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "9"
+          },
+          "info": {
+            "editorName": "_81",
+            "x": 1152,
+            "y": 1664,
+            "width": 896,
+            "height": 128,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "9"
+            }
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "7450b061-60c7-4395-90ed-dbb6750f4e43",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "5"
+          },
+          "info": {
+            "editorName": "_7",
+            "x": 1152,
+            "y": 1408,
+            "width": 512,
+            "height": 256,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "5"
+            }
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "fa332d8f-5438-4af8-95ed-17400c9ab9bc",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "6"
+          },
+          "info": {
+            "editorName": "_9",
+            "x": 1664,
+            "y": 1408,
+            "width": 128,
+            "height": 128,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "6"
+            }
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "337e4293-2c9c-4898-9993-663852d7e8d5",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "4"
+          },
+          "info": {
+            "editorName": "_10",
+            "x": 1024,
+            "y": 1408,
+            "width": 129,
+            "height": 256,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "4"
+            }
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "3676e834-e566-4fb5-93d3-9ab6608ae7f9",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "11"
+          },
+          "info": {
+            "editorName": "_12",
+            "x": 1792,
+            "y": 1536
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "57259a9e-764e-487f-809f-ca0168d2443a",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "10"
+          },
+          "info": {
+            "editorName": "_0",
+            "x": 1664,
+            "y": 1536
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "26c49292-4128-4164-b326-d19fc3183f34",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "3"
+          },
+          "info": {
+            "editorName": "_13",
+            "x": 2048,
+            "y": 1536
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "57b5d567-5a20-4b87-a502-24178f658a46",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "2"
+          },
+          "info": {
+            "editorName": "_14",
+            "x": 1920,
+            "y": 1536
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "049949fd-1bee-41f3-8225-69982179599d",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "1"
+          },
+          "info": {
+            "editorName": "_15",
+            "y": 512
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "a5c4be08-b546-4f36-aed7-4c7d8b48bbe2",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "2"
+          },
+          "info": {
+            "editorName": "_16",
+            "x": 128,
+            "y": 512,
+            "width": 512,
+            "height": 128,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "2"
+            }
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "27009526-624a-4b9e-8731-7c0afc543504",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Bush (2)"
+          },
+          "info": {
+            "editorName": "Bush__2_3",
+            "x": 45,
+            "y": 389,
+            "scale.x": 1.9849624160619828,
+            "scale.y": 1.9384615456376617
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "c918e442-73d5-42c3-8d6c-5516e3b4b78c",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "3"
+          },
+          "info": {
+            "editorName": "_23",
+            "x": 640,
+            "y": 512
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "e6445523-49a2-49e8-8691-93cf0759e30c",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "16"
+          },
+          "info": {
+            "editorName": "_612",
+            "x": 640,
+            "y": 640
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "50f8107c-ffef-4d1a-be5d-849fc54bfe47",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Tree_3"
+          },
+          "info": {
+            "editorName": "Tree_35",
+            "x": 38,
+            "y": 241
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "8cc2a7a4-2a43-4133-9eb6-174459f1a620",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "12"
+          },
+          "info": {
+            "editorName": "_212",
+            "y": 640
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "5d3f758b-6494-46bb-ac5f-67419ec4ba81",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "9"
+          },
+          "info": {
+            "editorName": "_82",
+            "x": 128,
+            "y": 640,
+            "width": 512,
+            "height": 128,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "9"
+            }
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "c2356b4a-6a44-4cba-8cb6-176a3e45b896",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "15"
+          },
+          "info": {
+            "editorName": "_51",
+            "x": 1408,
+            "y": 384
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "8ea1fa95-0c81-447b-a579-c231c4b7e871",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "13"
+          },
+          "info": {
+            "editorName": "_31",
+            "x": 1280,
+            "y": 384
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "1289d110-f70c-4a12-b87b-fe302937174e",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "13"
+          },
+          "info": {
+            "editorName": "_32",
+            "x": 1024,
+            "y": 768
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "50207e96-420f-4420-a106-ddbc0435246a",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "14"
+          },
+          "info": {
+            "editorName": "_41",
+            "x": 1152,
+            "y": 768
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "77521eee-2c20-467a-ba4a-3850e5df8839",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "15"
+          },
+          "info": {
+            "editorName": "_52",
+            "x": 1280,
+            "y": 768
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "14e72d99-f948-4f31-9fbd-24718243ec7f",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "13"
+          },
+          "info": {
+            "editorName": "_321",
+            "x": 514,
+            "y": 1037
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "5c008e4c-12f2-490e-8239-7f2d2d972690",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "14"
+          },
+          "info": {
+            "editorName": "_411",
+            "x": 642,
+            "y": 1037
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "bae79119-a5a9-4ea2-9d23-4cc86b719610",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "15"
+          },
+          "info": {
+            "editorName": "_521",
+            "x": 770,
+            "y": 1037
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "d2b98ef2-6ddd-4ecb-bf42-f4b0cd97770d",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Tree_2"
+          },
+          "info": {
+            "editorName": "Tree_2",
+            "x": 40,
+            "y": 1240
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "c3dc8f12-a808-4e08-aa4e-f02774af2a7f",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Mushroom_1"
+          },
+          "info": {
+            "editorName": "Mushroom_1",
+            "x": 520,
+            "y": 1501
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "055b20d4-9530-40f1-b1fe-91e032e88538",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Crate"
+          },
+          "info": {
+            "editorName": "Crate2",
+            "x": 740,
+            "y": 962
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "dbece734-9557-41fc-8344-ca1a78ac8c82",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Crate"
+          },
+          "info": {
+            "editorName": "Crate1",
+            "x": 663,
+            "y": 962
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "e0350287-c12a-497c-835c-269dd3089187",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Crate"
+          },
+          "info": {
+            "editorName": "Crate",
+            "x": 586,
+            "y": 962
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "a0c78267-e8db-4911-9356-63c7c07a8928",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Crate"
+          },
+          "info": {
+            "editorName": "Crate3",
+            "x": 663,
+            "y": 885
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "b7927699-3a6f-4e60-bbe8-8f004077cc60",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Tree_3"
+          },
+          "info": {
+            "editorName": "Tree_31",
+            "x": 1067,
+            "y": 498
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "60f812a4-c4d1-4194-940c-d0a984a47491",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Mushroom_2"
+          },
+          "info": {
+            "editorName": "Mushroom_21",
+            "x": 1063,
+            "y": 731
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "31bb389f-f966-467a-828a-defd51641965",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Tree_3"
+          },
+          "info": {
+            "editorName": "Tree_33",
+            "x": 1910,
+            "y": 1266
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "f16116f1-04d2-4505-9611-a04ab2a314e6",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Crate"
+          },
+          "info": {
+            "editorName": "Crate4",
+            "x": 1866,
+            "y": 1464
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "8889bd07-e056-42a1-be07-87333e483af4",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Mushroom_1"
+          },
+          "info": {
+            "editorName": "Mushroom_11",
+            "x": 1365,
+            "y": 347
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "2561403c-15dd-4bc9-a1e8-b2e14542e7fa",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Tree_3"
+          },
+          "info": {
+            "editorName": "Tree_34",
+            "x": 1303,
+            "y": 114
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "644447fb-a5da-4c53-acb6-d0b2cce60b2b",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Bush (1)"
+          },
+          "info": {
+            "editorName": "Bush__1_3",
+            "x": 4,
+            "y": 453
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "157cace7-be0b-4528-8638-156729f620fe",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Tree_1"
+          },
+          "info": {
+            "editorName": "Tree_12",
+            "x": 1653,
+            "y": 1117
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "2bee7a8f-bcf6-419e-97f7-d3a4bc7586e3",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "18"
+          },
+          "info": {
+            "editorName": "_84",
+            "x": -35,
+            "y": 1749,
+            "width": 2245.2071533203125,
+            "height": 201.0968017578125,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "18"
+            }
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "cd8ebd77-0fb5-4c4c-99ef-401d06991ab3",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Stone"
+          },
+          "info": {
+            "editorName": "Stone1",
+            "x": 582,
+            "y": 463
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "5519af35-3f07-4fd9-8d30-74c456152cf2",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Bush (1)"
+          },
+          "info": {
+            "editorName": "Bush__1_2",
+            "x": 1126,
+            "y": 1220
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "177205b5-7df8-4d07-8dcc-4c25d9407fdb",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Bush (2)"
+          },
+          "info": {
+            "editorName": "Bush__2_1",
+            "x": 1389,
+            "y": 1219
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "44ec4fa4-529e-4db8-acd9-13c30a99da41",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Crate"
+          },
+          "info": {
+            "editorName": "Crate5",
+            "x": 1522,
+            "y": 1084
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "757d6ded-9d96-4113-a0d7-30b4e4728180",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "objects",
+            "sprite": "Crate"
+          },
+          "info": {
+            "editorName": "Crate6",
+            "x": 1482,
+            "y": 1008
+          }
+        },
+        {
+          "type": "spritesheet",
+          "id": "d39c368b-a98d-45ac-bb34-fc9f864aeb32",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "player",
+            "sprite": "0"
+          },
+          "info": {
+            "editorName": "player",
+            "editorPublic": true,
+            "x": 125,
+            "y": 1286,
+            "anchor.x": 0.5,
+            "animations": [
+              {
+                "name": "walk",
+                "frameRate": 4,
+                "loop": true,
+                "frames": [
+                  "0",
+                  "1"
+                ]
+              },
+              {
+                "name": "jump",
+                "frameRate": 60,
+                "loop": false,
+                "frames": ["2"]
+              },
+              {
+                "name": "idle",
+                "frameRate": 60,
+                "loop": false,
+                "frames": ["3"]
+              }
+            ],
+            "body": {
+              "type": "ARCADE_RECT",
+              "offsetX": 53.3333740234375,
+              "offsetY": 43.333343505859375,
+              "collideWorldBounds": true,
+              "width": 84.5,
+              "height": 91.66665649414062
+            }
+          }
+        },
+        {
+          "type": "tileSprite",
+          "id": "b197906c-0cce-4e43-8505-5bf1b3861254",
+          "asset-ref": {
+            "file": "assets/assets-pack.json",
+            "section": "level",
+            "asset": "tiles",
+            "sprite": "17"
+          },
+          "info": {
+            "editorName": "water",
+            "editorPublic": true,
+            "x": -40,
+            "y": 1651,
+            "width": 2240.8822021484375,
+            "height": 99,
+            "asset-ref": {
+              "file": "assets/assets-pack.json",
+              "section": "level",
+              "asset": "tiles",
+              "sprite": "17"
+            }
+          }
+        },
+        {
+          "type": "group",
+          "id": "8b094f74-13fd-4331-8bd8-0778a3277005",
+          "info": {
+            "editorName": "fruits",
+            "editorPublic": true,
+            "editorClosed": false,
+            "physicsGroup": true,
+            "children": [
+              {
+                "type": "atlas-sprite",
+                "id": "ad27026c-492e-4b67-94dd-6367e70d7edf",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit7",
+                  "x": 639,
+                  "y": 444
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "a9d1b3d3-6cd6-4f98-9ca1-b697ddf2873f",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit6",
+                  "x": 564,
+                  "y": 444
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "e8ab37da-b87d-40df-ada9-24516d04a0d1",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit5",
+                  "x": 489,
+                  "y": 444
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "86942f8a-02a8-4629-b58a-06ce6d7bdd01",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit4",
+                  "x": 414,
+                  "y": 444
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "f6b15b92-042d-4af7-a94c-2d6ad2734e32",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit3",
+                  "x": 339,
+                  "y": 444
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "b4a6e868-bd99-4901-a544-2a638266e165",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit2",
+                  "x": 264,
+                  "y": 444
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "7c584622-63aa-44dc-a6f1-9a5e3080093a",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit1",
+                  "x": 189,
+                  "y": 444
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "c6fc4de6-46ed-44b5-94c2-fe3bd5f24185",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit8",
+                  "x": 1100,
+                  "y": 1200
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "301380c2-7366-4223-b162-6271b64ec3f7",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit9",
+                  "x": 1150,
+                  "y": 1200
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "70a92304-d4ee-4ab8-93f9-595a350c286b",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit10",
+                  "x": 1200,
+                  "y": 1200
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "d5246e6c-a789-4211-8b12-a8dfcd657829",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit11",
+                  "x": 1250,
+                  "y": 1200
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "29271458-aef6-4758-a8e2-21887acff53d",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit12",
+                  "x": 1300,
+                  "y": 1200
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "6079dca8-6ab4-476e-a000-b663d81e0003",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit13",
+                  "x": 1350,
+                  "y": 1200
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "d91500e4-b703-437f-b165-b23aed349d22",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit14",
+                  "x": 1400,
+                  "y": 1200
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "40891ecc-3a95-4339-b9f0-c48864612423",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit15",
+                  "x": 1450,
+                  "y": 1200
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "e3a93a89-dd09-4351-b4c7-c861100f77ad",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit16",
+                  "x": 1500,
+                  "y": 1200
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "b5ce7b2b-707f-4520-8f60-4f24ef921cfe",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit17",
+                  "x": 1875,
+                  "y": 1350
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "4e3e0aab-e274-4e1e-b53a-bde5371cc618",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit18",
+                  "x": 1925,
+                  "y": 1300
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "7e51446a-6e22-49cc-8689-a772e4f0348a",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit19",
+                  "x": 1950,
+                  "y": 1250
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "c1352046-2aa5-49c3-bc9b-72020feff55f",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit20",
+                  "x": 1975,
+                  "y": 1200
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "f691401d-1e44-43a6-be3a-519a00b48e3f",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit21",
+                  "x": 1975,
+                  "y": 1150
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "d93584ea-d515-44ed-92d5-9a77c326a362",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit22",
+                  "x": 1950,
+                  "y": 1100
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "e9254b73-f946-4f5e-8a17-14e77c04cd9d",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit23",
+                  "x": 1900,
+                  "y": 1050
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "92b3f1c6-add8-4a11-a984-75bf9223ad1a",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit24",
+                  "x": 1100,
+                  "y": 675
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "25992589-1d10-4b27-8b75-771debdb4106",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit25",
+                  "x": 1150,
+                  "y": 675
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "6feeac5c-8bf4-4386-8c79-97f2e2bd5552",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit26",
+                  "x": 1200,
+                  "y": 675
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "e01480e0-0914-4c7b-bf9a-d0b168fef571",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit27",
+                  "x": 325,
+                  "y": 1425
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "9501f7b1-3d50-4dbf-bd3f-c1c975c9c7af",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit28",
+                  "x": 375,
+                  "y": 1425
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "9371feb2-03eb-4600-8d73-42e11926c5be",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit29",
+                  "x": 425,
+                  "y": 1425
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "ec003a8b-d03f-48d5-80fe-5534a9a9e2e3",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit30",
+                  "x": 475,
+                  "y": 1425
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "ad5080b4-bc59-4a8e-801a-29b22d88cd7f",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit31",
+                  "x": 525,
+                  "y": 1425
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "7ff8aec5-4857-4d9a-b05d-58b932afaeb0",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit32",
+                  "x": 525,
+                  "y": 1375
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "688cd243-8952-4435-875f-62c67ba62033",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit33",
+                  "x": 475,
+                  "y": 1375
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "a55ad0ba-5331-4040-a1e0-bccac9837077",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit34",
+                  "x": 425,
+                  "y": 1375
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "28bb7333-9613-46c0-9f48-f87171ae9458",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit35",
+                  "x": 375,
+                  "y": 1375
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "87d319cb-4acd-4bcd-945c-9198ea30b82b",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit36",
+                  "x": 325,
+                  "y": 1375
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "68cefeb3-f9fd-4e1a-8888-53d6f18c4244",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit37",
+                  "x": 325,
+                  "y": 1325
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "8e3bf615-93a2-46a2-8748-f9c70e5d46fb",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit38",
+                  "x": 375,
+                  "y": 1325
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "01dc6733-2710-412e-a57c-9c94b0878ae1",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit39",
+                  "x": 425,
+                  "y": 1325
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "1558d00a-df83-4b95-bfb1-1eae0db2226e",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit40",
+                  "x": 475,
+                  "y": 1325
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "15f42c73-dac0-4864-a4b6-9c721444462f",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit41",
+                  "x": 525,
+                  "y": 1325
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "9b3aa0d4-bdb9-4fc7-84f7-41a3ebf28aa7",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit81",
+                  "x": 1173,
+                  "y": 1500
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "066de00d-5367-4428-ad74-806ed8451832",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit91",
+                  "x": 1223,
+                  "y": 1500
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "68187b01-8681-4009-967b-2b1c037e50de",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit101",
+                  "x": 1273,
+                  "y": 1500
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "77fec34b-b63a-48f5-ba29-040833f7ffd4",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit111",
+                  "x": 1323,
+                  "y": 1500
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "a2196e0e-cac0-46cb-a87a-42a67952fefd",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit121",
+                  "x": 1373,
+                  "y": 1500
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "b9cf731e-2c1a-4ac1-9b01-1e9317cbdfc2",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit131",
+                  "x": 1423,
+                  "y": 1500
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "c6dcc3ad-2aa4-480d-b3a8-27a895ec1cac",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit141",
+                  "x": 1473,
+                  "y": 1500
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "555e2c36-b6e4-4571-b854-784cdb2c7c3b",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit151",
+                  "x": 1523,
+                  "y": 1500
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "de0df476-d715-462e-a742-c9870a7219a4",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit161",
+                  "x": 1573,
+                  "y": 1500
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "67214d63-3602-4901-b891-76feb17ede3a",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "fruit"
+                },
+                "info": {
+                  "editorName": "fruit",
+                  "x": 114,
+                  "y": 444
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "78e4bc9e-05f8-4d50-997c-bc402440aa76",
+          "info": {
+            "editorName": "front1",
+            "editorClosed": false,
+            "physicsGroup": false,
+            "children": [
+              {
+                "type": "atlas-sprite",
+                "id": "9ccc082a-c4cf-4f58-955f-0fa2b60928d6",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Tree_3"
+                },
+                "info": {
+                  "editorName": "Tree_32",
+                  "x": 1302,
+                  "y": 1083,
+                  "scale.x": 0.7332871556082268,
+                  "scale.y": 0.7658318667609785
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "67e9f691-282e-413e-b594-0ebf0cd9037a",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Bush (2)"
+                },
+                "info": {
+                  "editorName": "Bush__2_4",
+                  "x": 371,
+                  "y": 465
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "ae985f55-d28f-43d7-a7bb-cb11aa03828f",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Bush (1)"
+                },
+                "info": {
+                  "editorName": "Bush__1_4",
+                  "x": 178,
+                  "y": 464
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "dbe055a2-34e1-40e3-9058-c1a730061997",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Stone"
+                },
+                "info": {
+                  "editorName": "Stone",
+                  "x": 586,
+                  "y": 997
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "27ca680e-65e5-4c5d-940e-33cad6f4e199",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Bush (3)"
+                },
+                "info": {
+                  "editorName": "Bush__3_",
+                  "x": 783,
+                  "y": 1007
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "3c1fb64e-587e-4673-b5a6-287313e88b57",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Tree_2"
+                },
+                "info": {
+                  "editorName": "Tree_21",
+                  "x": 1181,
+                  "y": 997
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "ece5d283-d784-47c5-90f6-f4395e9b5a67",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Tree_1"
+                },
+                "info": {
+                  "editorName": "Tree_11",
+                  "x": 1601,
+                  "y": 1253
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "72245b0f-58f8-4b4d-8e60-98f10838b8d5",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Stone"
+                },
+                "info": {
+                  "editorName": "Stone2",
+                  "x": 2051,
+                  "y": 1497
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "c3e59b50-2fb6-4ead-916d-de89da95abd7",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Sign_1"
+                },
+                "info": {
+                  "editorName": "Sign_1",
+                  "x": 2063,
+                  "y": 1442
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "0ca7629d-2052-4dae-a687-20f402cd4726",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Bush (1)"
+                },
+                "info": {
+                  "editorName": "Bush__1_1",
+                  "x": 1206,
+                  "y": 717
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "4d58f73b-02e3-49fb-803b-23f0bd8f79be",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Bush (3)"
+                },
+                "info": {
+                  "editorName": "Bush__3_1",
+                  "x": 1293,
+                  "y": 351
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "84519581-a1be-4e62-b156-1e640586a042",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Bush (1)"
+                },
+                "info": {
+                  "editorName": "Bush__1_",
+                  "x": 36,
+                  "y": 1490
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "6281012f-baa8-44dc-80f2-5423b35a6c62",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Tree_1"
+                },
+                "info": {
+                  "editorName": "Tree_1",
+                  "x": 292,
+                  "y": 1506
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "59a20b91-db66-4bc3-86ef-607eecacb5a7",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Tree_3"
+                },
+                "info": {
+                  "editorName": "Tree_3",
+                  "x": 331,
+                  "y": 1273
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "e0ac0f20-b152-41f4-bf27-668dae40af8b",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "objects",
+                  "sprite": "Sign_2"
+                },
+                "info": {
+                  "editorName": "Sign_2",
+                  "x": 594,
+                  "y": 1486
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "b9d3369f-4af2-4cc0-aa06-7cfca6d4242f",
+          "info": {
+            "editorName": "collisionLayer",
+            "editorPublic": true,
+            "editorClosed": false,
+            "physicsGroup": true,
+            "children": [
+              {
+                "type": "tileSprite",
+                "id": "6778d559-5074-4f9b-a1a3-8962d6a560d2",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics",
+                  "x": 3,
+                  "y": 1543,
+                  "width": 759.6111068725586,
+                  "height": 38.3333740234375,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "58c61e83-90a1-4d5e-b543-04baab3347a0",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics1",
+                  "x": 1028,
+                  "y": 1289,
+                  "width": 759.6111068725586,
+                  "height": 38.3333740234375,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "4e08ffc4-7626-4576-99a0-3b3169862e05",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics2",
+                  "x": 516,
+                  "y": 1047,
+                  "width": 382.2159652709961,
+                  "height": 17.3333740234375,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "0bafcc88-0e62-43b2-b9a4-38c29fd11a59",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics3",
+                  "x": 4,
+                  "y": 522,
+                  "width": 759.6111068725586,
+                  "height": 38.3333740234375,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "71b4a0aa-f794-4173-81ad-b6255567b8a5",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics4",
+                  "x": 1027,
+                  "y": 775,
+                  "width": 378.2965316772461,
+                  "height": 26.18060302734375,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "aa8fca39-f3cb-4296-8956-1f1836781b0e",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics5",
+                  "x": 1285,
+                  "y": 391,
+                  "width": 247.6111068725586,
+                  "height": 38.3333740234375,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "ec3b1981-5b5b-4980-8922-c6d83c9c3d89",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics6",
+                  "x": 1085,
+                  "y": 1160,
+                  "width": 765.6111068725586,
+                  "height": 38.3333740234375,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "9166060c-d287-4097-991e-29d8aeccc8e8",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics7",
+                  "x": 1793,
+                  "y": 1546,
+                  "width": 378.0112533569336,
+                  "height": 38.3333740234375,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "05765833-7c59-4d64-9102-55a462fca4e9",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics9",
+                  "x": 587,
+                  "y": 963,
+                  "width": 228.8677978515625,
+                  "height": 14.8726806640625,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "a92edf2a-6568-4439-95fd-e8b502dcf51d",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics91",
+                  "x": 664,
+                  "y": 886,
+                  "width": 74.00665283203125,
+                  "height": 14.8726806640625,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "02bd766c-d8c2-48fc-9f43-04d75599335c",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics10",
+                  "x": 1524,
+                  "y": 1087,
+                  "width": 72.9166259765625,
+                  "height": 25,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "e8c7a8a1-debe-499b-8dc5-3e29a5b7ffb9",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics11",
+                  "x": 1484,
+                  "y": 1010,
+                  "width": 72.9166259765625,
+                  "height": 25,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "032a791e-82d4-4992-97e5-47e584c79cff",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics101",
+                  "x": 1868,
+                  "y": 1469,
+                  "width": 72.9166259765625,
+                  "height": 25,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "b3285ce7-f2ad-4f3f-9fcc-42e2a100be48",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics911",
+                  "x": 1125,
+                  "y": 500,
+                  "width": 74.00665283203125,
+                  "height": 14.8726806640625,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              },
+              {
+                "type": "tileSprite",
+                "id": "d847db6c-5b67-4f7c-90d9-1e37658e3209",
+                "asset-ref": {
+                  "file": "assets/assets-pack.json",
+                  "section": "level",
+                  "asset": "tiles",
+                  "sprite": "physics"
+                },
+                "info": {
+                  "editorName": "physics13",
+                  "x": -12,
+                  "y": 1740,
+                  "width": 2200.993938446045,
+                  "height": 25,
+                  "asset-ref": {
+                    "file": "assets/assets-pack.json",
+                    "section": "level",
+                    "asset": "tiles",
+                    "sprite": "physics"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

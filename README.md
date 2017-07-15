@@ -45,6 +45,7 @@
 * [memory - 记忆翻牌游戏](http://game.webxinxin.com/memory)
 * [tacit - 默契](http://game.webxinxin.com/tacit)
 * [blindmoon - 盲月AVG](http://game.webxinxin.com/blindmoon)
+* [dinosaur - 恐龙](http://game.webxinxin.com/dinosaur)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
