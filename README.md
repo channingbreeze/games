@@ -46,6 +46,9 @@
 * [tacit - 默契](http://game.webxinxin.com/tacit)
 * [blindmoon - 盲月AVG](http://game.webxinxin.com/blindmoon)
 * [dinosaur - 恐龙](http://game.webxinxin.com/dinosaur)
+* [simplechess - 简易下棋游戏](http://game.webxinxin.com/simplechess)
+* [pacman - 吃豆子](http://game.webxinxin.com/pacman)
+* [randomdungeon - 随机生成地图](http://game.webxinxin.com/randomdungeon)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流

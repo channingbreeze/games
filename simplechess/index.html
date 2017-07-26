@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Alien Attack</title>
+        <script src="../phaser.min.js"></script>
+        <script src="js/menu.js"></script>
+        <script src="js/level.js"></script>
+        <script type="text/javascript">
+
+        window.onload = function() {
+            var game = new Phaser.Game(900, 900, Phaser.CANVAS, 'game_stage');
+            game.state.add('menu',MenuState,true);
+            game.state.add('level_one',LevelOneState);
+        };
+        </script>
+        <style>
+        *{
+            margin:0 auto;
+        }
+        html, body, #game_stage{
+            width: 100%;
+            height: 100%;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="game_stage"></div>
+    </body>
+</html>

@@ -1,0 +1,170 @@
+{
+"frames": {
+	"dice_btn.png": {
+		"frame": {"x":0, "y":202, "w":500, "h":100},
+		"spriteSourceSize": {"x":0,"y":0,"w":500,"h":100},
+		"sourceSize": {"w":500,"h":100}
+	},
+	"dice_five.png": {
+		"frame": {"x":952, "y":595, "w":94, "h":94},
+		"spriteSourceSize": {"x":0,"y":0,"w":94,"h":94},
+		"sourceSize": {"w":94,"h":94}
+	},
+	"dice_four.png": {
+		"frame": {"x":774, "y":965, "w":94, "h":94},
+		"spriteSourceSize": {"x":0,"y":0,"w":94,"h":94},
+		"sourceSize": {"w":94,"h":94}
+	},
+	"dice_one.png": {
+		"frame": {"x":679, "y":965, "w":94, "h":94},
+		"spriteSourceSize": {"x":0,"y":0,"w":94,"h":94},
+		"sourceSize": {"w":94,"h":94}
+	},
+	"dice_over_btn.png": {
+		"frame": {"x":0, "y":101, "w":500, "h":100},
+		"spriteSourceSize": {"x":0,"y":0,"w":500,"h":100},
+		"sourceSize": {"w":500,"h":100}
+	},
+	"dice_six.png": {
+		"frame": {"x":952, "y":310, "w":94, "h":94},
+		"spriteSourceSize": {"x":0,"y":0,"w":94,"h":94},
+		"sourceSize": {"w":94,"h":94}
+	},
+	"dice_three.png": {
+		"frame": {"x":869, "y":965, "w":94, "h":94},
+		"spriteSourceSize": {"x":0,"y":0,"w":94,"h":94},
+		"sourceSize": {"w":94,"h":94}
+	},
+	"dice_two.png": {
+		"frame": {"x":952, "y":690, "w":94, "h":94},
+		"spriteSourceSize": {"x":0,"y":0,"w":94,"h":94},
+		"sourceSize": {"w":94,"h":94}
+	},
+	"enemy_attack1.png": {
+		"frame": {"x":97, "y":965, "w":96, "h":77},
+		"spriteSourceSize": {"x":0,"y":0,"w":96,"h":77},
+		"sourceSize": {"w":96,"h":77}
+	},
+	"enemy_attack2.png": {
+		"frame": {"x":582, "y":965, "w":96, "h":77},
+		"spriteSourceSize": {"x":0,"y":0,"w":96,"h":77},
+		"sourceSize": {"w":96,"h":77}
+	},
+	"enemy_idle1.png": {
+		"frame": {"x":0, "y":965, "w":96, "h":77},
+		"spriteSourceSize": {"x":0,"y":0,"w":96,"h":77},
+		"sourceSize": {"w":96,"h":77}
+	},
+	"enemy_idle2.png": {
+		"frame": {"x":388, "y":965, "w":96, "h":77},
+		"spriteSourceSize": {"x":0,"y":0,"w":96,"h":77},
+		"sourceSize": {"w":96,"h":77}
+	},
+	"enemy_prep1.png": {
+		"frame": {"x":291, "y":965, "w":96, "h":77},
+		"spriteSourceSize": {"x":0,"y":0,"w":96,"h":77},
+		"sourceSize": {"w":96,"h":77}
+	},
+	"enemy_prep2.png": {
+		"frame": {"x":501, "y":310, "w":96, "h":77},
+		"spriteSourceSize": {"x":0,"y":0,"w":96,"h":77},
+		"sourceSize": {"w":96,"h":77}
+	},
+	"enemy_walk1.png": {
+		"frame": {"x":194, "y":965, "w":96, "h":77},
+		"spriteSourceSize": {"x":0,"y":0,"w":96,"h":77},
+		"sourceSize": {"w":96,"h":77}
+	},
+	"enemy_walk2.png": {
+		"frame": {"x":485, "y":965, "w":96, "h":77},
+		"spriteSourceSize": {"x":0,"y":0,"w":96,"h":77},
+		"sourceSize": {"w":96,"h":77}
+	},
+	"exit_btn.png": {
+		"frame": {"x":664, "y":310, "w":65, "h":66},
+		"spriteSourceSize": {"x":0,"y":0,"w":65,"h":66},
+		"sourceSize": {"w":65,"h":66}
+	},
+	"exit_over_btn.png": {
+		"frame": {"x":598, "y":310, "w":65, "h":66},
+		"spriteSourceSize": {"x":0,"y":0,"w":65,"h":66},
+		"sourceSize": {"w":65,"h":66}
+	},
+	"hero_hurt.png": {
+		"frame": {"x":501, "y":155, "w":125, "h":154},
+		"spriteSourceSize": {"x":0,"y":0,"w":125,"h":154},
+		"sourceSize": {"w":125,"h":154}
+	},
+	"hero_idle1.png": {
+		"frame": {"x":627, "y":155, "w":125, "h":154},
+		"spriteSourceSize": {"x":0,"y":0,"w":125,"h":154},
+		"sourceSize": {"w":125,"h":154}
+	},
+	"hero_idle2.png": {
+		"frame": {"x":627, "y":0, "w":125, "h":154},
+		"spriteSourceSize": {"x":0,"y":0,"w":125,"h":154},
+		"sourceSize": {"w":125,"h":154}
+	},
+	"hero_idle3.png": {
+		"frame": {"x":753, "y":0, "w":125, "h":154},
+		"spriteSourceSize": {"x":0,"y":0,"w":125,"h":154},
+		"sourceSize": {"w":125,"h":154}
+	},
+	"hero_run1.png": {
+		"frame": {"x":501, "y":0, "w":125, "h":154},
+		"spriteSourceSize": {"x":0,"y":0,"w":125,"h":154},
+		"sourceSize": {"w":125,"h":154}
+	},
+	"hero_run2.png": {
+		"frame": {"x":879, "y":155, "w":125, "h":154},
+		"spriteSourceSize": {"x":0,"y":0,"w":125,"h":154},
+		"sourceSize": {"w":125,"h":154}
+	},
+	"hero_run3.png": {
+		"frame": {"x":753, "y":155, "w":125, "h":154},
+		"spriteSourceSize": {"x":0,"y":0,"w":125,"h":154},
+		"sourceSize": {"w":125,"h":154}
+	},
+	"hero_run4.png": {
+		"frame": {"x":879, "y":0, "w":125, "h":154},
+		"spriteSourceSize": {"x":0,"y":0,"w":125,"h":154},
+		"sourceSize": {"w":125,"h":154}
+	},
+	"start_btn.png": {
+		"frame": {"x":0, "y":0, "w":500, "h":100},
+		"spriteSourceSize": {"x":0,"y":0,"w":500,"h":100},
+		"sourceSize": {"w":500,"h":100}
+	},
+	"start_over_btn.png": {
+		"frame": {"x":0, "y":303, "w":500, "h":100},
+		"spriteSourceSize": {"x":0,"y":0,"w":500,"h":100},
+		"sourceSize": {"w":500,"h":100}
+	},
+	"turn_alien.png": {
+		"frame": {"x":952, "y":405, "w":94, "h":94},
+		"spriteSourceSize": {"x":0,"y":0,"w":94,"h":94},
+		"sourceSize": {"w":94,"h":94}
+	},
+	"turn_hero.png": {
+		"frame": {"x":952, "y":500, "w":94, "h":94},
+		"spriteSourceSize": {"x":0,"y":0,"w":94,"h":94},
+		"sourceSize": {"w":94,"h":94}
+	},
+	"winner_alien.png": {
+		"frame": {"x":476, "y":404, "w":475, "h":560},
+		"spriteSourceSize": {"x":0,"y":0,"w":475,"h":560},
+		"sourceSize": {"w":475,"h":560}
+	},
+	"winner_hero.png": {
+		"frame": {"x":0, "y":404, "w":475, "h":560},
+		"spriteSourceSize": {"x":0,"y":0,"w":475,"h":560},
+		"sourceSize": {"w":475,"h":560}
+	}
+
+},
+"meta": {
+	"image": "sprites.png",
+	"size": {"w": 1047, "h": 1060},
+	"scale": "1"
+}
+}
