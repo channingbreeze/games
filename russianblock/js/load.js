@@ -14,7 +14,7 @@ var loadState = {
 		game.load.image('logo', 'img/Tetris Clone Logo.png');
 		game.load.image('pause_icon', 'img/pause_icon.png');
 		game.load.image('upArrow', 'img/upParticle.png');
-		game.load.nineSlice('sliced_button', 'img/9patchButton.png', 8);
+		// game.load.nineSlice('sliced_button', 'img/9patchButton.png', 8);
 		game.load.nineSlice('sliced_panel', 'img/9patchPanel.png', 8);
 		game.load.spritesheet('button', 'img/Button.png', 46, 46);
 		game.load.spritesheet('medium_button', 'img/medium_button.png', 92, 46);

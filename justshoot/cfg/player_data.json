@@ -1,0 +1,7 @@
+{
+	"move_speed" : 200,
+	"attack_speed" :400,
+	"life" : 1,
+	"power" : 200,
+	"weapon_type" : 1
+}

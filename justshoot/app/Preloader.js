@@ -118,11 +118,11 @@ MyGame.Preloader.prototype = {
         game.load.image('quan','../assets/quan.png?1')
 
 
-        game.load.json('player_data', '../config/player_data.json?3');
-        game.load.json('monster_data', '../config/monster_data.json?3');
-        game.load.json('level_data', '../config/level_data.json?3');
-        game.load.json('buff_data', '../config/buff_data.json?3');
-        game.load.json('prop_data', '../config/prop_data.json?3');
+        game.load.json('player_data', '../cfg/player_data.json?3');
+        game.load.json('monster_data', '../cfg/monster_data.json?3');
+        game.load.json('level_data', '../cfg/level_data.json?3');
+        game.load.json('buff_data', '../cfg/buff_data.json?3');
+        game.load.json('prop_data', '../cfg/prop_data.json?3');
 
 
         this.load.image('compass', '../assets/compass_rose.png');
