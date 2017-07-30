@@ -1,0 +1,76 @@
+{"frames": 
+	[
+		{
+			"filename": "T",
+			"frame":{"x":0, "y":0, "w":23, "h":23},
+			"rotated": false,
+			"trimmed":true,
+			"spriteSourceSize": {"x":0, "y":0, "w":207, "h":23},
+			"sourceSize":{"x":0, "y":0, "w":207, "h":23}
+		},
+		{
+			"filename": "L",
+			"frame":{"x":23, "y":0, "w":23, "h":23},
+			"rotated": false,
+			"trimmed":true,
+			"spriteSourceSize": {"x":0, "y":0, "w":207, "h":23},
+			"sourceSize":{"x":0, "y":0, "w":207, "h":23}
+		},
+		{
+			"filename": "J",
+			"frame":{"x":46, "y":0, "w":23, "h":23},
+			"rotated": false,
+			"trimmed":true,
+			"spriteSourceSize": {"x":0, "y":0, "w":207, "h":23},
+			"sourceSize":{"x":0, "y":0, "w":207, "h":23}
+		},
+		{
+			"filename": "O",
+			"frame":{"x":69, "y":0, "w":23, "h":23},
+			"rotated": false,
+			"trimmed":true,
+			"spriteSourceSize": {"x":0, "y":0, "w":207, "h":23},
+			"sourceSize":{"x":0, "y":0, "w":207, "h":23}
+		},
+		{
+			"filename": "I",
+			"frame":{"x":92, "y":0, "w":23, "h":23},
+			"rotated": false,
+			"trimmed":true,
+			"spriteSourceSize": {"x":0, "y":0, "w":207, "h":23},
+			"sourceSize":{"x":0, "y":0, "w":207, "h":23}
+		},
+		{
+			"filename": "Z",
+			"frame":{"x":115, "y":0, "w":23, "h":23},
+			"rotated": false,
+			"trimmed":true,
+			"spriteSourceSize": {"x":0, "y":0, "w":207, "h":23},
+			"sourceSize":{"x":0, "y":0, "w":207, "h":23}
+		},
+		{
+			"filename": "S",
+			"frame":{"x":138, "y":0, "w":23, "h":23},
+			"rotated": false,
+			"trimmed":true,
+			"spriteSourceSize": {"x":0, "y":0, "w":207, "h":23},
+			"sourceSize":{"x":0, "y":0, "w":207, "h":23}
+		},
+		{
+			"filename": "GHOST",
+			"frame":{"x":161, "y":0, "w":23, "h":23},
+			"rotated": false,
+			"trimmed":true,
+			"spriteSourceSize": {"x":0, "y":0, "w":207, "h":23},
+			"sourceSize":{"x":0, "y":0, "w":207, "h":23}
+		},
+		{
+			"filename": "OFF",
+			"frame":{"x":184, "y":0, "w":23, "h":23},
+			"rotated": false,
+			"trimmed":true,
+			"spriteSourceSize": {"x":0, "y":0, "w":207, "h":23},
+			"sourceSize":{"x":0, "y":0, "w":207, "h":23}
+		}
+	]
+}

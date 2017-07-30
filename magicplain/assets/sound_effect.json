@@ -1,0 +1,55 @@
+{
+  "resources": [
+    "sound_effect.ogg",
+    "sound_effect.m4a",
+    "sound_effect.mp3",
+    "sound_effect.ac3"
+  ],
+  "spritemap": {
+    "butpressed": {
+      "start": 0,
+      "end": 0.07886621315192743,
+      "loop": false
+    },
+    "explosion": {
+      "start": 2,
+      "end": 2.615328798185941,
+      "loop": false
+    },
+    "failed": {
+      "start": 4,
+      "end": 7.7,
+      "loop": false
+    },
+    "getprop": {
+      "start": 9,
+      "end": 10.50562358276644,
+      "loop": false
+    },
+    "putbomb": {
+      "start": 12,
+      "end": 12.309070294784581,
+      "loop": false
+    },
+    "readygo": {
+      "start": 14,
+      "end": 17.533650793650793,
+      "loop": false
+    },
+    "victory": {
+      "start": 19,
+      "end": 23.700226757369613,
+      "loop": false
+    },
+    "theme_music": {
+      "start": 25,
+      "end": 206.3942857142857,
+      "loop": true
+    },
+    "battle_music": {
+      "start": 208,
+      "end": 226.2915192743764,
+      "loop": true
+    }
+  }
+}

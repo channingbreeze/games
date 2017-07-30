@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>燕澜七缙 - 缙者为王</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+	<style>
+		*{margin:0;padding:0}
+		html, body
+		{
+			-webkit-text-size-adjust:none;
+			overflow: hidden;
+			height:100%;
+			margin: 0px 0px 1px 0px;
+			background-color: #000;
+		}
+		#game-box{
+			width:100%;
+			height:100%
+		}
+		#cover{
+			position: absolute;
+			left:0;
+			top:0;
+			right:0;
+			bottom:0;
+			z-index: 2;
+			background-color: rgba(0,0,0,.9);
+			display: none;
+		}
+		#login{
+			width:17.95rem;
+			height:13.075rem;
+			background-size: 17.95rem 13.075rem;
+			position: absolute;
+			left:50%;
+			top:50%;
+			margin-left:-8.975rem;
+			margin-top:-6.5375rem;
+		}
+		.v{
+			width:9.75rem;
+			height:9.25rem;
+			background-image: url('../assets/v.png');
+			background-size: 9.75rem 9.25rem;
+			margin:-1rem auto 0
+		}
+		#login input.ipt{
+			width:7.775rem;
+			height:1.55rem;
+			position: absolute;
+			border:none;
+			color:#ffffff;
+			font-size:.6rem;
+			line-height: 1.55rem;
+			text-indent: .5rem;
+			background-image:url('../assets/ipt.png');
+			background-size: 7.775rem 1.55rem;
+			background-color: transparent;
+			left:5.2rem;
+		}
+		input::-webkit-input-placeholder {
+			color: #ffffff;
+		}
+		#name{
+			top:8.5rem;
+		}
+		#phone{
+			top:10.5rem;
+		}
+		button#subBtn{
+			width:5.85rem;
+			height:1.85rem;
+			background-image:url('../assets/sub_btn.png');
+			background-color: transparent;
+			background-size: 5.85rem 1.85rem;
+			position: absolute;
+			left:6.2rem;
+			top:12.5rem;
+			border: none;
+			font-size:.7rem;
+			color:#fff;
+		}
+
+		#help{
+			width:3.625rem;
+			height:13.5rem;
+			background-image:url('../assets/help.png');
+			background-size: 3.625rem 13.5rem;
+			position: absolute;
+			left:50%;
+			bottom: 1.3rem;
+			margin-left: -19.5rem;
+
+		}
+		.helpers{
+			width:2.215rem;
+			margin:3rem auto 0
+		}
+
+		.helper{
+			width:2.215rem;
+			height:2.215rem;
+			background-size: 2.215rem 2.215rem;
+			margin-bottom:1.3rem
+		}
+
+	</style>
+
+	<script>
+        (function(doc,win){var docEl=doc.documentElement,resizeEvt='orientationchange'in window?'orientationchange':'resize',recalc=function(){var clientWidth=docEl.clientWidth;if(!clientWidth)return;docEl.style.fontSize=20*(clientWidth/375)+'px'};if(!doc.addEventListener)return;win.addEventListener(resizeEvt,recalc,false);doc.addEventListener('DOMContentLoaded',recalc,false)})(document,window);
+	</script>
+
+	<script>
+        var MyGame = {},MyScaleManager,Weapon = {},game,utils,api,selectKard = [],WebFontConfig,friend = 0,user;
+        var host = 'http://weixin.365das.com';
+        var toId;
+	</script>
+
+	<script src="../lib/zepto.min.js"></script>
+	<script src="../lib/zepto.cookie.js"></script>
+	<script src="../../phaser.min.js"></script>
+	<script src="../lib/phaser-touch-control.js"></script>
+	<script src="../lib/scaleManager.js"></script>
+
+
+
+</head>
+<body>
+<div id="game-box" style="position: absolute;"></div>
+
+<div id="cover">
+	<div id="login" class="win_box">
+
+		<div class="v"></div>
+
+		<div class="frm"><input type="text" id="name" class="ipt" placeholder="姓名"/></div>
+		<div class="frm"><input type="text" id="phone" class="ipt" placeholder="电话"/></div>
+		<button id="subBtn"></button>
+	</div>
+</div>
+
+
+<script src="./game.min.js"></script>
+
+<script src="../lib/inpMusic.js"></script>
+</body>
+
+
+</html>

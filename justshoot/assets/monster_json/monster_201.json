@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "monster201_run_0001",
+	"frame": {"x":2,"y":2,"w":105,"h":100},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":105,"h":100},
+	"sourceSize": {"w":125,"h":100}
+},
+{
+	"filename": "monster201_run_0002",
+	"frame": {"x":109,"y":2,"w":125,"h":94},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":125,"h":94},
+	"sourceSize": {"w":125,"h":100}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "monster_201.png",
+	"format": "RGBA8888",
+	"size": {"w":236,"h":104},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c8e35edb9e023058db46455fd6f2f6e8$"
+}
+}

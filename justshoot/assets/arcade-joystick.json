@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "base",
+	"frame": {"x":2,"y":2,"w":269,"h":268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":268},
+	"sourceSize": {"w":269,"h":268}
+},
+{
+	"filename": "stick",
+	"frame": {"x":273,"y":2,"w":113,"h":113},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":113,"h":113},
+	"sourceSize": {"w":113,"h":113}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "arcade-joystick.png",
+	"format": "RGBA8888",
+	"size": {"w":388,"h":272},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d9085b888d728ab77ee5b3815167b9da$"
+}
+}

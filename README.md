@@ -49,6 +49,9 @@
 * [simplechess - 简易下棋游戏](http://game.webxinxin.com/simplechess)
 * [pacman - 吃豆子](http://game.webxinxin.com/pacman)
 * [randomdungeon - 随机生成地图](http://game.webxinxin.com/randomdungeon)
+* [justshoot - 燕澜七缙](http://game.webxinxin.com/justshoot)
+* [magicplain - 炸弹人](http://game.webxinxin.com/magicplain)
+* [russianblock - 俄罗斯方块](http://game.webxinxin.com/russianblock)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流

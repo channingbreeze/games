@@ -1,0 +1,892 @@
+{
+  "langs": {
+    "PT_BR": {
+      "SinglePlayerPaused":{
+        "texts": [
+          "Pausado",
+          "Retomar"
+        ]
+      },
+      "Standard": {
+        "texts": [
+          "Salvar",
+          "Cancelar",
+          "Voltar",
+          "Resetar",
+          "Dados Locais Apagados!",
+          "Reiniciando o Jogo"
+        ]
+      },
+      "MainMenu": {
+        "texts": [
+          "Não é um jogo oficial\nFeito com Phaser.js",
+          "Novo Jogo",
+          "Configurações",
+          "Maiores Pontuações",
+          "Créditos"
+        ]
+      },
+      "Settings": {
+        "texts": [
+          "Configurações",
+          "Apagar Dados Locais",
+          "Mudar Fundo",
+          "Som/Música",
+          "Controles"
+        ]
+      },
+      "ChangeBackground": {
+        "texts": [
+          "Selecione a Imagem"
+        ]
+      },
+      "SoundMenu": {
+        "texts": [
+          "Música/Sons",
+          "Música",
+          "Efeitos Sonoros",
+          "Informações da Trilha"
+        ]
+      },
+      "Controls": {
+        "texts": [
+          "Controles",
+          "Move para a Esquerda",
+          "Move para a Direita",
+          "Rotaciona Sentido Horário",
+          "Rotaciona Sentido Anti-Horário",
+          "Soft Drop",
+          "Hard Drop",
+          "Segurar",
+          "Confirmar",
+          "Voltar",
+          "Pressione tecla para"
+        ]
+      },
+      "Leaderboard": {
+        "texts": [
+          "Maiores Pontuações"
+        ]
+      },
+      "SinglePlayerGame": {
+        "texts": [
+          "Segurando",
+          "Próximas",
+          "Informações do Fundo",
+          "Pontos",
+          "Nível",
+          "Linhas",
+          "Pronto?",
+          "Vai!",
+          "OK"
+        ]
+      },
+      "Gameover": {
+        "texts": [
+          "Fim de Jogo",
+          "Menu Principal",
+          "Jogar Novamente",
+          "Pontos: ",
+          "Nível: ",
+          "Linhas: ",
+          "Você atingiu TOP 5!",
+          "Você atingiu TOP 5! Digite Seu Nome: "
+        ]
+      },
+      "Credits": {
+        "texts": [
+          "Programador",
+          "Ferramentas",
+          "Recursos",
+          "Arte de Fundo",
+          "Menu Design",
+          "Fontes",
+          "Agradecimentos Especiais",
+          "criador do Phaser",
+          "Musica",
+          "Tetris foi criado por Alexey Pajitnov",
+          "Este é um jogo criado por um fã para uso não-comercial",
+          "Tradução para Russo",
+          "Tradução para Japonês"
+        ]
+      }
+    },
+    "EN": {
+      "SinglePlayerPaused":{
+        "texts": [
+          "Paused",
+          "Resume"
+        ]
+      },
+      "Standard": {
+        "texts": [
+          "Save",
+          "Cancel",
+          "Back",
+          "Reset",
+          "Local Data Erased!",
+          "Restarting game..."
+        ]
+      },
+      "MainMenu": {
+        "texts": [
+          "Not an official release\nMade with Phaser.js",
+          "New Game",
+          "Settings",
+          "Leaderboard",
+          "Credits"
+        ]
+      },
+      "Settings": {
+        "texts": [
+          "Settings",
+          "Erase Local Data",
+          "Change Background",
+          "Sound FX/Music",
+          "Controls"
+        ]
+      },
+      "ChangeBackground": {
+        "texts": [
+          "Choose Background"
+        ]
+      },
+      "SoundMenu": {
+        "texts": [
+          "Music/Sound FX",
+          "Music",
+          "Sound FX",
+          "Track Info"
+        ]
+      },
+      "Controls": {
+        "texts": [
+          "Controls",
+          "Move Left",
+          "Move RIght",
+          "Rotate Clockwise",
+          "Rotate Counter-Clockwise",
+          "Soft Drop",
+          "Hard Drop",
+          "Hold",
+          "Menu Confirm",
+          "Menu Back",
+          "Press key for"
+        ]
+      },
+      "Leaderboard": {
+        "texts": [
+          "Leaderboard"
+        ]
+      },
+      "SinglePlayerGame": {
+        "texts": [
+          "Hold",
+          "Next",
+          "Background Info",
+          "Score",
+          "Level",
+          "Lines",
+          "Ready?",
+          "Go!",
+          "OK"
+        ]
+      },
+      "Gameover": {
+        "texts": [
+          "G A M E   O V E R",
+          "Main Menu",
+          "Play Again",
+          "Score: ",
+          "Level: ",
+          "Lines: ",
+          "You got a HIGHSCORE!",
+          "You got a HIGHSCORE! Type your name:  "
+        ]
+      },
+      "Credits": {
+        "texts": [
+          "Programmer",
+          "Tools",
+          "Resources",
+          "Background Art",
+          "Menu Design",
+          "Fonts",
+          "Special Thanks",
+          "Phaser creator",
+          "Music",
+          "Tetris was created by Alexey Pajitnov",
+          "This is a fan-made game created for non-commercial use",
+          "Russian Translation",
+          "Japanese Translation"
+        ]
+      }
+    },
+    "ES": {
+      "SinglePlayerPaused":{
+        "texts": [
+          "Pausado",
+          "Retomar"
+        ]
+      },
+      "Standard": {
+        "texts": [
+          "Salvar",
+          "Cancelar",
+          "Espalda",
+          "Reiniciar",
+          "¡Datos locales borrados!",
+          "Reiniciando el juego..."
+        ]
+      },
+      "MainMenu": {
+        "texts": [
+          "No es un lanzamiento oficial\nHecho con Phaser.js",
+          "Nuevo Juego",
+          "Ajustes",
+          "Placar",
+          "Créditos"
+        ]
+      },
+      "Settings": {
+        "texts": [
+          "Ajustes",
+          "Borrar datos locales",
+          "Cambiar Image",
+          "Sonidos/Música",
+          "Controles"
+        ]
+      },
+      "ChangeBackground": {
+        "texts": [
+          "Escoge el fondo"
+        ]
+      },
+      "SoundMenu": {
+        "texts": [
+          "Música / Sonidos",
+          "Música",
+          "Sonidos",
+          "Información de la pista"
+        ]
+      },
+      "Controls": {
+        "texts": [
+          "Controles",
+          "Mover hacia la izquierda",
+          "Mover hacia a la derecha",
+          "Girar en sentido horario",
+          "Girar en sentido antihorario",
+          "Soft Drop",
+          "Hard Drop",
+          "Sostener",
+          "Confirmar",
+          "Volver Atrás",
+          "Pressione la tecla para"
+        ]
+      },
+      "Leaderboard": {
+        "texts": [
+          "Placar"
+        ]
+      },
+      "SinglePlayerGame": {
+        "texts": [
+          "Sostener",
+          "Siguientes",
+          "Información del Arte",
+          "Ponctuación",
+          "Nivel",
+          "Líneas",
+          "Listo?",
+          "¡Vaya!",
+          "OK"
+        ]
+      },
+      "Gameover": {
+        "texts": [
+          "Fim del Juego",
+          "Menú Principal",
+          "Juega de Nuevo",
+          "Pontuación: ",
+          "Nivel: ",
+          "Líneas: ",
+          "¡Tienes una Pontuación Alta!",
+          "¡Tienes una Pontuación Alta! Escribe tu nombre: "
+        ]
+      },
+      "Credits": {
+        "texts": [
+          "Programador",
+          "Herramientas",
+          "Recursos",
+          "Fondo de arte",
+          "Diseño de menú",
+          "Fuentes",
+          "Gracias especiales",
+          "creador de Phaser",
+          "Música",
+          "Tetris fue creado por Alexey Pajitnov",
+          "Este es un juego hecho por un fan creado para uso no comercial",
+          "Traducido al ruso",
+          "Traducido al japonés"
+        ]
+      }
+    },
+    "GE": {
+      "SinglePlayerPaused":{
+        "texts": [
+          "Pausiert",
+          "Spiel fortsetzen"
+        ]
+      },
+      "Standard": {
+        "texts": [
+          "Sparen",
+          "Stornieren",
+          "Zurück",
+          "Zurücksetzen",
+          "Lokale Daten gelöscht!",
+          "Spiel neu starten ..."
+        ]
+      },
+      "MainMenu": {
+        "texts": [
+          "Das ist kein offizielles Produkt\nMit Phaser.js gemacht",
+          "Neues Spiel",
+          "Einstellungen",
+          "Bestenliste",
+          "Kredite"
+        ]
+      },
+      "Settings": {
+        "texts": [
+          "Einstellungen",
+          "Lokale Daten löschen",
+          "Hintergrund ändern",
+          "Geräuschkulisse / Musik",
+          "Steuert"
+        ]
+      },
+      "ChangeBackground": {
+        "texts": [
+          "Hintergrund\nauswählen"
+        ]
+      },
+      "SoundMenu": {
+        "texts": [
+          "Musik / Sound FX",
+          "Musik",
+          "Sound FX",
+          "Track Info"
+        ]
+      },
+      "Controls": {
+        "texts": [
+          "Kontrollen",
+          "Geh nach links",
+          "Nach rechts bewegen",
+          "Im Uhrzeiger sinn drehen",
+          "Gegen den Uhrzeigersinn drehen",
+          "Soft Drop",
+          "Hard Drop",
+          "Halt",
+          "Menü bestätigen",
+          "Menü zurück",
+          "Taste für drücken "
+        ]
+      },
+      "Leaderboard": {
+        "texts": [
+          "Bestenliste"
+        ]
+      },
+      "SinglePlayerGame": {
+        "texts": [
+          "Halt",
+          "Nächster",
+          "Hintergrundinformation",
+          "Ergebnis",
+          "Ebene",
+          "Linien",
+          "Bereit?",
+          "Geh!",
+          "OK"
+        ]
+      },
+      "Gameover": {
+        "texts": [
+          "SPIEL IST AUS",
+          "Hauptmenü",
+          "Spiel nochmal",
+          "Ergebnis: ",
+          "Ebene: ",
+          "Zeilen:",
+          "Du hast ein HIGHSCORE!",
+          "Du hast einen HIGHSCORE! Geben Sie Ihren Namen ein: "
+        ]
+      },
+      "Credits": {
+        "texts": [
+          "Programmierer",
+          "Werkzeuge",
+          "Ressourcen",
+          "Hintergrund",
+          "Menü Design",
+          "Schriftarten",
+          "Besonderen Dank",
+          "Phaser schöpfer",
+          "Musik",
+          "Tetris wurde von Alexey Pajitnov geschaffen",
+          "Dies ist ein Fan-made-Spiel für nicht-kommerzielle Nutzung erstellt",
+          "Ins Russische übersetzt",
+          "Ins Japanische übersetzt"
+        ]
+      }
+    },
+    "RU": {
+      "SinglePlayerPaused":{
+        "texts": [
+          "Приостановлена",
+          "Продолжить игру"
+        ]
+      },
+      "Standard": {
+        "texts": [
+          "Сохранить",
+          "Отменить",
+          "Назад",
+          "Сброс",
+          "Local удаленных данных!",
+          "Перезапуск игры"
+        ]
+      },
+      "MainMenu": {
+        "texts": [
+          "Не официальный релиз\nСделано с Phaser.js",
+          "Новая игра",
+          "Настройка",
+          "Высокие результаты",
+          "Кредиты"
+        ]
+      },
+      "Settings": {
+        "texts": [
+          "Настройка",
+          "Удаление данных",
+          "Изменение фона",
+          "Звук / Музыка",
+          "Контроль"
+        ]
+      },
+      "ChangeBackground": {
+        "texts": [
+          "Выбрать изображение"
+        ]
+      },
+      "SoundMenu": {
+        "texts": [
+          "Музыка / Звуки",
+          "Музыка",
+          "Звуковые эффекты",
+          "Информация о песне"
+        ]
+      },
+      "Controls": {
+        "texts": [
+          "Контроль",
+          "Перемещение влево",
+          "Перемещение вправо",
+          "Повернуть по часовой стрелке",
+          "Повернуть против часовой стрелки Sense",
+          "Soft Drop",
+          "Hard Drop",
+          "держать",
+          "Подтвердить",
+          "Назад",
+          "Нажмите кнопку, чтобы"
+        ]
+      },
+      "Leaderboard": {
+        "texts": [
+          "Высокие результаты"
+        ]
+      },
+      "SinglePlayerGame": {
+        "texts": [
+          "Холдинг",
+          "следующий",
+          "Справочная информация",
+          "Точка",
+          "Уровень",
+          "Линия",
+          "Готов?",
+          "иди!",
+          "OK"
+        ]
+      },
+      "Gameover": {
+        "texts": [
+          "Конец игры",
+          "Главное меню",
+          "играть снова",
+          "Точка",
+          "Уровень",
+          "Линия",
+          "Вы достигли ТОП 5!",
+          "Вы достигли TOP 5 Введите Ваше имя: "
+        ]
+      },
+      "Credits": {
+        "texts": [
+          "Программист",
+          "Инструменты",
+          "Ресурсы",
+          "Предыстория",
+          "Дизайн меню",
+          "Шрифты",
+          "Особая благодарность",
+          "Создатель Phaser",
+          "Музыка",
+          "Тетрис был создан Алексеем Пажитновым",
+          "Это фан-игра, созданная для некоммерческого использования",
+          "Перевод на русский",
+          "Перевод на японский"
+        ]
+      }
+    },
+    "JP": {
+      "SinglePlayerPaused":{
+        "texts": [
+          "休止",
+          "ゲームを再開する"
+        ]
+      },
+      "Standard": {
+        "texts": [
+          "セーブ",
+          "取消",
+          "戻る",
+          "リセット",
+          "ローカルデータが削除されました",
+          "ゲームを再開する"
+        ]
+      },
+      "MainMenu": {
+        "texts": [
+          "これは公式のゲームではありません\nこのゲームはPhaser.jsで作られました",
+          "開始",
+          "設定",
+          "高得点",
+          "名誉"
+        ]
+      },
+      "Settings": {
+        "texts": [
+          "設定",
+          "データを消去する",
+          "背景を変更する",
+          "音",
+          "コントロール"
+        ]
+      },
+      "ChangeBackground": {
+        "texts": [
+          "背景を変更する"
+        ]
+      },
+      "SoundMenu": {
+        "texts": [
+          "音",
+          "音楽",
+          "音響効果",
+          "音楽情報"
+        ]
+      },
+      "Controls": {
+        "texts": [
+          "コントロール",
+          "左に移動",
+          "右に移動",
+          "右に回転",
+          "左に回転",
+          "ソフトドロップ",
+          "ハードドロップ",
+          "キープ",
+          "確認する",
+          "戻る",
+          "キーを押して"
+        ]
+      },
+      "Leaderboard": {
+        "texts": [
+          "高得点"
+        ]
+      },
+      "SinglePlayerGame": {
+        "texts": [
+          "キープ",
+          "次いで",
+          "背景情報",
+          "スコア",
+          "階層",
+          "ライン",
+          "READY?",
+          "GO!",
+          "はい"
+        ]
+      },
+      "Gameover": {
+        "texts": [
+          "ゲームオーバー",
+          "メインメニュー",
+          "再びプレー",
+          "スコア",
+          "階層",
+          "ライン",
+          "あなたはトップ5に達しました!",
+          "あなたはトップ5に達しました! お名前を書いてください: "
+        ]
+      },
+      "Credits": {
+        "texts": [
+          "プログラマー",
+          "ツール",
+          "リソース",
+          "背景技術",
+          "メニューデザイン",
+          "フォント",
+          "特別な感謝",
+          "Phaser クリエイター",
+          "音楽",
+          "テトリスはAlexey Pajitnovによって作成されました",
+          "このゲームは、非商用目的でファンによって作成されました",
+          "ロシア語翻訳",
+          "日本語翻訳"
+        ]
+      }
+    },
+    "IT": {
+      "SinglePlayerPaused":{
+        "texts": [
+          "Pausa",
+          "Torna al gioco"
+        ]
+      },
+      "Standard": {
+        "texts": [
+          "Salvare",
+          "Annulla",
+          "Indietro",
+          "Reset",
+          "Dati locali cancellati!",
+          "Ripristino del gioco ..."
+        ]
+      },
+      "MainMenu": {
+        "texts": [
+          "Questo non è un prodotto ufficiale\nCreato con Phaser.js",
+          "Nuovo gioco",
+          "Impostazioni",
+          "Classifica",
+          "Crediti"
+        ]
+      },
+      "Settings": {
+        "texts": [
+          "Impostazioni",
+          "Cancella i dati locali",
+          "Cambia sfondo",
+          "Suoni / Musica",
+          "Comandi"
+        ]
+      },
+      "ChangeBackground": {
+        "texts": [
+          "Scegli lo sfondo"
+        ]
+      },
+      "SoundMenu": {
+        "texts": [
+          "Musica / Suoni",
+          "Musica",
+          "Suoni",
+          "Dettagli della canzone"
+        ]
+      },
+      "Controls": {
+        "texts": [
+          "Comandi",
+          "Vai a sinistra",
+          "Vai a destra",
+          "Ruotare in senso orario",
+          "Ruotare in senso antiorario",
+          "Soft Drop",
+          "Hard Drop",
+          "Hold",
+          "Menu Conferma",
+          "Menu Ritorno",
+          "Premere il tasto per"
+        ]
+      },
+      "Leaderboard": {
+        "texts": [
+          "Classifica"
+        ]
+      },
+      "SinglePlayerGame": {
+        "texts": [
+          "Tenere",
+          "Prossimo",
+          "Informazioni sfondo",
+          "Punto",
+          "Livello",
+          "Linee",
+          "Pronto?",
+          "Vai!",
+          "OK"
+        ]
+      },
+      "Gameover": {
+        "texts": [
+          "FINE DI GIOCO",
+          "Menu principale",
+          "Gioca ancora",
+          "Punto: ",
+          "Livello:",
+          "Linee: ",
+          "Hai un HIGH SCORE!",
+          "Hai un HIGH SCORE! Inserisci il tuo nome: "
+        ]
+      },
+      "Credits": {
+        "texts": [
+          "Programmatore",
+          "Utensili",
+          "Risorse",
+          "Arte di fondo",
+          "Menu Design",
+          "Caratteri",
+          "Ringraziamenti speciali",
+          "Creatore di Phaser",
+          "Musica",
+          "Tetris è stato creato da Alexey Pajitnov",
+          "Questo è un gioco fan creato per uso non commerciale",
+          "Traduzione in russo",
+          "Traduzione in giapponese"
+        ]
+      }
+    },
+    "FR": {
+      "SinglePlayerPaused":{
+        "texts": [
+          "Pause",
+          "Reprise du jeu"
+        ]
+      },
+      "Standard": {
+        "texts": [
+          "Enregistrer",
+          "Annuler",
+          "Retour",
+          "Reset",
+          "Données supprimées local!",
+          "Relancer le jeu"
+        ]
+      },
+      "MainMenu": {
+        "texts": [
+          "Ce n'est pas une version officielle\nFabriqué avec Phaser.js",
+          "Nouveau jeu",
+          "Paramètres",
+          "Top Notes",
+          "Crédits"
+        ]
+      },
+      "Settings": {
+        "texts": [
+          "Paramètres",
+          "Efface les données",
+          "Changer l'image",
+          "Son / Musique",
+          "Commandes"
+        ]
+      },
+      "ChangeBackground": {
+        "texts": [
+          "Sélectionner l'image"
+        ]
+      },
+      "SoundMenu": {
+        "texts": [
+          "Musique / Sons",
+          "Musique",
+          "Effets sonores",
+          "Détails de la chanson"
+        ]
+      },
+      "Controls": {
+        "texts": [
+          "Commandes",
+          "Déplacer vers la gauche",
+          "Déplacer vers la droite",
+          "Tourner dans le sens horaire",
+          "Tourner dans le sens antihoraire",
+          "Soft Drop",
+          "Hard Drop",
+          "Tenir",
+          "Confirmer",
+          "Retour",
+          "Presser la touche pour"
+        ]
+      },
+      "Leaderboard": {
+        "texts": [
+          "Top Notes"
+        ]
+      },
+      "SinglePlayerGame": {
+        "texts": [
+          "Tenir",
+          "Prochain",
+          "Informations de fond",
+          "Points",
+          "Niveau",
+          "Lignes",
+          "Prêt?",
+          "Jouer!",
+          "OK"
+        ]
+      },
+      "Gameover": {
+        "texts": [
+          "Game Over",
+          "Menu principal",
+          "Rejouer",
+          "Points",
+          "Niveau",
+          "Lignes",
+          "Vous avez atteint TOP 5!",
+          "Vous avez atteint TOP 5. Tapez votre nom: "
+        ]
+      },
+      "Credits": {
+        "texts": [
+          "Programmeur",
+          "Outils",
+          "Ressources",
+          "Art antérieur",
+          "Design de menu",
+          "Polices",
+          "Remerciement spécial",
+          "créateur Phaser",
+          "La musique",
+          "Tetris a été créé par Alexey Pajitnov",
+          "C'est un jeu fan-made créé pour une utilisation non commerciale",
+          "Traduction russe",
+          "Traduction japonaise"
+        ]
+      }
+    }
+  }
+}

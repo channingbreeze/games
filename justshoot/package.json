@@ -1,0 +1,15 @@
+{
+  "name": "wangzhe",
+  "version": "1.0.0",
+  "description": "wangzhegame",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack -p"
+  },
+  "author": "Guanyuwei",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^2.29.0",
+    "webpack": "^3.1.0"
+  }
+}

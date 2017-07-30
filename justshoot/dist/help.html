@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>快来帮助我！</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+		<style>
+	        *{margin:0;padding:0}
+			html, body
+	        {
+	            -webkit-text-size-adjust:none;
+	            overflow: hidden;
+	            height:100%;
+	            margin: 0px 0px 1px 0px;
+	            background-color: #000;
+	        }
+
+			body{
+				background-image: url(../assets/help_bg.jpg);
+				background-size: 100% 100%;
+			}
+
+			.btns{
+				width:6.9rem;
+				height:2.075rem;
+				position: absolute;
+				bottom:3rem;
+				overflow: hidden;
+				background-size: 6.9rem 2.075rem;
+				text-indent: -999px;
+			}
+
+			#help{
+				 background-image: url(../assets/help_btn.png);
+				 left:2rem
+			 }
+
+			#join{
+				background-image: url(../assets/join.png);
+				right:2rem
+			}
+
+
+	    </style>
+
+		<script>
+            (function(doc,win){var docEl=doc.documentElement,resizeEvt='orientationchange'in window?'orientationchange':'resize',recalc=function(){var clientWidth=docEl.clientWidth;if(!clientWidth)return;docEl.style.fontSize=20*(clientWidth/375)+'px'};if(!doc.addEventListener)return;win.addEventListener(resizeEvt,recalc,false);doc.addEventListener('DOMContentLoaded',recalc,false)})(document,window);
+			var urlPre = "http://weixin.365das.com";
+		</script>
+
+
+		<script src="../lib/zepto.min.js"></script>
+
+
+
+
+
+	</head>
+	<body>
+
+		<a href="javascript:;" id="help" class="btns">帮助战斗</a><a href="http://weixin.365das.com/project/wx/2017/07/hygame/dist/index.html" id="join" class="btns">我也要战</a>
+
+	</body>
+
+
+	<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+	
+	<script>
+		
+		window.shareData = { 
+		"imgUrl": "http://img33.house365.com/M02/3E/9E/rBEBp1lwefqASDQIAAI8C3uMT6A299.png",
+		"tfTitle": "快来帮我助战，一起缙级获得荣耀",
+		"tTitle": "快来帮我助战，一起缙级获得荣耀",
+		"tContent": "弘阳燕澜七缙，王者驾临",
+		'share_url':'http://weixin.365das.com/project/wx/2017/07/hygame/dist/index.html'
+	};
+	var urlstr=encodeURI(window.location.href);
+	
+	$.post("http://weixin.365das.com/project/wx/2017/07/api/index.php?s=/Index/jssdk",{url:urlstr},function(result){
+		var json_data = result.data;
+		wx.config({
+				debug: false,
+				appId:json_data.appId,
+				timestamp:json_data.timestamp,
+				nonceStr:json_data.nonceStr,
+				signature:json_data.signature,
+				jsApiList: ['checkJsApi','onMenuShareTimeline','onMenuShareAppMessage','hideMenuItems']
+		});
+		wx.error(function (res) {
+			//alert("失败");
+			alert(res.errMsg);
+			
+		});
+		wx.ready(function () {
+			//alert("成功");
+			share_data();
+		});
+	})
+
+	function share_data(){
+		wx.onMenuShareTimeline({
+			title: window.shareData.tfTitle,
+			link: window.shareData.share_url,
+			imgUrl: window.shareData.imgUrl,
+			success: function () {
+				share_num();
+			},
+			cancel: function () {
+			}
+		});
+		//分享给朋友
+		wx.onMenuShareAppMessage({
+			title: window.shareData.tTitle,
+			desc: window.shareData.tContent,
+			link: window.shareData.share_url,
+			imgUrl: window.shareData.imgUrl,
+			success: function () {
+				share_num();
+			},
+			cancel: function () {
+			
+			}
+		});
+
+		wx.hideMenuItems({
+			menuList: [
+				"menuItem:originPage","menuItem:openWithQQBrowser","menuItem:openWithSafari","menuItem:share:email","menuItem:copyUrl","menuItem:share:qq","menuItem:share:weiboApp","menuItem:share:QZone","menuItem:share:facebook","menuItem:favorite"]
+		});
+	}
+
+
+
+
+		$('#help').on('click',function(){
+			var toId = GetQueryString('toId');
+			if(toId != "") {
+				var user = getCookie('user');
+				if(user == null) {
+					window.location.href = urlPre + "/project/wx/2017/07/api/index.php?s=/Index/outh/type/2/toId/"+toId;
+				} else {
+					//助力
+					user = eval('('+user+')');
+					var _url = urlPre+ '/project/wx/2017/07/api/index.php?s=/Index/help';
+					var json = {'toId':toId,'openid':user.openid,'nick_name':user.nick_name,'head_img':user.head_img}
+					
+					$.ajax({
+						 type: "POST",
+						 url: _url,
+						 data: json,
+						 dataType: "json",
+						 success: function(res){
+							 if(res.status == 1) {
+								alert("恭喜您助力成功！");
+							 } else if(res.status == 0){
+								alert(res.msg);
+							 } else {
+								alert("网络错误！")
+							 }
+						  },
+						  error:function(res) {
+								alert("网络错误！")
+						  }
+					 });
+
+				}
+			} else {
+				alert("链接错误！")
+			}
+		});
+
+
+
+		function GetQueryString(name) {  
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");  
+			var r = window.location.search.substr(1).match(reg);  //获取url中"?"符后的字符串并正则匹配
+			var context = "";  
+			if (r != null)  
+				 context = r[2];  
+			reg = null;  
+			r = null;  
+			return context == null || context == "" || context == "undefined" ? "" : context;  
+		}
+
+		function getCookie(sName)
+		{
+		  var aCookie = document.cookie.split("; ");
+		  for (var i=0; i < aCookie.length; i++){
+			var aCrumb = aCookie[i].split("=");
+		  
+			if (encodeURIComponent(sName) == aCrumb[0])
+			  return decodeURIComponent(aCrumb[1]);
+		  }
+		  return null;
+		}
+	</script>
+
+
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?c7ae7858cde5c1dad94da4b96e94a57e";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+</html>

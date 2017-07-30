@@ -1,0 +1,10 @@
+@font-face {
+	font-family :'MartelSans';
+	src: url('../fonts/martelsans-regular.otf') format('opentype');
+}
+
+.fontLoader {
+   position: absolute;
+   left: -1000px;
+   visibility: hidden;
+}

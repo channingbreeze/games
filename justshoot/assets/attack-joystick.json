@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "base",
+	"frame": {"x":2,"y":2,"w":269,"h":268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":268},
+	"sourceSize": {"w":269,"h":268}
+},
+{
+	"filename": "stick",
+	"frame": {"x":273,"y":2,"w":119,"h":119},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":119,"h":119},
+	"sourceSize": {"w":119,"h":119}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "attack-joystick.png",
+	"format": "RGBA8888",
+	"size": {"w":394,"h":272},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:dc66c2e3e1211f7691cfdb53dbda113e$"
+}
+}

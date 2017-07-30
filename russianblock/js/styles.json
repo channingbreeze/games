@@ -1,0 +1,249 @@
+{
+  "title": {
+    "font": "50px MartelSans",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": "5"
+  },
+  "text_regular": {
+    "font": "20px MartelSans",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": "4"
+  },
+  "text_big": {
+    "font": "25px MartelSans",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": "4"
+  },
+  "text_bigger": {
+    "font": "40px MartelSans",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": "4"
+  },
+  "text_single_player_label": {
+    "font": "16px MartelSans",
+    "fill": "#fff", 
+    "align": "center", 
+    "boundsAlignH": "center", 
+    "boundsAlignV": "middle", 
+    "wordWrap": false,
+    "wordWrapWidth": 159,
+    "stroke": "#080808",
+    "strokeThickness": 4
+  },
+  "text_single_player": {
+    "font": "18px MartelSans",
+    "fill": "#ffffff", 
+    "align": "center", 
+    "boundsAlignH": "center", 
+    "boundsAlignV": "middle", 
+    "wordWrap": false,
+    "wordWrapWidth": 159
+  },
+  "text_warning_big": {
+    "font": "25px MartelSans",
+    "fill": "#00dd00",
+    "stroke": "#002200",
+    "strokeThickness": "3"
+  },
+  "button_regular": {
+    "font": "25px MartelSans",
+    "fill": "#080808"
+  },
+  "button_small": {
+    "font": "18px MartelSans",
+    "fill": "#080808"
+  },
+  "controls_action":{
+    "font": "18px MartelSans",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": 3,
+    "align": "left",
+    "boundsAlignH": "left",
+    "boundsAlignV": "top"
+  },
+  "controls_key":{
+    "font": "16px MartelSans",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": 3,
+    "align": "left",
+    "boundsAlignH": "right",
+    "boundsAlignV": "top"
+  },
+  "track_info": {
+    "font": "20px MartelSans",
+    "fill": "#ffffff",
+    "align": "left",
+    "stroke": "#080808",
+    "strokeThickness": 3,
+    "boundsAlignH": "left",
+    "boundsAlignV": "middle",
+    "wordWrap": true,
+    "wordWrapWidth": 300
+  },
+  "bg_art": {
+    "font": "16px MartelSans",
+    "fill": "#ffffff",
+    "align": "left",
+    "boundsAlignH": "left",
+    "boundsAlignV": "middle",
+    "wordWrap": true,
+    "wordWrapWidth": 300
+  },
+  "credits": {
+    "font": "13px MartelSans",
+    "fill": "#ffffff",
+    "align": "left",
+    "boundsAlignH": "left",
+    "boundsAlignV": "top",
+    "wordWrap": true,
+    "wordWrapWidth": 300
+  },
+  "countDown": {
+    "font" : "64px MartelSans",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": 6,
+    "align": "center",
+    "boundsAlignH": "center"
+  },
+  "testing" : {
+    "font": "32px MartelSans",
+    "fill": "#dddd22",
+    "stroke": "#117777",
+    "strokeThickness": 4
+  },
+  "multiplier" : {
+    "font":"25px MartelSans",
+    "fill": "#ffff00",
+    "stroke": "#000000",
+    "alpha": 0,
+    "strokeThickness": 5
+  },
+
+
+  "alt_title": {
+    "font": "50px Arial",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": "5"
+  },
+  "alt_text_regular": {
+    "font": "20px Arial",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": "4"
+  },
+  "alt_text_big": {
+    "font": "25px Arial",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": "4"
+  },
+  "alt_text_bigger": {
+    "font": "40px Arial",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": "4"
+  },
+  "alt_text_single_player_label": {
+    "font": "16px Arial",
+    "fill": "#fff", 
+    "align": "center", 
+    "boundsAlignH": "center", 
+    "boundsAlignV": "middle", 
+    "wordWrap": false,
+    "wordWrapWidth": 159,
+    "stroke": "#080808",
+    "strokeThickness": 4
+  },
+  "alt_text_single_player": {
+    "font": "18px Arial",
+    "fill": "#ffffff", 
+    "align": "center", 
+    "boundsAlignH": "center", 
+    "boundsAlignV": "middle", 
+    "wordWrap": false,
+    "wordWrapWidth": 159
+  },
+  "alt_text_warning_big": {
+    "font": "25px Arial",
+    "fill": "#00dd00",
+    "stroke": "#002200",
+    "strokeThickness": "3"
+  },
+  "alt_button_regular": {
+    "font": "25px Arial",
+    "fill": "#080808"
+  },
+  "alt_button_small": {
+    "font": "18px Arial",
+    "fill": "#080808"
+  },
+  "alt_controls_action":{
+    "font": "18px Arial",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": 3,
+    "align": "left",
+    "boundsAlignH": "left",
+    "boundsAlignV": "top"
+  },
+  "alt_controls_key":{
+    "font": "16px Arial",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": 3,
+    "align": "left",
+    "boundsAlignH": "right",
+    "boundsAlignV": "top"
+  },
+  "alt_track_info": {
+    "font": "20px Arial",
+    "fill": "#ffffff",
+    "align": "left",
+    "stroke": "#080808",
+    "strokeThickness": 3,
+    "boundsAlignH": "left",
+    "boundsAlignV": "middle",
+    "wordWrap": true,
+    "wordWrapWidth": 300
+  },
+  "alt_bg_art": {
+    "font": "16px Arial",
+    "fill": "#ffffff",
+    "align": "left",
+    "boundsAlignH": "left",
+    "boundsAlignV": "middle",
+    "wordWrap": true,
+    "wordWrapWidth": 300
+  },
+  "alt_credits": {
+    "font": "13px Arial",
+    "fill": "#ffffff",
+    "align": "left",
+    "boundsAlignH": "left",
+    "boundsAlignV": "top",
+    "wordWrap": true,
+    "wordWrapWidth": 300
+  },
+  "alt_countDown": {
+    "font" : "64px Arial",
+    "fill": "#ffffff",
+    "stroke": "#080808",
+    "strokeThickness": 6,
+    "align": "center",
+    "boundsAlignH": "center"
+  },
+  "alt_testing" : {
+    "font": "32px Arial",
+    "fill": "#dddd22",
+    "stroke": "#117777",
+    "strokeThickness": 4
+  }
+}

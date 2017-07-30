@@ -1,0 +1,65 @@
+{
+    "player": {
+        "health": 50,
+        "attack": 10,
+        "speed": 150,
+        "bomb_type": "fire_bomb",
+        "bomb_range": "small_bomb",
+        "bomb_shape": "cross_bomb"
+    },
+    "zombiepig": {
+        "health": 15,
+        "attack": 8,
+        "speed": 100,
+        "bomb_type": "fire_bomb",
+        "bomb_range": "small_bomb",
+        "bomb_shape": "cross_bomb"
+    },
+    "ghost": {
+        "health": 30,
+        "attack": 10,
+        "speed": 130,
+        "bomb_type": "fire_bomb",
+        "bomb_range": "small_bomb",
+        "bomb_shape": "cross_bomb"
+    },
+    "minotaur": {
+        "health": 50,
+        "attack": 15,
+        "speed": 160,
+        "bomb_type": "fire_bomb",
+        "bomb_range": "small_bomb",
+        "bomb_shape": "cross_bomb"
+    },
+    "batking": {
+        "health": 70,
+        "attack": 20,
+        "speed": 190,
+        "bomb_type": "fire_bomb",
+        "bomb_range": "small_bomb",
+        "bomb_shape": "cross_bomb"
+    },
+    "levels":[
+        {"iconx":77, "icony":577, "name":"1", "map":"map01", "next":[1]},
+        {"iconx":161, "icony":593, "name":"2", "map":"map02", "next":[2]},
+        {"iconx":269, "icony":574, "name":"3", "map":"map03", "next":[3, 17]},
+        {"iconx":286, "icony":482, "name":"4", "map":"map04", "next":[4]},
+        {"iconx":134, "icony":439, "name":"5", "map":"map05", "next":[5]},
+        {"iconx":50, "icony":245, "name":"6", "map":"map06", "next":[6]},
+        {"iconx":92, "icony":104, "name":"7", "map":"map07", "next":[7]},
+        {"iconx":275, "icony":112, "name":"8", "map":"map08", "next":[8]},
+        {"iconx":280, "icony":308, "name":"9", "map":"map09", "next":[9,18]},
+        {"iconx":444, "icony":382, "name":"10", "map":"map10", "next":[10]},
+        {"iconx":578, "icony":496, "name":"11", "map":"map11", "next":[11]},
+        {"iconx":744, "icony":539, "name":"12", "map":"map12", "next":[12]},
+        {"iconx":865, "icony":397, "name":"13", "map":"map13", "next":[13]},
+        {"iconx":847, "icony":263, "name":"14", "map":"map14", "next":[14]},
+        {"iconx":678, "icony":233, "name":"15", "map":"map15", "next":[15]},
+        {"iconx":642, "icony":119, "name":"16", "map":"map16", "next":[16]},
+        {"iconx":805, "icony":89, "name":"17", "map":"map17", "next":[]},
+        
+        {"iconx":473, "icony":595, "name":"?", "map":"map18", "next":[10]},
+        {"iconx":494, "icony":208, "name":"?", "map":"map19", "next":[14]}
+        
+    ]
+}
