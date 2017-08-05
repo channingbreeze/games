@@ -52,6 +52,9 @@
 * [justshoot - 燕澜七缙](http://game.webxinxin.com/justshoot)
 * [magicplain - 炸弹人](http://game.webxinxin.com/magicplain)
 * [russianblock - 俄罗斯方块](http://game.webxinxin.com/russianblock)
+* [starship - 星球飞船](http://game.webxinxin.com/starship)
+* [minorminer - 小矿工](http://game.webxinxin.com/minorminer)
+* [shenjingmao - 围住神经猫](http://game.webxinxin.com/shenjingmao)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
