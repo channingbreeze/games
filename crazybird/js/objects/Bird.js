@@ -10,6 +10,13 @@ CrazyBird.Bird = function(gameState, position, texture, group, properties) {
 
   game.physics.p2.enable(this);
   this.body.fixedRotation = true;
+  this.body.setCollisionGroup(this.gameState.collideGroups['bird']);
+  this.body.collides(this.gameState.collideGroups['fruit'], this.hitFruit, this.gameState);
+  this.body.collides(this.gameState.collideGroups['bottom'], this.hitBottom, this.gameState);
+  this.body.collides([this.gameState.collideGroups['tiles']]);
+  this.body.mass = 10000;
+  
+  this.birdMaterial = game.physics.p2.createMaterial('birdMaterial', this.body);
 
 };
 
@@ -20,9 +27,9 @@ CrazyBird.Bird.prototype.update = function () {
   "use strict";
   this.ownFollow();
   if(this.runningTime && game.time.now < this.runningTime) {
-    this.body.moveRight(200 * 10);
+    this.body.velocity.x = 200 * 10;
   } else {
-    this.body.moveRight(200);
+    this.body.velocity.x = 200;
   }
 }
 
@@ -51,7 +58,6 @@ CrazyBird.Bird.prototype.checkIfCanJump = function() {
   }
   
   return result;
-
 }
 
 CrazyBird.Bird.prototype.walk = function () {
@@ -69,6 +75,14 @@ CrazyBird.Bird.prototype.run = function () {
 CrazyBird.Bird.prototype.jump = function() {
   "use strict";
   if(this.checkIfCanJump()) {
-    this.body.moveUp(300);
+    this.body.velocity.y = -700;
   }
+}
+
+CrazyBird.Bird.prototype.hitBottom = function() {
+  console.log('hit bottom');
+}
+
+CrazyBird.Bird.prototype.hitFruit = function(birdBody, fruitBody) {
+  fruitBody.sprite.eated();
 }
