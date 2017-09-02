@@ -56,6 +56,8 @@
 * [minorminer - 小矿工](http://game.webxinxin.com/minorminer)
 * [shenjingmao - 围住神经猫](http://game.webxinxin.com/shenjingmao)
 * [jump - 往上跳](http://game.webxinxin.com/jump)
+* [prize - 抽奖](http://game.webxinxin.com/prize)
+* [eliminate - 英雄消消乐](http://game.webxinxin.com/eliminate)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
