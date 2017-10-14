@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RPG</title>
+    <style>
+        #up {
+            position: absolute;
+            left: 110px;
+            top: 510px;
+            height: 42px;
+            width: 50px;
+        }
+        #down {
+            position: absolute;
+            left: 110px;
+            top: 560px;
+            height: 50px;
+            width: 50px;
+        }
+        #left {
+            position: absolute;
+            left: 55px;
+            top: 560px;
+            height: 50px;
+            width: 50px;
+        }
+        #right {
+            position: absolute;
+            left: 165px;
+            top: 560px;
+            height: 50px;
+            width: 50px;
+        }
+        #a {
+            position: absolute;
+            left: 300px;
+            top: 560px;
+            height: 50px;
+            width: 50px;
+        }
+        #b {
+            position: absolute;
+            left: 360px;
+            top: 560px;
+            height: 50px;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="fuck"></div>
+<br/>
+<br/>
+<button onclick="SimulateInput.goUp()" id="up">上</button>
+<button onclick="SimulateInput.goDown()" id="down">下</button>
+<button onclick="SimulateInput.goLeft()" id="left">左</button>
+<button onclick="SimulateInput.goRight()" id="right">右</button>
+<br/>
+<button onclick="SimulateInput.aDown()" id="a">A</button>
+<button onclick="SimulateInput.bDown()" id="b">B</button>
+
+<script src="../phaser.min.js"></script>
+<script src="./js/LoadState.js"></script>
+<script src="./js/player.js"></script>
+<script src="./js/saveAndLoad.js"></script>
+<script src="./js/Entity.js"></script>
+<script src="./js/player.js"></script>
+<script src="./js/Monsters.js"></script>
+<script src="./js/items.js"></script>
+<script src="./js/stones.js"></script>
+<script src="./js/Maps.js"></script>
+<script src="./js/Maps2.js"></script>
+<script src="./js/mainState.js"></script>
+<script src="./js/ListBoxClass.js"></script>
+<script src="./js/purchase.js"></script>
+<script src="./js/fightSystem.js"></script>
+<script src="./js/fightDialogs.js"></script>
+<script src="./js/itemDialog.js"></script>
+<script src="./js/roleDialog.js"></script>
+<script src="./js/menuDialog.js"></script>
+<script src="./js/main.js"></script>
+
+<script>
+    var SimulateInput = {
+        goUp: function () {
+            if(currentCustomState){
+                currentCustomState.goUp();
+                return;
+            }
+            game.state.getCurrentState().goUp();;
+        },
+        goDown: function () {
+            if(currentCustomState){
+                currentCustomState.goDown();
+                return;
+            }
+            game.state.getCurrentState().goDown();;
+        },
+        goLeft: function () {
+            if(currentCustomState){
+                currentCustomState.goLeft();
+                return;
+            }
+            game.state.getCurrentState().goLeft();;
+        },
+        goRight: function () {
+            if(currentCustomState){
+                currentCustomState.goRight();
+                return;
+            }
+            game.state.getCurrentState().goRight();;
+        },
+        aDown: function () {
+            if(currentCustomState){
+                currentCustomState.aDown();
+                return;
+            }
+            game.state.getCurrentState().aDown();;
+        },
+        bDown: function () {
+            if(currentCustomState){
+                currentCustomState.bDown();
+                return;
+            }
+            game.state.getCurrentState().bDown();;
+        },
+    }
+</script>
+</body>
+</html>

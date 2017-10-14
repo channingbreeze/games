@@ -18,6 +18,19 @@ CrazyBird.Bird = function(gameState, position, texture, group, properties) {
   
   this.birdMaterial = game.physics.p2.createMaterial('birdMaterial', this.body);
 
+  // this.inputEnabled = true;
+  // this.input.enableDrag(true);
+
+  // this.events.onDragStart.add(function(sprite, pointer) {
+  //   console.log("start", pointer.x, pointer.y)
+  // }, this);
+  // this.events.onDragUpdate.add(function(sprite, pointer) {
+  //   console.log("move", pointer.x, pointer.y)
+  // }, this);
+  // this.events.onDragStop.add(function(sprite, pointer) {
+  //   console.log("stop", pointer.x, pointer.y)
+  // }, this);
+
 };
 
 CrazyBird.Bird.prototype = Object.create(CrazyBird.Prefab.prototype);
