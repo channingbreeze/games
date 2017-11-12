@@ -8,18 +8,18 @@ CrazyBird.Bird = function(gameState, position, texture, group, properties) {
   this.animations.add('run');
   this.animations.play('run', 12, true);
 
-  game.physics.p2.enable(this);
-  this.body.fixedRotation = true;
-  this.body.setCollisionGroup(this.gameState.collideGroups['bird']);
-  this.body.collides(this.gameState.collideGroups['fruit'], this.hitFruit, this.gameState);
-  this.body.collides(this.gameState.collideGroups['bottom'], this.hitBottom, this.gameState);
-  this.body.collides([this.gameState.collideGroups['tiles']]);
-  this.body.mass = 10000;
+  // game.physics.p2.enable(this);
+  // this.body.fixedRotation = true;
+  // this.body.setCollisionGroup(this.gameState.collideGroups['bird']);
+  // this.body.collides(this.gameState.collideGroups['fruit'], this.hitFruit, this.gameState);
+  // this.body.collides(this.gameState.collideGroups['bottom'], this.hitBottom, this.gameState);
+  // this.body.collides([this.gameState.collideGroups['tiles']]);
+  // this.body.mass = 10000;
   
-  this.birdMaterial = game.physics.p2.createMaterial('birdMaterial', this.body);
+  // this.birdMaterial = game.physics.p2.createMaterial('birdMaterial', this.body);
 
-  // this.inputEnabled = true;
-  // this.input.enableDrag(true);
+  this.inputEnabled = true;
+  this.input.enableDrag(true);
 
   // this.events.onDragStart.add(function(sprite, pointer) {
   //   console.log("start", pointer.x, pointer.y)
@@ -38,12 +38,12 @@ CrazyBird.Bird.prototype.constructor = CrazyBird.Bird;
 
 CrazyBird.Bird.prototype.update = function () {
   "use strict";
-  this.ownFollow();
-  if(this.runningTime && game.time.now < this.runningTime) {
-    this.body.velocity.x = 200 * 10;
-  } else {
-    this.body.velocity.x = 200;
-  }
+  //this.ownFollow();
+  // if(this.runningTime && game.time.now < this.runningTime) {
+  //   this.body.velocity.x = 200 * 10;
+  // } else {
+  //   this.body.velocity.x = 200;
+  // }
 }
 
 CrazyBird.Bird.prototype.ownFollow = function() {

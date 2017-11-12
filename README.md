@@ -61,6 +61,7 @@
 * [swordart - 刀剑圣域](http://game.webxinxin.com/swordart)
 * [catapult - 横版弹弓游戏](http://game.webxinxin.com/catapult)
 * [lottery - 飞禽走兽彩票demo](http://game.webxinxin.com/lottery)
+* [rhythm - 赝品节奏大师](http://game.webxinxin.com/rhythm)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流

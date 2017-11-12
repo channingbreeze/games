@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">     
+    <meta charset="utf-8">             
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">     
+    <meta content="yes" name="apple-mobile-web-app-capable">     
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">     
+    <meta content="telephone=no" name="format-detection">
+
+    <script src="../phaser.min.js"></script>
+    <title>赝品节奏大师</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+   
+    <script>
+        var gameWidth = 750;
+        var gameHeight = 1026;
+        
+    var game = new Phaser.Game(gameWidth, gameHeight, Phaser.CANVAS, '', { preload: preload, create: create, update: update });
+    function preload() {
+	//加载:图片👇
+    game.load.image('bg', 'image/beijingline.png');
+    game.load.image('boundaryLeft', 'image/biao0004.png');
+    game.load.image('boundaryCenter', 'image/biao0004.png');
+    game.load.image('boundaryRight', 'image/biao0004.png');
+    game.load.image('btnLeft', 'image/shou0001.png');
+    game.load.image('btnCenter', 'image/shou0002.png');
+    game.load.image('btnRight', 'image/shou0003.png');
+    game.load.image('yinfu0', 'image/biao0001.png');
+    game.load.image('yinfu1', 'image/biao0002.png');
+    game.load.image('yinfu2', 'image/biao0003.png');
+    game.load.image('Guang1', 'image/guangxxx.png');
+    game.load.image('Guang2', 'image/guangxxx.png');
+    game.load.image('Guang3', 'image/guangxxx.png');
+    game.load.image('GUANG1', 'image/guang2.png');
+    game.load.image('Gdian1', 'image/guangdian0001.png');
+    game.load.image('Gdian2', 'image/guangdian0002.png');
+    game.load.image('Gdian3', 'image/guangdian0003.png');
+    game.load.image('Gdian4', 'image/guangdian0004.png');
+    game.load.image('paizi', 'image/fenshupai.png');
+    game.load.image('Miss', 'image/miss.png');
+    game.load.image('yuan','image/baidi1.png');
+    game.load.image('kaishi','image/kaishi.png');
+    game.load.image('jieshu','image/youxijieshu.png');
+    game.load.image('restart','image/anniu.png');
+    game.load.image('go','image/go.png');
+    game.load.image('ready','image/READY.png');
+    game.load.audio('mainMusic','audio/xingxing.mp3');
+    game.load.audio('missMusic','audio/MISS.wav');
+    game.load.audio('readyMusic','audio/readygo.mp3');
+    game.load.audio('overMusic','audio/over_audio.mp3');
+
+    game.scale.pageAlignHorizontally = true;
+    game.scale.pageAlignVertically = true;
+    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+
+    
+
+
+    }
+    var boundary;
+    var boundarys;
+    var noteArrL=[];
+    var noteArrC=[];
+    var noteArrR=[];
+    var note;
+    var note2;
+    var note3;
+    var notes;
+    var ground;
+    var ground1;
+    var btn;
+    var btn1;
+    var btn2;
+    var btn3;
+    var btns;
+    var cursors;
+    var boundary1;
+    var boundary2;
+    var boundary3;
+    var noteAddL=0;
+    var noteAddC=0;
+    var noteAddR=0;
+    var btnAddL=0;
+    var btnAddC=0;
+    var btnAddR=0;
+    var guang1;
+    var guang2;
+    var guang3;
+    var emitter1;
+    var emitter2;
+    var emitter3;
+    var emitter4;
+    var good;
+    var goodCounter=0; 
+    var missCounter=0;
+    var miss;
+    var paizi;
+    var starts;
+    var yuan;
+    var yuan1;
+    var kaishi;
+    var readyMusic;
+    var ready;
+    var go;
+    var readyTween;
+    var gameOver;
+    var restartBtn;
+    var mainMusic;
+    function create(){
+        //物理碰撞效果👇（ARCADE是效果其中的一种）：
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+        var bgw = game.add.sprite(0, 0, 'bg');
+        bgw.scale.setTo(gameWidth/750,gameHeight/1026);
+        // 点击开始的界面：
+        starts = game.add.group();
+        starts.inputEnabled = true;
+        // starts.enableBody = true;
+        yuan = game.add.sprite(gameWidth*0.15,gameHeight*0.16,'yuan');
+        yuan1 = game.add.sprite(gameWidth*0.24,gameHeight*0.21,'yuan');
+        kaishi = game.add.sprite(gameWidth*0.31,gameHeight*0.3,'kaishi');
+        yuan.scale.setTo((gameWidth/750)*1.2);
+        yuan1.scale.setTo((gameWidth/750)*0.9);
+        kaishi.scale.setTo((gameWidth/750)*1.2);
+        // 给开始添加点击事件：
+        kaishi.inputEnabled = true;
+        kaishi.enableBody = true;
+        kaishi.events.onInputDown.add(startHide, this);
+        kaishi.input.priorityID = 10;
+        
+
+        // 定义边界组：
+        boundarys = game.add.group();
+
+        // 给边界开启物理效果
+        boundarys.enableBody = false;
+        boundarys.inputEnabled = true;
+        boundary1 = boundarys.create(gameWidth*0.15,gameHeight*0.76, 'boundaryLeft');
+        // boundary1 = boundarys.create(0,0, 'boundaryLeft');
+        boundary1.scale.setTo((gameWidth/750)*0.5,(gameHeight/1026)*1.48);
+        // boundary.body.immovable = true;
+        boundary1.inputEnabled=true;
+        boundary2 = boundarys.create(gameWidth*0.42,gameHeight*0.76, 'boundaryCenter');
+        boundary2.scale.setTo((gameWidth/750)*0.5,(gameHeight/1026)*1.48);
+        
+        // boundary.body.immovable = true;
+        boundary3 = boundarys.create(gameWidth*0.7,gameHeight*0.76, 'boundaryRight');
+        boundary3.scale.setTo((gameWidth/750)*0.5,(gameHeight/1026)*1.48);
+        
+        // boundary.body.immovable = true;
+        
+        
+        // 按钮组：
+        // btns=game.add.group();
+        btn1 = game.add.sprite(gameWidth*0.13,gameHeight*0.85,'btnLeft');
+        btn1.enableBody = false;
+        btn1.inputEnabled = true;
+        btn1.scale.setTo((gameWidth/750)*1);
+        btn2 = game.add.sprite(gameWidth*0.41,gameHeight*0.85,'btnCenter');
+        btn2.enableBody = false;
+        btn2.inputEnabled = true;
+        btn2.scale.setTo((gameWidth/750)*1);
+ 
+        btn3 = game.add.sprite(gameWidth*0.69,gameHeight*0.85,'btnRight');
+        btn3.enableBody = false;
+        btn3.inputEnabled = true;
+        btn3.scale.setTo((gameWidth/750)*1);
+
+        // 给按钮添加事件;
+        // 开启点击事件
+       
+        // 给精灵添加事件：
+        btn1.events.onInputDown.add(func, this);
+        btn1.input.priorityID = 10;
+        
+        btn2.events.onInputDown.add(func1,this);
+        btn2.input.priorityID = 10;
+        
+
+      
+        btn3.events.onInputDown.add(func2,this);
+        btn3.input.priorityID = 10;
+        
+        // 按下的光：
+        guangs = game.add.group();
+        guang1 = game.add.sprite(gameWidth*0.085,gameHeight*0.75,'Guang2')
+        guang1.scale.setTo((gameWidth/750),(gameHeight/1026)*1.48);
+        guang1.alpha = 1;
+        Guang1 = game.add.sprite(gameWidth*0.085,gameHeight*0.54,'GUANG1');
+        Guang1.scale.setTo((gameWidth/750),(gameHeight/1026)*1.48);
+        Guang1.alpha = 0;
+        
+
+        guang2 = game.add.sprite(gameWidth*0.362,gameHeight*0.75,'Guang2')
+        guang2.scale.setTo((gameWidth/750),(gameHeight/1026)*1.48);
+        guang2.alpha = 1;
+        Guang2 = game.add.sprite(gameWidth*0.362,gameHeight*0.54,'GUANG1');
+        Guang2.scale.setTo((gameWidth/750),(gameHeight/1026)*1.48);
+        Guang2.alpha = 0;
+
+        guang3 = game.add.sprite(gameWidth*0.637,gameHeight*0.75,'Guang2')
+        guang3.scale.setTo((gameWidth/750),(gameHeight/1026)*1.48);
+        guang3.alpha = 1;
+        Guang3 = game.add.sprite(gameWidth*0.637,gameHeight*0.54,'GUANG1');
+        Guang3.scale.setTo((gameWidth/750),(gameHeight/1026)*1.48);
+        Guang3.alpha = 0;
+        
+        //音符组：
+        notes1 = game.add.group();
+        notes1.enableBody = true;
+        notes2 = game.add.group();
+        notes2.enableBody = true;
+        notes3 = game.add.group();
+        notes3.enableBody = true;
+        // notes.alpha=1;
+        
+   
+        // 定时器：类似setTimeout：👇
+        // game.time.events.add(Phaser.Timer.SECOND * 0, setTime, this);
+        // game.time.events.add(Phaser.Timer.SECOND * 1, setTime, this);
+
+        // game.time.events.add(Phaser.Timer.SECOND * 1, setTime2, this);
+        // game.time.events.add(Phaser.Timer.SECOND * 2, setTime2, this);
+        // game.time.events.add(Phaser.Timer.SECOND * 1, setTime3, this);
+        // game.time.events.add(Phaser.Timer.SECOND * 2, setTime3, this);
+        // 创建分数版：
+        paizi = game.add.sprite(gameWidth*0.265,gameHeight*0.01, 'paizi');
+        paizi.scale.setTo((gameWidth/750)*1.3);
+        // 粒子效果：
+        good = game.add.text(gameWidth*0.425, gameHeight*0.02, '', { fill: '#ffffff' });
+        good.scale.setTo((gameWidth/750)*1.3);
+        
+        good.text = "得分:" + goodCounter;
+        
+        gameOver = game.add.sprite();
+        
+        
+        
+
+
+    }
+
+    function update() {
+        btn1.events.onInputDown.add(onDown1, this);
+        btn1.events.onInputUp.add(onUp1, this);
+        btn2.events.onInputDown.add(onDown2, this);
+        btn2.events.onInputUp.add(onUp2, this);
+        btn3.events.onInputDown.add(onDown3, this);
+        btn3.events.onInputUp.add(onUp3, this);
+        if(checkOverlap(notes3,btn3)){
+            // MISS
+            miss = game.add.sprite(gameWidth*0.34,gameHeight*0.4,'Miss');
+            miss.scale.setTo((gameWidth/750)*1,(gameHeight/1026)*1);
+            noteArrR[btnAddR].destroy();
+            btnAddR++;
+            // miss.alpha=0;
+            // miss.alpha = 1;
+            game.time.events.add(Phaser.Timer.SECOND * 0.2, missOUt, this);            
+        }else if(checkOverlap(notes2,btn2)){
+            
+            // MISS
+            miss = game.add.sprite(gameWidth*0.34,gameHeight*0.4,'Miss');
+            miss.scale.setTo((gameWidth/750)*1,(gameHeight/1026)*1);
+            noteArrC[btnAddC].destroy();
+            
+            btnAddC++;
+            // miss.alpha=0;
+            // miss.alpha = 1;
+            game.time.events.add(Phaser.Timer.SECOND * 0.2, missOUt, this);
+        }else if(checkOverlap(notes1,btn1)){
+            // MISS
+            miss = game.add.sprite(gameWidth*0.34,gameHeight*0.4,'Miss');
+            miss.scale.setTo((gameWidth/750)*1,(gameHeight/1026)*1);
+            noteArrL[btnAddL].destroy();
+            
+            btnAddL++;
+            game.time.events.add(Phaser.Timer.SECOND * 0.2, missOUt, this);
+           
+        }
+        // game.physics.arcade.collide(notes, btn3, collisionHandler, null, this);
+            
+
+        }
+        function startHide(){
+            yuan.destroy();
+            yuan1.destroy();
+            kaishi.destroy();         
+            // game.time.events.add(Phaser.Timer.SECOND * 0, setTime, this);
+            // game.time.events.add(Phaser.Timer.SECOND * 1, setTime, this);
+            readyMusic = game.add.audio('readyMusic');
+            readyMusic.allowMultiple = false;
+            readyMusic.play();
+            // readyMusic.onStop.add(readyStopped, this);
+            readyMusic.onStop.add(readyStopped, this);
+            
+            
+            // 添加主音乐：
+            mainMusic= game.add.audio('mainMusic');
+            // 监听主音乐结束：
+            mainMusic.onStop.add(musicStopped, this);
+            ready = game.add.sprite(gameWidth*0.18,gameHeight*0.3,'ready');
+                       
+            // ready.anchor.set(0.5,1);
+            ready.scale.setTo((gameWidth/750)*1); 
+            game.time.events.add(Phaser.Timer.SECOND * 0.5, readygo, this);
+            
+            // ready.scale.setTo((gameWidth/750)*0.1);
+            // ready.anchor.setTo(0.5);
+            
+            
+            
+        }
+        function readyStopped(){
+            mainMusic.play();
+            // 落音符！
+          game.time.events.add(Phaser.Timer.SECOND * 0, setTime, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 1.07, setTime2, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 2.03, setTime3, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 3.01, setTime2, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 4.16, setTime, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 5.11, setTime3, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 6.1, setTime3, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 7.12, setTime3, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 8.1, setTime3, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 9.11, setTime, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 10.13, setTime, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 11.11, setTime2, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 12.14, setTime3, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 13.07, setTime, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 14.05, setTime3, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 15.06, setTime2, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 16.17, setTime2, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 17.12, setTime, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 18.1, setTime2, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 19.8, setTime3, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 21.13, setTime3, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 22.16, setTime2, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 20.15, setTime, this);
+		  game.time.events.add(Phaser.Timer.SECOND * 25.12, setTime, this);
+           
+        }
+        function musicStopped(){
+            yuan = game.add.sprite(gameWidth*0.15,gameHeight*0.16,'yuan');
+            yuan1 = game.add.sprite(gameWidth*0.24,gameHeight*0.21,'yuan');
+            yuan.scale.setTo((gameWidth/750)*1.2);
+            yuan1.scale.setTo((gameWidth/750)*0.9);
+            gameOver = game.add.sprite(gameWidth*0.2,gameHeight*0.20,'jieshu');
+            gameOver.scale.setTo((gameWidth/750)*1.2);
+            restartBtn = game.add.sprite(gameWidth*0.42,gameHeight*0.33,'restart');
+            restartBtn.scale.setTo((gameWidth/750)*1);
+            restartBtn.inputEnabled = true;
+
+
+            // 给按钮添加事件;       
+            // 给精灵添加事件：
+            restartBtn.events.onInputDown.add(gameRestart, this); 
+        }
+        function gameRestart(){
+            game.state.restart();
+            goodCounter=0;
+            good.text = "得分:" + goodCounter;
+        }
+        function startShow(){
+            yuan.reset(gameWidth*0.15,gameHeight*0.16);
+           
+            
+            // yuan.scale.setTo((gameWidth/750)*1);
+        }
+        function readygo(){
+            
+            // gameWidth*0.18,gameHeight*0.3
+            readyTween = game.add.tween(ready.scale).to( { x: 0,y:0 }, 500,null, true);
+            readyTween = game.add.tween(ready).to( { x: gameWidth*0.48,y:gameHeight*0.36 }, 500,null, true);
+            readyTween.onComplete.add(gogo, this);
+        }
+        function gogo(){
+            go = game.add.sprite(gameWidth*0.35,gameHeight*0.3,'go');
+            go.scale.setTo((gameWidth/750)*1);
+            game.time.events.add(Phaser.Timer.SECOND * 0.5, goHide, this);
+            
+        }
+        function goHide(){
+            go.destroy();
+        }
+    
+    // function missIn(){
+    //     notes.destroy();
+    //     missOUt();
+    // }
+    function missOUt(){
+        // miss.alpha=0;
+        
+        miss.destroy();
+        
+    }
+
+    function func(){
+            // 粒子的位置
+        if(checkOverlap(noteArrL[btnAddL],boundary1 )){
+            goodCounter++;
+            good.text = "得分:" + goodCounter;
+            emitter1 = game.add.emitter(0.1, 0,10);
+            emitter1.makeParticles(['Gdian1','Gdian2','Gdian3','Gdian4']);
+            emitter1.gravity = -400;
+            emitter1.setScale(0.005,0.005);
+            emitter1.x = gameWidth*0.23;
+            emitter1.y = gameHeight*0.75;
+            emitter1.start(true, 1000, null, 30);
+            noteArrL[btnAddL].kill();
+            btnAddL++;
+        }
+    }
+    function func1(){
+        if(checkOverlap(noteArrC[btnAddC],boundary2 )){
+            goodCounter++;
+            good.text = "得分:" + goodCounter;
+            emitter2 = game.add.emitter(0, 0, 10);
+            emitter2.makeParticles(['Gdian1','Gdian2','Gdian3','Gdian4']);
+            emitter2.gravity = -400;
+            emitter2.setScale(0.05,0.05);
+            emitter2.x = gameWidth*0.5;
+            emitter2.y = gameHeight*0.75;
+            emitter2.start(true, 1000, null, 10);
+            noteArrC[btnAddC].kill();
+            btnAddC++;
+        }
+    }
+    function func2(){
+        if(checkOverlap(noteArrR[btnAddR],boundary3 )){
+            goodCounter++;
+            good.text = "得分:" + goodCounter;
+            emitter3 = game.add.emitter(0, 0, 10);
+            emitter3.makeParticles(['Gdian1','Gdian2','Gdian3','Gdian4']);
+            emitter3.gravity = -400;
+            emitter3.setScale(-10,-10);
+            emitter3.x = gameWidth*0.77;
+            emitter3.y = gameHeight*0.75;
+            emitter3.start(true, 1000, null, 20);
+            noteArrR[btnAddR].kill();
+            btnAddR++;
+        }
+    }
+    function setTime(){
+        noteArrL[noteAddL]=note;
+        noteArrL[noteAddL] = notes1.create(gameWidth*0.09,0,'yinfu0');
+        noteArrL[noteAddL].scale.setTo((gameWidth/750)*1);
+        noteArrL[noteAddL].body.velocity.y=gameHeight/3;
+//      alert(gameHeight/4.93);
+//      alert(gameHeight*0.2); 
+//      alert(gameHeight);
+        noteArrL[noteAddL].inputEnabled=true;
+        noteAddL++;
+
+    }
+    function setTime2(){
+        noteArrC[noteAddC]=note2;
+        noteArrC[noteAddC] = notes2.create(gameWidth*0.368,0,'yinfu1');
+        noteArrC[noteAddC].scale.setTo((gameWidth/750)*1);
+        noteArrC[noteAddC].body.velocity.y=gameHeight/3;
+        noteArrC[noteAddC].inputEnabled=true;
+        noteAddC++;
+    }
+    function setTime3(){
+        noteArrR[noteAddR]=note3
+        noteArrR[noteAddR] = notes3.create(gameWidth*0.643,0,'yinfu2');
+        noteArrR[noteAddR].scale.setTo((gameWidth/750)*1);
+        noteArrR[noteAddR].inputEnabled=true;
+        noteArrR[noteAddR].body.velocity.y=gameHeight/3;
+        noteAddR++;
+    }
+    function onDown1() {
+        guang1.alpha = 0;
+        Guang1.alpha=1;
+    }
+    function onUp1() {
+        guang1.alpha = 1;
+        Guang1.alpha=0;
+    }
+    function onDown2() {
+        guang2.alpha = 0;
+        Guang2.alpha = 1;
+    }
+
+    function onUp2() {
+        guang2.alpha = 1;
+       
+        Guang2.alpha = 0;
+        
+    }
+    function onDown3() {
+        guang3.alpha = 0;
+        Guang3.alpha=1;
+    }
+
+    function onUp3() {
+        guang3.alpha = 1;
+        Guang3.alpha=0;
+    }
+    
+function checkOverlap(note, boundary1) {
+    // 获取边界
+    if(note!=undefined){
+        var boundsA = note.getBounds();
+        var boundsB = boundary1.getBounds();
+        // 检测是否相交
+        return Phaser.Rectangle.intersects(boundsA, boundsB);
+
+    }
+}
+
+    
+    </script>
+</body>
+</html>

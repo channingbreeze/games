@@ -50,5 +50,6 @@ CrazyBird.BootState.prototype.create = function () {
       game.scale.setGameSize(HEIGHT, WIDTH);
     }
   }, this)
+
   game.state.start('PreloadState');
 };
