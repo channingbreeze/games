@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">    
+<script type="text/javascript">
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            var version = parseFloat(RegExp.$1);
+            if(version>2.3){
+                var phoneScale = parseInt(window.screen.width)/640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">');
+            }else{
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>汽车抓拍</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/app.css" rel="stylesheet" />
+
+<script type="text/javascript" src="../phaser.min.js"></script>
+<script type="text/javascript" src="js/boot.js"></script>
+<script type="text/javascript" src="js/preloader.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="js/game.js"></script>
+<script type="text/javascript">
+  !(function(){
+    var game = new Phaser.Game(640, 1008, Phaser.CANVAS, 'game')
+    game.state.add('boot', Car.Boot)
+    game.state.add('preloader', Car.Preloader)
+    game.state.add('menu', Car.Menu)
+    game.state.add('game', Car.Game)
+    game.state.start('boot')
+  })()
+</script>
+</head>
+<body>
+  <div id="shan"></div>
+  <div id="game-intro">
+    <div class="game-intro-wrap">
+      <div class="game-intro-scroll">
+        <div class="game-intro-content"></div>
+      </div>
+    </div>
+    <div class="game-intro-car"></div>
+    <div class="game-intro-close"></div>
+  </div>
+</body>
+</html>

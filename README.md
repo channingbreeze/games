@@ -62,6 +62,9 @@
 * [catapult - 横版弹弓游戏](http://game.webxinxin.com/catapult)
 * [lottery - 飞禽走兽彩票demo](http://game.webxinxin.com/lottery)
 * [rhythm - 赝品节奏大师](http://game.webxinxin.com/rhythm)
+* [snap - 汽车抓拍](http://game.webxinxin.com/snap)
+* [charge - 不充不行](http://game.webxinxin.com/charge)
+* [runrobot - 机器人向前冲](http://game.webxinxin.com/runrobot)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流

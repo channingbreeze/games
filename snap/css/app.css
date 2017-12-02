@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors H.yingzi (h.yingzi@gmail.com)
+ * @date    2015-03-02 17:51:27
+ * @version $Id$
+ */
+
+*{margin: 0;padding: 0;}
+ul{list-style: none;}
+html,body{font-size: 10px;;-webkit-touch-callout:none ;-webkit-user-select:none ;overflow: hidden;-webkit-tap-highlight-color: rgba(0,0,0,0);}
+#shan{background: #fff;width: 100%;height: 100%;position: fixed;display: none;}
+#game-intro{width: 100%;position: fixed;height: 100%;background:rgba(0,0,0,.8);display: none;}
+.game-intro-wrap{width: 560px;height: 694px;background: #fdf9f3;border-radius: 20px;margin:0 auto;margin-top:76px;overflow: hidden;}
+.game-intro-scroll{width: 505px;height: 624px;overflow-y: scroll;margin: 0 auto;margin-top: 20px;box-shadow: inset 0px 0px 30px #fff;}
+.game-intro-content{width: 505px;height: 1531px;background: url(../images/intro-bg.jpg) no-repeat;}
+.game-intro-car{width: 300px;height: 143px;background: url(../images/intro-car.png) no-repeat;position: absolute;top: 744px;right: 50px;}
+.game-intro-close{position: absolute;right: 20px;top: 50px;background: url(../images/intro-close.png) no-repeat;width: 52px;height: 56px;}
+
+#share{width: 100%;background: url(../images/share-bg.jpg) no-repeat;overflow: hidden;}
+#share .wrap{width: 96%;margin: 0 auto;margin-top:640px;}
+#share .title{border-top:1px solid #000;text-align: center;height: 31px;line-height: 30px;position: relative;}
+#share .title h2{font-size: 3rem;background: #fff;width:200px;height:30px;position: absolute;top: -16px;left:50%;margin-left: -100px;}
+#share .share-btn{position: absolute;width: 184px;height: 65px;background: url(../images/share-btn.jpg) no-repeat;top: 520px;left: 50%;margin-left: -92px;}
+#share ul{padding: 0 10px;}
+#share ul li{border-bottom: 1px solid #e5e5e5;height: 110px;position: relative;margin-top: 20px;}
+#share ul li img{float: left;overflow:hidden; width: 93px;height: 93px;margin-right: 20px;border-radius: 10%;}
+#share ul li h3{font-size: 2.5rem;color: #000;display: inline-block;line-height: 50px;}
+#share ul li span{font-size:2rem;color: #737373;display: inline-block;}
+#share ul li .xin{width: 63px;height: 53px;background: url(../images/share-xin.jpg) no-repeat;float: right;overflow: hidden;position: absolute;right: 0;top: 20px;}
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="120" height="12" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="platforms" tilewidth="64" tileheight="64">
+  <image source="../tiles/platforms.png" width="640" height="384"/>
+ </tileset>
+ <tileset firstgid="61" name="gem" tilewidth="64" tileheight="64">
+  <image source="../tiles/gem.png" width="64" height="64"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="120" height="12">
+  <data encoding="base64" compression="zlib">
+   eJzdWNlSwzAMNGe5e4WjDC3lGlqu4Qfy/7+FNWiHRbWdxHV5YGd20tiKLMuyLNe5PCw93zxfPd8zdaR0vujvF31/yxhnab5P6bxVLuj3wHPoOdXnQCnvlX43JDK2PLc9d1R+r6PtITyrXVWgj23/T6iVuRhlfjfrIFva56Gxj4ilUbu4n9f1P3Q0jd3Wrtqwisg2fWv3UMgOtC0S9ucgtIbjwmOIvlPPM89LffYDcneej2uMAx/NVddTB/3Sd+/5oDL87Uj1zmgMtKF/FJBnGbbRtnNbbP/mxr2NScE0U1cMog/nUeg8aEJof0i8SKxwnIxdudgUWyfKsY59RE/sC3keKCHP+S+0jjbPI+6gO4RQrDBiuQkxKf4K7alc2P2A9e1yFgEHRMGV57X79vsNyU1dfmzaXAx7UTNxn+wxqV8mbrXOAhlcP+261frpWZkC4oJzBiOVm+qI/mPPk4Zx/wLY96g7ZX1lfiXzDM4PiXHxRyoPzN3qeq5TFyGWUuOlzo8U+DyxOPe8aG3l5oB9Dx9cuZ+9tQmIP2zsWP+WAMeUzGffs6fPEgjZjFzNtRDYBLlDlrzj5qBLHYK8afNl6hxsGtfWWZtCbr1lzx6+q5dC7I6UaouxjV4r08a+lM0puyt6z6kl26Bpnk3z5zUduu65MOULQSwPoZ3RM/L8tPtD9qPUMLH/f9qsv4v027GtPGzhOxTXkiNqD92lutz9U/O0uvbdbz+L7cMID913DXtoaNts3v80/CCG2mOyll3PqVg+biM3MGQb7dozIYN+UNpwx8P51zd6+XzOnSPWDnc3uzbszy+NCz/C
+  </data>
+ </layer>
+</map>
