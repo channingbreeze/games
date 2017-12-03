@@ -313,12 +313,12 @@ DO.Game.prototype = {
             c === e && (d.fillStyle = "#252525"), d.fillRect(7 * c, 0, 5, 30), c++
         }, this)), d.dirty = true, this.chargBmd[a] = e
     }, handonUp: function () {
-        this.isOver || (this.chargTween(this.currentCharg, false), this.currentCharg = 9, this.assets/music.zizizi.pause(), this.assets/music.gogo.pause())
+        this.isOver || (this.chargTween(this.currentCharg, false), this.currentCharg = 9, this.music.zizizi.pause(), this.music.gogo.pause())
     }, handonDown: function (a, b) {
         if (!this.isOver) {
             var c = b.x,
                 d = b.y;
-            this.chargTween(this.checkClickCharg(c, d), true), this.assets/music.zizizi.play(), this.assets/music.gogo.play()
+            this.chargTween(this.checkClickCharg(c, d), true), this.music.zizizi.play(), this.music.gogo.play()
         }
     }, checkClickCharg: function (a, b) {
         if (b > this.world.height - 230) {
@@ -343,7 +343,7 @@ DO.Game.prototype = {
             }, a)
         }
         var b, c, d, f, g, a = this;
-        this.isOver = true, this.carTime.pause(), this.bg.animations.stop(), this.timer.stop(), this.assets/music.zizizi.pause(), totalTime = this.timesecond, document.title = "坚持30秒算你行！我" + parseInt(this.timesecond / 60, 10) + "秒就不行了，你行你来啊！", this.chargTween(this.currentCharg, false), b = this.add.bitmapData(640, this.world.height), b.ctx.beginPath(), b.ctx.fillStyle = "#fe0000", b.ctx.rect(0, 0, 640, this.world.height), b.ctx.fill(), c = this.add.sprite(0, 0, b), c.alpha = .29, this.time.events.repeat(300, 6, function () {
+        this.isOver = true, this.carTime.pause(), this.bg.animations.stop(), this.timer.stop(), this.music.zizizi.pause(), totalTime = this.timesecond, document.title = "坚持30秒算你行！我" + parseInt(this.timesecond / 60, 10) + "秒就不行了，你行你来啊！", this.chargTween(this.currentCharg, false), b = this.add.bitmapData(640, this.world.height), b.ctx.beginPath(), b.ctx.fillStyle = "#fe0000", b.ctx.rect(0, 0, 640, this.world.height), b.ctx.fill(), c = this.add.sprite(0, 0, b), c.alpha = .29, this.time.events.repeat(300, 6, function () {
             c.alpha = .29 === c.alpha ? 0 : .29
         }), d = this.add.sprite(this.world.centerX, this.world.centerY, "gameover-number"), d.anchor = {
             x: .5,
@@ -396,7 +396,7 @@ DO.Game.prototype = {
                 }, this), this.youIcon = this.add.sprite(this.world.centerX + 190, 250, "ad-you"), this.youIcon.anchor.setTo(.5), this.arcProgress(10, 34, 90, 1, 250, 0, -117, false, "0x6eaeea", "0x0b3245"), this.arcProgress(10, -124, 90, 1, 230, 0, -104, false, "0x0b3245", "0x6eaeea"), this.arcProgress(10, 88, 140, 1, 190, 0, -114, false, "0x0b3245", "0x0b3245"), this.arcProgress(20, 88, 190, 1, 220, 0, -114, false, "0x0b3245", "0x0b3245")
             }, this)
         }, this), setTimeout(function () {
-            a.assets/music.over.play()
+            a.music.over.play()
         }, 1e3 / 60)
     }, again: function () {
         return document.title = "不充不行", this.state.start("game")
