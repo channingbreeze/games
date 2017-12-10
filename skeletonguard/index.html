@@ -1,0 +1,630 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>skeletonguard</title>
+	<style>
+		html,body{
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		#container canvas{
+			margin: auto;
+		}
+	</style>
+	<script src="../phaser.min.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+	<script>
+	onload=function(){
+		
+		var startText;
+		var restartText;
+		var welcome;
+		var gameover;
+		var isWin = true;
+
+		var bootState = function(game){
+			this.preload=function(){
+				game.load.image('loading','assets/loading.jpg');
+			};
+			this.create=function(){
+				game.state.start('loader');
+			};
+		}
+
+		var loaderState=function(game){
+			var progressText;
+			this.init=function(){
+				var sprite=game.add.image(game.world.centerX,game.world.centerY,'loading');
+				sprite.anchor={x:0.5,y:0.5};
+				progressText=game.add.text(game.world.centerX,game.world.centerY+30,'0%',{fill:'#fff',fontSize:'16px'});
+				progressText.anchor={x:0.5,y:0.5};
+			};
+			this.preload=function(){
+				game.load.image('back','assets/backgrounds/back.png');//背景
+				game.load.image('sky','assets/backgrounds/sky.png');
+				game.load.image('rock','assets/backgrounds/rock.png');
+				game.load.spritesheet('tower','assets/backgrounds/tower.png',139,261.5);
+				game.load.spritesheet('stones','assets/backgrounds/stones.png',170,128);
+				////////////////////////////////////////////////////////////////////////双方士兵			
+				for(var i=1; i<=18; i++) {
+					game.load.image('m1_' + i,'assets/sprites/m1/' + i + '.png');
+					game.load.image('m2_' + i,'assets/sprites/m2/' + i + '.png');
+					game.load.image('m3_' + i,'assets/sprites/m3/' + i + '.png');
+					game.load.image('s1_' + i,'assets/sprites/s1/' + i + '.png');
+					game.load.image('s2_' + i,'assets/sprites/s2/' + i + '.png');
+					game.load.image('s3_' + i,'assets/sprites/s3/' + i + '.png');
+				}
+
+				game.load.spritesheet('buttons','assets/buttons/buttons.png',50,50);
+				game.load.spritesheet('buttons2','assets/buttons/buttons2.png',300,113);
+
+				game.load.onFileComplete.add(function(progress){
+					progressText.text=progress+'%';
+				});
+
+			};
+			this.create=function(){
+				if (progressText.text=="100%") {
+					game.state.start('welcome');
+				}
+			};
+		}
+
+		var welcomeState = function(game){
+			this.create=function(){
+				var back = game.add.image(0,0,'back');
+				back.width=512;
+				back.height=256;
+				startText=game.add.text(game.world.centerX,game.world.centerY,'Click anywhere on the screen to start',{fill:'#000',fontSize:'21px'});
+				startText.anchor={x:0.5,y:0.5};
+				game.input.onDown.addOnce(Down, this);
+			};
+		}
+		var gameoverState = function(game){
+			this.create=function(){
+				var back = game.add.image(0,0,'back');
+				back.width=512;
+				back.height=256;
+				var imgLost = game.add.sprite(0,0,'buttons2');
+				imgLost.x = game.world.centerX;
+				imgLost.y = game.world.centerY;
+				imgLost.anchor={x:0.5,y:0.5};
+				imgLost.alpha = 0;
+				var imgWin = game.add.sprite(0,0,'buttons2');
+				imgWin.frame = 1;
+				imgWin.x = game.world.centerX;
+				imgWin.y = game.world.centerY;
+				imgWin.anchor={x:0.5,y:0.5};
+				imgWin.alpha = 0;
+				if (isWin) {imgWin.alpha = 1;} else {imgLost.alpha = 1;} //可以在背景加上双方领地破败
+				// restartText=game.add.text(game.world.centerX,game.world.centerY,'Click anywhere on the screen to restart',{fill:'#fff',fontSize:'16px'});
+				// restartText.anchor={x:0.5,y:0.5};
+				game.input.onDown.addOnce(reDown, this);
+			};
+		}
+////////////////////////////////////////////////////////////////////////////////////////
+		var gameState = function(game){
+
+			var tower;//我方高塔
+			var nest;//怪物巢穴
+			var rock;
+			var walking = true;//是否行走
+			var walkmoving = true;//是否播放动态图
+			var m1;//我方骑兵
+			var m2;//我方长枪兵
+			var m3;//我方弓兵
+			var s1;//骷髅骑兵
+			var s2;//骷髅长枪兵
+			var s3;//骷髅弓兵
+
+			var m1_count = 0;//我方士兵限制出兵数量 防止程序出错 \\^_^//
+			var m2_count = 0;
+			var m3_count = 0;
+
+			var s_m_i=0;//骑兵接触
+
+			var m1_=[];
+			var m2_=[];
+			var m3_=[];
+			///////////////////////
+			var s1_=[];
+			var s2_=[];
+			var s3_=[];
+			//////////////////////
+			var s_f;
+			this.create=function(){
+				for(var i=0; i<18; i++) {
+					m1_[i]= game.add.sprite(-100,0,'m1_' + (i+1));
+					m2_[i]= game.add.sprite(-100,0,'m2_' + (i+1));
+					m3_[i]= game.add.sprite(-100,0,'m3_' + (i+1));
+					s1_[i]= game.add.sprite(-100,0,'s1_' + (i+1));
+					s2_[i]= game.add.sprite(-100,0,'s2_' + (i+1));
+					s3_[i]= game.add.sprite(-100,0,'s3_' + (i+1));
+				}
+				
+				var sky = game.add.tileSprite(0, 0, 335, 87, 'sky').autoScroll(9,0);//天空动态
+
+				var back = game.add.image(0,0,'back');//战场背景
+				back.width=512;
+				back.height=256;
+
+				tower = game.add.sprite(0,0,'tower');// frame = 0 //我方高塔
+				tower.scale.setTo(.9);
+				tower.x = 330;
+
+				rock = game.add.image(0,0,'rock');
+				rock.scale.setTo(.9);
+				rock.x=260;
+				rock.y=-10;
+				nest = game.add.sprite(0,0,'stones');//怪物巢穴
+				nest.scale.setTo(.9);
+				nest.x=150;
+				nest.y=-15;
+
+				////////////////////////////////////////创建士兵组群
+				m1=game.add.group();
+				m1.enableBody=true;
+
+				m2=game.add.group();
+				m2.enableBody=true;
+
+				m3=game.add.group();
+				m3.enableBody=true;
+				///////////////////////////////////
+				s1=game.add.group();
+				s1.enableBody=true;
+
+				s2=game.add.group();
+				s2.enableBody=true;
+
+				s3=game.add.group();
+				s3.enableBody=true;
+
+//////////////////////////////////////////////////////////////////////////////创建士兵
+				var btn_m1 = game.add.sprite(0,0,'buttons');
+				btn_m1.frame=0;//骑兵图标
+				btn_m1.scale.setTo(.8);
+				btn_m1.x = game.width - btn_m1.width;
+				btn_m1.y = game.height - btn_m1.height;
+				btn_m1.inputEnabled = true;
+				btn_m1.events.onInputDown.add(function(){
+					//这里创建骑兵
+					if (m1_count > 1) {return false;}//当骑兵数量为2 则不可再生成骑兵
+					var m1_m=m1.create(400,0,'m1_1');
+					m1_count++;//骑兵数量累加1
+					for (var i = 0; i < m1.length; i++) {
+						m1.getChildAt(i).y = game.height - 40 - m1.getChildAt(i).height;
+						m1.getChildAt(i).scale.x = -1;
+						m1.getChildAt(i).texture = m1_[0].texture;
+					}
+				},this);
+
+				var btn_m2 = game.add.sprite(0,0,'buttons');
+				btn_m2.frame=1;//长枪兵图标
+				btn_m2.scale.setTo(.8);
+				btn_m2.x = game.width - btn_m1.width*2;
+				btn_m2.y = game.height - btn_m2.height;
+				btn_m2.inputEnabled = true;
+				btn_m2.events.onInputDown.add(function(){
+					//这里创建长枪兵
+					if (m2_count > 1) {return false;}
+					var m2_m=m2.create(400,0,'m2_1');
+					m2_count++;
+					for (var i = 0; i < m2.length; i++) {
+						m2.getChildAt(i).y = game.height - 40 - m2.getChildAt(i).height;
+						m2.getChildAt(i).scale.x = -1;
+						m2.getChildAt(i).texture = m2_[0].texture;
+					}
+				},this);
+
+				var btn_m3 = game.add.sprite(0,0,'buttons');
+				btn_m3.frame=2;//弓兵图标
+				btn_m3.scale.setTo(.8);
+				btn_m3.x = game.width - btn_m1.width*3;
+				btn_m3.y = game.height - btn_m3.height;
+				btn_m3.inputEnabled = true;
+				btn_m3.events.onInputDown.add(function(){
+					//这里创建弓兵
+					if (m3_count > 1) {return false;}
+					var m3_m=m3.create(400,0,'m3_1');
+					m3_count++;
+					for (var i = 0; i < m3.length; i++) {
+						m3.getChildAt(i).y = game.height - 40 - m3.getChildAt(i).height;
+						m3.getChildAt(i).scale.x = -1;
+						m3.getChildAt(i).texture = m3_[0].texture;
+					}
+				},this);
+
+				s_f=Array(50,170);//楼层数据
+
+				// 随机时间随机创建敌对兵种
+				game.time.events.repeat(Phaser.Timer.SECOND * game.rnd.between(2,4), 100, function(){
+
+					var r = game.rnd.between(1,3);
+					//document.title = r;
+					var s_sk;
+					var s_sk_ = [];
+					var s_name = "";
+					switch(r)
+					{
+					case 1:
+					  s_name = "s1_1";
+					  s_sk = s1;
+					  s_sk_ = s1_;
+					  break;
+					case 2:
+					  s_name = "s2_1";
+					  s_sk = s2;
+					  s_sk_ = s2_;
+					  break;
+					default:
+					  s_name = "s3_1";
+					  s_sk = s3;
+					  s_sk_ = s3_;
+					}
+
+					var skeleton=s_sk.create(30,50,s_name);
+					skeleton.scale.x = -1;
+					skeleton.texture = s_sk_[0].texture;
+					skeleton.f_i=0;
+					skeleton.i=0;
+
+				}, this);//此处创建一百个敌对士兵
+
+//////////////////////////////////////////////////////////////
+// 				//m1.y=170; 正常公式
+// 				//alert(game.height-m1.height-170); 40 == 底部距离
+//////////////////////////////////////////////////////////////
+			};
+			var dt=0;
+			var m1_i=0;
+			var m2_i=0;
+			var m3_i=0;
+			var m1_m_i=5;//动画
+			var m2_m_i=5;
+			var m3_m_i=5;
+			var s1_m_i=5;//动画
+			var s2_m_i=5;
+			var s3_m_i=5;
+			var m1_d_i=14;//死亡
+			var m2_d_i=14;
+			var m3_d_i=14;
+			var s1_d_i=14;//死亡
+			var s2_d_i=14;
+			var s3_d_i=14;
+			var s1_i=0;
+			var s2_i=0;
+			var s3_i=0;
+			var t_hp = 5;
+			var n_hp = 10;
+			this.update=function(){
+
+				if (m1_count < 0) {m1_count=0;}
+				if (m2_count < 0) {m2_count=0;}
+				if (m3_count < 0) {m3_count=0;}
+
+				for (var i = 0; i < m1.length; i++) {//骑兵进入怪物巢穴
+					if (walking) m1.getChildAt(i).x--;
+					if (m1.getChildAt(i).x < 0) {
+						n_hp--;
+						nest.frame++;
+						m1.getChildAt(i).destroy();
+						m1_count--;
+					}
+				}
+				for (var i = 0; i < m2.length; i++) {//长枪兵进入怪物巢穴
+					if (walking) m2.getChildAt(i).x--;
+					if (m2.getChildAt(i).x < 0) {
+						n_hp--;
+						nest.frame++;
+						m2.getChildAt(i).destroy();
+						m2_count--;
+					}
+				}
+				for (var i = 0; i < m3.length; i++) {//弓兵进入怪物巢穴
+					if (walking) m3.getChildAt(i).x--;
+					if (m3.getChildAt(i).x < 0) {
+						n_hp--;
+						nest.frame++;
+						m3.getChildAt(i).destroy();
+						m3_count--;
+					}
+				}
+				//////////////////////////////////////////////////////////////////////双方士兵进入敌方领地
+				for (var i = 0; i < s1.length; i++) {//骷髅骑兵进入我方防御塔
+					if (walking) s1.getChildAt(i).x++;
+					if (s1.getChildAt(i).x >= rock.x && s1.getChildAt(i).y == s_f[0]-15) {
+						s1.getChildAt(i).i++;
+						if (s1.getChildAt(i).i==1) {s1.getChildAt(i).f_i++}
+						s1.getChildAt(i).x = 25;
+						s1.getChildAt(i).y = s_f[s1.getChildAt(i).f_i]-15;
+					}
+					if (s1.getChildAt(i).x > tower.x+75) {
+						t_hp--;
+						tower.frame++;
+						s1.getChildAt(i).destroy();
+					}
+				}
+				for (var i = 0; i < s2.length; i++) {//骷髅长枪兵进入我方防御塔
+					if (walking) s2.getChildAt(i).x++;
+					if (s2.getChildAt(i).x >= rock.x && s2.getChildAt(i).y == s_f[0]) {
+						s2.getChildAt(i).i++;
+						if (s2.getChildAt(i).i==1) {s2.getChildAt(i).f_i++}
+						s2.getChildAt(i).x = 25;
+						s2.getChildAt(i).y = s_f[s2.getChildAt(i).f_i];
+					}
+					if (s2.getChildAt(i).x > tower.x+75) {
+						t_hp--;
+						tower.frame++;
+						s2.getChildAt(i).destroy();
+					}
+				}
+				for (var i = 0; i < s3.length; i++) {//骷髅弓兵进入我方防御塔
+					if (walking) s3.getChildAt(i).x++;
+					if (s3.getChildAt(i).x >= rock.x && s3.getChildAt(i).y == s_f[0]) {
+						s3.getChildAt(i).i++;
+						if (s3.getChildAt(i).i==1) {s3.getChildAt(i).f_i++}
+						s3.getChildAt(i).x = 25;
+						s3.getChildAt(i).y = s_f[s3.getChildAt(i).f_i];
+					}
+					if (s3.getChildAt(i).x > tower.x+75) {
+						t_hp--;
+						tower.frame++;
+						s3.getChildAt(i).destroy();
+					}
+				}
+				/////////////////////////////////////////双方领地败亡
+
+				if (n_hp==0) {isWin=true;game.state.start("gameover");}
+				if (t_hp==0) {isWin=false;game.state.start("gameover");}
+
+				game.physics.arcade.collide(s1, m1, function(s1,m1){//骑兵同归于尽
+					s1.destroy();
+					m1.destroy();
+					m1_count--;
+					s_m_i++;
+					document.title = s_m_i;
+					document.title = m1_count;
+				}, null, this);
+				game.physics.arcade.collide(s2, m2, function(s2,m2){//长枪同归于尽
+					s2.destroy();
+					m2.destroy();
+					m2_count--;
+					document.title = m2_count;
+				}, null, this);
+				game.physics.arcade.collide(s3, m3, function(s3,m3){//弓兵同归于尽
+					s3.destroy();
+					m3.destroy();
+					m3_count--;
+					document.title = m3_count;
+				}, null, this);
+				////////////////////////////////////////////////////////////////////////////////
+// s3 m2死亡
+// s1 m3死亡
+// s2 m1死亡
+
+// m3 s2死亡
+// m1 s3死亡
+// m2 s1死亡
+				////////////////////////////////////////////////////////////////////////////////
+				game.physics.arcade.collide(s3, m2, function(s3,m2){
+					walking=false;
+					walkmoving=false;
+					game.time.events.repeat(Phaser.Timer.SECOND / 30, 5, function(){//在碰撞检测中 频率加快
+						if (s3_m_i==11) {return false}
+						s3.texture = s3_[s3_m_i++].texture;//骷髅弓兵行走图
+						s3.y = game.height - 40 - s3.height;
+					}, this);// 在碰撞检测中 设置一个变量保存boolean update中进行控制
+					game.time.events.repeat(Phaser.Timer.SECOND / 30, 5, function(){
+						if (m2_d_i==18) {return false}
+						m2.texture = m2_[m2_d_i++].texture;//我方长枪兵死亡
+						m2.y = game.height - 40 - m2.height;
+					}, this);
+					game.time.events.add(Phaser.Timer.SECOND / 5, function(){
+						m2.destroy();
+						m2_count--;
+						document.title = m2_count;
+					}, this);
+					walking=true;
+					walkmoving=true;	
+					s3_m_i=5;	
+					m2_d_i=14;
+				}, null, this);
+				game.physics.arcade.collide(s1, m3, function(s1,m3){
+					walking=false;
+					walkmoving=false;
+					game.time.events.repeat(Phaser.Timer.SECOND / 30, 5, function(){//在碰撞检测中 频率加快
+						if (s1_m_i==11) {return false}
+						s1.texture = s1_[s1_m_i++].texture;//骷髅骑兵行走图
+						s1.y = game.height - 40 - s1.height;
+					}, this);// 在碰撞检测中 设置一个变量保存boolean update中进行控制
+					game.time.events.repeat(Phaser.Timer.SECOND / 30, 5, function(){
+						if (m3_d_i==18) {return false}
+						m3.texture = m3_[m3_d_i++].texture;//我方弓兵死亡
+						m3.y = game.height - 40 - m3.height;
+					}, this);
+					game.time.events.add(Phaser.Timer.SECOND / 5, function(){
+						m3.destroy();
+						m3_count--;
+						document.title = m3_count;
+					}, this);
+					walking=true;
+					walkmoving=true;	
+					s1_m_i=5;	
+					m3_d_i=14;
+				}, null, this);
+				game.physics.arcade.collide(s2, m1, function(s2,m1){
+					walking=false;
+					walkmoving=false;
+					game.time.events.repeat(Phaser.Timer.SECOND / 30, 5, function(){//在碰撞检测中 频率加快
+						if (s2_m_i==11) {return false}
+						s2.texture = s2_[s2_m_i++].texture;//骷髅长枪兵行走图
+						s2.y = game.height - 40 - s2.height;
+					}, this);// 在碰撞检测中 设置一个变量保存boolean update中进行控制
+					game.time.events.repeat(Phaser.Timer.SECOND / 30, 5, function(){
+						if (m1_d_i==18) {return false}
+						m1.texture = m1_[m1_d_i++].texture;//我方骑兵死亡
+						m1.y = game.height - 40 - m1.height;
+					}, this);
+					game.time.events.add(Phaser.Timer.SECOND / 5, function(){
+						m1.destroy();
+						m1_count--;
+						document.title = m1_count;
+					}, this);
+					walking=true;
+					walkmoving=true;	
+					s2_m_i=5;	
+					m1_d_i=14;
+				}, null, this);
+				game.physics.arcade.collide(m3, s2, function(m3,s2){
+					walking=false;
+					walkmoving=false;
+					game.time.events.repeat(Phaser.Timer.SECOND / 30, 5, function(){
+						if (m3_m_i==11) {return false}
+						m3.texture = m3_[m3_m_i++].texture;//我方弓兵行走图
+						m3.y = game.height - 40 - m3.height;
+					}, this);
+					game.time.events.repeat(Phaser.Timer.SECOND / 30, 5, function(){
+						if (s2_d_i==18) {return false}
+						s2.texture = s2_[s2_d_i++].texture;//骷髅长枪兵死亡
+						s2.y = s_f[s2.f_i]+20;
+					}, this);
+					game.time.events.add(Phaser.Timer.SECOND / 5, function(){
+						s2.destroy()
+					}, this);
+					walking=true;
+					walkmoving=true;	
+					m3_m_i=5;	
+					s2_d_i=14;	}, null, this);
+				game.physics.arcade.collide(m1, s3, function(m1,s3){
+					walking=false;
+					walkmoving=false;
+					game.time.events.repeat(Phaser.Timer.SECOND / 30, 5, function(){//在overlap中 频率加快
+						if (m1_m_i==11) {return false}
+						m1.texture = m1_[m1_m_i++].texture;//我方骑兵行走图
+						m1.y = game.height - 40 - m1.height;
+					}, this);// 在碰撞检测中 设置一个变量保存boolean update中进行控制
+					game.time.events.repeat(Phaser.Timer.SECOND / 30, 5, function(){
+						if (s3_d_i==18) {return false}
+						s3.texture = s3_[s3_d_i++].texture;//骷髅弓兵死亡
+						s3.y = s_f[1]+15;
+					}, this);
+					game.time.events.add(Phaser.Timer.SECOND / 5, function(){
+						s3.destroy()
+					}, this);
+					walking=true;
+					walkmoving=true;	
+					m1_m_i=5;	
+					s3_d_i=14;			
+				}, null, this);
+				game.physics.arcade.collide(m2, s1, function(m2,s1){
+					walking=false;
+					walkmoving=false;
+					game.time.events.repeat(Phaser.Timer.SECOND / 30, 5, function(){
+						if (m2_m_i==11) {return false}
+						m2.texture = m2_[m2_m_i++].texture;//我方长枪兵行走图
+						m2.y = game.height - 40 - m2.height;
+					}, this);
+					game.time.events.repeat(Phaser.Timer.SECOND / 30, 5, function(){
+						if (s1_d_i==18) {return false}
+						s1.texture = s1_[s1_d_i++].texture;//骷髅骑兵死亡
+						s1.y = s_f[1]-5;
+					}, this);
+					game.time.events.add(Phaser.Timer.SECOND / 5, function(){
+						s1.destroy()
+					}, this);
+					walking=true;
+					walkmoving=true;	
+					m2_m_i=5;	
+					s1_d_i=14;	
+				}, null, this);
+
+				if (walkmoving==false) {return false;}//双方停止脚步 以上可播放攻击、死亡动画
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+				dt++;
+				// if (dt%60==0) tower.frame = tower.frame+1;//高塔毁坏 6 --5
+				// if (dt%60==0) nest.frame = nest.frame+1;//巢穴毁坏 11   -- 10
+				if (dt%10==0) {
+					for (var i = 0; i < m1.length; i++) {
+						m1.getChildAt(i).texture = m1_[m1_i++].texture;//骑兵行走图
+						m1.getChildAt(i).y = game.height - 40 - m1.getChildAt(i).height;
+						if (m1_i==4) {m1_i=0}//我方骑兵行走
+					}
+					for (var i = 0; i < m2.length; i++) {
+						m2.getChildAt(i).texture = m2_[m2_i++].texture;//长枪兵行走图
+						m2.getChildAt(i).y = game.height - 40 - m2.getChildAt(i).height;
+						if (m2_i==4) {m2_i=0}//我方长枪兵行走
+					}
+					for (var i = 0; i < m3.length; i++) {
+						m3.getChildAt(i).texture = m3_[m3_i++].texture;//弓兵行走图
+						m3.getChildAt(i).y = game.height - 40 - m3.getChildAt(i).height;
+						if (m3_i==4) {m3_i=0}//我方弓兵行走
+					}
+					//////////////////////////////////////////////////////////////////////////////双方行走图
+					for (var i = 0; i < s1.length; i++) {
+						s1.getChildAt(i).texture = s1_[s1_i++].texture;//骷髅骑兵行走图
+						if (s1.getChildAt(i).i==0) {
+							s1.getChildAt(i).y = s_f[s1.getChildAt(i).f_i]-15;
+						}
+						if (s1_i==4) {s1_i=0}//骷髅骑兵行走
+					}
+					for (var i = 0; i < s2.length; i++) {
+						s2.getChildAt(i).texture = s2_[s2_i++].texture;//骷髅长枪兵行走图
+						if (s2.getChildAt(i).i==0) {
+							s2.getChildAt(i).y = s_f[s2.getChildAt(i).f_i];
+						}
+						if (s2_i==4) {s2_i=0}//骷髅长枪兵行走
+					}
+					for (var i = 0; i < s3.length; i++) {
+						s3.getChildAt(i).texture = s3_[s3_i++].texture;//骷髅弓兵行走图
+						if (s3.getChildAt(i).i==0) {
+							s3.getChildAt(i).y = s_f[s3.getChildAt(i).f_i];
+						}
+						if (s3_i==4) {s3_i=0}//骷髅弓兵行走
+					}
+				}
+			}
+		}
+////////////////////////////////////////////////////////////////////////////////////////
+function Down(){game.state.start('main');}
+function reDown(){window.location.reload();}
+		var game=new Phaser.Game(512,256,Phaser.CANVAS,'container');
+		game.state.add('boot',bootState);
+		game.state.add('loader',loaderState);
+		game.state.add('welcome',welcomeState);
+		game.state.add('main',gameState);
+		game.state.add('gameover',gameoverState);
+		game.state.start('boot');
+	}
+	</script>
+</body>
+</html>
+<!--
+弓箭 克制 长枪
+
+骑士 克制 弓箭
+
+长枪 克制 骑兵
+
+s1 m1 骑兵 
+
+s2 m2 长枪兵
+
+s3 m3 弓兵
+
+
+s3 m2死亡
+s1 m3死亡
+s2 m1死亡
+
+m3 s2死亡
+m1 s3死亡
+m2 s1死亡
+
+双方相碰兵种相同 一方一只 另一方三只 则出错
+-->

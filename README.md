@@ -65,6 +65,8 @@
 * [snap - 汽车抓拍](http://game.webxinxin.com/snap)
 * [charge - 不充不行](http://game.webxinxin.com/charge)
 * [runrobot - 机器人向前冲](http://game.webxinxin.com/runrobot)
+* [allalive - 一个都不能死](http://game.webxinxin.com/allalive)
+* [skeletonguard - 骷髅防塔](http://game.webxinxin.com/skeletonguard)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流

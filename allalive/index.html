@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../phaser.min.js"></script>
+</head>
+<body>
+	<script>
+	onload=function(){
+
+		var time_start_count = 0;
+		var bootState = function(game){
+			this.preload=function(){
+				game.load.image('loading','assets/preloader.gif');
+			};
+			this.create=function(){
+				game.state.start('loader');
+			};
+		}
+
+		var loaderState=function(game){
+			var progressText;
+			this.init=function(){
+				var sprite=game.add.image(game.world.centerX,game.world.centerY,'loading');
+				sprite.anchor={x:0.5,y:0.5};
+				progressText=game.add.text(game.world.centerX,game.world.centerY+30,'0%',{fill:'#fff',fontSize:'16px'});
+				progressText.anchor={x:0.5,y:0.5};
+			};
+			this.preload=function(){
+				game.load.image('background','assets/background.jpg');
+				game.load.image('help','assets/help.jpg');
+				game.load.image('share','assets/share.png');
+				game.load.image('area','assets/area.jpg');
+				game.load.image('title','assets/ygdbns.jpg');
+				game.load.image('myScore','assets/myScore.jpg');
+				game.load.image('line1','assets/line1.png');
+				game.load.image('line2','assets/line2.png');
+				game.load.spritesheet('button',"assets/button.png",272,80);
+				game.load.image('block','assets/block.jpg');
+				game.load.spritesheet('player',"assets/xiaoren.png",23,38);
+				game.load.spritesheet('wu',"assets/wu.png",123.5,100);
+				game.load.onFileComplete.add(function(progress){
+					progressText.text=progress+'%';
+				});
+			};
+			this.create=function(){
+				if (progressText.text=="100%") {
+					game.state.start('welcome');
+				}
+			};
+		}
+
+		var welcomeState = function(game){
+			this.create=function(){
+				game.add.image(0,0,"background");
+				var title = game.add.image(0,0,"title");
+				title.scale.setTo(.5);
+				title.x = game.world.centerX - title.width/2;
+				game.add.sprite(0,0,"line1").y = title.y + title.height;
+				game.add.sprite(0,0,"line1").y = game.world.height - title.height;
+				var btnStart = game.add.image(0,0,"button");
+				btnStart.scale.setTo(.6);
+				btnStart.x = game.world.centerX - btnStart.width/2;
+				btnStart.y = title.height * 2;
+				var textStart = game.add.text(0,0,"开始游戏");
+				textStart.fill = "white"
+				textStart.x = btnStart.x + (btnStart.width - textStart.width)/2;
+				textStart.y = btnStart.y + (btnStart.height - textStart.height)/2;
+				var btnHelp = game.add.image(0,0,"button");
+				btnHelp.scale.setTo(.6);
+				btnHelp.x = game.world.centerX - btnStart.width/2;
+				btnHelp.y = title.height * 3.125;
+				var textHelp = game.add.text(0,0,"游戏说明");
+				textHelp.fill = "white"
+				textHelp.x = btnHelp.x + (btnHelp.width - textHelp.width)/2;
+				textHelp.y = btnHelp.y + (btnHelp.height - textHelp.height)/2;
+				btnStart.inputEnabled = true;
+				btnStart.events.onInputDown.addOnce(Down,this);
+				btnHelp.inputEnabled = true;
+				btnHelp.events.onInputDown.add(function(){
+					var help = game.add.image(0,0,"help");
+					var title = game.add.image(0,0,"title");
+					title.scale.setTo(.5);
+					title.x = game.world.centerX - title.width/2;
+					game.add.sprite(0,0,"line1").y = title.y + title.height;
+					var l2 = game.add.sprite(0,0,"line1").y = game.world.height - title.height;
+					var btnBack = game.add.image(0,0,"button");
+					btnBack.frame = 1;
+					btnBack.scale.setTo(.6);
+					btnBack.x = game.world.centerX - btnBack.width/2;
+					btnBack.y = l2 - btnBack.height - 10;
+					var textBack = game.add.text(0,0,"返回");
+					textBack.fill = "white"
+					textBack.x = btnBack.x + (btnBack.width - textBack.width)/2;
+					textBack.y = btnBack.y + (btnBack.height - textBack.height)/2;
+					btnBack.inputEnabled = true;
+					btnBack.events.onInputDown.addOnce(function(){
+						help.destroy();
+						btnBack.destroy();
+					});
+				},this);
+			};
+		}
+		var gameoverState = function(game){
+			var score = 0;
+			var topScore=0;
+			this.create=function(){
+				game.add.image(0,0,"background");
+				var title = game.add.image(0,0,"myScore");
+				title.x = game.world.centerX - title.width/2;
+				game.add.sprite(0,0,"line1").y = title.y + title.height;
+				var l2 = game.add.sprite(0,0,"line1").y = game.world.height - title.height;
+				var btnBack = game.add.image(0,0,"button");
+				btnBack.frame = 1;
+				btnBack.scale.setTo(.4,.5);
+				btnBack.x = game.world.centerX /4;
+				btnBack.y = l2 + btnBack.height /2;
+				var textBack = game.add.text(0,0,"返回");
+				textBack.fill = "white"
+				textBack.x = btnBack.x + (btnBack.width - textBack.width)/2;
+				textBack.y = btnBack.y + (btnBack.height - textBack.height)/2;
+				var btnShare = game.add.image(0,0,"button");
+				btnShare.frame = 1;
+				btnShare.scale.setTo(.4,.5);
+				btnShare.x = game.world.centerX;
+				btnShare.y = l2 + btnBack.height /2;
+				var textShare = game.add.text(0,0,"分享");
+				textShare.fill = "white"
+				textShare.x = btnShare.x + (btnShare.width - textShare.width)/2;
+				textShare.y = btnShare.y + (btnShare.height - textShare.height)/2;
+				var topScore = localStorage.getItem("topScore")==null?0:localStorage.getItem("topScore");
+				score = localStorage.getItem("score")==null?0:localStorage.getItem("score");
+				var textScore = game.add.text(0,0,score + "秒");
+				textScore.x = game.world.centerX - textScore.width/2;
+				textScore.y = title.height * 2;
+				var textTopScore = game.add.text(0,0,"最佳" + topScore + "秒");
+				textTopScore.x = game.world.centerX - textTopScore.width/2;
+				textTopScore.y = title.height * 3;
+
+				btnBack.inputEnabled = true;
+				btnShare.inputEnabled = true;
+				btnBack.events.onInputDown.addOnce(function(){game.state.start("boot")});
+				btnShare.events.onInputDown.add(function(){
+					var share = game.add.image(0,0,"share");
+					share.inputEnabled = true;
+					share.events.onInputDown.addOnce(function(){
+						share.destroy();
+					},this);
+				});
+			};
+		}
+////////////////////////////////////////////////////////////////////////////////////////
+		var gameState = function(game){
+			var textTimer;
+			var timer = 0;
+			var ground1;
+			var ground2;
+			var player1;
+			var player2;
+			var block1_width=0;
+			var block1_height=0;
+			var block1;
+			var block2;
+			var score = 0;
+			var topScore=0;
+			this.create=function(){
+				topScore = localStorage.getItem("topScore")==null?0:localStorage.getItem("topScore");
+				game.physics.startSystem(Phaser.Physics.ARCADE);						//开启物理引擎
+				time_start_count = game.time.totalElapsedSeconds().toFixed(3);			//游戏之前的时间统计
+				document.title = time_start_count;
+				var area_up = game.add.image(0,0,"area");								//取分上下两个区域
+				var area_down = game.add.image(0,area_up.height,"area");
+
+				area_up.inputEnabled = true;											//鼠标在两个区域内分别按下事件
+				area_down.inputEnabled = true;
+				area_up.events.onInputDown.add(function(){
+					document.title = 'player1.jump'
+					player1.body.velocity.y = -200;
+				});
+				area_down.events.onInputDown.add(function(){
+					document.title = 'player2.jump'
+					player2.body.velocity.y = -200;
+				});
+
+				timer = game.time.totalElapsedSeconds().toFixed(3) - time_start_count;	//计算游戏运行时间
+				textTimer = game.add.text(0,0,timer+"\"");
+				textTimer.x = game.width - textTimer.width;
+
+				ground1 = game.add.sprite(0,0,"line2");									//两个地板条
+				game.physics.arcade.enable(ground1);
+				ground1.body.immovable = true;
+				ground1.y = game.world.centerY - ground1.height;
+				ground2 = game.add.sprite(0,0,"line2");
+				game.physics.arcade.enable(ground2);
+				ground2.body.immovable = true;
+				ground2.y = game.height - ground2.height;
+
+				player1 = game.add.sprite(-3,0,"player");								//两个跑男
+				game.physics.arcade.enable(player1);
+				player1.body.gravity.y = 300;
+				player1.animations.add('move', [0, 1, 2], 10, true);
+				player2 = game.add.sprite(-3,game.world.centerY,"player");
+				game.physics.arcade.enable(player2);
+				player2.body.gravity.y = 300;
+				player2.animations.add('move', [0, 1, 2], 10, true);
+
+				// block1 = game.add.group();												//路障方块
+				// block1.enableBody = true;
+				//注释掉的部分 以组的形式产生路障 用于多个路障
+				// var block = block1.create(0,0,"block");
+				// block1_width = block1.width;
+				// block1_height = block1.height;
+				// block.width = game.rnd.between(block.width/5,block.width);
+				// block.height = game.rnd.between(block.height/10,block.height);
+				// block.y = ground1.y - block.height;
+				// block.x = game.rnd.between(game.world.centerX,game.world.width);
+
+				block1 = game.add.sprite(0,0,"block");
+				game.physics.arcade.enable(block1);
+				block1_width = block1.width;
+				block1_height = block1.height;
+				block1.width = game.rnd.between(block1.width/5,block1.width);
+				block1.height = game.rnd.between(block1.height/10,block1.height);
+				block1.y = ground1.y - block1.height;
+				block1.x = game.rnd.between(game.world.centerX,game.world.width);
+
+				block2 = game.add.sprite(0,0,"block");
+				game.physics.arcade.enable(block2);
+				block2_width = block2.width;
+				block2_height = block2.height;
+				block2.width = game.rnd.between(block2.width/5,block2.width);
+				block2.height = game.rnd.between(block2.height/10,block2.height);
+				block2.y = ground2.y - block2.height;
+				block2.x = game.rnd.between(game.world.centerX,game.world.width);
+
+			};
+			this.update=function(){
+				game.physics.arcade.collide(player1, ground1);
+				game.physics.arcade.collide(player2, ground2);
+				game.physics.arcade.collide(player1, block1,function(){
+					score = timer.toFixed(3);
+					localStorage.setItem("topScore",Math.max(score,topScore));
+					localStorage.setItem("score",score);
+					game.state.start("gameover");
+				});
+				game.physics.arcade.collide(player2, block2,function(){
+					score = timer.toFixed(3);
+					localStorage.setItem("topScore",Math.max(score,topScore));
+					localStorage.setItem("score",score);
+					game.state.start("gameover");
+				});
+				player1.animations.play('move');
+				player2.animations.play('move');
+				textTimer.text = "";
+				timer = game.time.totalElapsedSeconds().toFixed(3) - time_start_count;
+				textTimer = game.add.text(0,0,timer.toFixed(3)+"\"");
+				textTimer.x = game.width - textTimer.width;
+
+				// for (var i = 0; i < block1.length; i++) {
+				// 	block1.getChildAt(i).x-=2;
+				// 	if (block1.getChildAt(i).x < 0) {
+				// 		/*block1.getChildAt(i).destroy();*/
+				// 		block1.getChildAt(i).width = game.rnd.between(block1_width/5,block1_width);
+				// 		block1.getChildAt(i).height = game.rnd.between(block1_height/10,block1_height);
+				// 		block1.getChildAt(i).x = game.world.width;
+				// 		block1.getChildAt(i).y = ground1.y - block1.getChildAt(i).height;
+				// 	}
+				// }
+
+				/*
+				block1.x-=2;
+				if (block1.x < 0) {
+					block1.width = game.rnd.between(block1_width/5,block1_width);
+					block1.height = game.rnd.between(block1_height/10,block1_height);
+					block1.x = game.world.width;
+					block1.y = ground1.y - block1.height;
+				}
+				
+				block2.x-=2;
+				if (block2.x < 0) {
+					block2.width = game.rnd.between(block2_width/5,block2_width);
+					block2.height = game.rnd.between(block2_height/10,block2_height);
+					block2.x = game.world.width;
+					block2.y = ground1.y - block2.height;
+				}
+				*/
+				block1.x-=2;
+				if (block1.x < 0) {
+					block1.width = game.rnd.between(block1_width/5,block1_width);
+					block1.height = game.rnd.between(block1_height/10,block1_height);
+					block1.x = game.world.width;
+					block1.y = ground1.y - block1.height;
+				}
+				
+				block2.x-=2;
+				if (block2.x < 0) {
+					block2.width = game.rnd.between(block2_width/5,block2_width);
+					block2.height = game.rnd.between(block2_height/10,block2_height);
+					block2.x = game.world.width;
+					block2.y = ground2.y - block2.height;
+				}
+
+			}
+		}
+////////////////////////////////////////////////////////////////////////////////////////
+function Down(){
+	game.state.start('main');
+}
+		var game=new Phaser.Game(320,480,Phaser.CANVAS);
+		game.state.add('boot',bootState);
+		game.state.add('loader',loaderState);
+		game.state.add('welcome',welcomeState);
+		game.state.add('main',gameState);
+		game.state.add('gameover',gameoverState);
+		game.state.start('boot');
+	}
+	</script>
+</body>
+</html>
+<!--
+当前版本V00_00_01
+实现了 两个小人躲避两个障碍物
+实现了 最佳积分
+下一版本
+多障碍物
+速度控制
+死亡动画
+分享功能
+至于什么时候出。。。
+-->
