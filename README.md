@@ -68,6 +68,7 @@
 * [allalive - 一个都不能死](http://game.webxinxin.com/allalive)
 * [skeletonguard - 骷髅防塔](http://game.webxinxin.com/skeletonguard)
 * [wipeglass - 擦玻璃](http://game.webxinxin.com/wipeglass)
+* [seckill - 秒杀传奇](http://game.webxinxin.com/seckill)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流

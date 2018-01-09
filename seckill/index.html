@@ -1,0 +1,415 @@
+﻿<!DOCTYPE html>
+<html>
+<!--
+10:50 - 1/8/2018 ~ 15:15
+17:07 ~ 18:37 ~ 20:20
+-->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no"/>
+	<title>game</title>
+	<style>
+		html,body{
+			margin:0;
+			padding: 0;
+		}
+		#myCanvas{
+			/*width: 20rem;
+			height: 30rem;
+			background-color: red;*/
+			width: 25%;
+			height: 50%;
+		}
+	</style>
+	<script>
+		// (function(){
+		// 	var html = document.documentElement;
+		// 	var htmlWidth = html.getBoundingClientRect().width;
+		// 	html.style.fontSize=htmlWidth / 16 + "px";
+		// })()
+	</script>
+	<script src="../phaser.min.js"></script>
+</head>
+<body>
+	<div id="myCanvas"></div>
+	<script>
+onload=function(){
+	var btnStart;
+	var btnHelp;
+	var textStart;
+	var textHelp;
+	var textYG;
+	var textFG;
+	var textShare;
+	var textAgain;
+	var bootState = function(game){
+		this.init=function(){
+	 		game.scale.pageAlignHorizontally=true;//在父元素中水平居中
+	 		game.scale.pageAlignVertically=true;//在父元素中垂直居中
+	 		//game.scale.scaleMode=Phaser.ScaleManager.EXACT_FIT;
+	 		game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		}
+		this.preload=function(){
+	 		game.load.image('loading','assets/preloader.gif');
+	 	};
+	 	this.create=function(){
+	 		game.state.start('loader');
+	 	};
+	 }
+
+	var loaderState=function(game){
+	 	var progressText;
+	 	this.init=function(){
+	 		var sprite=game.add.image(game.world.centerX,game.world.centerY,'loading');
+	 		sprite.anchor={x:0.5,y:0.5};
+	 		progressText=game.add.text(game.world.centerX,game.world.centerY+30,'0%',{fill:'#fff',fontSize:'16px'});
+	 		progressText.anchor={x:0.5,y:0.5};
+	 	};
+	 	this.preload=function(){
+	 		game.load.image('bg','assets/backGround.png');
+	 		game.load.spritesheet('button','assets/buttonImage.png',150,88);
+	 		game.load.image('help','assets/help.png');
+	 		game.load.atlas('tile', 'assets/tile.png', 'assets/tile.json');
+	 		game.load.image('fightGround','assets/fightGround.png');
+	 		game.load.atlas('character', 'assets/character.png', 'assets/character.json');
+	 		game.load.onFileComplete.add(function(progress){
+	 			progressText.text=progress+'%';
+	 		});
+
+	 	};
+	 	this.create=function(){
+	 		if (progressText.text=="100%") {
+	 			game.state.start('welcome');
+	 		}
+	 	};
+	}
+
+	var welcomeState = function(game){
+	 	this.create=function(){
+	 		var background = game.add.image(0,0,'bg');
+	 		var titleImage = game.add.image(0,0,"tile");
+	 		titleImage.anchor.set(.5);
+	 		titleImage.x = game.world.centerX - titleImage.width/4;
+	 		titleImage.y = game.world.centerY - game.world.centerY/4;
+	 		var titleImage2 = game.add.image(0,0,"tile");
+	 		titleImage2.frame = 1;
+	 		titleImage2.anchor.set(.5);
+	 		titleImage2.x = game.world.centerX;
+	 		titleImage2.y = titleImage.y - titleImage2.height/1.5;
+	 		var titleImage3 = game.add.image(0,0,"tile");
+	 		titleImage3.frame = 2;
+	 		titleImage3.anchor.set(.5);
+	 		titleImage3.x = game.world.centerX - titleImage3.width;
+	 		titleImage3.y = titleImage.y - titleImage3.height/3;
+	 		var titleImage4 = game.add.image(0,0,"tile");
+	 		titleImage4.frame = 3;
+	 		titleImage4.anchor.set(.5);
+	 		titleImage4.x = game.world.centerX;
+	 		titleImage4.y = titleImage.y - titleImage4.height/3;
+	 		var titleImage5 = game.add.image(0,0,"tile");
+	 		titleImage5.frame = 4;
+	 		titleImage5.anchor.set(.5);
+	 		titleImage5.x = game.world.centerX + titleImage5.width;
+	 		titleImage5.y = titleImage.y - titleImage5.height/3;
+	 		buttonStart = game.add.button(0, 0, 'button', function(){
+	 			game.state.start("main");
+	 		}, this, 1, 1,0);
+	 		buttonStart.x = game.world.centerX - buttonStart.width/2;
+	 		buttonStart.y = game.world.centerY + game.world.centerY /7;
+	 		buttonHelp = game.add.button(0, 0, 'button', function(){
+	 			var imageHelp = game.add.image(0,0,'help');
+	 			imageHelp.inputEnabled = true;
+	 			imageHelp.events.onInputDown.add(function(){
+	 				imageHelp.destroy();
+	 			},this);
+	 		}, this, 2, 2,0);
+	 		buttonHelp.x = game.world.centerX - buttonHelp.width/2;
+	 		buttonHelp.y = buttonStart.y + buttonHelp.height;
+			var style = { font: "36px Arial", fill: "#fff", wordWrap: true, wordWrapWidth: buttonStart.width, align: "center" };
+			textStart = game.add.text(0,0,"开始",style);
+			textStart.anchor.set(0.5);
+			textStart.x = Math.floor(buttonStart.x + buttonStart.width / 2);
+			textStart.y = Math.floor(buttonStart.y + buttonStart.height / 2);
+			style = { font: "36px Arial", fill: "#fff", wordWrap: true, wordWrapWidth: buttonHelp.width, align: "center" };
+			textHelp = game.add.text(0,0,"帮助",style);
+			textHelp.anchor.set(0.5);
+			textHelp.x = Math.floor(buttonHelp.x + buttonHelp.width / 2);
+			textHelp.y = Math.floor(buttonHelp.y + buttonHelp.height / 2);
+		};
+	}
+		var gameoverState = function(game){
+			this.create=function(){
+				var background = game.add.image(0,0,'bg');
+				buttonShare = game.add.button(0, 0, 'button', function(){
+					//分享游戏
+				}, this, 1, 1,0);
+				buttonShare.x = game.world.centerX - buttonShare.width/2;
+				buttonShare.y = game.world.centerY + game.world.centerY /7;
+				buttonAgain = game.add.button(0, 0, 'button', function(){
+					game.state.start("main");
+				}, this, 2, 2,0);
+				buttonAgain.x = game.world.centerX - buttonAgain.width/2;
+				buttonAgain.y = buttonShare.y + buttonAgain.height;
+				var style = { font: "36px Arial", fill: "#fff", wordWrap: true, wordWrapWidth: buttonShare.width, align: "center" };
+				textShare = game.add.text(0,0,"分享",style);
+				textShare.anchor.set(0.5);
+				textShare.x = Math.floor(buttonShare.x + buttonShare.width / 2);
+				textShare.y = Math.floor(buttonShare.y + buttonShare.height / 2);
+				style = { font: "36px Arial", fill: "#fff", wordWrap: true, wordWrapWidth: buttonAgain.width, align: "center" };
+				textAgain = game.add.text(0,0,"重来",style);
+				textAgain.anchor.set(0.5);
+				textAgain.x = Math.floor(buttonAgain.x + buttonAgain.width / 2);
+				textAgain.y = Math.floor(buttonAgain.y + buttonAgain.height / 2);
+
+				var style = { font: "42px Arial", fill: "#000"};
+				var textThis = game.add.text(0,0,"胜败乃兵家常事\n请大侠重新来过",style);
+				textThis.anchor.set(.5);
+				textThis.x = game.world.centerX;
+				textThis.y = game.world.centerY / 2;
+			};
+		}
+
+		var gameState = function(game){
+
+			var level=[];
+			level.i = 0;
+			var level_title;
+			level.text = new Array(
+				"lv.1苗族头领","lv.2蛇妖男","lv.3狐妖女","lv.4智丈和尚","lv.5智修大师","lv.6骷髅将军","lv.7赤鬼王","lv.8石长老","lv.9姬三娘","lv.10金蟾",
+				"lv.1苗族头领","lv.2蛇妖男","lv.3狐妖女","lv.4智丈和尚","lv.5智修大师","lv.6骷髅将军","lv.7赤鬼王","lv.8石长老","lv.9姬三娘","lv.10金蟾",
+				"lv.1苗族头领","lv.2蛇妖男","lv.3狐妖女","lv.4智丈和尚","lv.5智修大师","lv.6骷髅将军","lv.7赤鬼王","lv.8石长老","lv.9姬三娘","lv.10金蟾",""
+				);
+			level.character = new Array(
+				0,
+				3,
+				30,
+				10,
+				8,
+				19,
+				15,
+				24,
+				20,
+				28,/*到此为止*/
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30
+				);
+			var player;
+			var enemy;
+			var progress;
+			var progress_border;
+			var item7;
+			var item6;
+			var button;
+			var okay = false;
+			this.preload=function(){
+			}
+			this.create=function(){
+				var fightGround = game.add.image(0,0,"fightGround");
+
+				var ui = game.add.image(0,0,"tile");
+				ui.frame = 8;
+				var ui = game.add.image(0,0,"tile");
+				ui.frame = 8;
+				ui.y = game.world.height - ui.height;
+
+				progress_border = game.add.image(0,0,"tile");
+				progress_border.frame = 9;
+				progress_border.x = progress_border.width;
+				progress_border.y = game.world.centerX;
+				progress = game.add.image(0,0,"tile");
+				progress.frame = 10;
+				progress.x = progress_border.x + progress.width/3;
+				progress.y = progress_border.y + progress.width/3;
+				progress.y = progress.y + progress.height;
+				progress.tagHeight = progress.height;
+				progress.tagTop = progress.y;
+				progress.i = 0;
+				progress.step = 6;
+				progress.height = 0;
+				progress.update = function(){
+					if (!okay) return  false;
+					this.i += this.step;
+    				this.height = this.i;				//进度条增量
+    				this.y -= this.step;							//向上增长
+    				if (this.i/this.tagHeight > 1) {
+				   		//初始化进度条
+				   		progress.y = progress.tagTop;
+				   		progress.height = 0;
+				   		progress.i = 0;
+				   		//播放败亡动画
+
+    					//跳转到结束界面
+						level.i=0;
+    					game.state.start('gameover');
+    				}
+    			}
+
+    			var btnYG = game.add.image(0,0,"button");
+    			btnYG.frame = 1;
+    			btnYG.x = btnYG.width;
+    			btnYG.y = game.world.height - btnYG.height;
+    			btnYG.inputEnabled = true;
+    			var btnFG = game.add.image(0,0,"button");
+    			btnFG.frame = 2;
+    			btnFG.x = game.world.width - btnFG.width*2;
+    			btnFG.y = game.world.height - btnFG.height;
+    			btnFG.inputEnabled = true;
+
+				style = { font: "36px Arial", fill: "#fff", wordWrap: true, wordWrapWidth: btnYG.width, align: "center" };
+				textYG = game.add.text(0,0,"运功",style);
+				textYG.anchor.set(0.5);
+				textYG.x = Math.floor(btnYG.x + btnYG.width / 2);
+				textYG.y = Math.floor(btnYG.y + btnYG.height / 2);
+				style = { font: "36px Arial", fill: "#fff", wordWrap: true, wordWrapWidth: btnFG.width, align: "center" };
+				textFG = game.add.text(0,0,"发功",style);
+				textFG.anchor.set(0.5);
+				textFG.x = Math.floor(btnFG.x + btnFG.width / 2);
+				textFG.y = Math.floor(btnFG.y + btnFG.height / 2);
+
+    			player = game.add.image(0,0,"character");
+    			player.anchor.set(.5);
+    			player.x = game.world.centerX;
+    			player.y = game.world.height - player.height*1.5;
+    			player.frame = 1;
+
+    			enemy = game.add.image(0,0,"character");
+    			enemy.anchor.set(.5);
+    			enemy.x = game.world.centerX;
+    			enemy.y = enemy.height*1.5;
+    			enemy.frame = level.character[level.i];
+
+    			style = { font: "49px Arial", fill: "#fff"};
+    			var level_title = game.add.text(0,0,level.text[level.i],style);
+    			level_title.anchor.set(.5);
+    			level_title.x = game.world.centerX;
+    			level_title.y = level_title.height/1.2;
+    			level_title.update=function(){
+    				level_title.text = level.text[level.i];
+    			}
+
+    			btnYG.events.onInputDown.add(function(){
+			   		//初始化进度条
+			   		progress.y = progress.tagTop;
+			   		progress.height = 0;
+			   		progress.i = 0;
+			   		okay = true;
+			   		if (item7) {item7.destroy();}
+			    	//播放蓄力动画
+			    	item7 = game.add.image(0,0,"tile");
+			    	item7.frame = 7;
+			    	item7.scale.set(0.5,1);
+			    	item7.x = player.x - player.width/2.7;
+			    	item7.y = player.y + player.height/4;
+			    	item7.update = function(){
+			    		this.width++;
+			    		this.x-=0.5;
+			    	}
+			    	
+			    }, this);
+    			btnFG.events.onInputDown.add(function(){
+    				okay = false;
+			    	//清除蓄力对象
+			    	if (item7) item7.destroy();
+			    	if (progress.i/progress.tagHeight >= 0.95 && progress.i/progress.tagHeight <= 1) {
+			    		document.title = "You Win!";
+				    	//播放人物抖动
+						tweenA = game.add.tween(player).to( { y: enemy.y }, 100, "Quart.easeOut");
+    					tweenB = game.add.tween(player).to( { y: player.y }, 100, "Quart.easeOut");
+			    		tweenA.chain(tweenB);
+    					tweenA.start();
+    					tweenB.onComplete.addOnce(function(){
+    						//关卡递增
+				    		level.i++;
+				    		enemy.frame = level.character[level.i];
+    					}, this);
+			    		//播放胜利动画
+				    	item5 = game.add.image(0,0,"tile");
+				    	item5.frame = 5;
+				    	item5.x = game.world.centerX - item5.width/2;
+				    	item5.y = enemy.y;
+				    	item5.alpha = 0;
+						tweenA = game.add.tween(item5).to( { x: item5.x+50, alpha: 1 }, 100, "Quart.easeOut");
+    					tweenB = game.add.tween(item5).to( { x: item5.x, alpha: 0 }, 100, "Quart.easeOut");
+    					tweenA.chain(tweenB);
+    					tweenA.start();
+
+			    	} else {
+			    		document.title = "You Lost!";
+				    	//播放人物抖动
+						tweenA = game.add.tween(enemy).to( { x: enemy.x+25 }, 300, "Quart.easeOut");
+    					tweenB = game.add.tween(enemy).to( { x: enemy.x-25 }, 300, "Quart.easeOut");
+    					tweenA.chain(tweenB);
+    					tweenA.start();
+						tweenA = game.add.tween(player).to( { alpha: 0, x: player.x+25}, 300, "Quart.easeOut");
+    					tweenB = game.add.tween(player).to( { alpha: 1, x: player.x-25 }, 300, "Quart.easeOut");
+    					tweenA.chain(tweenB);
+    					tweenA.start();
+				    	//清除败亡对象
+				    	if (item6) item6.destroy();
+			    		//播放败亡动画
+				    	item6 = game.add.image(0,0,"tile");
+				    	item6.frame = 6;
+				    	item6.scale.set(0.5);
+				    	item6.x = game.world.centerX - item6.width/2;
+				    	item6.y = game.world.centerY - item6.height/2;
+				    	item6.i = 0;
+				    	item6.update = function(){
+				    		this.i += 2;
+				    		if ( this.i < 60 ){
+				    			this.width += 6;
+				    			this.height += 3;
+				    			this.x-=3;
+				    			this.y-=1.5;
+				    		} else {
+			    				//跳转到结束界面
+								level.i=0;
+			    				game.state.start('gameover');
+				    		}
+				    	}
+			    	}
+			   		//初始化进度条
+			   		progress.y = progress.tagTop;
+			   		progress.height = 0;
+			   		progress.i = 0;
+			   	}, this);
+
+			   	/*test code*/
+				/*fightGround.inputEnabled = true;
+				fightGround.events.onInputDown.add(function(){
+					level.i++;
+		    		enemy.frame = level.character[level.i];
+					document.title = enemy.frameName +" "+ level.i;
+				});*/
+
+    		};
+    	}
+
+    	var game=new Phaser.Game(640,1024,Phaser.Canvas,'myCanvas');
+    	game.state.add('boot',bootState);
+    	game.state.add('loader',loaderState);
+    	game.state.add('welcome',welcomeState);
+    	game.state.add('main',gameState);
+    	game.state.add('gameover',gameoverState);
+    	game.state.start('boot');
+	}
+</script>
+</body>
+</html>
