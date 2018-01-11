@@ -76,3 +76,7 @@
 * 微信: xin874058
 * QQ: 396417401
 * 作者博客: [channingbreeze](http://www.channingbreeze.com/)
+
+### 许可
+MIT 许可证
+

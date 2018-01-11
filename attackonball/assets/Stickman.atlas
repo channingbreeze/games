@@ -1,0 +1,62 @@
+
+Stickman.png
+size: 256,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Body
+  rotate: false
+  xy: 2, 9
+  size: 54, 51
+  orig: 56, 54
+  offset: 1, 1
+  index: -1
+Hand
+  rotate: false
+  xy: 182, 42
+  size: 20, 18
+  orig: 22, 20
+  offset: 0, 1
+  index: -1
+Lag
+  rotate: false
+  xy: 160, 38
+  size: 20, 22
+  orig: 22, 24
+  offset: 1, 1
+  index: -1
+Mouth1
+  rotate: false
+  xy: 130, 35
+  size: 28, 25
+  orig: 28, 25
+  offset: 0, 0
+  index: -1
+Mouth2
+  rotate: false
+  xy: 58, 16
+  size: 29, 15
+  orig: 29, 15
+  offset: 0, 0
+  index: -1
+Mouth3
+  rotate: false
+  xy: 2, 2
+  size: 23, 5
+  orig: 23, 5
+  offset: 0, 0
+  index: -1
+Mouth4
+  rotate: false
+  xy: 95, 33
+  size: 33, 27
+  orig: 33, 27
+  offset: 0, 0
+  index: -1
+Mouth5
+  rotate: false
+  xy: 58, 33
+  size: 35, 27
+  orig: 35, 27
+  offset: 0, 0
+  index: -1
