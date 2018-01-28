@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "slice01_01.png",
+	"frame": {"x":0,"y":0,"w":26,"h":26},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":26},
+	"sourceSize": {"w":26,"h":26}
+},
+{
+	"filename": "slice02_02.png",
+	"frame": {"x":26,"y":0,"w":18,"h":18},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
+	"sourceSize": {"w":18,"h":18}
+},
+{
+	"filename": "slice03_03.png",
+	"frame": {"x":44,"y":0,"w":18,"h":18},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
+	"sourceSize": {"w":18,"h":18}
+},
+{
+	"filename": "slice04_04.png",
+	"frame": {"x":62,"y":0,"w":18,"h":18},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
+	"sourceSize": {"w":18,"h":18}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lifebar.png",
+	"format": "RGBA8888",
+	"size": {"w":80,"h":26},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:bacf9d3d4f6133db00220c1b26f6fe53:1b305131e55f585d124203ff9b0724c0:91a951ca80b814c66325cfdedf353d47$"
+}
+}

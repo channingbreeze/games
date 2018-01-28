@@ -1,0 +1,5 @@
+{"file":"lifebar.png","frames":{
+"life":{"x":1,"y":29,"w":18,"h":18,"offX":0,"offY":0,"sourceW":18,"sourceH":18},
+"blink":{"x":29,"y":1,"w":18,"h":18,"offX":0,"offY":0,"sourceW":18,"sourceH":18},
+"border":{"x":1,"y":1,"w":26,"h":26,"offX":0,"offY":0,"sourceW":26,"sourceH":26},
+"blank":{"x":29,"y":21,"w":18,"h":18,"offX":0,"offY":0,"sourceW":18,"sourceH":18}}}
