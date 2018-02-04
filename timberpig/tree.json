@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "slice01_01.png",
+	"frame": {"x":0,"y":0,"w":170,"h":57},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":170,"h":57},
+	"sourceSize": {"w":170,"h":57}
+},
+{
+	"filename": "slice02_02.png",
+	"frame": {"x":170,"y":0,"w":170,"h":57},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":170,"h":57},
+	"sourceSize": {"w":170,"h":57}
+},
+{
+	"filename": "slice03_03.png",
+	"frame": {"x":340,"y":0,"w":72,"h":57},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":57},
+	"sourceSize": {"w":72,"h":57}
+},
+{
+	"filename": "slice04_04.png",
+	"frame": {"x":412,"y":0,"w":84,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":21},
+	"sourceSize": {"w":84,"h":21}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "hiro.png",
+	"format": "RGBA8888",
+	"size": {"w":496,"h":57},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d3b4b9409691e809967364031efc3706:16de227b96fbc02b9efd3f024a3de1a5:e7f4bce66ba24aa222af6067bfe3f45e$"
+}
+}

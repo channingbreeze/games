@@ -69,6 +69,7 @@
 * [skeletonguard - 骷髅防塔](http://game.webxinxin.com/skeletonguard)
 * [wipeglass - 擦玻璃](http://game.webxinxin.com/wipeglass)
 * [seckill - 秒杀奇侠传](http://game.webxinxin.com/seckill)
+* [timberpig - 伐木猪](http://game.webxinxin.com/timberpig)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
