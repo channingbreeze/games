@@ -63,12 +63,16 @@ AttackOnBall.GameState.prototype.create = function () {
   this.ball.body.velocity.x = 100;
   this.ball.body.bounce.y = 1;
   this.ball.body.gravity.y = 950;
+  this.ball.body.setSize(100 * 0.75, 98, 100 * 0.25 / 2, 0);
 
 };
 
 AttackOnBall.GameState.prototype.update = function () {
   "use strict";
   game.physics.arcade.collide(this.land, this.ball);
+  game.physics.arcade.collide(this.land, this.bloodEmitter);
+  game.physics.arcade.collide(this.land, this.deadPartsEmitter);
+  game.physics.arcade.overlap(this.hero, this.ball, this.dead, null, this);
 };
 
 AttackOnBall.GameState.prototype.render = function () {
@@ -113,11 +117,91 @@ AttackOnBall.GameState.prototype.tapUp = function() {
   }
 }
 
+AttackOnBall.GameState.prototype.dead = function(hero, ball) {
 
+  // 血块序列帧动画，单张图片形式播放
+  this.playEffectBlood(hero);
 
+  // 粒子血滴效果
+  this.playParticleBlood(hero);
 
+  // 身体部分分裂效果
+  this.playDeadParts(hero);
 
+  // 地震效果
+  this.earthQuake();
 
+  hero.kill();
+
+}
+
+AttackOnBall.GameState.prototype.playEffectBlood = function(hero) {
+  
+  var count = 0;
+  var effectBlood = game.add.sprite(hero.x, hero.y - 45, 'effectBlood' + count);
+  effectBlood.anchor.setTo(0.5, 0.5);
+
+  var timer = game.time.events.loop(Phaser.Timer.SECOND * 0.05, function() {
+    if(count < 10) {
+      count++;
+      effectBlood.loadTexture('effectBlood' + count);
+    } else {
+      game.time.events.remove(timer);
+    }
+  }, this);
+
+}
+
+AttackOnBall.GameState.prototype.playParticleBlood = function(hero) {
+  
+  this.bloodEmitter = game.add.emitter(0, 0, 50);
+
+  this.bloodEmitter.makeParticles('blood', 0, 50, true);
+  // 重力
+  this.bloodEmitter.gravity = 1000;
+  // 弹性
+  this.bloodEmitter.bounce.setTo(0, 0.2);
+  // 速度
+  this.bloodEmitter.setXSpeed(-300, 300);
+  this.bloodEmitter.setYSpeed(-1000, 0);
+  // 缩放
+  this.bloodEmitter.minParticleScale = 0.2;
+  this.bloodEmitter.maxParticleScale = 1.5;
+  // x方向阻力
+  this.bloodEmitter.particleDrag.x = 100;
+
+  this.bloodEmitter.x = hero.x;
+  this.bloodEmitter.y = hero.y - 45;
+
+  this.bloodEmitter.start(true, -1, null, 50);
+
+}
+
+AttackOnBall.GameState.prototype.playDeadParts = function(hero) {
+
+  this.deadPartsEmitter = game.add.emitter(0, 0, 8);
+
+  this.deadPartsEmitter.makeParticles(deadPartsKeys, 0, 8, true, true);
+  // 重力
+  this.deadPartsEmitter.gravity = 1000;
+  // 弹性
+  this.deadPartsEmitter.bounce.setTo(0, 0.2);
+  // 速度
+  this.deadPartsEmitter.setXSpeed(-800, 800);
+  this.deadPartsEmitter.setYSpeed(-1000, 0);
+  // x方向阻力
+  this.deadPartsEmitter.particleDrag.x = 100;
+
+  this.deadPartsEmitter.x = hero.x;
+  this.deadPartsEmitter.y = hero.y - 45;
+
+  this.deadPartsEmitter.start(true, -1, null, 8);
+
+}
+
+AttackOnBall.GameState.prototype.earthQuake = function() {
+
+}
 
 
 

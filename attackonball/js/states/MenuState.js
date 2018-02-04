@@ -37,25 +37,38 @@ AttackOnBall.MenuState.prototype.create = function () {
 
   // 最高分
   var style = { font: "70px Arial", fill: "#ff0044", align: "center" };
-  var text = game.add.text(WIDTH / 2, HEIGHT / 2 - 100, "best : 39.40", style);
+  var text = game.add.text(200, 10, "39.40", style);
   text.anchor.set(0.5);
   game.time.events.loop(Phaser.Timer.SECOND * 0.1, this.updateScoreColor, text);
 
+  var textBest = game.add.sprite(0, 0, 'wordBest');
+  textBest.anchor.set(0.5);
+  textBest.scale.setTo(1.3, 1.3);
+  textBest.tint = 0xFF0A63;
+  var textColon = game.add.sprite(100, 10, 'colon');
+  textColon.anchor.set(0.5);
+  textColon.tint = 0xFF0A63;
+
+  var bestText = game.add.sprite(WIDTH / 2 - 100, HEIGHT / 2 - 100);
+  bestText.addChild(textBest);
+  bestText.addChild(textColon);
+  bestText.addChild(text);
+
   // 左边按钮
-  var buttonGamecenter = game.add.sprite(120, HEIGHT + 304, 'buttonGamecenter0');
-  buttonGamecenter.anchor.setTo(0.5, 0.5);
-  buttonGamecenter.inputEnabled = true;
-  buttonGamecenter.events.onInputDown.add(this.buttonDown, this);
-  buttonGamecenter.events.onInputUp.add(this.buttonUp, this);
-  game.add.tween(buttonGamecenter).to({y: HEIGHT - 304}, 500, Phaser.Easing.Bounce.Out, true);
+  this.buttonGamecenter = game.add.sprite(120, HEIGHT + 304, 'buttonGamecenter0');
+  this.buttonGamecenter.anchor.setTo(0.5, 0.5);
+  this.buttonGamecenter.inputEnabled = true;
+  this.buttonGamecenter.events.onInputDown.add(this.buttonDown, this);
+  this.buttonGamecenter.events.onInputUp.add(this.buttonUp, this);
+  game.add.tween(this.buttonGamecenter).to({y: HEIGHT - 304}, 500, Phaser.Easing.Bounce.Out, true);
 
   // 右边按钮
-  var buttonShare = game.add.image(WIDTH - 120, HEIGHT + 304, 'buttonShare0');
-  buttonShare.anchor.setTo(0.5, 0.5);
-  buttonShare.inputEnabled = true;
-  buttonShare.events.onInputDown.add(this.buttonDown, this);
-  buttonShare.events.onInputUp.add(this.buttonUp, this);
-  game.add.tween(buttonShare).to({y: HEIGHT - 304}, 500, Phaser.Easing.Bounce.Out, true);
+  this.buttonShare = game.add.image(WIDTH - 120, HEIGHT + 304, 'buttonShare0');
+  this.buttonShare.anchor.setTo(0.5, 0.5);
+  this.buttonShare.inputEnabled = true;
+  this.buttonShare.events.onInputDown.add(this.buttonDown, this);
+  this.buttonShare.events.onInputUp.add(this.buttonUp, this);
+  game.add.tween(this.buttonShare).to({y: HEIGHT - 304}, 500, Phaser.Easing.Bounce.Out, true);
 
   // 小人 spine
   var stickman = game.add.spine(WIDTH / 2, HEIGHT - 204 + 20, 'stickman');
@@ -65,9 +78,9 @@ AttackOnBall.MenuState.prototype.create = function () {
 
   game.input.onDown.add(this.tapStart, {
     title: title,
-    text: text,
-    buttonGamecenter: buttonGamecenter,
-    buttonShare: buttonShare,
+    text: bestText,
+    buttonGamecenter: this.buttonGamecenter,
+    buttonShare: this.buttonShare,
     landIndex: landIndex
   });
 
@@ -94,7 +107,18 @@ AttackOnBall.MenuState.prototype.buttonUp = function(button, point) {
   }
 }
 
-AttackOnBall.MenuState.prototype.tapStart = function() {
+AttackOnBall.MenuState.prototype.tapStart = function(point) {
+  
+  var boundsGamecenter = this.buttonGamecenter.getBounds();
+  var isInGamecenter = Phaser.Rectangle.containsPoint(boundsGamecenter, point);
+
+  var boundsShare = this.buttonShare.getBounds();
+  var isInShare = Phaser.Rectangle.containsPoint(boundsShare, point);
+
+  if(isInGamecenter || isInShare) {
+    return false;
+  }
+
   var title = this.title;
   var text = this.text;
   var buttonGamecenter = this.buttonGamecenter;
@@ -102,8 +126,8 @@ AttackOnBall.MenuState.prototype.tapStart = function() {
   var landIndex = this.landIndex;
 
   game.add.tween(title).to({x: -400}, 500, Phaser.Easing.Bounce.In, true);
-  game.add.tween(buttonGamecenter).to({y: HEIGHT + 304}, 500, Phaser.Easing.Bounce.In, true);
-  game.add.tween(buttonShare).to({y: HEIGHT + 304}, 500, Phaser.Easing.Bounce.In, true);
+  game.add.tween(this.buttonGamecenter).to({y: HEIGHT + 304}, 500, Phaser.Easing.Bounce.In, true);
+  game.add.tween(this.buttonShare).to({y: HEIGHT + 304}, 500, Phaser.Easing.Bounce.In, true);
 
   var tween = game.add.tween(text).to({alpha: 0}, 500, "Linear", true);
   tween.onComplete.add(function() {
@@ -113,7 +137,7 @@ AttackOnBall.MenuState.prototype.tapStart = function() {
 
 AttackOnBall.MenuState.prototype.updateScoreColor = function() {
   var index = game.rnd.integerInRange(0, scoreColors.length - 1);
-  this.addColor(scoreColors[index], 6);
+  this.addColor(scoreColors[index], 0);
 }
 
 AttackOnBall.MenuState.prototype.onGamecenter = function() {
