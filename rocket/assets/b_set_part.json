@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "b_set_part-sheet0.png",
+	"frame": {"x":0,"y":0,"w":209,"h":165},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":209,"h":165},
+	"sourceSize": {"w":209,"h":165}
+},
+{
+	"filename": "b_set_part-sheet1.png",
+	"frame": {"x":209,"y":0,"w":209,"h":165},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":209,"h":165},
+	"sourceSize": {"w":209,"h":165}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "b_set_part.png",
+	"format": "RGBA8888",
+	"size": {"w":418,"h":165},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:63ca2f93c74fdd0a581efc6469a91083:77ae5a1094a2b020de3be77654630f04:484fb06e27bd71df2f2c3ca46fd64b26$"
+}
+}

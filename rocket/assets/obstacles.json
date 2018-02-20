@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "obstacle-sheet0.png",
+	"frame": {"x":0,"y":0,"w":88,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":85},
+	"sourceSize": {"w":88,"h":85}
+},
+{
+	"filename": "obstacle2-sheet0.png",
+	"frame": {"x":88,"y":0,"w":502,"h":91},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":502,"h":91},
+	"sourceSize": {"w":502,"h":91}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "obstacles.png",
+	"format": "RGBA8888",
+	"size": {"w":590,"h":91},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6aafeea484f73336f415167a0cc1d588:81b0c627daa19a01cfcf609f9c3296e3:641f848f5767e234ed2c8b58348ca01d$"
+}
+}

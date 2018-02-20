@@ -46,6 +46,8 @@ MyGame.prototype = {
 	},
 	iniGame: function(){
 		this.gameGroup = this.add.group();
+		//缓存计算透明度的bmd
+		this.bmdTemp = this.make.bitmapData(544, 306);
 		this.gameBg = this.add.sprite(0, 0, 'park-mask');
 		this.bmd = this.make.bitmapData(1920, 1080);
 		this.bmd.addToWorld();
@@ -69,12 +71,13 @@ MyGame.prototype = {
 		]);
 	},
 	onUpdate: function(e){
+		this.bmdTemp.copy(this.bmd, 0, 0, this.game.width, this.game.height, null, null, 544, 306)
 		this.gameMaskBtm.onDraw(e.x, e.y);
 		this.bmd.alphaMask('park-bg', this.gameMaskBtm.sprite);
 		this.score.text = this.getTransparentPercent() + "%";
 	},
 	getTransparentPercent: function() {
-        var imgData = this.bmd.ctx.getImageData(0, 0, 1920, 1080),
+        var imgData = this.bmdTemp.ctx.getImageData(0, 0, 544, 306),
             pixles = imgData.data,
             transPixs = [];
         for (var i = 0, j = pixles.length; i < j; i += 4) {
