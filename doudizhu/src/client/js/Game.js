@@ -74,7 +74,7 @@ gameObj = {
 
 
     _getServerUrl() {
-        return 'http://localhost:3000';
+        return 'http://jianfengdoudizhu.game.webxinxin.com';
     },
 
 

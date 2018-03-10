@@ -6,7 +6,7 @@ let Room = require('./Room');
 let playerMgr = require('./PlayerMgr');
 let Log = require('../util/Log');
 
-const PORT = 3000;
+const PORT = 9310;
 const AI_SERVER_URL = 'http://localhost:10003';
 
 class Server {
