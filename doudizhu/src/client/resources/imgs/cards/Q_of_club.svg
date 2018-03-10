@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG1.1//EN"
+	"http://www.w3.org/Graphics/SVG/1.1/DTD/svg1.1.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" width="154" height="204" viewBox="0 0 308 408">
+	<defs>
+		<symbol id="diamond" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1344 2048" style="fill:black;">
+			<path d="M522,1635c62-123,107-250,113-384c8-51-23-51-26-14c-87,331-553,241-536-73c14-253,267-309,399-225c50,31,47,11,19-20
+  c-196-219-75-500,189-505c286,16,359,320,185,497c-23,19-70,90,0,39c180-124,424,11,418,205c-8,357-443,385-539,84c-8-31-34-47-25,9
+  c11,101,39,255,115,387H522z"/>
+		</symbol>
+		<g id="corner">
+			<text x="40" y="52" style="font-family:Arial;font-size:52px;fill:black;text-anchor:middle;">Q</text>
+			<use xlink:href="#diamond" x="12" y="42" width="55" height="110"/>
+		</g>
+	</defs>
+	<rect x="8" y="8" width="300" height="400" rx="12" ry="12" style="stroke:none;fill:black;opacity:0.6;" />
+	<rect x="2" y="2" width="300" height="400" rx="12" ry="12" style="stroke:black;fill:white;stroke-width:4"/>
+	<use xlink:href="#diamond" x="2" y="100" width="300" height="200"/>
+	<use xlink:href="#corner" x="0" y="0"/>
+	<use xlink:href="#corner" transform="translate(304, 404) rotate(180)"/>
+</svg>

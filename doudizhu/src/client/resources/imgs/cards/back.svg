@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG1.1//EN"
+    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg1.1.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="154" height="204" viewBox="0 0 308 408">
+    <defs>
+        <symbol id="logo" preserveAspectRatio="xMidYMid meet" viewBox="0 0 950 925">
+            <path d="M0 0 h600 v325 h-275 v300 h-25 v300 h-300" style="fill:#B60005"/>
+            <path d="M650 0 h300 v925 h-600 v-300 h275 v-325 h25" style="fill:#231815"/>
+        </symbol>
+    </defs>
+    <rect x="8" y="8" width="300" height="400" rx="12" ry="12" style="stroke:none;fill:black;opacity:0.6;" />
+    <rect x="2" y="2" width="300" height="400" rx="12" ry="12" style="stroke:black;fill:white;stroke-width:4"/>
+    <rect x="22" y="22" width="260" height="360" rx="12" ry="12" style="stroke:#4c69b7;fill:#d8d3d3;stroke-width:6;"/>
+    <use xlink:href="#logo" x="2" y="150" width="300" height="100"/>
+</svg>

@@ -71,6 +71,7 @@
 * [seckill - 秒杀奇侠传](http://game.webxinxin.com/seckill)
 * [timberpig - 伐木猪](http://game.webxinxin.com/timberpig)
 * [rocket - 火箭飞升](http://game.webxinxin.com/rocket)
+* [doudizhu - 尖峰斗地主](http://game.webxinxin.com/doudizhu/build)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
