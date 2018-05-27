@@ -75,6 +75,7 @@
 * [jumpone - 跳一跳](http://game.webxinxin.com/jumpone)
 * [maze - 迷宫](http://game.webxinxin.com/maze)
 * [eatball - 大球吃小球](http://game.webxinxin.com/eatball)
+* [fruitwar - 水果大战](http://game.webxinxin.com/fruitwar)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
