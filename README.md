@@ -76,6 +76,9 @@
 * [maze - 迷宫](http://game.webxinxin.com/maze)
 * [eatball - 大球吃小球](http://game.webxinxin.com/eatball)
 * [fruitwar - 水果大战](http://game.webxinxin.com/fruitwar)
+* [unforgetday - 难忘的一天](http://game.webxinxin.com/unforgetday)
+* [legendofwolf - 狼的传说](http://game.webxinxin.com/legendofwolf)
+* [twowar - 双王争霸](http://game.webxinxin.com/twowar)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
@@ -83,6 +86,7 @@
 * 微信: xin874058
 * QQ: 396417401
 * 作者博客: [channingbreeze](http://www.channingbreeze.com/)
+* QQ交流群: 519413640
 
 ### 许可
 MIT 许可证

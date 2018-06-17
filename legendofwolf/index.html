@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>狼的传说</title>
+    <script src="../phaser.min.js"></script>
+    <script src="./js/plus.js"></script>
+    <script src="./assets/sprites/wolf.js"></script>
+    <script src="./assets/sprites/restore.js"></script>
+    <script src="./assets/sprites/rattan.js"></script>
+    <script src="./assets/sprites/ridding.js"></script>
+    <style>
+        body{
+            margin: 0%;
+            padding: 0%;
+        }
+    </style>
+</head>
+<body>
+</body>
+<script>
+// import './js/libs/weapp-adapter'
+// import Phaser from './js/libs/phaser-wx.js'
+// import Demon from './assets/demon.js'
+//技能图标 1.防御0 2.战斧0 3.风暴3% 4.滚石10% 5.藤曼5% 6.冰柱5% 7.飞跃10% 8.三叶草20% 9.钢叉15%
+onload = function(){
+    var gameScore = 0;
+  var game = new Phaser.Game({
+    width: 710,
+    height: 580,
+    renderer: Phaser.CANVAS,
+    // canvas: canvas,
+  });
+  var gameState = function (game) {
+    this.create = function () {
+      this.game.physics.startSystem(Phaser.Physics.ARCADE);//开启物理引擎
+      this.bg = this.add.image(0,0,'background');//背景
+      this.grass = this.add.image(0,0,'battlefield');//草坪
+      this.underRails = this.add.sprite(0,0,'under-rails');//底座
+      this.game.physics.arcade.enable(this.underRails);
+      this.rails = this.add.image(0,0,'rails');//滑道
+      this.rails.y = 81;
+      this.underRails.y = 81;
+      this.underRails.width = this.rails.width;
+      this.underRails.height = this.rails.height;
+      this.sky = this.add.image(0,0,'sky');//天空
+      this.earth = this.add.image(0,0,'earth');//土地
+      this.wagon = this.add.image(0,this.underRails.y -10,'wagon');//滑板 第一道-10 第二道60 第三道130 第四道200 第五道270 第六道340 累加70
+      this.wires = this.add.sprite(this.underRails.width,this.underRails.y,'wires');//荆棘
+      this.wires.active = false;//需要技能图标1 防御 激活
+      this.wires.hp = 20;
+      this.wires.hp_ = this.wires.hp;
+      this.wires.dt = 0;
+      this.wires.alpha = 0;
+      this.game.physics.arcade.enable(this.wires);
+      this.wolf = this.add.image(7,this.wagon.y - 40,'wolf');//狼
+      this.wolf.y_ = this.wolf.y;
+      this.wolf.animations.add('walk', [4, 5, 6, 7], 3, true);
+      this.wolf.animations.add('attack', [0,1, 2, 3], 5, true);
+      this.attack = false;
+      this.wolf.animations.play('walk');
+      this.wolf.bulletSpeed = 60;//quicken 加快 更活跃
+      this.axe = this.add.image(0,0,'axe');//武器axe hp==1
+      this.axe.alpha = 0;
+      this.fork = this.add.image(0,0,'fork');//武器fork hp==2
+      this.fork.alpha = 0;
+      this.weapon = this.add.weapon(50,'axe');//武器  //优化时 更换为group weapon.bullets 子弹行为
+      if (this.weapon.bullets.children[0].key=='axe') {//武器耐性
+          this.weapon.hp = 1; 
+      }
+      if (this.weapon.bullets.children[0].key=='fork') {//值
+          this.weapon.hp = 3; 
+      }
+      this.weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+      this.weapon.fireAngle = Phaser.ANGLE_RIGHT;
+      this.weapon.bulletAngleOffset = 90;
+      this.weapon.bulletSpeed = 400;
+      this.weapon.fireRate = 60;
+      this.weapon.trackSprite(this.wolf, this.wolf.width, this.wolf.height/1.3);
+      this.pigs = this.add.group();//猪
+      this.pigs.enableBody = true;
+      this.skills = this.add.group();//技能图标
+      for (var i = 0; i < 9; i++) {
+          let skillIcon = this.skills.create(0,0,'skills');
+          skillIcon.x = 13 + i * skillIcon.width + i * 13;
+          skillIcon.y = this.bg.height - 13 - skillIcon.height;
+          skillIcon.frame = i;
+          skillIcon.inputEnabled = true;
+        //   if (i>0) {skillIcon.alpha = 0;}
+      }
+      this.storm = this.add.group();//技能图标3 风暴 将敌人推出边界
+      this.storm.enableBody = true;
+      this.stone = this.add.group();//技能图标4 滚石 碾过敌人
+      this.stone.enableBody = true;
+      this.rattan = this.add.group();//技能图标5 藤曼 迟缓诅咒
+      this.rattan.enableBody = true;
+      this.ice = this.add.group();//技能图标6 冰冻 冻住敌人
+      this.ice.enableBody = true;
+      this.skills.getChildAt(0).events.onInputDown.add(function(){//技能图标1 道具 荆棘防御
+        this.wires.active = true;
+        game.add.tween(this.wires).to( { alpha: 1 }, 3000, "Linear", true).onComplete.add(function(){
+            this.wires.act = true;
+        },this);
+        this.skillMask(this.skills.getChildAt(0),100000000);
+      }, this);
+      this.skills.getChildAt(1).events.onInputDown.add(function(){//技能图标2 武器 战斧
+        this.attack = true;
+        this.wolf.animations.play('attack');
+        this.weaponReplace(this.weapon,this.axe,this.fork,1);
+        this.skillMask(this.skills.getChildAt(1),1000000);
+      }, this);
+      this.skills.getChildAt(2).events.onInputDown.add(function(){//技能图标3 技能 风暴
+        if (this.energyEnabled == false) {
+            return false;
+        }
+        this.energy.width -= (this.energy.sum * 3/100);
+        if (this.storm.length>0) {//风暴出界 风消云散
+            for (var i = 0; i < this.storm.length; i++) {
+                if (this.storm.getChildAt(i).x>this.game.world.width) {
+                    this.storm.getChildAt(i).destroy();
+                }
+            }
+        }
+        for (var i = 0; i < 6; i++) {//六个道路
+            this.storm_ = this.storm.create(0,0,'storm');
+            this.storm_.scale.set(2.5);
+            this.storm_.x = this.underRails.width;
+            this.storm_.y = 70 + i * 70;
+            this.storm_.animations.add('storm',[0,1,2,3],5,true);
+            this.storm_.animations.play('storm'); 
+            this.storm_.body.velocity.x = 300;
+        }
+        this.skillMask(this.skills.getChildAt(2),3000);//3s
+      }, this);
+      this.skills.getChildAt(3).events.onInputDown.add(function(){//技能图标4 技能 滚石
+        this.iceTo = false;
+        if (this.energyEnabled == false) {
+            return false;
+        }
+        this.energy.width -= (this.energy.sum * 1/10);
+        if (this.stone.length>0) {//滚石出界
+            for (var i = 0; i < this.stone.length; i++) {
+                if (this.stone.getChildAt(i).x>this.game.world.width) {
+                    this.stone.getChildAt(i).destroy();
+                }
+            }
+        }
+        for (var i = 0; i < 6; i++) {//六个道路
+            this.stone_ = this.stone.create(0,0,'stone');
+            this.stone_.scale.set(2);
+            this.stone_.x = this.underRails.width + this.wires.width - this.stone_.width;
+            this.stone_.y = i * 70;
+            this.stone_.animations.add('stone',[0,1,2,3,4,5,6,7,8,9],5,true);
+            this.stone_.animations.play('stone'); 
+            this.stone_.body.velocity.x = 500;
+        }
+        this.skillMask(this.skills.getChildAt(3),10000);//10s
+      }, this);
+      this.skills.getChildAt(4).events.onInputDown.add(function(){//技能图标5 道具 藤曼 迟缓诅咒
+        if (this.energyEnabled == false) {
+            return false;
+        }
+        this.energy.width -= (this.energy.sum * 1/20);
+        for (let i = 0; i < this.pigs.length; i++) {//生成敌人数目的藤曼
+            this.rattan_ = this.rattan.create(0,0,'rattan');
+            this.rattan_.scale.set(.5);
+            this.rattan_.animations.add('rattan');
+            this.rattan_.x = this.pigs.getChildAt(i).x - this.pigs.getChildAt(i).width/2;
+            this.rattan_.y = this.pigs.getChildAt(i).y;
+            this.pigs.getChildAt(i).body.velocity.x = -30;
+            var that = this;
+            this.rattan_.animations.play('rattan',5).onComplete.add(function(){//冻住敌人动画 完毕后解冻
+                that.rattan.destroy();             
+                that.rattan = this.add.group();
+                that.rattan.enableBody = true;
+            }, this);
+        }
+        this.skillMask(this.skills.getChildAt(4),5000);//5s
+      }, this);
+      this.skills.getChildAt(5).events.onInputDown.add(function(){//技能图标6 技能 冰冻
+        if (this.iceTo==false) {
+            return false;//是否可以使用ice 防止出错
+        }
+        if (this.energyEnabled == false) {
+            return false;
+        }
+        this.energy.width -= (this.energy.sum * 1/20);
+        if (this.ice.length>0) {//冰柱消融
+            this.ice.destroy();
+            this.ice = this.add.group();
+            this.ice.enableBody = true;
+        }
+        for (let i = 0; i < this.pigs.length; i++) {//生成敌人数目的冰柱
+            if (this.pigs.getChildAt(i).active) {
+                this.ice_ = this.ice.create(0,0,'ice');
+                this.ice_.x = this.pigs.getChildAt(i).x - this.pigs.getChildAt(i).width/2;
+                this.ice_.y = this.pigs.getChildAt(i).y;
+                this.pigs.getChildAt(i).body.velocity.x = 0;
+                this.pigs.getChildAt(i).animations.stop();
+                this.pigs.getChildAt(i).ice = true;
+                this.pigs.getChildAt(i).iceIndex = i;
+                this.ice_.animations.add('ice',[0,1,2,3,4,5,6],3,false);
+                var that = this;
+                this.ice_.animations.play('ice').onComplete.add(function(){//冻住敌人动画 完毕后解冻
+                    if (that.pigs.getChildAt(i)) {
+                        that.ice.getChildAt(i).kill();
+                        that.pigs.getChildAt(i).ice = false;
+                        that.pigs.getChildAt(i).animations.play('walk');
+                        that.pigs.getChildAt(i).body.velocity.x = -100;
+                    }                
+                }, this);
+            } else {
+                continue;
+            }
+        }
+        this.skillMask(this.skills.getChildAt(5),5000);//5s
+      }, this);
+      this.skills.getChildAt(6).events.onInputDown.add(function(){//技能图标7 技能 加速
+        if (this.energyEnabled == false) {
+            return false;
+        }
+        this.energy.width -= (this.energy.sum * 1/10);
+        this.wolf.bulletSpeed = 30;
+        var that = this;
+        this.skillMask(this.skills.getChildAt(6),10000,function(){
+            that.wolf.bulletSpeed = 60;
+        });
+      }, this);
+      this.skills.getChildAt(7).events.onInputDown.add(function(){//技能图标8 道具 三叶草 治愈
+        if (this.energyEnabled == false) {
+            return false;
+        }
+        this.energy.width -= (this.energy.sum * 1/5);
+        this.skillMask(this.skills.getChildAt(7),12000);
+        this.restore = this.add.image(0,0,'restore');
+        this.restore.scale.set(3);
+        this.restore.animations.add('restore');
+        var that = this;
+        this.restore.animations.play('restore',3).onComplete.add(function(){
+            that.restore.destroy();
+            that.life.width = that.life.sum;
+        }, this);
+      }, this);
+      this.skills.getChildAt(8).events.onInputDown.add(function(){//技能图标9 武器 钢叉
+        if (this.energyEnabled == false) {
+            return false;
+        }
+        this.energy.width -= (this.energy.sum * 15/100);
+        this.weaponReplace(this.weapon,this.axe,this.fork,2);
+        var that = this;
+        this.skillMask(this.skills.getChildAt(8),10000,function(){
+            that.weaponReplace(that.weapon,that.axe,that.fork,1);
+        });
+      }, this);
+      ///////////////////////////////////////////////////////////
+      this.add.image(0,0,'life-bar');//血槽
+      this.life = this.add.image(0,0,'life-bar-filled');//血量
+      this.life.sum = this.life.width;
+      this.add.image(0,this.life.height,'energy-bar');//能量槽
+      this.energy = this.add.image(0,this.life.height,'energy-bar-filled');//能量
+      this.energy.sum = this.energy.width;
+      this.energyEnabled = true;
+      ///////////////////////////////////////////////////////////游戏进度条
+      this.progressBarBelow = this.add.image(0,0,'progress-bar-below');
+      this.progressBarOver = this.add.image(0,0,'progress-bar-over');
+    //   this.progressBarBelow.anchor.set(.5);
+    //   this.progressBarBelow.x = this.world.centerX;
+    //   this.progressBarBelow.y = this.progressBarBelow.height*1.7;
+    //   this.progressBarOver.x = this.progressBarBelow.x - this.progressBarOver.width/2;
+    //   this.progressBarOver.y = this.progressBarBelow.y - this.progressBarOver.height/2;
+      Phaser.Display.Align.In.TopRight(this.progressBarBelow, this.bg);
+      this.progressBarOver.x = this.progressBarBelow.x;
+      this.progressBarOver.sum = this.progressBarOver.width;
+      ////////////////////////////////////////////////////////////游戏关卡属性
+      this.enemyKey =  new Array('pig','ridding','granny','octocat');//直接在生成敌人位置决定攻击动画 可以共用一个
+      this.enemyBulletKey = new Array('','pie','rock','fireball');
+      this.enemySpeed = new Array(-100,-150,-200,-250);
+      this.scoreLevel = new Array(10,30,50,100);
+      this.level = 0;
+      this.iceTo = true;
+      ////////////////////////////////////////////////////////////敌方子弹
+      this.enemyBullets = this.add.group();
+      this.enemyBullets.enableBody = true;
+      this.enemyBullets.setAll('outOfBoundsKill', true);
+      this.enemyBullets.setAll('checkWorldBounds', true);
+      ////////////////////////////////////////////////////////////敌方死亡溅血
+      this.bloods = this.add.group();
+      this.bloods.enableBody = true;
+      ////////////////////////////////////////////////////////////积分相关
+      this.goldCoin = this.add.group();
+      this.coins = this.add.image(0,0,'coins');
+      this.coins.x = 100;
+      this.number = game.add.retroFont('number', 20, 20, Phaser.RetroFont.TEXT_SET10, 20, 0, 0);///aaa2   a5 24  a2== a22a==3223 b=4 c=5 de=67 fg = 89 h = 0 set10无前缀 a1~j0 set8无前缀12~01
+      this.imageFont = game.add.image(this.world.centerX/2, 49, this.number);
+      this.imageFont.anchor.set(.5,.3);
+      this.number.text = "";
+      this.number.score = '';
+      this.number.table = new Array('a','b','c','d','e','f','g','h','i','j');
+      this.score = 0;
+      this.displayScore();
+    }
+    this.dt = 0;
+    this.update = function () {
+        if (this.life.width<=0 || this.progressBarOver.width<=0) {
+            this.game.state.start('over');
+        }
+        if (this.wires.hp <= 0) {//荆棘围墙
+            this.wires.active = false;
+            this.wires.kill();
+        }
+        if (this.wires.active&&this.wires.act) {
+            this.wires.alpha = this.wires.hp / this.wires.hp_;//荆棘围墙受损
+        }
+        if (this.pigs.length>0) {//第一关之后
+            for (var i = 0; i < this.pigs.length; i++) {
+                if (this.pigs.getChildAt(i).x <= this.underRails.width+this.wires.width+this.pigs.getChildAt(i).width*1.5&&this.pigs.children[i].key!=='pig') {
+                    if (this.pigs.getChildAt(i).active) {
+                        this.pigs.getChildAt(i).body.velocity.x = 0;
+                        this.pigs.getChildAt(i).animations.play('attack');//加上子弹
+                        if(this.dt % 60 == 0&&this.pigs.getChildAt(i).ice==false) { 
+                            this.enemyBullet = this.enemyBullets.create(0, 0, this.enemyBulletKey[this.pigs.getChildAt(i).level]);
+                            this.enemyBullet.animations.add('bullet');
+                            this.enemyBullet.animations.play('bullet');
+                            Phaser.Display.Align.To.LeftCenter(this.enemyBullet, this.pigs.getChildAt(i));
+                            this.enemyBullet.y += this.enemyBullet.height;
+                            if (this.level==2) {
+                                this.enemyBullet.x += 100;
+                                this.enemyBullet.y -= 100;
+                            }
+                            this.enemyBullet.body.velocity.x = -300;
+                        }
+                    }
+                }
+            }
+        }
+        this.progressBarOver.width -= this.progressBarOver.sum * .0001;//游戏进度
+        if (this.progressBarOver.width <= this.progressBarOver.sum * 0.75 ) {//游戏进度修改
+            this.level = 1;
+        }
+        if (this.progressBarOver.width <= this.progressBarOver.sum * 0.5 ) {
+            this.level = 2;
+        }
+        if (this.progressBarOver.width <= this.progressBarOver.sum * 0.25 ) {
+            this.level = 3;
+        }
+        if (this.life.width <= 0) {//生命值
+            //gameover
+        } 
+        if (this.energy.width <= 0) {//能量值
+            this.energyEnabled = false;
+        } 
+        if (this.storm.length>0) {//风暴匀速前进
+            for (var i = 0; i < this.storm.length; i++) {
+                if (this.storm.getChildAt(i).body.velocity.x < 300) {
+                    this.storm.getChildAt(i).body.velocity.x = 300;
+                }
+            }
+        }
+        this.game.physics.arcade.overlap(this.wires, this.enemyBullets,function(wires_,bullet){//敌人攻击到达荆棘 耐性减值
+            if (wires_.active) {
+                wires_.hp -= 0.1;
+                bullet.destroy();
+            }
+        },null,this);
+        this.game.physics.arcade.overlap(this.underRails, this.enemyBullets,function(underRails,bullet){//敌人攻击到达铁轨  生命减值 小红帽
+                this.life.width -= this.life.sum * 1/100;
+                bullet.destroy();
+        },null,this);
+        this.game.physics.arcade.overlap(this.underRails, this.pigs,function(underRails,pig){//敌人到达铁轨 生命减值
+                this.life.width -= this.life.sum * 1/10;
+                pig.active = false;
+                pig.destroy();
+        },null,this);
+        this.game.physics.arcade.overlap(this.wires, this.pigs,function(wires_,pig){//荆棘阻挡敌人
+            if (this.wires.active) {
+                wires_.hp--;
+                // if (wires_.hp % 2 == 0) {
+                //     wires_.dt++;
+                //     wires_.alpha = 1 - wires_.dt/10;
+                // }
+                pig.destroy();
+            }
+        },null,this);
+        this.game.physics.arcade.collide(this.storm, this.pigs,function(storm_,pig){//风暴推动敌人
+            if (this.ice.length>0) {//先冰冻再风暴
+                // if (typeof pig.iceIndex!=="undefined") {//检测对象类型
+                   if (this.ice.getChildAt(pig.iceIndex)) {//检测对象存在
+                       this.ice.getChildAt(pig.iceIndex).kill();
+                //    }
+                }
+            }
+        },null,this);
+        this.game.physics.arcade.overlap(this.stone, this.pigs,function(stone_,pig){//滚石碾压敌人
+            pig.dt++;
+            if (pig.dt==1) {
+                pig.anchor.set(.5);
+                pig.angle = 90;
+                pig.y += 70;
+                pig.animations.stop();
+                pig.body.velocity.x = 0;
+                pig.active = false;
+                var that = this;
+                game.add.tween(pig).to( { alpha: 0 }, 1000, "Linear", true).onComplete.add(function(){
+                    pig.destroy();
+                    that.iceTo = true;
+                });
+                if (this.ice.length>0) {//先冰冻再滚石
+                    // if (typeof pig.iceIndex!=="undefined") {//检测对象类型
+                       if (this.ice.getChildAt(pig.iceIndex)) {//检测对象存在
+                           this.ice.getChildAt(pig.iceIndex).kill();
+                    //    }
+                    }
+                }
+            }
+        },null,this);
+        this.game.physics.arcade.overlap(this.weapon.bullets, this.pigs, function (bullet, enemy) {//狼人攻击
+            if (enemy.active==false) {
+                return
+            }
+            this.Flag(bullet);//确定子弹轨道
+            if (bullet.Flag==enemy.courseFlag) {
+                enemy.active = false;
+                this.blood = this.bloods.create(enemy.x,enemy.y,'blood');//敌方血溅当场
+                this.blood.animations.add('blood');
+                this.blood.animations.play('blood',120).onComplete.add(function(){//用组 当敌方势力灭亡销毁组重建组 不然会有历史遗留问题
+                    this.bloods.destroy();
+                    this.bloods = this.add.group();
+                    this.bloods.enableBody = true;
+                },this);
+                this.coin = this.goldCoin.create(enemy.x,enemy.y,'goldCoin');//敌方势力死亡后掉落金币即为积分
+                this.add.tween(this.coin).to( { y: this.imageFont.y, x: this.imageFont.x }, 300, "Linear", true).onComplete.add(function(){
+                    this.goldCoin.destroy();
+                    this.goldCoin = this.add.group();
+                },this);
+                enemy.destroy();
+                this.score += this.scoreLevel[enemy.level];//按level划分积分
+                this.displayScore();//可设定金币上升到文本对象处动画再显示积分
+                if (enemy.ice==true) {
+                    this.ice.getChildAt(enemy.iceIndex).kill();//当狼人武器消灭敌人后 冰柱消融
+                }
+                bullet.hp--;
+                if (bullet.hp==0) {
+                    bullet.kill();
+                }
+            } 
+        }, null, this);
+        this.dt++;//帧循环计数器
+        if (this.pigs.length>0 && this.attack) {//敌人y与狼人y一致时自动攻击
+            for (var i = 0; i < this.pigs.length; i++) {
+                // if (this.pigs.getChildAt(i).courseFlag==this.wolf.Flag) {
+                    if (this.dt % this.wolf.bulletSpeed == 0) {//发射子弹
+                        this.weapon.fire();//子弹与怪物碰撞后检测weapon的坐标
+                        for (var i = 0; i < this.weapon.bullets.length; i++) {
+                            this.weapon.bullets.children[i].hp = this.weapon.hp;//武器耐性值
+                            this.weapon.bullets.children[i].hp_ = this.weapon.hp;
+                        }
+                    }
+                // }
+            }
+        }
+        if (this.dt % 60 == 0) {//生成敌人
+            this.courseRnd = this.game.rnd.between(0,5);
+            this.pig = this.pigs.create(this.game.world.width,this.courseRnd * 70 + 35,this.enemyKey[this.level]);
+            this.pig.animations.add('walk', [0,1, 2, 3], 3, true);
+            this.pig.body.velocity.x = this.enemySpeed[this.level];
+            this.pig.courseFlag = this.courseRnd;
+            this.pig.dt = 0;
+            this.pig.ice = false;
+            this.pig.active = true;
+            this.pig.level = this.level;//用于更改角色对应的攻击特效 否则当等级递升攻击特效会改变
+            if (this.level>0) {
+                this.pig.animations.add('attack', [4, 5, 6, 7], 5, true);
+            }
+            this.pig.animations.play('walk');
+        }
+        if (this.dt % 600 == 0) {//生成buff 600fps == 10s
+            this.rndBuff = this.rnd.between(1,4);
+            switch (this.rndBuff) {
+                case 1:
+                    this.buff = this.add.image(0,0,'energyRegen');
+                    break;
+                case 2:
+                    this.buff = this.add.image(0,0,'energyFull');
+                    break;
+                case 3:
+                    this.buff = this.add.image(0,0,'hearthRegen');
+                    break;
+                default:
+                    this.buff = this.add.image(0,0,'hearthFull');
+                    break;
+            }
+            this.buff.x = this.rnd.between(this.underRails.width+this.wires.width,this.world.width-this.underRails.width);
+            this.buff.y = -this.buff.height;
+            this.buff.inputEnabled = true;
+            this.buff.events.onInputDown.addOnce( function(){
+                switch (this.buff.key) {
+                    case 'energyRegen':
+                        if (this.energy.width < this.energy.sum) {
+                            this.energy.width += (this.energy.sum * 1/20);
+                        }
+                        break;
+                    case 'energyFull':
+                        if (this.energy.width < this.energy.sum) {
+                            this.energy.width = this.energy.sum;
+                        }
+                        break;
+                    case 'hearthRegen':
+                        if (this.life.width < this.life.sum) {
+                            this.life.width += (this.life.sum * 1/20);
+                        }
+                        break;
+                    default:
+                        if (this.life.width < this.life.sum) {
+                            this.life.width = this.life.sum;
+                        }
+                        break;
+                }
+                this.buff.destroy();
+            }, this);
+        }
+        if (this.buff) {
+            this.buff.y += 1;
+            if (this.buff.y >= this.world.height) {
+                this.buff.destroy();
+            }
+        }
+        if (this.game.input.activePointer.isDown){//触摸点按下
+            var pY = this.game.input.activePointer.y;
+            if (pY >= 80 && pY < 150) {//第一道
+                document.title = '第1道:' + pY;
+                this.wolf.Flag = 0;
+                this.add.tween(this.wagon).to( { y: this.underRails.y -10 }, 300, 'Linear', true);
+                this.add.tween(this.wolf).to( { y: this.wolf.y_ }, 300, 'Linear', true);
+            } else if (pY >= 150 && pY < 220) {
+                document.title = '第2道:' + pY;
+                this.wolf.Flag = 1;
+                this.add.tween(this.wagon).to( { y: this.underRails.y + 60 }, 300, 'Linear', true);
+                this.add.tween(this.wolf).to( { y: this.wolf.y_ + 70 }, 300, 'Linear', true);
+            } else if (pY >= 220 && pY < 290) {
+                document.title = '第3道:' + pY;
+                this.wolf.Flag = 2;
+                this.add.tween(this.wagon).to( { y: this.underRails.y + 130 }, 300, 'Linear', true);
+                this.add.tween(this.wolf).to( { y: this.wolf.y_ + 140 }, 300, 'Linear', true);
+            } else if (pY >= 290 && pY < 360) {
+                document.title = '第4道:' + pY;
+                this.wolf.Flag = 3;
+                this.add.tween(this.wagon).to( { y: this.underRails.y + 200 }, 300, 'Linear', true);
+                this.add.tween(this.wolf).to( { y: this.wolf.y_ + 210 }, 300, 'Linear', true);
+            } else if (pY >= 360 && pY < 430) {
+                document.title = '第5道:' + pY;
+                this.wolf.Flag = 4;
+                this.add.tween(this.wagon).to( { y: this.underRails.y + 270 }, 300, 'Linear', true);
+                this.add.tween(this.wolf).to( { y: this.wolf.y_ + 280 }, 300, 'Linear', true);
+            } else if (pY >= 430 && pY < 500) {
+                document.title = '第6道:' + pY;
+                this.wolf.Flag = 5;
+                this.add.tween(this.wagon).to( { y: this.underRails.y + 340 }, 300, 'Linear', true);
+                this.add.tween(this.wolf).to( { y: this.wolf.y_ + 350 }, 300, 'Linear', true);
+            }
+		}
+    }
+    this.Flag = function(obj){//判断子弹所在相应赛道
+        var pY = obj.y;
+        if (pY >= 80 && pY < 150) {
+            obj.Flag = 0;
+        } else if (pY >= 150 && pY < 220) {
+            obj.Flag = 1;
+        } else if (pY >= 220 && pY < 290) {
+            obj.Flag = 2;
+        } else if (pY >= 290 && pY < 360) {
+            obj.Flag = 3;
+        } else if (pY >= 360 && pY < 430) {
+            obj.Flag = 4;
+        } else if (pY >= 430 && pY < 500) {
+            obj.Flag = 5;
+        }
+    }
+    this.weaponReplace = function(weapon,axe,fork,target){//替换武器 战斧 钢叉 目标耐性 //当点击技能图标钢叉时 武器耐性直上升为3 当遮罩结束后降回1
+        if (target==1) {//转换成axe
+            if (weapon.hp==3) {//fork
+                weapon.hp = 1;
+                for (var i = 0; i < weapon.bullets.length; i++) {//更换武器
+                    // weapon.bullets.children[i].texture = axe.texture;
+                    weapon.bullets.children[i].hp = weapon.hp;//武器耐性值
+                    weapon.bullets.children[i].hp_ = weapon.hp;
+                    console.log(weapon.bullets.children[i].hp);
+                }
+                return false;
+            }
+        }
+        if (target==2) {//转换成fork
+            if (weapon.hp==1) {//axe
+                weapon.hp = 3;
+                for (var i = 0; i < weapon.bullets.length; i++) {//更换武器
+                    // weapon.bullets.children[i].texture = fork.texture;//仅仅替换武器耐性 视为时效性强化
+                    weapon.bullets.children[i].hp = weapon.hp;//武器耐性值
+                    weapon.bullets.children[i].hp_ = weapon.hp;
+                }
+                return false;
+            }
+        }
+    }
+    this.skillMask = function(skillIcon,duration,callback){//技能图标遮罩层
+        var mask = this.add.image(0,0,'mask');
+        mask.alpha = 0.3;
+        mask.x = skillIcon.x;
+        mask.y = skillIcon.y;
+        skillIcon.inputEnabled = false;
+        game.add.tween(mask).to( { height: 0 }, duration, "Linear", true).onComplete.add(function(){
+            mask.destroy();
+            skillIcon.inputEnabled = true;
+            if (typeof callback!=='undefined') {
+                callback();
+            }
+        });
+    }
+    this.displayScore = function(){
+        this.number.score = '';
+        for (var i = 0; i < this.score.toString().length; i++) {
+            if (parseInt(this.score.toString().substr(i,1))==0) {
+                this.number.score += 'j';
+            } else {
+                this.number.score += this.number.table[parseInt(this.score.toString().substr(i,1))-1];
+            }
+        }
+        this.number.text = this.number.score;
+        gameScore = this.score;
+    }
+  }
+
+  var menuState = function (game){
+      this.create = function(){
+          this.stage.backgroundColor = '#374649';
+          this.clouds = this.add.image(0,0,'clouds');
+          this.title = this.add.image(0,0,'title');
+          this.title.anchor.set(.5);
+          this.title.x = this.world.centerX;
+          this.title.y = this.world.centerY / 1.5;
+          this.floor = this.add.image(0,0,'floor');
+          this.floor.y = this.world.height - this.floor.height;
+          this.btnNew = this.add.button(this.world.centerX - 120, this.world.centerY+25, 'btnNew', function(){
+              game.state.start('game');
+          }, this, 2, 1, 0);
+          this.btnCtn = this.add.button(this.world.centerX - 120, this.btnNew.y+this.btnNew.height, 'btnCtn', function(){
+              //暂无存档、不予考虑
+          }, this, 2, 1, 0);
+          this.wolf = this.add.image(0,0,'menuWolf');
+          this.wolf.y = this.clouds.height;
+          this.pig = this.add.image(0,0,'menuPig');
+          this.pig.x = this.world.width - this.pig.width;
+          this.pig.y = this.clouds.height;
+        //   this.font = this.add.retroFont('knightHawks', 31, 25, Phaser.RetroFont.TEXT_SET6, 10, 1, 1);//缓key名 单个字体宽度 高度 样式  。。。
+        //   this.textFrame = game.add.image(game.world.centerX, game.world.centerY / 4, this.font);
+        //   this.textFrame.tint = Math.random() * 0xFFFFFF;
+        //   this.textFrame.anchor.set(0.5,1);
+        //   this.font.text = "legend of wolf";
+        //   this.font.setText("phaser 2\nin the house", false, 0, 8, Phaser.RetroFont.ALIGN_CENTER);//居中 false 横向 true 自动分行
+        // this.gold_font = game.add.retroFont('gold_font', 16, 16, "!     :() ,?." + Phaser.RetroFont.TEXT_SET10, 20, 0, 0);
+        // this.gold_font.text = "phaser brings you retro style bitmap fonts";
+        // this.imageFont = game.add.image(game.world.centerX, 48, this.gold_font); //文字转图片 
+        // this.imageFont.anchor.set(0.5);
+      }
+  }
+  var overState = function (game){
+      this.create = function(){
+          this.stage.backgroundColor = '#374649';
+          this.clouds = this.add.image(0,0,'clouds');
+          this.title = this.add.image(0,0,'title');
+          this.title.anchor.set(.5);
+          this.title.x = this.world.centerX;
+          this.title.y = this.world.centerY / 1.5;
+          this.floor = this.add.image(0,0,'floor');
+          this.floor.y = this.world.height - this.floor.height;
+          this.over = this.add.image(0,0,'over');
+          Phaser.Display.Align.In.Center(this.over,this.world).y += this.over.height*1.5;
+          this.textScore = this.add.text(this.world.centerX,this.over.y+this.over.height*2.7,gameScore,{fill:'#fff',fontSize:'49px', align: "center"});
+          this.textScore.anchor.set(.5);
+          this.wolf = this.add.image(0,0,'menuWolf');
+          this.wolf.y = this.clouds.height;
+          this.pig = this.add.image(0,0,'menuPig');
+          this.pig.x = this.world.width - this.pig.width;
+          this.pig.y = this.clouds.height;
+      }
+  }
+  var bootState = function(game){
+      this.preload = function(){
+              ////////////////////////////////////////////////////////////////////////////menuState
+          this.load.image('clouds','assets/images/clouds.png');
+          this.load.image('title','assets/images/title.png');
+          this.load.image('floor','assets/images/floor.png');
+          this.load.image('menuWolf','assets/images/wolf-big.png');
+          this.load.image('menuPig','assets/images/pig-big.png');
+          this.load.spritesheet('btnNew', 'assets/images/menu-sprites1.png', 240, 58);
+          this.load.spritesheet('btnCtn', 'assets/images/menu-sprites2.png', 240, 58);
+        //   this.load.image('knightHawks', 'assets/font/KNIGHT3.png');
+        //   this.load.image('gold_font','assets/font/gold_font.png');
+          this.load.image('number','assets/font/number2.png');
+          ////////////////////////////////////////////////////////////////////////////gameState
+          this.load.image('background','assets/images/background-skillshop.png');
+          this.load.image('battlefield','assets/images/battlefield.png');
+          this.load.image('sky','assets/images/sky.png');
+          this.load.image('earth','assets/images/earth.png');
+          this.load.image('under-rails','assets/images/under-rails.png');
+          this.load.image('rails','assets/images/rails.png');
+          this.load.spritesheet('skills','assets/images/skills.png',53,53,9);
+          this.load.image('mask','assets/images/mask.png');/////////////////images sprites
+          this.load.image('wagon','assets/sprites/wagon.png');
+          this.load.image('wires','assets/sprites/wires.png');
+          this.load.atlas('wolf', 'assets/sprites/wolf.png', null, atlas_Wolf);
+          this.load.atlas('restore', 'assets/sprites/restore.png', null , atlas_Restore);
+          this.load.atlas('rattan', 'assets/sprites/rattan.png', null, atlas_Rattan);
+          this.load.atlas('ridding', 'assets/sprites/ridding.png', null, atlas_Ridding);
+          this.load.spritesheet('pig','assets/sprites/pig.png',54,342/4,4);
+          this.load.image('axe','assets/sprites/axe.png');
+          this.load.image('fork','assets/sprites/fork.png');
+          this.load.spritesheet('storm','assets/sprites/storm.png',32,31,4);
+          this.load.spritesheet('stone','assets/sprites/stone.png',152,101,10);
+          this.load.spritesheet('ice','assets/sprites/ice.png',679/7,102,7);
+          this.load.spritesheet('blood','assets/sprites/blood-sprite-die.png',115,115,11);
+          this.load.spritesheet('granny','assets/sprites/granny.png',85.625,92,8);
+          this.load.spritesheet('octocat','assets/sprites/octocat.png',85.625,92,8);///
+          this.load.spritesheet('fireball','assets/sprites/fireball-sprite.png',30,30,4);
+          this.load.spritesheet('pie','assets/sprites/pie.png',14,13,1);
+          this.load.spritesheet('rock','assets/sprites/rock.png',625/5,119,4);
+          this.load.image('energy-bar-filled','assets/images/energy-bar-filled.png');//images
+          this.load.image('energy-bar','assets/images/energy-bar.png');
+          this.load.image('life-bar-filled','assets/images/life-bar-filled.png');
+          this.load.image('life-bar','assets/images/life-bar.png');
+          this.load.image('progress-bar-below','assets/images/progress-bar-below.png');
+          this.load.image('progress-bar-over','assets/images/progress-bar-over.png');
+          this.load.image('energyFull','assets/images/energy-full.png');
+          this.load.image('energyRegen','assets/images/energy-regen.png');
+          this.load.image('hearthFull','assets/images/hearth-full.png');
+          this.load.image('hearthRegen','assets/images/hearth-regen.png');
+          this.load.image('coins','assets/images/coins.png');
+          this.load.image('goldCoin','assets/images/gold-coin.png');
+          this.load.image('over','assets/images/over.png');
+      }
+      this.create = function(){
+          game.state.start('menu');
+      }
+  }
+  game.state.add("boot", bootState);
+  game.state.add("menu", menuState);
+  game.state.add("game", gameState);
+  game.state.add("over", overState);
+  game.state.start("boot");    
+}
+</script>
+</html>
+<!-- 
+可以使风暴在到达横屏外围一定范围时消失//滚石//敌方势力    
+ -->

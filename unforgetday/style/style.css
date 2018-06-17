@@ -1,0 +1,291 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	outline: none;
+}
+
+img {
+	border: none;
+	vertical-align: middle;
+}
+
+.none {
+	display: none;
+}
+
+canvas {
+	margin: 0 auto;
+}
+
+canvas {
+	margin: 0px auto;
+}
+
+.All {
+	height: 100%;
+	height: 100%;
+	padding-top: 560px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.game {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+	z-index: 0;
+}
+
+.item {
+	position: relative;
+	z-index: 1;
+	background: #fff;
+	width: 100%;
+	height: 100%;
+	padding-top: 94px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.tab-btn {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 94px;
+	line-height: 94px;
+	background: #f6f6f6;
+}
+
+.tab-btn ul {
+	font-size: 0px;
+}
+
+.tab-btn ul li {
+	display: inline-block;
+	width: 20%;
+	text-align: center;
+}
+
+.tab-btn ul li.active {
+	background: #fff;
+}
+
+.tabCon {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.list-1 {
+	font-size: 0px;
+	background: #fff;
+}
+
+.list-1 li {
+	display: inline-block;
+	width: 50%;
+	margin-bottom: 18px;
+}
+
+.list-1 li img {
+	width: 348px;
+}
+
+.tabCon {
+	height: 100%;
+}
+
+.tabCon-1,
+.tabCon-2,
+.tabCon-3,
+.tabCon-4,
+.tabCon-5 {
+	height: 100%;
+}
+
+.swiper-container {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.swiper-scrollbar {
+	opacity: 0;
+}
+
+.swiper-slide {
+	padding-top: 18px;
+	height: auto;
+	padding-left: 18px;
+}
+
+.list-2 {
+	font-size: 0px;
+}
+
+.list-2 li {
+	display: inline-block;
+	margin-right: 18px;
+	width: 225px;
+	height: 225px;
+	text-align: center;
+	background: rgb(246, 246, 246);
+	margin-bottom: 18px;
+	overflow: hidden;
+}
+
+.list-2 li .imgbox {
+	text-align: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.list-2 li img {
+	max-width: 225px;
+	max-height: 225px;
+}
+
+.list-3 li {
+	display: inline-block;
+	margin-right: 18px;
+	width: 225px;
+	height: 225px;
+	text-align: center;
+	background: rgb(246, 246, 246);
+	margin-bottom: 18px;
+	overflow: hidden;
+}
+
+.list-3 li .imgbox {
+	text-align: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.list-3 li img {
+	max-width: 225px;
+	max-height: 225px;
+}
+
+.btn_next_d {
+	position: fixed;
+	bottom: 20px;
+	right: 30px;
+	z-index: 1;
+	width: 110px;
+	height: 110px;
+}
+
+.tk {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: url(../images/bg_jieguo.jpg) no-repeat center top;
+	z-index: 10;
+	overflow: hidden;
+}
+
+.tkIn {
+	width: 710px;
+	height: 1070px;
+	margin: 0px auto;
+	margin-top: 15px;
+	background: url(../images/paper_05.jpg) no-repeat center top;
+	overflow: hidden;
+}
+
+.canvasImg {
+	width: 666px;
+	display: block;
+	margin: 123px auto 0px;
+}
+
+.text {
+	width: 619px;
+	font-family: myfont;
+	opacity: 1;
+	line-height: 47px;
+	left: 60px;
+	position: absolute;
+	top: 650px;
+	letter-spacing: -4px;
+	text-indent: 2em;	
+	font-size: 38px;
+	color: rgb(57, 44, 134);
+}
+
+@font-face {
+	font-family: myfont;
+	src: url('../font/zt.ttf');
+}
+
+
+.tit {
+	position: absolute;
+	font-family: myfont;
+	top: 84px;
+	font-size: 38px;
+	line-height: 46px;
+	left: 266px;
+	opacity: 1;
+	color: rgb(57, 44, 134);
+}
+.loadimg {
+	position: absolute;
+	left: 50%;
+	top: 200px;
+	margin-left: -176.5px;
+}
+
+.saveImg {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.loadFont {
+	position: absolute;
+	z-index: -1;
+	font-family: myfont;
+	opacity: 0;
+}
+.opacity {
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	}
+.btnDo {text-align: center; position: relative;top: 10px;}
+.btnDo img { margin: 0px 25px ; width: 220px; }
