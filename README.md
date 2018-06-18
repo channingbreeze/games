@@ -4,6 +4,9 @@
 ### 源码
 每一个游戏的源码都在对应的文件夹中，如 fruit - 切水果 ，源码在fruit文件夹中
 
+### Phaser3
+新增Phaser3案例，目录后面带了3的都是Phaser3游戏
+
 ### 游戏列表
 * [learn - 官方案例](http://game.webxinxin.com/learn/exam8.html)
 * [fruit - 切水果](http://game.webxinxin.com/fruit/)
@@ -79,6 +82,10 @@
 * [unforgetday - 难忘的一天](http://game.webxinxin.com/unforgetday)
 * [legendofwolf - 狼的传说](http://game.webxinxin.com/legendofwolf)
 * [twowar - 双王争霸](http://game.webxinxin.com/twowar)
+* [learn3 - Phaser3入门案例](http://game.webxinxin.com/learn3)
+* [flappybird3 - Flappybird](http://game.webxinxin.com/flappybird3)
+* [breakout3 - 打砖块](http://game.webxinxin.com/breakout3)
+* [knifehit3 - 飞刀](http://game.webxinxin.com/knifehit3)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
