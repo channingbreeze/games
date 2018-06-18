@@ -86,6 +86,7 @@
 * [flappybird3 - Flappybird](http://game.webxinxin.com/flappybird3)
 * [breakout3 - 打砖块](http://game.webxinxin.com/breakout3)
 * [knifehit3 - 飞刀](http://game.webxinxin.com/knifehit3)
+* [bottle3 - 掉瓶子](http://game.webxinxin.com/bottle3)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流

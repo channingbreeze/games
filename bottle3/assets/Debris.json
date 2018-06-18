@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "sprite1-sheet0.png",
+	"frame": {"x":26,"y":0,"w":26,"h":23},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":23},
+	"sourceSize": {"w":26,"h":23}
+},
+{
+	"filename": "sprite2-sheet0.png",
+	"frame": {"x":0,"y":51,"w":50,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":51},
+	"sourceSize": {"w":50,"h":51}
+},
+{
+	"filename": "sprite3-sheet0.png",
+	"frame": {"x":0,"y":0,"w":26,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":51},
+	"sourceSize": {"w":26,"h":51}
+},
+{
+	"filename": "sprite4-sheet0.png",
+	"frame": {"x":0,"y":102,"w":58,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":31},
+	"sourceSize": {"w":58,"h":31}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Debris.png",
+	"format": "RGBA8888",
+	"size": {"w":58,"h":133},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d25bd6b0ba0bcb7ed9f7326091a8f2c2:56903f7f61f6597f3c1c7651572f7832:72b331ff20012b566852273823ae9f98$"
+}
+}
