@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+    <title>P2物理弹球</title>
+    <meta charset="utf-8">
+    <script src="../phaser.min.js"></script>
+	<style type="text/css">
+	body {margin: 0;padding: 0;	}
+	canvas {margin: 0 auto;position: relative;left:0;top:0;}
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+
+var GameState = function(game){
+	var _over = false;
+	var _holding = false;
+	var _going = false;
+	var _pointID = -1;
+	var _ballNum = 3;
+	var _ballKill = 0;
+	var _xrow;
+	var _score;
+	var _level;
+
+	var balls,shapes,line,tweenText;
+	var ballMaterial,worldMaterial;
+
+	this.init = function(){
+		game.stage.backgroundColor = "#112233";
+		_over = false;
+		_holding = false;
+		_going = false;
+		_pointID = -1;
+		_ballNum = 3;
+		_ballKill = 0;
+		_xrow = 0;
+		_score = 0;
+		_level = 0;
+	};
+
+	this.preload = function(){
+		if(!game.device.desktop){
+			this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+		}else{
+			this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		}
+		this.load.image("ground", "img/ground.png");
+		this.load.spritesheet("ball", "img/balls.png",32,32);
+		this.load.spritesheet("ball2", "img/balls2.png",48,48);
+		this.load.spritesheet("button", "img/buttons.png",80,40);
+		this.load.image("dot", "img/dot.png");
+	};
+
+	this.create = function(){
+		game.physics.startSystem(Phaser.Physics.P2JS); 
+		game.physics.p2.gravity.y = 1000;
+
+		ballMaterial = game.physics.p2.createMaterial('ballMaterial');
+		worldMaterial = game.physics.p2.createMaterial('worldMaterial');
+		game.physics.p2.createContactMaterial(ballMaterial, worldMaterial, { restitution:0.98, friction:0 });
+		game.physics.p2.createContactMaterial(ballMaterial, ballMaterial,{ restitution:0, friction:0, stiffness:0.00001 });
+		game.physics.p2.setWorldMaterial(worldMaterial);
+
+		game.add.tileSprite(0, 0, game.width, 60, "ground").alpha=0.5;
+
+		var home = game.add.sprite(game.world.centerX, 30, "ball", 3);
+		home.anchor.setTo(0.5);
+		home.scale.setTo(1.2);
+		home.update = function(){this.alpha = (!_over && !_going) ? 1 : 0.5;};
+
+		var scoreText = game.add.text(10, 30, _score + "", {fontSize:"20px", fill:"#fff"});
+		scoreText.anchor.setTo(0, 0.5);
+		scoreText.update = function(){this.text = _score;};
+
+		var levelText = game.add.text(game.width-10, 30, _ballNum + "", {fontSize:"20px", fill:"#fff"});
+		levelText.anchor.setTo(1, 0.5);
+		levelText.update = function(){this.text = _ballNum;};
+
+		shapes = game.add.physicsGroup(Phaser.Physics.P2JS);
+		balls = game.add.physicsGroup(Phaser.Physics.P2JS);
+
+		// Ground
+		var ground = game.add.tileSprite(game.world.centerX, game.height-30, game.width, 60, "ground");
+		game.physics.p2.enable(ground);  
+		ground.body.static = true;
+		ground.body.onBeginContact.add(function(b1,b2){
+			if(b1 && b1.sprite.key == "ball"){
+				b1.sprite.kill();
+				_ballKill++;
+				if(_ballKill==_ballNum){
+					this._shapesUp();
+				}
+			}
+		},this);
+
+		tweenText = game.add.text(0,0,"",{fontSize:"36px", fill:"#fff"});
+		tweenText.anchor.setTo(0.5);
+		tweenText.alpha = 0;
+
+		line = game.add.tileSprite(game.world.centerX, 30, game.world.centerX, 16, "dot");
+		line.anchor.setTo(0,0.5);
+		line.visible = false;
+
+		// Create shapes
+		for (var i=2; i<5; i++){
+			this._createShapes(i);
+		}
+
+		game.input.onDown.add(function(p){
+			if(!_over && !_going && !_holding){
+				_holding = true;
+				_pointID = p.id;
+				line.rotation = Math.atan2(p.y - 20, p.x - 225);
+				line.visible = true;
+			}
+		},this);
+
+		game.input.onUp.add(function(p){
+			if(_holding && p.id == _pointID){
+				_holding = false;
+				_pointID = -1;
+				_going = true;
+				line.visible = false;
+				// Create Balls
+				var vPoint = this._velocityFromRotation(line.rotation,800);
+				for(var i=0; i<_ballNum; i++){
+					game.time.events.add(200*i,function(id,p){
+						if(id<balls.children.length){
+							var ball = balls.getChildAt(id);
+							ball.reset(game.world.centerX, 30);
+						}else{
+							var ball = balls.create(game.world.centerX, 30, "ball", 0);
+							ball.anchor.set(0.5);
+							ball.scale.set(0.7);
+							ball.body.setCircle(12);
+							ball.body.setMaterial(ballMaterial);
+							ball.body.onBeginContact.add(function(b1,b2){
+								if(this.body.data.gravityScale == 0){
+									if(b1 && b1.sprite.key == "ball"){
+										return;
+									}
+									this.body.data.gravityScale = 1;
+								}
+							},ball);
+						}
+						ball.body.data.gravityScale = 0;
+						ball.body.velocity.x = p.x;
+						ball.body.velocity.y = p.y;
+					},this,i,vPoint);
+				}
+				_ballKill = 0;
+			}
+		},this);
+	};
+
+	this.update = function(){
+		if(!_going && _holding){
+			var p = _pointID==0 ? game.input.mousePointer : game.input.pointers[_pointID-1];
+			line.rotation = Math.atan2(p.y - 20, p.x - 225);
+		}
+	};
+
+	this._shapesUp = function(){
+		this._createShapes(5);
+		shapes.forEachAlive(function(shape){
+			var topY = shape.body.y - 90;
+			if(topY<60){
+				_over = true;
+				this._overMenu();
+			}
+			game.add.tween(shape.body).to({y:topY},200,"Linear",true);
+		},this);
+		_going = false;
+	};
+
+	this._createShapes = function(i){
+		if(_xrow==0){
+			this._levelUp();
+		}
+		var col = 5 - (_xrow % 2);
+		for (var j=0; j<col; j++){
+			var shapeID = game.rnd.between(1,3);
+			var angle = game.rnd.between(0,11)*30;
+			var shape = shapes.getFirstDead(true, 65 + j * 90 + 45 * (_xrow % 2), 300 + i * 90, "ball2", shapeID);
+			shape.anchor.set(0.5);
+			if(shapeID==1){
+				shape.body.setRectangle(44,44,0,0);
+			}else if(shapeID==3){
+				shape.body.addPolygon(null,[23,0,0,39,1,40,46,40,47,39,24,0]);
+			}else{
+				shape.body.setCircle(22);
+			}
+			shape.body.static = true;
+			shape.body.setMaterial(worldMaterial);
+			shape.health = game.rnd.between(_ballNum, _ballNum * 4); // 生命值为球数量的1~4倍
+			if(!shape.txt){
+				shape.txt = shape.addChild(game.make.text(0,0,shape.health+"",{fontSize:"20px", fill:"#f00"}));
+				shape.txt.anchor.set(0.5);
+				shape.update = function(){this.txt.text = this.health;};
+				shape.body.onEndContact.add(function(b1,b2){
+					this.damage(1);
+					_score++;
+				},shape);
+			}
+			shape.body.angle = angle;
+			shape.txt.angle = -angle;
+		}
+		_xrow = (_xrow+1) % 10; // 每10行过关
+	};
+
+	this._velocityFromRotation = function (rotation, speed) {
+		return new Phaser.Point((Math.cos(rotation) * speed), (Math.sin(rotation) * speed));
+	};
+
+	this._levelUp = function(){
+		_level ++;
+		_ballNum = _level + 2; // 球数量为关数+2（第一关为3球，每过一关+1球）
+		tweenText.x = this.world.centerX;
+		tweenText.y = this.world.centerY;
+		tweenText.alpha = 0;
+		tweenText.setText("LEVEL - " + _level);
+		game.add.tween(tweenText)
+		.to({y:tweenText.y-100,alpha:0.8},300,"Linear",false)
+		.to({y:tweenText.y-150},500,"Linear",false)
+		.to({y:tweenText.y-250,alpha:0},300,"Linear",true);
+	};
+
+	this._overMenu = function(){
+		var box = game.add.sprite(game.world.centerX, game.world.centerY, "button", 3);
+		box.anchor.set(0.5);
+		box.alpha = 0.8;
+		box.scale.set(game.width/80,5);
+
+		game.add.text(game.world.centerX, game.world.centerY-40, "Game Over", {fontSize:"36px", fill:"#fff"}).anchor.set(0.5);
+
+		var btn1 = game.add.sprite(game.world.centerX, game.world.centerY+40, "button", 1);
+		btn1.anchor.set(0.5);
+		btn1.inputEnabled = true;
+		btn1.events.onInputDown.add(function(){
+			game.state.start("main");
+		},this);
+	};
+};
+
+window.onload = function(){
+	var game = new Phaser.Game(500, 860, Phaser.CANVAS, '');
+	game.state.add("main",GameState,true);
+};
+
+</script>
+</body>
+</html>
