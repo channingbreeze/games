@@ -165,7 +165,7 @@ var GameState = function(game){
 		this._createShapes(5);
 		shapes.forEachAlive(function(shape){
 			var topY = shape.body.y - 90;
-			if(topY<60){
+			if(topY<60 && !_over){
 				_over = true;
 				this._overMenu();
 			}
