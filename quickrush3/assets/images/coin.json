@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "slice01_01.png",
+	"frame": {"x":0,"y":0,"w":10,"h":10},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
+	"sourceSize": {"w":10,"h":10}
+},
+{
+	"filename": "slice02_02.png",
+	"frame": {"x":10,"y":0,"w":8,"h":10},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":10},
+	"sourceSize": {"w":8,"h":10}
+},
+{
+	"filename": "slice03_03.png",
+	"frame": {"x":18,"y":0,"w":5,"h":10},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":5,"h":10},
+	"sourceSize": {"w":5,"h":10}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "coins.png",
+	"format": "RGBA8888",
+	"size": {"w":23,"h":10},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b82b0f86403c5d1fd9f0348320157e4d:d4916d43f711a5c935fff7bfb9bca2c7:51f960d29b2cb2ae0010061540f14fb7$"
+}
+}
