@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>蛋蛋派</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=IE9">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+
+
+    <script id="booster-api" type="text/javascript" src="shared/booster/api.js"></script>
+    <link rel = "stylesheet" href = "style.css" type = "text/css" media = "screen">
+    <!--<script type="text/javascript" src="http://games.gamesplaza.com/shared/booster/v0.36/js/booster-api.js"></script>-->
+    <script src="Lib/phaser.min.js"></script>
+    <script src="JS/extLib/Loader.js"></script>
+    <script src="JS/extLib/Canvas.js"></script>
+    <script src="JS/extLib/ZyngaScroller-min.js"></script>
+    <script src="JS/extLib/CWScroller-min-0.1.js"></script>
+    <script src="JS/extLib/AttemptTimer.js"></script>
+    <script src="JS/extLib/localDataModel.js"></script>
+    <script src="JS/LoadingScreen.js"></script>
+    <script src="JS/BoosterApi.js"></script>
+    <script src="JS/MainMenu.js"></script>
+    <script src="JS/InGameTutorial.js"></script>
+    <script src="JS/LevelUp.js"></script>
+    <script src="JS/GameOver.js"></script>
+    <script src="JS/MagicMonsters.js"></script>
+    <script src="JS/LevelSelection.js"></script>
+    <script src="JS/gameConfig.js"></script>
+    <script type="text/javascript">
+        var Booster = window.Booster || {};
+        Booster.ready = function () {
+            new Booster.Init({orientation: 'portrait', splash: true, minimalUI: false});
+            //-- Calls to Booster functions for the game.
+            configObj.community = new Booster.Community({position: 14, gameCode : '0001-pet_pop_part'});
+        };
+    </script>
+
+
+</head>
+<body>
+  <div id="gameContainer" style="position: relative;">
+      <div id = "game"></div>
+  </div>
+
+
+</body>
+</html>

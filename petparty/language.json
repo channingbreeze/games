@@ -1,0 +1,142 @@
+{
+    "english" : {
+        "tutorialText" : [
+            "Achieve target in the given moves \n by matching 3 or more pets together",
+            "Use Magic Candy to collect a single pet",
+            "Use Goody Bag \n to collect similar colored pets",
+            "Tap here to increase your moves"
+        ],
+        "levelStartText" : [
+            "Ready? Next Target: \n 1500 points in 10 moves!",
+            "Ready? Next Target: \n 1600 points in 11 moves!",
+            "Ready? Next Target: \n 1800 points in 12 moves!",
+            "Ready? Next Target: \n 2000 points in 13 moves!",
+            "Ready? Next Target: \n 2100 points in 14 moves!",
+            "Ready? Next Target: \n 1500 points in 15 moves!",
+            "Ready? Next Target: \n 2400 points in 16 moves!",
+            "Ready? Next Target: \n 1600 points in 16 moves!",
+            "Ready? Next Target: \n 2700 points in 18 moves!",
+            "Ready? Next Target: \n 1700 points in 17 moves!",
+            "Ready? Next Target: \n 2000 points in 20 moves!",
+            "Ready? Next Target: \n 2600 points in 16 moves!",
+            "Ready? Next Target: \n 2200 points in 22 moves!",
+            "Ready? Next Target: \n 2800 points in 19 moves!",
+            "Ready? Next Target: \n 2500 points in 21 moves! \n clear all crystals",
+            "Ready? Next Target: \n Get 1600 points in 12 moves! \n clear all crystals",
+            "Ready? Next Target: \n Get 1300 points in 11 moves! \n clear all crystals",
+            "Ready? Next Target: \n Get 1800 points in 14 moves! \n clear all crystals",
+            "Ready? Next Target: \n Get 2000 points in 16 moves! \n clear all crystals",
+            "Ready? Next Target: \n Get 3800 points in 20 moves! \n clear all crystals",
+            "Ready? Next Target: \n Get 2600 points in 18 moves! \n clear all crystals",
+            "Ready? Next Target: \n Get 2400 points in 16 moves! \n clear all crystals",
+            "Ready? Next Target: \n Get 2800 points in 18 moves! \n clear all crystals",
+            "Ready? Next Target: \n Get 3000 points in 19 moves! \n clear all crystals",
+            "Ready? Next Target: \n Get 3200 points in 20 moves! \n clear all crystals",
+            "Ready? Next Target: \n Get 3500 points in 22 moves!",
+            "Ready? Next Target: \n Get 3000 points in 18 moves!",
+            "Ready? Next Target: \n Get 3400 points in 20 moves!",
+            "Ready? Next Target: \n Get 1700 points in 12 moves!",
+            "Ready? Next Target: \n Get 2000 points in 14 moves!",
+            "Ready? Next Target: \n Get 3200 points in 20 moves!",
+            "Ready? Next Target: \n Get 2600 points in 16 moves!",
+            "Ready? Next Target: \n Get 3200 points in 22 moves!",
+            "Ready? Next Target: \n Get 2800 points in 18 moves!",
+            "Ready? Next Target: \n Get 3100 points in 19 moves!",
+            "Ready? Next Target: \n Get 2400 points in 15 moves! \n clear all the crystals",
+            "Ready? Next Target: \n Get 1400 points in 10 moves! \n clear all the crystals",
+            "Ready? Next Target: \n Get 2800 points in 17 moves! \n clear all the crystals",
+            "Ready? Next Target: \n Get 3100 points in 20 moves! \n clear all the crystals",
+            "Ready? Next Target: \n Get 3300 points in 22 moves! \n clear all the crystals",
+            "Ready? Next Target: \n Get 2700 points in 16 moves!  \n clear all the crystals",
+            "Ready? Next Target: \n Get 3700 points in 22 moves! \n clear all the crystals",
+            "Ready? Next Target: \n Get 4000 points in 23 moves! \n clear all the crystals",
+            "Ready? Next Target: \n Get 4200 points in 24 moves! \n clear all the crystals",
+            "Ready? Next Target: \n Get 3100 points in 18 moves! \n clear all the crystals",
+            "Ready? Next Target: \n Get 3800 points in 21 moves! \n clear all the crystals",
+            "Ready? Next Target: \n Get 4500 points in 22 moves! \n clear all the crystals",
+            "Ready? Next Target: \n Get 4700 points in 23 moves! \n clear all the crystals",
+            "Ready? Next Target: \n Get 5000 points in 24 moves! \n clear all the crystals",
+            "Ready? Next Target: \n Get 5500 points in 25 moves! \n clear all the crystals"
+        ],
+
+        "unlockedBadgeData" :{
+            "heading" : "ACHIEVEMENTS",
+            "subHeading" : "Achievement",
+            "unlockBadgeText" : [
+                "To unlock this \n Achieve the target within 5 moves",
+                "To unlock this \n Achieve the target with 13 moves \n left",
+                "To unlock this \n Score 10000 points",
+                "To unlock this \n Score 8500 points with 8 moves \n left",
+                "To unlock this \n Score 7200 points with 3 moves \n left",
+                "To unlock this \n Score 9200 points with 5 moves \n left"
+            ],
+
+            "unlockedBadgeMessage" :[
+                "You have successfully completed \n a level with 5 moves.",
+                "You have successfully completed \n a level with 13 moves left.",
+                "You have successfully scored \n 5000 points in one level.",
+                "You have successfully scored \n 4000 points with 8 moves left.",
+                "You have successfully scored \n 3000 points with 3 moves left.",
+                "You have successfully scored \n 9200 points with 5 moves left."
+            ],
+            "unlockMsg" : {
+                "title" : "Achievement Unlocked!"
+            },
+
+            "rewards" : "Rewards"
+        },
+
+       "unlockedPetData" : {
+           "heading" : null,
+           "subHeading1" : "Unlocked",
+           "subHeading2" : "Unlockable",
+           "unlockPetText" : [
+               "Play 5 levels to unlock",
+               "Play 10 levels to unlock",
+               "Play 15 levels to unlock",
+               "Play 25 levels to unlock",
+               "Play 35 levels to unlock",
+               "Play 45 levels to unlock"
+           ],
+           "unlockMsg" :{
+               "heading" : "Congratulations!",
+               "message" : "You have unlocked new animal \n for playing ",
+               "messageAppendText" : " levels"
+           },
+           "message" : "You have earned",
+           "rewards" : "Rewards"
+       },
+
+       "shop" : {
+           "heading" : null,
+           "successHeading" : "Congratulations!",
+           "successMessage" : "Your purchase was successful \n you received this item",
+           "failHeading" : "Not enough coins!",
+           "failMessage" : "Keep on playing to unlock stars \n and receive more coins"
+       },
+       "levelInfo" : {
+           "title" : "Level",
+           "levelScore" : "Score",
+           "levelTarget" : "Target",
+           "levelMoves" : "Moves"
+       },
+
+       "levelUp" :{
+           "levelScore" : "Score",
+           "highScore" : "High Score",
+           "levelCoins" : "Coins"
+       },
+
+       "Credits" : {
+           "music" : "Game music by OcularNebula"
+       },
+
+       "warning" :{
+           "noAttempts" : {
+               "heading" : "No Attempts Left!",
+               "timerText" :  "Time to next Attempts \n",
+               "suggestionMsg" : "You can buy a new set of lives now"
+           }
+       }
+    }
+}

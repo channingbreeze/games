@@ -92,6 +92,7 @@
 * [getcoins3 - 接金币](http://game.webxinxin.com/getcoins3)
 * [hitgraywolf3 - 锅打灰太狼](http://game.webxinxin.com/hitgraywolf3)
 * [quickrush3 - 快跑RUSH](http://game.webxinxin.com/quickrush3)
+* [petparty - 蛋蛋派](http://game.webxinxin.com/petparty)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
