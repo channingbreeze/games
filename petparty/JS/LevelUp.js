@@ -33,8 +33,8 @@ Game.LevelUp.prototype = {
             configObj.addFullscreenButton(982,745);
         }
         if(configObj.levelClear){
-            configObj.community.submitScore({score: levelData.score, callback: function () {
-            }});
+            // configObj.community.submitScore({score: levelData.score, callback: function () {
+            // }});
             var starCount = Math.floor(configObj.currentLevelScore / configObj.levelData[configObj.levelNo].targetScore);
             if(starCount > 3)
                 starCount = 3;
