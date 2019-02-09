@@ -93,6 +93,9 @@
 * [hitgraywolf3 - 锅打灰太狼](http://game.webxinxin.com/hitgraywolf3)
 * [quickrush3 - 快跑RUSH](http://game.webxinxin.com/quickrush3)
 * [petparty - 蛋蛋派](http://game.webxinxin.com/petparty)
+* [manna - 天降福运](http://game.webxinxin.com/manna)
+* [scaldfish - 灯笼高高挂](http://game.webxinxin.com/scaldfish)
+* [getthestarforyou - 为你摘星星](http://game.webxinxin.com/getthestarforyou)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
