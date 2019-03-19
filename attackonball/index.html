@@ -14,28 +14,23 @@
   <meta name="x5-page-mode" content="app">
   <meta name="msapplication-tap-highlight" content="no">
   <title>attack on ball</title>
-  <script src="../phaser.min.js"></script>
-  <script src="../phaser-spine.min.js"></script>
-  <script src="js/global.js"></script>
-  <script src="js/states/BootState.js"></script>
-  <script src="js/states/PreloadState.js"></script>
-  <script src="js/states/MenuState.js"></script>
-  <script src="js/states/GameState.js"></script>
-  <script src="js/main.js"></script>
   <style>
-  * {
-    margin: 0px;
-    padding: 0px;
-  }
-  html, body, .game {
-    width: 100%;
-    height: 100%;
-  }
-  body {
-    background: #F6EFEA;
+  .game {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background-color: black;
   }
   </style>
 </head>
 <body>
   <div id="game" class="game"></div>
+  <script src="../phaser.min.js"></script>
+  <script src="../phaser-spine.min.js"></script>
+  <script src="js/global.js"></script>
+  <script src="js/scaleManager.js"></script>
+  <script src="js/states/BootState.js"></script>
+  <script src="js/states/PreloadState.js"></script>
+  <script src="js/states/MenuState.js"></script>
+  <script src="js/states/GameState.js?b=1"></script>
+  <script src="js/main.js"></script>
 </body>

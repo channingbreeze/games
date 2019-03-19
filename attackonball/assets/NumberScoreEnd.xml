@@ -1,0 +1,19 @@
+<font>
+  <info face="NumberScoreEnd" size="40" bold="0" italic="0" charset="" unicode="" stretchH="1" smooth="1" aa="1" padding="2,2,2,2" spacing="0,0" outline="0"/>
+  <common lineHeight="29" base="11" scaleW="1" scaleH="1" pages="1" packed="0"/>
+  <pages>
+    <page id="0" file="NumberScoreEnd.png"/>
+  </pages>
+  <chars count="10">
+    <char id="32" x="495" y="0" width="55" height="63" xoffset="0" yoffset="0" xadvance="55" page="0" chnl="55"/>
+    <char id="48" x="0" y="0" width="55" height="63" xoffset="0" yoffset="0" xadvance="55" page="0" chnl="55"/>
+    <char id="49" x="55" y="0" width="55" height="63" xoffset="0" yoffset="0" xadvance="55" page="0" chnl="55"/>
+    <char id="50" x="110" y="0" width="55" height="63" xoffset="0" yoffset="0" xadvance="55" page="0" chnl="55"/>
+    <char id="51" x="165" y="0" width="55" height="63" xoffset="0" yoffset="0" xadvance="55" page="0" chnl="55"/>
+    <char id="52" x="220" y="0" width="55" height="63" xoffset="0" yoffset="0" xadvance="55" page="0" chnl="55"/>
+    <char id="53" x="275" y="0" width="55" height="63" xoffset="0" yoffset="0" xadvance="55" page="0" chnl="55"/>
+    <char id="54" x="330" y="0" width="55" height="63" xoffset="0" yoffset="0" xadvance="55" page="0" chnl="55"/>
+    <char id="55" x="385" y="0" width="55" height="63" xoffset="0" yoffset="0" xadvance="55" page="0" chnl="55"/>
+    <char id="56" x="440" y="0" width="55" height="63" xoffset="0" yoffset="0" xadvance="55" page="0" chnl="55"/>
+  </chars>
+</font>

@@ -10,6 +10,11 @@ AttackOnBall.MenuState = function () {
 AttackOnBall.MenuState.prototype = Object.create(Phaser.State.prototype);
 AttackOnBall.MenuState.prototype.constructor = AttackOnBall.MenuState;
 
+AttackOnBall.MenuState.prototype.init = function (bestScore) {
+  "use strict";
+  this.bestScore = bestScore || (window.localStorage && window.localStorage.getItem("bestScore")) || 0;
+};
+
 AttackOnBall.MenuState.prototype.preload = function () {
   "use strict";
   
@@ -36,11 +41,6 @@ AttackOnBall.MenuState.prototype.create = function () {
   game.add.tween(title).to({x: WIDTH / 2}, 500, Phaser.Easing.Bounce.Out, true);
 
   // 最高分
-  var style = { font: "70px Arial", fill: "#ff0044", align: "center" };
-  var text = game.add.text(200, 10, "39.40", style);
-  text.anchor.set(0.5);
-  game.time.events.loop(Phaser.Timer.SECOND * 0.1, this.updateScoreColor, text);
-
   var textBest = game.add.sprite(0, 0, 'wordBest');
   textBest.anchor.set(0.5);
   textBest.scale.setTo(1.3, 1.3);
@@ -49,10 +49,23 @@ AttackOnBall.MenuState.prototype.create = function () {
   textColon.anchor.set(0.5);
   textColon.tint = 0xFF0A63;
 
+  var timeIntegerText = game.add.bitmapText(textColon.right + 10, textColon.top - 10, 'numberScoreMain', '0', 48);
+  timeIntegerText.tint = 0x000000;
+  timeIntegerText.text = Math.floor(this.bestScore / 10) + "";
+  var dot = game.add.image(timeIntegerText.right + 2, timeIntegerText.bottom - 10, 'dot');
+  dot.tint = 0x000000;
+  var timeDecimalText = game.add.bitmapText(dot.right, timeIntegerText.top, 'numberScoreMain', '00', 48);
+  timeDecimalText.tint = 0x000000;
+  timeDecimalText.text = this.bestScore % 10;
+
+  this.timeTimer = game.time.events.loop(Phaser.Timer.SECOND * 0.1, this.updateScoreColor, {timeIntegerText: timeIntegerText, dot: dot, timeDecimalText: timeDecimalText});
+
   var bestText = game.add.sprite(WIDTH / 2 - 100, HEIGHT / 2 - 100);
   bestText.addChild(textBest);
   bestText.addChild(textColon);
-  bestText.addChild(text);
+  bestText.addChild(timeIntegerText);
+  bestText.addChild(dot);
+  bestText.addChild(timeDecimalText);
 
   // 左边按钮
   this.buttonGamecenter = game.add.sprite(120, HEIGHT + 304, 'buttonGamecenter0');
@@ -136,8 +149,10 @@ AttackOnBall.MenuState.prototype.tapStart = function(point) {
 }
 
 AttackOnBall.MenuState.prototype.updateScoreColor = function() {
-  var index = game.rnd.integerInRange(0, scoreColors.length - 1);
-  this.addColor(scoreColors[index], 0);
+  var color = Math.random() * 0xffffff;
+  this.timeIntegerText.tint = color;
+  this.dot.tint = color;
+  this.timeDecimalText.tint = color;
 }
 
 AttackOnBall.MenuState.prototype.onGamecenter = function() {
