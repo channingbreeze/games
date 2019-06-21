@@ -12,7 +12,7 @@ function create() {
 	game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	game.stage.disableVisibilityChange = true;
 	game.input.mouse.capture = true;
-	game.stage.backgroundColor = '#273d4a';
+	game.stage.backgroundColor = '#4f634e';
 	//生成3个球
 	blueBall=new ball(0,0,'blue',true,0)
 	yellowBall=new ball(0,0,'yellow',false)
