@@ -1,0 +1,300 @@
+<!--
+ * @Author: MngYou
+ * @Date: 2022-01-27 09:33:28
+ * @LastEditTime: 2022-02-03 13:34:48
+ * @FilePath: \iwm【迭代】\editor.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iwmaker</title>
+    <style>
+        *{
+            margin: auto 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-size: 100% 100%;
+        }
+        body{
+            background-color:darkcyan;
+        }
+        #container{
+            position: absolute;
+            width: 200px;
+            height: 300px;
+            background-color: lightskyblue;
+            z-index: 1;
+            left: 0px;
+            top: 19px;
+        }
+        #x{
+            position: relative;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <input type="file" id="file" multiple="multiple">
+    </div>
+    <button id="x"> 墙体图标 </button>
+    <ul id="taber">
+        <li><a onclick="javascript:触发器类型='bullet';">追踪弹</a></li>
+        <li><a onclick="javascript:触发器类型='visibleSpike';">隐藏刺</a></li>
+        <li><a onclick="javascript:触发器类型='visibleWall';">隐藏墙</a></li>
+        <li><a onclick="javascript:触发器类型='reBackBullet';">回旋镖</a></li>
+    </ul>
+    <script>
+        taber.style.width = '200px';
+        taber.style.height = '300px';
+        taber.style.position = 'absolute';
+        taber.style.left = '0';
+        taber.style.top = '400px';
+        taber.style.backgroundColor = 'pink';
+    </script>
+</body>
+<script>
+    var 触发器类型 = '无';
+    onclick = function(){
+        
+        console.log(触发器类型);
+    }
+    var baseUrl = './assets/sprites/blocks/';
+    var file = document.getElementById('file');
+    var isShowContainer = true;
+    file.onchange=function(){
+        for (let i = 0; i < file.files.length; i++) {
+            var image_ = createGird(i%4*32,Math.floor(i/4)*32+32,32,32,'',container);
+            image_.style.backgroundImage = 'url(' + baseUrl + file.files[i].name + ')';
+            image_.onclick = function(){
+                wall_icon = baseUrl + file.files[i].name;
+                blocks[0].style.backgroundImage = 'url(' + wall_icon + ')';
+                getObjIndex = i;
+            }
+        }
+    }
+    x.onclick = function(){
+        isShowContainer = !isShowContainer;
+        if(isShowContainer){
+            container.style.left = '-0px';
+        }else{
+            container.style.left = '-170px';
+        }
+    }
+
+    var wall_icon = './assets/sprites/blocks/block001.png';
+    var spike_icon = './assets/sprites/killers/up.png';
+    var apple_icon = './assets/sprites/killers/cherry.png';//42 24 2
+    var platform_icon = './assets/sprites/platforms/platform.png';
+    var e_icon = './assets/sprites/blocks/0001.png';
+    var collider_icon = './assets/sprites/blocks/saveblocker.png';
+    var imageIconList = [
+        wall_icon,spike_icon,apple_icon,platform_icon,e_icon,collider_icon
+    ];
+    var getDocumentWidth = window.innerWidth;
+    var getDocumentHeight = window.innerHeight;
+    var createGird = function(x,y,w,h,bgColor,parent){
+        var gird = document.createElement('div');
+        gird.style.width = w + 'px' || 32 + 'px';
+        gird.style.height = h + 'px' || 32 + 'px';
+        gird.style.border = '1px solid lightgray';
+        gird.style.position = 'absolute';
+        gird.style.left = x + 'px' || 0 + 'px';
+        gird.style.top = y + 'px' || 0 + 'px';
+        gird.style.lineHeight = '7';
+        gird.style.backgroundColor = bgColor;
+        parent.appendChild(gird);
+        return gird;
+    }
+    var wLength = 32;hLength = 20;//4倍 128
+    var gW = 32,gH = 32;
+    var Ls = getDocumentWidth - wLength * gW;
+    var Zs = getDocumentHeight - hLength * gH;
+    var girds = [];
+    var map_girds = [];
+    var parent = document.body;
+    var getObjName = '';
+    var getObjIcon = '';
+    var getObjType = '';//obj type
+    var getObjKind = '';//action obj kind
+    var getObjIndex = '';//wall index
+    var rush = false;//刷子
+    var push = false;
+    for (let i = 0; i < wLength; i++) {
+        for (let j = 0; j < hLength; j++) {//4倍时 1550+Ls/2
+            map_girds[j*wLength+i] =  girds[i] = createGird(Ls/2 + i * 32,Zs/2 + j*32,32,32,'transparent',parent);//这个等同单循环的i%length\i/length
+            girds[i].name = '';
+            girds[i].onclick = function(){//点填
+                点填(this);
+            }
+            girds[i].onmouseover = function(){//刷填
+                if(!rush){return false;}
+                点填(this);
+            }
+        }
+    }
+    onmouseover = function(){//填充
+        if(!push){return false;}
+        console.log(map_girds.length);
+        map_girds.forEach(function(item){
+            点填(item);
+        });
+    }
+    var 点填 = function(tiled){
+        tiled.name = getObjName;
+        if(tiled.name=='wall'){
+            tiled.index = getObjIndex;
+        }
+        tiled.type = getObjType;
+        tiled.kind = getObjKind;
+        tiled.style.backgroundImage = `url(${getObjIcon})`;
+    }//4倍时同上
+    var objList = createGird(Ls/2,Zs/16,wLength*gW,gH*3,'lightgreen',document.body);
+    var blocks = [];
+    for (let i = 0; i < 10; i++) {
+        blocks[i] = createGird(32+i*2*32+i*32,30,gW,gH,'lightgray',objList);
+        blocks[i].style.backgroundImage = 'url('+ imageIconList[i] + ')';
+        switch (i) {
+            case 0:
+                blocks[i].innerText = 'wall';
+                break;
+            case 1:
+                blocks[i].innerText = 'spike';
+                break;
+            case 2:
+                blocks[i].innerText = 'apple';
+                break;
+            case 3:
+                blocks[i].innerText = 'platform';
+                break;
+            case 4:
+                blocks[i].innerText = 'E';
+                blocks[i].style.border = '1px red solid';
+                blocks[i].style.backgroundColor = 'transparent';
+                break;
+            case 5:
+                blocks[i].innerText = 'collider';
+                break;
+            /*case 6:
+                blocks[i].innerText = 'wall';
+                break;
+            case 7:
+                blocks[i].innerText = 'wall';
+                break;
+            case 8:
+                blocks[i].innerText = 'wall';
+                break;
+            case 9:
+                blocks[i].innerText = 'wall';
+                break;
+        
+            default:
+                break; */
+        } 
+        blocks[i].onclick = function(){
+            switch (i) {
+            case 0:
+                console.log('wall');
+                getObjName = 'wall';
+                getObjIcon = wall_icon;
+                getObjType = 'sprite';
+                getObjKind = '';
+                break;
+            case 1:
+                console.log('spike');
+                getObjName = 'spike';
+                getObjIcon = spike_icon;
+                getObjType = 'sprite';
+                getObjKind = '';
+                break;
+            case 2:
+                console.log('apple');
+                getObjName = 'apple';
+                getObjIcon = apple_icon;
+                getObjType = 'spritesheet';
+                getObjKind = '';
+                break;
+            case 3:
+                console.log('platform');
+                getObjName = 'platform';
+                getObjIcon = platform_icon;
+                getObjType = 'sprite';
+                getObjKind = '';
+                break;
+            case 4:
+                console.log('E');
+                getObjName = '';
+                getObjIcon = '';
+                break;
+            case 5:
+                console.log('collider');
+                getObjName = 'collider';
+                getObjIcon = collider_icon;
+                getObjType = 'sprite';
+                getObjKind = 触发器类型;
+                break;
+                default:
+                    break;
+            }
+        };
+    }
+    
+
+    
+    onkeypress = function(e){
+        switch (e.key) {
+            case 'a':
+                rush = !rush;
+                break;
+            case 'w':
+                push = !push;
+                break;
+            case 's':
+                var tileds = [];
+                map_girds.forEach(function(item,i){
+                    tileds[i] = {//添加新属性 需要在这里加入json数据
+                        'name':item.name,
+                        'type':item.type,
+                        'kind':item.kind,
+                        'index':item.index,
+                    };
+                });
+                
+                var data = {
+                    'wLength':wLength,
+                    'hLength':hLength,
+                    'gW':gW,
+                    'gH':gH,
+                    'images':[
+                        {'name':'collider','url':collider_icon,'type':'sprite'},
+                        {'name':'wall','url':wall_icon,'type':'sprite'},
+                        {'name':'spike','url':spike_icon,'type':'sprite'},
+                        {'name':'apple','url':apple_icon,'type':'spritesheet','w':21,'h':24,'f':2},//w frameWidth h frameHeight f framecount
+                        {'name':'platform','url':platform_icon,'type':'sprite'},
+                    ],
+                    'tileds':tileds,
+                };
+                console.log(JSON.stringify(data));
+                break;
+            case 'd':
+                
+                break;
+        
+            default:
+                break;
+        }
+    }
+    var tips = createGird(girds[0].offsetLeft,getDocumentHeight - 100,gW*wLength,64,'dimgray',document.body);
+    tips.innerText = 'a:笔刷;w:填充;click:点填;s:保存[控制台复制json数据到data.js]';
+    tips.style.lineHeight = '60px';
+    tips.style.textAlign = 'center';
+</script>
+</html>
+<!-- 
+    这就完成了一个最简版的iw编辑器
+ -->
