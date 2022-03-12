@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>plane war</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+	</style>
+	<script type="text/javascript" src="phaser.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+		
+		var startText;
+		var restartText;
+		var welcome;
+		var gameover;
+		var score = 0;
+		var hp = 0;
+
+		var bootState = function(game){
+			this.init = function(){
+				game.scale.pageAlignHorizontally=true;
+				game.scale.pageAlignVertically=true;
+			    //var scaleX = window.innerWidth / 320;
+			    //var scaleY = window.innerHeight / 480;
+			    //game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
+			    //game.scale.setUserScale(scaleX, scaleY);
+			    if (
+			    		this.game.device.desktop
+			    	) {	
+			    		this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+			    }else{
+			    		this.game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+			    }
+			}
+			this.preload=function(){
+				game.load.image('loading','assets/preloader.gif');
+			};
+			this.create=function(){
+				game.state.start('loader');
+			};
+		}
+
+		var loaderState=function(game){
+			var progressText;
+			this.init=function(){
+				var sprite=game.add.image(game.world.centerX,game.world.centerY,'loading');
+				sprite.anchor={x:0.5,y:0.5};
+				progressText=game.add.text(game.world.centerX,game.world.centerY+30,'0%',{fill:'#fff',fontSize:'16px'});
+				progressText.anchor={x:0.5,y:0.5};
+			};
+			this.preload=function(){
+				eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('4.1.b(\'E\',\'3/e/C-B.6\');4.1.b(\'f-y\',\'3/e/f-y.6\');4.1.b(\'f\',\'3/e/f.6\');4.1.b(\'n\',\'3/e/n.6\');4.1.b(\'7-o\',\'3/7-o.6\');4.1.b(\'7-h\',\'3/7-h.6\');4.1.b(\'j\',\'3/j.6\');4.1.b(\'g\',\'3/g.6\');4.1.b(\'k\',\'3/k.6\');4.1.8(\'p\',\'3/9/p.6\',x*0.2,G*0.5);4.1.8(\'7-q\',\'3/9/7-q.6\',i,i);4.1.8(\'7-m\',\'3/9/7-m.6\',i,H);4.1.8(\'7-l\',\'3/9/7-l.6\',a,a);4.1.8(\'r\',\'3/9/r.6\',x*0.2,a);4.1.8(\'A-z\',\'3/9/A-z.6\',a,a);4.1.8(\'c-d\',\'3/9/c-d.6\',a,a);4.1.8(\'c-d\',\'3/9/c-d.6\',a,a);4.1.8(\'c-d\',\'3/9/c-d.6\',a,a);4.1.8(\'t\',\'3/9/t.6\',s,s);4.1.8(\'7-h-g\',\'3/9/7-h-g.6\',F,D);4.1.8(\'v-u\',\'3/9/v-u.6\',w,w);',44,44,'|load||assets|game||png|enemy|spritesheet|spritesheets|16|image|laser|bolts|backgrounds|clouds|bullet|blue|32|boss|heart|small|medium|starfield|green|ship|big|explosion|128|explode|ray|death|39|80|transparent|up|power|backgorund|desert|68|background|95|48|12'.split('|'),0,{}))
+
+				game.load.onFileComplete.add(function(progress){
+					progressText.text=progress+'%';
+				});
+
+			};
+			this.create=function(){
+				if (progressText.text=="100%") {
+					game.state.start('welcome');
+				}
+			};
+		}
+
+		var menuState = function(game){
+			this.create=function(){
+				welcome=game.add.image(0,0,'starfield');
+				welcome.width = this.game.world.width;
+				welcome.height = this.game.world.height;
+				startText=game.add.text(game.world.centerX,game.world.centerY,'Click anywhere on the screen to start',{fill:'#fff',fontSize:'16px'});
+				startText.anchor={x:0.5,y:0.5};
+				game.input.onDown.addOnce(Down, this);
+			};
+		}
+		var gameoverState = function(game){
+			this.create=function(){
+				gameover=game.add.image(0,0,'starfield');
+				gameover.width = this.game.world.width;
+				gameover.height = this.game.world.height;
+				restartText=game.add.text(game.world.centerX,game.world.centerY,'Click anywhere on the screen to restart',{fill:'#fff',fontSize:'16px'});
+				restartText.anchor={x:0.5,y:0.5};
+				game.input.onDown.addOnce(reDown, this);
+			};
+		}
+
+		var playerPower = 1;
+		var gameState = function(game){
+			eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('4.g=b(9){9.c();8(a 3=0;3<4.6.2.7;3++){8(a 5=0;5<4.6.2[3].2.7;5++){d(!4.6.2[3].2[5].f){4.6.2[3].2.e(5,1)}}}}',17,17,'||children|i|this|j|world|length|for|obj|var|function|kill|if|splice|alive|ObjKill'.split('|'),0,{}))
+
+		    eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('6.H=G(o,t,8,b,j,7,c,d){e f=o.x,g=o.y,3=8,r=1;9(!o.v){6.B.C.z.A(6.D);E F}9(c==\'q\'){9(7%2==1){3=8+ -b*(7-1)*0.5}w{3=8+ -b*7*0.5+5}}u(e i=0;i<7;i++){9(!c==\'q\'){3+=S/7}h=f+r*a.R(3*a.m/k);s=g+r*a.Q(3*a.m/k);e 4=6.P.K(f,g,j);4.d=d;4.J.I(0.5);4.L=n;4.O=n;6.l.p.N(4);6.l.p.M(4,h,s,t);3+=b}}',55,55,'|||angle|bullet||this|count|oldAngle|if|Math|addAngle|kind|belong|var|x0|y0|x1||key|180|physics|PI|true||arcade|散弹型||y1|speed|for|alive|else|||events|remove|game|time|timerEventSs|return|false|function|objectMoveToAngle|set|anchor|create|outOfBoundsKill|moveToXY|enable|checkWorldBounds|bullets|sin|cos|360'.split('|'),0,{}))
+
+		    eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('2.i=h(8,3,a,b,6,4){g(!8.l){k j}d 1=2.e.f(3.r,3.q,6);1.4=4;1.s.t(0.5);1.m=7;1.p=7;2.c.9.o(1);2.c.9.n(1,a,b)}',30,30,'|bullet|this|pos|belong||key|true|enemy|arcade|player|speed|physics|var|bullets|create|if|function|bulletToObject|false|return|alive|outOfBoundsKill|moveToObject|enable|checkWorldBounds|y|x|anchor|set'.split('|'),0,{}))
+
+			this.create = function(){
+    			this.physics.startSystem(Phaser.Physics.ARCADE);
+		        this.backgroundScroll = function(x,y,w,h,tpX,tpY,key){
+		            this.background=this.game.add.tileSprite(x,y,w,h,key);
+		            this.background.tileScale.setTo(1);
+		            this.background.update = function(){
+		                this.tilePosition.x += tpX;
+		                this.tilePosition.y += tpY;
+		            }
+		        }(0,0,this.game.world.width,this.game.world.height,0,0.5,'starfield');
+    			window.player = this.player = this.add.sprite(160,480-50,'ship');
+    			this.player.hp = 10;
+    			this.player.oldHP = this.player.hp;
+    			this.player.power = 1;
+    			this.game.physics.arcade.enable(this.player);
+			    this.player.body.bounce.y = 0;
+			    this.player.body.gravity.y = 0;
+    			this.player.anchor.setTo(0.5);
+    			this.player.inputEnabled = true;
+        		this.player.input.enableDrag();
+    			//sprite.input.allowVerticalDrag = true;
+    			//sprite.input.allowHorizontalDrag = false;
+				function onDragStart(sprite, pointer) {
+				    // sprite拿到被拖拽的精灵
+				    result = "Dragging " + sprite.key;
+				}
+
+				function onDragUpdate(sprite, pointer) {
+
+				    if (sprite.y < this.game.world.height * 0.7) {
+    					sprite.y = this.game.world.height * 0.7;
+				    }
+				}
+
+				function onDragStop(sprite, pointer) {
+				    // pointer拿到拖拽点
+				    result = sprite.key + " dropped at x:" + pointer.x + " y: " + pointer.y;
+
+				}
+			    this.player.events.onDragStart.add(onDragStart, this);
+			    this.player.events.onDragStop.add(onDragStop, this);
+			    this.player.events.onDragUpdate.add(onDragUpdate, this);
+        		this.player.dt = 0;
+
+
+		        this.hearts = this.game.add.group();
+		        for (var i = 0; i < this.player.hp; i++) {
+		        	this.hearts.create(i*16,0,'heart');
+		        }
+
+
+		        this.scoreText = this.game.add.text(0,0,'Score:'+score,{fill:'white'});
+		        this.scoreText.x = this.game.world.width - this.scoreText.width;
+
+////缓动动画实现对象依据路径移动
+var ig = 0;
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('8 7(2,0){e(1==0.d){c f}a.9(0[1]);b 5=k.6.5(2).m({4:0[1].4,3:0[1].3},j,"g",h).i.6(8(){7(2,0)},l);1++}',23,23,'arrPath|ig|obj|y|x|tween|add|goToPath|function|log|console|var|return|length|if|false|Linear|true|onComplete|2000|game|this|to'.split('|'),0,{}))
+
+
+        		this.enemys = this.game.add.group();
+				this.enemys.enableBody = true;
+
+				this.bullets = this.game.add.group();
+				this.bullets.enableBody = true;
+
+				eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('4.m=4.w.9.A(q.t.u*2,s(){r(b<B){d 3=4.z.v(4.l.j(0,i-o),0,\'3-c\');3.k=\'c\';3.n.p(0.5);3.K=J;3.9.M.P(4.O,4);3.N=5;3.b=1;d a=3.x,8=3.y,7=F;g=a+1*6.I(7*6.e/h);f=8+1*6.E(7*6.e/h);4.G.H.C.D(3,g,f,L)}},4);',52,52,'|||enemy|this||Math|angle|y0|events|x0|score|small|var|PI|y1|x1|180|320|between|kind|rnd|timerEnemySmall|anchor|16|setTo|Phaser|if|function|Timer|SECOND|create|time|||enemys|loop|10|arcade|moveToXY|sin|90|game|physics|cos|true|checkWorldBounds|150|onOutOfBounds|hp|ObjKill|add'.split('|'),0,{}))
+
+				eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('6.u=6.v.i.t(r.s.w*2,C(){D(9>=B&&9<z){c 4=6.A.l(6.k.p(0,o-m),0,\'4-f\');4.n=\'f\';4.q.j(0.5);4.M=L;4.i.O.R(6.Q,6);4.P=3;4.9=5;c b=4.x,d=4.y,8=K;h=b+1*7.J(8*7.a/e);g=d+1*7.G(8*7.a/e);6.I.H.E.F(4,h,g,N)}},6);',54,54,'||||enemy||this|Math|angle|score|PI|x0|var|y0|180|medium|y1|x1|events|setTo|rnd|create|16|kind|320|between|anchor|Phaser|Timer|loop|timerEnemyMedium|time|SECOND|||30|enemys|10|function|if|arcade|moveToXY|sin|physics|game|cos|90|true|checkWorldBounds|100|onOutOfBounds|hp|ObjKill|add'.split('|'),0,{}))
+
+
+				eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('3.w=3.A.c.q(t.u.s*5,r(){B(b>=f){d 2=3.z.v(3.l.k(0,j-o),0,\'2-9\');2.p=\'9\';2.m.n(0.5);2.L=K;2.c.P.O(3.N,3);2.J=E;2.b=7;d a=2.x,8=2.y,6=I;h=a+1*4.H(6*4.e/i);g=8+1*4.G(6*4.e/i);3.F.C.D.M(2,h,g,f)}},3);',52,52,'||enemy|this|Math||angle||y0|big|x0|score|events|var|PI|30|y1|x1|180|320|between|rnd|anchor|setTo|16|kind|loop|function|SECOND|Phaser|Timer|create|timerEnemyBig|||enemys|time|if|physics|arcade|15|game|sin|cos|90|hp|true|checkWorldBounds|moveToXY|ObjKill|add|onOutOfBounds'.split('|'),0,{}))
+
+
+				this.timerEnemyFireDT = 0;
+				eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('4.G=4.v.s.A(t.E.B*0.1,z(){u(D i=0;i<4.6.C;i++){9(4.6.7[i].y>4.h.y){r}9(4.d%(1*5)==0){9(4.6.7[i].f==\'w\'){4.g(4.6.7[i],b,l,n,\'a-e\',1,\'j\',\'c\')}}9(4.d%(2*5)==0){9(4.6.7[i].f==\'F\'){4.k(4.6.7[i],{x:4.6.7[i].x-q,y:4.6.7[i].y+m},4.h,b,\'a-e\',\'c\');4.k(4.6.7[i],{x:4.6.7[i].x+q,y:4.6.7[i].y+m},4.h,b,\'a-e\',\'c\');4.k(4.6.7[i],{x:4.6.7[i].x,y:4.6.7[i].y+m},4.h,b,\'a-e\',\'c\')}}9(4.d%(2*5)==0){9(4.6.7[i].f==\'o\'){4.g(4.6.7[i],b,l,n,\'a-e\',3,\'j\',\'c\')}}9(4.d%(8*5)==0){9(4.6.7[i].f==\'o\'){4.g(4.6.7[i],b,l,p,\'a-e\',J,\'j\',\'c\')}}9(4.d%1==0){9(4.6.7[i].f==\'o\'){4.g(4.6.7[i],b,H+4.d*p,n,\'a-e\',1,\'I\',\'c\')}}}4.d++},4);',46,46,'||||this||enemys|children||if|laser|300|enemy|timerEnemyFireDT|bolts|kind|objectMoveToAngle|player||散弹型|bulletToObject|90|16|15|big|10|32|continue|events|Phaser|for|time|small|||function|loop|SECOND|length|var|Timer|medium|timerEnemyFire|270|螺旋型|36'.split('|'),0,{}))
+
+
+				this.powerUp = this.game.add.group();
+				this.powerUp.enableBody = true;
+				eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('2.p=2.q.n.o(t.u.r*O,s(){i(2.j.f>=3){h l}a 7=2.7.m(2.v.H(0,F-G),0,\'f-I\');a 9=7.x,b=7.y,6=z;d=9+1*4.w(6*4.8/c);e=b+1*4.D(6*4.8/c);2.g.C.B.A(7,d,e,E)},2);2.5=2.g.L.K();2.5.J=M;2.p=2.q.n.o(t.u.r*k,s(){i(2.j.N>=k){h l}a 5=2.5.m(2.v.H(0,F-G),0,\'f-I\');a 9=5.x,b=5.y,6=z;d=9+1*4.w(6*4.8/c);e=b+1*4.D(6*4.8/c);2.g.C.B.A(5,d,e,E)},2);',51,51,'||this||Math|heartUp|angle|powerUp|PI|x0|var|y0|180|x1|y1|power|game|return|if|player|10|false|create|events|loop|timerPowerUp|time|SECOND|function|Phaser|Timer|rnd|cos|||90|moveToXY|arcade|physics|sin|300|320|16|between|up|enableBody|group|add|true|hp|15'.split('|'),0,{}))
+
+
+
+
+				eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('4.k=4.j.m.l(g.f.i*0.2,h(){n(4.5.s){c 1:4.6(4.5,8,9,d,\'7-a\',1,\'e\',\'5\');b;c 2:4.6(4.5,8,9,d,\'7-a\',3,\'e\',\'5\');b;c 3:4.6(4.5,8,9,q,\'7-a\',r,\'o\',\'5\');b}4.5.p++},4);',29,29,'||||this|player|objectMoveToAngle|laser|300|270|bolts|break|case|15|散弹型|Timer|Phaser|function|SECOND|time|timerPlayerFire|loop|events|switch|圆型|dt|12|30|power'.split('|'),0,{}))
+
+
+
+
+
+
+
+
+
+				this.times = 0;
+				this.game.input.onDown.add(function(){
+
+					this.times++;
+				}, this);
+			};
+			this.dt = 0;
+			this.update = function(){
+
+				this.scoreText.setText('Score:'+score);
+		        this.scoreText.x = 16;
+		        this.scoreText.y = 36;
+		        this.hearts.setAll('y',this.game.world.height-40);
+
+				if (this.player.hp<=0) {
+					this.game.state.start('gameover');
+				}
+				if (this.player.oldHP==this.player.hp) {
+					
+				}else{
+					for (var i = 0; i < this.hearts.children.length; i++) {
+						this.hearts.children[i].alpha = 0;
+					}
+					for (var i = 0; i < this.player.hp; i++) {
+						this.hearts.children[i].alpha = 1;
+					}
+					//console.log('score:'+score,'hp:'+this.player.hp,'oldhp:'+this.player.oldHP);
+				}
+				
+				//碰撞事件
+				this.game.physics.arcade.overlap(this.player, this.powerUp, function(player,powerUp){
+					powerUp.kill();
+					player.power++;
+				}, null, this);
+				this.game.physics.arcade.overlap(this.player, this.heartUp, function(player,heartUp){
+					heartUp.kill();
+    				player.oldHP = player.hp;
+					player.hp++;
+				}, null, this);
+				this.game.physics.arcade.overlap(this.player, this.enemys, function(player,enemy){
+					enemy.kill();
+				}, null, this);
+				this.game.physics.arcade.overlap(this.bullets, this.enemys, function(bullet,enemy){
+					if (bullet.belong=='enemy') {return false;}
+					bullet.kill();
+					if (enemy.hp==1) {
+						score += enemy.score;
+						var explode = this.game.add.image(enemy.x,enemy.y,'explosion');
+						explode.anchor.setTo(0.5);
+						explode.animations.add('anims');
+						explode.animations.play('anims');
+						var anim = explode.animations.add('explode');
+						anim.play('explode',1,false);
+					    //anim.onStart.add(animationStarted, this);
+					    //anim.onLoop.add(animationLooped, this);
+					    function animationStopped() {
+					    	explode.kill();
+					    }
+					    anim.onComplete.add(animationStopped, this);
+						enemy.kill();
+					}
+					enemy.hp--;
+				}, null, this);
+
+
+				this.game.physics.arcade.overlap(this.player, this.bullets, function(player,bullet){
+					if (bullet.belong=='player') {return false;}
+					bullet.kill();
+    				player.oldHP = player.hp;
+					player.hp--;
+				}, null, this);
+
+				this.dt++;
+
+			}
+		}
+
+		function Down(){
+			startText.destroy();
+			score = 0;
+			game.state.start('main');
+		}
+		
+		function reDown(){
+			restartText.destroy();
+			score = 0;
+			game.state.start('main');
+		}
+
+		var game=new Phaser.Game(320,480,Phaser.CANVAS,'container');
+		game.state.add('boot',bootState);
+		game.state.add('loader',loaderState);
+		game.state.add('welcome',menuState);
+		game.state.add('main',gameState);
+		game.state.add('gameover',gameoverState);
+		game.state.start('boot');
+</script>
+<script src="http://h.api.4399.com/h5mini-2.0/h5api-interface.php"></script>
+</body>
+</html>

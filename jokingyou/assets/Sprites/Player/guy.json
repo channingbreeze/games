@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "Fall.png",
+	"frame": {"x":0,"y":0,"w":64,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":32},
+	"sourceSize": {"w":64,"h":32}
+},
+{
+	"filename": "Idle.png",
+	"frame": {"x":64,"y":0,"w":128,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":32},
+	"sourceSize": {"w":128,"h":32}
+},
+{
+	"filename": "Jump.png",
+	"frame": {"x":192,"y":0,"w":64,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":32},
+	"sourceSize": {"w":64,"h":32}
+},
+{
+	"filename": "Run.png",
+	"frame": {"x":256,"y":0,"w":160,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":160,"h":32},
+	"sourceSize": {"w":160,"h":32}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "guy.png",
+	"format": "RGBA8888",
+	"size": {"w":416,"h":32},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:2d9194b56dac540491e2b9d6c714a310:4ca36410de96645699581e95a582b354:491c6d724e3e7c01fcf646f2b9c04e35$"
+}
+}

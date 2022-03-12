@@ -96,6 +96,11 @@
 * [manna - 天降福运](http://game.webxinxin.com/manna)
 * [scaldfish - 灯笼高高挂](http://game.webxinxin.com/scaldfish)
 * [getthestarforyou - 为你摘星星](http://game.webxinxin.com/getthestarforyou)
+* [attackonball - Attack On Ball](http://game.webxinxin.com/attackonball/)
+* [mota - 魔塔](http://game.webxinxin.com/mota/)
+* [arpg - ARPG](http://game.webxinxin.com/arpg/)
+* [jokingyou - 逗你玩](http://game.webxinxin.com/jokingyou/)
+* [planewar - 飞机大战](http://game.webxinxin.com/planewar/)
 
 ### 问题反馈
 有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流

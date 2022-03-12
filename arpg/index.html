@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+			background-color: black;
+		}
+	</style>
+	<script type="text/javascript" src="phaser.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+function IsPC() {
+  var userAgentInfo = navigator.userAgent;
+  var Agents = ["Android", "iPhone",
+        "SymbianOS", "Windows Phone",
+        "iPad", "iPod"];
+  var flag = true;
+  for (var v = 0; v < Agents.length; v++) {
+    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+      flag = false;
+      break;
+    }
+  }
+  return flag;
+}
+</script>
+<script type="text/javascript">
+
+/*
+
+1.虚拟按键  ✔
+2.商店事件	 ✔
+3.更多地图
+4.剧情系统	 ✔
+5.音频特效  ✔
+6.角色数据	 ✔
+7.打字特效  ✔
+8.etc…
+
+*/
+
+var bootState = function(game){
+	this.init = function(){	
+		if (IsPC()) {
+			game.scale.pageAlignHorizontally = true;
+			game.scale.pageAlignVertically = true; 
+		}else{
+			game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+		}
+	};
+	this.preload=function(){
+		game.load.image('loading','images/preloader.gif');
+	};
+	this.create=function(){
+		game.state.start('loader');
+	};
+}
+var loaderState=function(game){
+	var progressText;
+	this.init=function(){
+		var sprite=game.add.image(game.world.centerX,game.world.centerY,'loading');
+		sprite.anchor={x:0.5,y:0.5};
+		progressText=game.add.text(game.world.centerX,game.world.centerY+30,'0%',{fill:'#fff',fontSize:'16px'});
+		progressText.anchor={x:0.5,y:0.5};
+	};
+	this.preload=function(){
+		//game.load.image('welcome','images/background.png');
+		//game.load.image('gameover','images/background.png');
+		game.load.image('backgroundBattle','images/backgroundBattle.png');
+		game.load.image('enemy1','images/enemy1.png');
+		game.load.image('enemy2','images/enemy2.png');
+		game.load.image('enemy3','images/enemy3.png');
+		game.load.image('map_enemy_1','images/map_enemy_1.png');
+		game.load.image('map_enemy_2','images/map_enemy_2.png');
+		game.load.image('map_enemy_3','images/map_enemy_3.png');
+		game.load.image('player','images/player.png');
+		game.load.image('npc1','images/npc1.png');
+		game.load.image('npc2','images/npc2.png');
+		game.load.image('npc3','images/npc3.png');
+		game.load.image('shop','images/shop.png');
+		game.load.image('shop2','images/shop2.png');
+		game.load.image('health','images/health.png');
+		game.load.image('healthbar','images/healthbar.png');
+		game.load.image('healthbarFill','images/healthbarFill.png');
+		game.load.image('fill','images/fill.png');
+    	game.load.spritesheet('sliceEffect', 'images/sliceEffect.png', 64, 64);
+		game.load.image('grave','images/grave.png');
+		game.load.image('level_1','images/level1.png');
+		game.load.image('level_2','images/level2.png');
+		game.load.image('alpha','images/alpha.png');
+		game.load.image('black','images/black.png');
+		game.load.image('messagesBar','images/messagesBar.png');
+		game.load.image('button_normal','images/button_normal.png');
+		game.load.image('button_pressed','images/button_pressed.png');
+    	game.load.atlas('xbox360', 'images/xbox360.png', 'images/xbox360.json');
+		game.load.audio('hit1','sound/hit1.mp3');
+		game.load.audio('hit2','sound/hit2.mp3');
+		game.load.audio('hit3','sound/hit3.mp3');
+		game.load.audio('type','sound/type.mp3');
+		game.load.audio('mainMusic','sound/mainMusic.mp3');
+		game.load.audio('battleStart','sound/battleStart.mp3');
+		game.load.audio('battleMusic','sound/battleMusic.mp3');
+		game.load.audio('enemyAttack','sound/enemyAttack.mp3');
+		game.load.audio('enemyKilled','sound/enemyKilled.mp3');
+		game.load.onFileComplete.add(function(progress){
+			progressText.text=progress+'%';
+		});
+
+	};
+	this.create=function(){
+		if (progressText.text=="100%") {
+			game.state.start('welcome');
+		}
+	};
+}
+var welcomeState = function(game){
+	this.create=function(){
+		//welcome=game.add.image(0,0,'welcome');
+		//welcome.scale.setTo(0.7,0.6);
+		startText=game.add.text(game.world.centerX,game.world.centerY,'Click anywhere on the screen to start',{fill:'#fff',fontSize:'16px'});
+		startText.anchor={x:0.5,y:0.5};
+
+		game.input.onDown.addOnce(function(){
+			game.state.start('main');
+		}, this);
+	};
+}
+var gameoverState = function(game){
+	this.create=function(){
+		//gameover=game.add.image(0,0,'gameover');
+		//gameover.scale.setTo(0.7,0.6);
+		restartText=game.add.text(160,240,'Click anywhere on the screen to restart',{fill:'#fff',fontSize:'16px'});
+		restartText.anchor={x:0.5,y:0.5};
+		game.input.onDown.addOnce(function(){
+			game.state.start('main');
+		}, this);
+	};
+}
+
+
+var gameState = function(game){
+	this.create=function(){
+
+		this.playHit1 = game.add.audio('hit1');
+		this.playHit2 = game.add.audio('hit2');
+		this.playHit3 = game.add.audio('hit3');//怪物攻击音效
+		this.playMainMusic = game.add.audio('mainMusic');//背景音乐
+		this.playMainMusic.loop = true;
+		this.playMainMusic.play();
+		this.playBattleStart = game.add.audio('battleStart');//战斗开始音效
+		this.playEnemyAttack = game.add.audio('enemyAttack');//攻击怪物音效
+		this.playEnemyKilled = game.add.audio('enemyKilled');//怪物死亡音效
+		this.playType = game.add.audio('type');//打字音效
+
+
+
+		var that = this;
+    	game.physics.startSystem(Phaser.Physics.ARCADE);
+		
+		
+		this.map = game.add.image(0,0,'level_1');
+
+	    this.alpha = game.add.group();
+	    this.alpha.enableBody = true;
+	    var solider = [
+	    	{x:712,y:55,sx:0.5,sy:0.5},
+	    	{x:104,y:327,sx:0.5,sy:0.5},
+	    	{x:32,y:495,sx:0.5,sy:0.5},
+	    	{x:560,y:607,sx:0.5,sy:0.5},
+	    	{x:368,y:679,sx:0.5,sy:0.5},
+	    	{x:424,y:784,sx:0.5,sy:0.5},
+	    	{x:408,y:671,sx:0.5,sy:4},
+	    	{x:488,y:671,sx:0.5,sy:4},
+	    	{x:0,y:664,sx:11.9,sy:0.5},
+	    	{x:562,y:577,sx:7.4,sy:0.5},
+	    ];
+	    for (var i = 0; i < solider.length; i++) {
+		    this.solider = this.alpha.create(solider[i].x, solider[i].y, 'alpha');
+		    this.solider.scale.setTo(solider[i].sx,solider[i].sy);
+		    this.solider.body.immovable = true;
+	    }
+
+	    //this.solider = this.alpha.create(562, 577, 'alpha');
+	    //this.solider.scale.setTo(7.4,0.5);
+	    //this.solider.body.immovable = true;
+
+	    this.gameStart = false;
+	    this.isBattle = false;
+
+
+		window.player = this.player = game.add.sprite(0,0,'player');
+	    //game.physics.arcade.enable(this.player);
+    	game.physics.enable(this.player, Phaser.Physics.ARCADE);
+	    this.player.body.bounce.y = 0.2;
+	    this.player.anchor.setTo(0.5,0.5);
+	    this.player.body.collideWorldBounds = true;
+	    this.player.body.setSize(24, 24, 4, 4);
+		this.cursors = game.input.keyboard.createCursorKeys();
+
+
+    	game.world.setBounds(0, 0, 800, 800);
+    	game.world.resize(game.world.width, game.world.height);
+    	game.camera.follow(this.player);
+    	this.player.x = 50;//302.5
+    	this.player.y = 730;//724
+
+
+
+
+	    this.objects = game.add.group();
+	    this.objects.enableBody = true;
+	    var objs = [
+	    	{
+	    		name:'npc1',
+	    		x:640,
+	    		y:597,
+	    		key:'npc1',
+	    		message:'增加攻击力一点'
+	    	},
+	    	{
+	    		name:'npc2',
+	    		x:270,
+	    		y:680,
+	    		key:'npc2',
+	    		message:'增加生命力一点'
+	    	},
+	    	{
+	    		name:'npc3',
+	    		x:460,
+	    		y:720,
+	    		key:'npc3',
+	    		message:'欢迎来到这里，你需要去死。'
+	    	},
+	    	{
+	    		name:'shop',
+	    		x:567,
+	    		y:597,
+	    		key:'shop',
+	    		num:7,
+	    		message:'强壮店面'
+	    	},
+	    	{
+	    		name:'shop2',
+	    		x:305,
+	    		y:680,
+	    		key:'shop2',
+	    		num:7,
+	    		message:'回血商铺'
+	    	},
+	    ];
+	    for (var i = 0; i < objs.length; i++) {
+		    this[objs[i].name] = this.objects.create(objs[i].x, objs[i].y, objs[i].key);
+		    this[objs[i].name].body.immovable = true;
+		    if (this[objs[i].name].key=='shop'||this[objs[i].name].key=='shop2') {
+		    	this[objs[i].name].num = objs[i].num;
+		    }
+	    }
+/*
+		npc1 = game.add.image(620,597,'npc1');
+
+		npc2 = game.add.image(285,680,'npc2');
+
+		npc3 = game.add.image(460,720,'npc3');
+
+		shop = game.add.image(567,595,'shop');
+
+		shop2 = game.add.image(305,675,'shop2');*/
+
+
+
+	    this.enemys = game.add.group();
+	    this.enemys.enableBody = true;
+	    var enemys = [
+	    	{x:155,y:155,name:'enemy1',key:'map_enemy_1',hp:10,atk:1,con:1,timeScale:2},
+	    	{x:255,y:255,name:'enemy1',key:'map_enemy_1',hp:10,atk:1,con:1,timeScale:2},
+	    	{x:400,y:400,name:'enemy1',key:'map_enemy_1',hp:10,atk:1,con:1,timeScale:2},
+	    	{x:460,y:607,name:'enemy1',key:'map_enemy_1',hp:10,atk:1,con:1,timeScale:2},
+	    	{x:568,y:379,name:'enemy2',key:'map_enemy_2',hp:20,atk:2,con:2,timeScale:3},
+	    	{x:624,y:184,name:'enemy2',key:'map_enemy_2',hp:20,atk:2,con:2,timeScale:3},
+	    	{x:408,y:471,name:'enemy2',key:'map_enemy_2',hp:20,atk:2,con:2,timeScale:3},
+	    	{x:288,y:471,name:'enemy3',key:'map_enemy_3',hp:30,atk:3,con:3,timeScale:5},
+	    	{x:750,y:564,name:'enemy3',key:'map_enemy_3',hp:30,atk:3,con:3,timeScale:5},
+	    	{x:700,y:500,name:'enemy3',key:'map_enemy_3',hp:30,atk:3,con:3,timeScale:5},
+	    ];
+	    for (var i = 0; i < enemys.length; i++) {
+		    this.enemy = this.enemys.create(enemys[i].x, enemys[i].y, enemys[i].key);
+		    this.enemy.anchor.setTo(0.5,0.5);
+		    this.enemy.name = enemys[i].name;
+		    this.enemy.hp = enemys[i].hp;
+		    this.enemy.atk = enemys[i].atk;
+		    this.enemy.con = enemys[i].con;
+		    this.enemy.timeScale = enemys[i].timeScale;
+		    var tween = game.add.tween(this.enemys.getChildAt(i)).to( { x: this.enemys.getChildAt(i).x-game.rnd.between(100,200) }, game.rnd.between(1500,3000), "Linear", true, 0, -1);
+		    tween.yoyo(true, 100);
+	    }
+
+
+
+		this.battle = game.add.group();
+		this.backgroundBattle=game.add.image(0,0,'backgroundBattle');
+		this.backgroundBattle.width = game.world.width;
+		this.backgroundBattle.height = game.world.height*0.6;
+		this.enemy = game.add.image(0,0,'enemy1');
+		this.enemy.scale.setTo(2,2);
+		this.enemy.x = (game.world.width-this.enemy.width)*0.15;
+		this.enemy.y = 0.5 * this.enemy.height;
+		this.enemy.hp = 0;
+		this.enemy.atk = 0;
+		this.enemy.con = 0;
+		window.hero = this.hero = game.add.image(0,0,'player');
+		this.hero.scale.setTo(4,4);
+		this.hero.x = (game.world.width-this.hero.width)*0.15;
+		this.hero.y = 2.5 * this.enemy.height;
+		this.hero.hp = 10;
+		this.hero.atk = 1;
+		this.hero.con = 0;
+		this.grave = game.add.image(0,0,'grave');
+		this.grave.x = (game.world.width-this.grave.width)*0.17;
+		this.grave.y = 2.5 * this.enemy.height;
+		this.grave.visible = false;
+		this.healthbar = game.add.image(0,0,'healthbar');
+		this.healthbar.scale.setTo(2,2);
+		this.healthbar.x = (game.world.width-this.healthbar.width)*0.11;
+		this.healthbar.y = 0.25 * this.healthbar.height;
+		this.healthbarFill = game.add.image(0,0,'fill');
+		this.healthbarFill.scale.setTo(9.8,0.62);
+		this.healthbarFill.x = 0.5+ (game.world.width-this.healthbarFill.width)*0.122;
+		this.healthbarFill.y = 3.1 * this.healthbarFill.height;
+		this.healthbarFill.reWidth = this.healthbarFill.width;
+		this.healthbarFill.update = function(){
+			//console.log(that.enemy.hp);
+			if (this.width<=0) {
+				that.isBattle = false;
+				that.battle.setAll('alpha',0);
+				that.playBattleMusic.destroy();
+				that.playMainMusic.play();
+				this.width = this.reWidth;
+				that.hero.con += that.enemy.con;
+			}
+		}
+		game.input.onDown.add(function(){
+			if (!IsPC()) {return false}
+			if (!this.isBattle) {return false;}
+			if (this.enemy.hp>0) {
+				this.playEnemyAttack.play();
+				this.sliceEffect = game.add.sprite(this.enemy.x,this.enemy.y,'sliceEffect');
+				this.sliceEffect.scale.setTo(2,2);
+		    	this.sliceEffect.animations.add('anims', [0, 1, 2, 3,4,5,6,7], 100, !true).onComplete.add(function(){
+		    		this.sliceEffect.kill();
+					this.enemy.递减量 = this.healthbarFill.width / this.enemy.hp;
+					this.enemy.hp -= this.hero.atk;
+					this.healthbarFill.width = this.enemy.递减量 * this.enemy.hp;
+		    	}, this);
+			    this.sliceEffect.animations.play('anims');
+			    this.battle.add(this.sliceEffect);
+			}	
+		},this);
+		var ts = 0;
+		var timerEvents = game.time.events.loop(Phaser.Timer.SECOND * 1, function(){
+			if (!this.isBattle) {return false;}
+			if(ts%this.enemy.timeScale==0){
+				if (this.hero.hp>0) {
+					if (this.enemy.name=='enemy1') {
+						this.playHit1.play();
+					}
+					if (this.enemy.name=='enemy2') {
+						this.playHit2.play();
+					}
+					if (this.enemy.name=='enemy3') {
+						this.playHit3.play();
+					}
+					this.sliceEffect = game.add.sprite(this.hero.x,this.hero.y,'sliceEffect');
+					this.sliceEffect.scale.setTo(2,2);
+			    	this.sliceEffect.animations.add('anims', [0, 1, 2, 3,4,5,6,7], 100, !true).onComplete.add(function(){
+			    		this.sliceEffect.kill();
+						this.hero.hp -= this.enemy.atk;
+						if (this.hero.hp<=0) {
+							that.isBattle = false;
+							that.battle.setAll('alpha',0);
+							game.state.start('gameover');
+						}
+			    	}, this);
+				    this.sliceEffect.animations.play('anims');
+			    	this.battle.add(this.sliceEffect);
+				}
+			}
+			ts++;
+		}, this);
+
+		var playerInfor = game.add.text(
+			10,
+			10, 
+			"勇士:" +
+			"\n生命:" + this.hero.hp +
+			"\n攻击:" + this.hero.atk +
+			"\n金币:" + this.hero.con
+			, 
+			{ 
+				font: "12px Arial", 
+				fill: "#ffffff", 
+				align: "left" 
+			}
+		);
+	  playerInfor.fixedToCamera = true;
+	  playerInfor.cameraOffset.setTo(10, 10);
+	  playerInfor.update = function(){
+	  	this.setText("勇士:" +
+										"\n生命:" + that.hero.hp +
+										"\n攻击:" + that.hero.atk +
+										"\n金币:" + that.hero.con);
+	  }
+		var enemyInfor = game.add.text(
+			275,
+			10, 
+			"怪物:" +
+			"\n生命:" + this.hero.hp +
+			"\n攻击:" + this.hero.atk +
+			"\n金币:" + this.hero.con
+			, 
+			{ 
+				font: "12px Arial", 
+				fill: "#ffffff", 
+				align: "left" 
+			}
+		);
+	  enemyInfor.update = function(){
+	  	this.setText("怪物:" +
+										"\n生命:" + that.enemy.hp +
+										"\n攻击:" + that.enemy.atk +
+										"\n金币:" + that.enemy.con);
+	  }
+		this.battle.add(this.backgroundBattle);
+		this.battle.add(this.enemy);
+		this.battle.add(this.hero);
+		this.battle.add(this.grave);
+		this.battle.add(this.healthbar);
+		this.battle.add(this.healthbarFill);
+		this.battle.add(enemyInfor);
+		this.battle.setAll('alpha',0);
+	  this.battle.fixedToCamera = true;
+
+	  	this.inputWidget = game.add.group();
+	    this.walkGo = '';
+    	this.imageDPad = game.add.image(0, 380, 'xbox360', '360_Dpad');
+    	this.imageDPad.fixedToCamera = true;
+    	this.imageDPad.alpha = 0.3;
+    	this.up = game.add.image(33.56,380,'alpha');
+    	this.up.fixedToCamera = true;
+    	this.up.inputEnabled = true;
+    	this.up.events.onInputDown.add(function(e){
+	    	this.walkGo = 'up';
+    		this.imageDPad.frameName = '360_Dpad_Up';
+    	},this);
+    	this.up.events.onInputUp.add(function(e){
+	    	this.walkGo = '';
+    		this.imageDPad.frameName = '360_Dpad';
+    	},this);
+    	this.down = game.add.image(33.56,450,'alpha');
+    	this.down.fixedToCamera = true;
+    	this.down.inputEnabled = true;
+    	this.down.events.onInputDown.add(function(e){
+	    	this.walkGo = 'down';
+    		this.imageDPad.frameName = '360_Dpad_Down';
+    	},this);
+    	this.down.events.onInputUp.add(function(e){
+	    	this.walkGo = '';
+    		this.imageDPad.frameName = '360_Dpad';
+    	},this);
+    	this.right = game.add.image(66.56,415,'alpha');
+    	this.right.fixedToCamera = true;
+    	this.right.inputEnabled = true;
+    	this.right.events.onInputDown.add(function(e){
+	    	this.walkGo = 'right';
+    		this.imageDPad.frameName = '360_Dpad_Right';
+    	},this);
+    	this.right.events.onInputUp.add(function(e){
+	    	this.walkGo = '';
+    		this.imageDPad.frameName = '360_Dpad';
+    	},this);
+    	this.left = game.add.image(0.56,415,'alpha');
+    	this.left.fixedToCamera = true;
+    	this.left.inputEnabled = true;
+    	this.left.events.onInputDown.add(function(e){
+	    	this.walkGo = 'left';
+    		this.imageDPad.frameName = '360_Dpad_Left';
+    	},this);
+    	this.left.events.onInputUp.add(function(e){
+	   		this.walkGo = '';
+    		this.imageDPad.frameName = '360_Dpad';
+    	},this);
+
+    	this.imageX = game.add.image(225, 380, 'xbox360', '360_X');
+    	this.imageX.fixedToCamera = true;
+    	this.imageX.alpha = 0.3;
+    	this.imageX.inputEnabled = true;
+    	this.imageX.events.onInputDown.add(function(e){
+			if (!this.isBattle) {return false;}
+			if (IsPC()) {return false;}
+			if (this.enemy.hp>0) {
+				this.playEnemyAttack.play();
+				this.sliceEffect = game.add.sprite(this.enemy.x,this.enemy.y,'sliceEffect');
+				this.sliceEffect.scale.setTo(2,2);
+		    	this.sliceEffect.animations.add('anims', [0, 1, 2, 3,4,5,6,7], 100, !true).onComplete.add(function(){
+		    		this.sliceEffect.kill();
+					this.enemy.递减量 = this.healthbarFill.width / this.enemy.hp;
+					this.enemy.hp -= this.hero.atk;
+					this.healthbarFill.width = this.enemy.递减量 * this.enemy.hp;
+		    	}, this);
+			    this.sliceEffect.animations.play('anims');
+			    this.battle.add(this.sliceEffect);
+			}	
+    		this.imageX.alpha = 1;
+    	},this);
+    	this.imageX.events.onInputUp.add(function(e){
+				if (!this.isBattle) {return false;}
+				if (IsPC()) {return false;}
+    		this.imageX.alpha = 0.3;
+    	},this);
+    	this.inputWidget.add(this.imageDPad);
+    	this.inputWidget.add(this.up);
+    	this.inputWidget.add(this.down);
+    	this.inputWidget.add(this.right);
+    	this.inputWidget.add(this.left);
+    	this.inputWidget.add(this.imageX);
+    	if (IsPC()) {
+    		this.inputWidget.setAll('alpha',0);
+    	}
+
+    	var txtStart = [
+    		'欢迎你勇士,你将在这里开始你的冒险之旅。',
+    		'你可以使用鼠标左键或方向键进行移动,当你遭遇到怪物\n时，会进入战斗状态，考验你的手速的时候到了。',
+    		'那么开始你的冒险吧。'
+    	];
+    	this.jsonObjTxt = {
+    		npc1:'这里只是一个简陋的营地，你需要尝试着走出去看看。',
+    		npc2:'勇士，为了帮助你更好地在这里生存下去，我将送你15\n个金币，你可以在商店里获得相应的提升。',
+    		npc3:'边境有一只怪物，以你现在的能力还不是它的对手，\n你就先待在这里练级吧。',
+    		shop:'花费7金币，提升1点攻击。',
+    		shop2:'花费7金币，提升1点生命。',
+    	};
+    	this.msg = game.add.group();
+    	this.messagesBar = game.add.image(0,0,'messagesBar');
+    	this.messagesBar.y = game.height - this.messagesBar.height;
+    	this.messagesBar.fixedToCamera = true;
+    	this.messagesText = game.add.text(this.messagesBar.x+15,this.messagesBar.y+10,'',{font:'12px 楷体',fill:'white'});
+    	this.messagesText.fixedToCamera = true;
+    	var t = 0;
+    	var timerEventTxt = game.time.events.loop(Phaser.Timer.SECOND * 1.5, function(){
+    		if (t>=txtStart.length) {
+			   	game.time.events.remove(timerEventTxt);
+			   	this.msg.setAll('alpha',0);
+			   	this.gameStart = true;
+			   	return false;
+    		}
+			  this.msg.setAll('alpha',1);
+    		this.messagesText.setText(txtStart[t]);
+    		t++;
+    	},this);
+    	this.msg.add(this.messagesBar);
+    	this.msg.add(this.messagesText);
+			this.msg.setAll('alpha',0);
+
+			this.whoShop = '';
+			this.buttonOK = game.add.image(0,0,'button_normal');
+			this.buttonOK.x = this.messagesBar.x+this.messagesBar.width-this.buttonOK.width-15 - this.buttonOK.width - 5;
+			this.buttonOK.y = this.messagesBar.y+this.messagesBar.height-this.buttonOK.height-15;
+			this.buttonOK.fixedToCamera = true;
+			this.buttonOK.inputEnabled = true;
+			this.buttonOK.events.onInputDown.add(function(){
+				if (this.whoShop=='') {return false;}
+				if (this.whoShop=='shop'){
+					if (this.hero.con >= this.shop.num) {
+						this.hero.con -= this.shop.num;
+						this.hero.atk += 1;
+					}
+				}
+				if (this.whoShop=='shop2'){
+					if (this.hero.con >= this.shop2.num) {
+						this.hero.con -= this.shop2.num;
+						this.hero.hp += 1;
+					}
+				}
+				this.buttonOK.alpha = 0;
+				this.buttonClose.alpha = 0;
+				this.msg.setAll('alpha',0);
+			},this);
+			this.buttonClose = game.add.image(0,0,'button_pressed');
+			this.buttonClose.x = this.messagesBar.x+this.messagesBar.width-this.buttonOK.width-15;
+			this.buttonClose.y = this.buttonOK.y;
+			this.buttonClose.fixedToCamera = true;
+			this.buttonClose.inputEnabled = true;
+			this.buttonClose.events.onInputDown.add(function(){
+				this.buttonOK.alpha = 0;
+				this.buttonClose.alpha = 0;
+				this.msg.setAll('alpha',0);
+			},this);
+			this.buttonOK.alpha = 0;
+			this.buttonClose.alpha = 0;
+
+
+
+	};
+	function typeTxt(that,text,key){
+		var t = 0;
+		var timerEventTxt = game.time.events.loop(Phaser.Timer.SECOND * 0.1, function(){
+	    if (t>=text.length) {
+				game.time.events.remove(timerEventTxt);
+				
+				if (key=='shop2') {
+					that.msg.setAll('alpha',1);
+					this.buttonOK.alpha = 1;
+					this.buttonClose.alpha = 1;
+				}else if(key=='shop'){
+					that.msg.setAll('alpha',1);
+					this.buttonOK.alpha = 1;
+					this.buttonClose.alpha = 1;
+				}else{
+					that.msg.setAll('alpha',0);
+				}
+				t = 0;
+				return false;
+	    }
+			that.msg.setAll('alpha',1);
+		  that.messagesText.setText(text.substr(0,t));
+		 	t++;
+    },that);	
+	}
+	this.update = function(){
+
+		game.physics.arcade.collide(this.player, this.alpha);
+		game.physics.arcade.collide(this.player, this.objects,function(player,obj){
+			console.log(obj.key);
+			if (obj.key=='shop') {
+				this.whoShop = 'shop';
+			}
+			if (obj.key=='shop2') {
+				this.whoShop = 'shop2';
+			}
+			if (obj.key=='npc2') {
+				if (obj.i>0) {return false;}
+				this.hero.con += 15;
+				obj.i = 1;
+			}
+			typeTxt(this,this.jsonObjTxt[obj.key],obj.key);
+		},null,this);
+		game.physics.arcade.overlap(this.player, this.enemys,function(player,enemy){
+			this.playBattleStart.play();
+			this.playBattleMusic = game.add.audio('battleMusic');
+			this.playBattleMusic.loop = true;
+			this.playBattleMusic.play();
+			this.playMainMusic.stop();
+			this.enemy.name = enemy.name;
+			this.enemy.hp = enemy.hp;
+			this.enemy.atk = enemy.atk;
+			this.enemy.con = enemy.con;
+		  this.enemy.timeScale = enemy.timeScale;
+			this.enemy.texture.baseTexture.source.src='images/' + enemy.name + '.png';
+			enemy.kill();
+			this.isBattle = true;
+	        this.player.body.velocity.setTo(0, 0);
+			this.battle.setAll('alpha',1);
+		},null,this);
+
+
+		if (this.isBattle) {return false;}
+
+
+			if (!this.gameStart) {return false;}
+	    if (game.input.mousePointer.isDown) {
+	        game.physics.arcade.moveToPointer(this.player, 100, game.input.activePointer, 500);
+	    } else {
+	        this.player.body.velocity.setTo(0, 0);
+	    	this.player.angle = 0;
+	    }
+	    if (this.cursors.left.isDown||this.walkGo == 'left')
+	    {
+	    	this.player.angle = -15;
+	        this.player.body.velocity.x = -150;
+	        //game.camera.x -= 1;
+	    }
+	    else if (this.cursors.right.isDown||this.walkGo == 'right')
+	    {
+	    	this.player.angle = 15;
+	        this.player.body.velocity.x = 150;
+	        //game.camera.x += 1;
+	    }
+	    else if (this.cursors.up.isDown||this.walkGo == 'up') {
+	        this.player.body.velocity.y = -150;
+	    }
+	    else if (this.cursors.down.isDown||this.walkGo == 'down') {
+	        this.player.body.velocity.y = 150;
+	    }
+	}
+	this.render = function(){
+		
+		for (var i = 0; i < this.alpha.length; i++) {
+			game.debug.body(this.alpha.getChildAt(i));
+		}
+		for (var i = 0; i < this.objects.length; i++) {
+			game.debug.body(this.objects.getChildAt(i));
+		}
+        game.debug.body(this.player);
+	}
+}
+
+var game=new Phaser.Game(320,480,Phaser.CANVAS,'container');
+game.state.add('boot',bootState);
+game.state.add('loader',loaderState);
+game.state.add('welcome',welcomeState);
+game.state.add('main',gameState);
+game.state.add('gameover',gameoverState);
+game.state.start('boot');
+
+</script>
+</body>
+</html>
