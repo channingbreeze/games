@@ -3,3 +3,4 @@
 .eslintcache
 package-lock.json
 src/.idea/*
+start.sh
