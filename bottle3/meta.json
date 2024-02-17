@@ -1,1 +1,6 @@
-
+{
+"title":"Falling Bottle Test",
+ "cover_image":"https://mngz47.github.io/games/bottle3/cover_image.png",
+  "description":"Falling Bottle Challenge invites you to see if you can drop the spinning bottle without shattering it. The spinning bottle whirls between two desks and if you don’t drop it just right, the bottle will shatter and the game will end. The distance from the ground will change, but you still must drop the bottle at just the right time to gain a point. How many bottles can you drop perfectly? How many points will you get? Challenge yourself with this fun game.",
+  "run":"https://mngz47.github.io/games/bottle3/"
+}
