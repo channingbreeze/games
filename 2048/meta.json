@@ -1,6 +1,6 @@
 {
 "title":"2048",
- "cover_image":"https://mngz47.github.io/2048/cover_image.png",
+ "cover_image":"https://mngz47.github.io/games/2048/cover_image.png",
   "description":"In this game, the player must combine tiles containing the same numbers until they reach the number 2048. The tiles can contain only integer values starting from 2, and that are a power of two, like 2, 4, 8, 16, 32, and so on. Ideally, the player should reach the 2048 tile within the smallest number of steps.",
-  "run":"https://mngz47.github.io/2048/"
+  "run":"https://mngz47.github.io/games/2048/"
 }
