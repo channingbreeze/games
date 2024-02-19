@@ -1,0 +1,6 @@
+{
+"title":"Breakout 3",
+ "cover_image":"https://mngz47.github.io/games/breakout3/cover_image.png",
+  "description":"With Breakout, a single paddle was used to direct a ball at a wall of colored bricks. Contact made a brick vanish and the ball change speed. The game could never exist in any medium other than video. Breakout is an arcade video game developed and published by Atari, Inc. and released on May 13, 1976. It was designed by Steve Wozniak, based on conceptualization from Nolan Bushnell and Steve Bristow, who were influenced by the seminal 1972 Atari arcade game Pong.",
+  "run":"https://mngz47.github.io/games/breakout3/"
+}
