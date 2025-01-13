@@ -1,28 +1,56 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
-    <title>Phaser Pacman clone</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Phaser Pacman clone - A fun and interactive Pacman game built with Phaser.">
+    <meta name="author" content="Game Developer">
+    <title>Phaser Pacman Clone</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             background-color: #000;
             color: #fff;
+            font-family: Arial, sans-serif;
             text-align: center;
-            line-height: 10px;
-            font-size: 14px;
+        }
+        .instructions {
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #fff;
+            width: 80%;
+            max-width: 600px;
+            background-color: #222;
+            border-radius: 8px;
+        }
+        .instructions p {
+            margin: 5px 0;
         }
     </style>
     <script src="./phaser.min.js"></script>
+    <script>
+        if (!window.Phaser) {
+            console.error("Phaser.js failed to load. Please ensure the file is available at the specified path.");
+        }
+    </script>
 </head>
 <body>
-	<!-- <div>
-	    <p>Cursor keys to move Pacman</p>
-	    <p>"D" key to (de)activate Debug mode</p>
-	    <p>"B" key to (de)activate original Overflow "Bug"</p>
-	</div> -->
-
+    <header>
+        <h1>Phaser Pacman Clone</h1>
+    </header>
+    <main>
+        <div class="instructions">
+            <h2>Game Instructions</h2>
+            <p>Use the <strong>cursor keys</strong> to move Pacman.</p>
+            <p>Press the <strong>"D"</strong> key to toggle Debug mode.</p>
+            <p>Press the <strong>"B"</strong> key to toggle the original Overflow "Bug".</p>
+        </div>
+        <div id="game-container"></div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Phaser Pacman Clone. All rights reserved.</p>
+    </footer>
     <script src="js/Pacman.js"></script>
     <script src="js/Ghost.js"></script>
     <script src="js/pacmangame.js"></script>
