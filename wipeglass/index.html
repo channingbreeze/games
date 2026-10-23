@@ -32,23 +32,321 @@
        
 
 <h4 onclick="toggle(e('start'));" id=credits style='position:absolute;float:right;margin:4px;background:rgba(0,0,0,0.7);color:white;' ></h4>    
-<div id=start style="position: absolute;top:0;background-color:rgba(0,0,0,0.7);width:100%;height:100%;z-index:1000;padding:40px;y-overflow:auto;" >
-   <a href=# onclick="toggle(e('start'));" ><h6 style="color:white;" id=buy_credits >Buy Credits:</h6></a>
-   <div style='margin-top:10px;color:white;' >
-	   <label>Credit Card<input type=checkbox id=credit_card  /></label>
-	   <label>PayPal<input type=checkbox id=paypal_option  /></label>
-	   <br><br>
-	   <input type=number id=credits value=40 placeholder=credits />
-	   <button onclick='monetize_purchase(e("credits").value);return false;' >buy</button>
-   </div>
+<a href=# onclick="toggle(e('start'));" ><h6>Menu</h6></a>
 	
-	<script src="https://mngz47.github.io/monetize/search.js" ></script>
-	 <div style='float:right;margin-top:10px;' ><input type=text id=search_game placeholder=games /><button onclick='search(e("search_game").value);return false;' >search</button></div>
+<div id=start style="position: absolute;top:0;background-color:rgba(0,0,0,0.7);width:100%;height:100%;z-index:1000;padding:40px;y-overflow:auto;" >
+
+	
+   //arcade category - china - germany - multiplier
+
+
+	<a href=# onclick="toggle(e('start'));" ><h1 style="color:white;" >Machine Menu</h1></a>
+
+<div class="row" >
+
+<div class="col-sm-2" style="color:white;font-size: 2em;opacity: 0.5;" >
+
+<a style="display:block;" onclick="e('home_tab').style.display='';e('credits_tab').style.display='none';e('search_tab').style.display='none';e('youtube_tab').style.display='none';e('tiktok_tab').style.display='none';e('partners_tab').style.display='none';" >Home</a>	
+<a style="display:block;" onclick="e('home_tab').style.display='none';e('credits_tab').style.display='';e('search_tab').style.display='none';e('youtube_tab').style.display='none';e('tiktok_tab').style.display='none';e('partners_tab').style.display='none';" >Credits</a>
+<a style="display:block;" onclick="e('home_tab').style.display='none';e('credits_tab').style.display='none';e('search_tab').style.display='';e('youtube_tab').style.display='none';e('tiktok_tab').style.display='none';e('partners_tab').style.display='none';" >Search</a>
+<a style="display:block;" onclick="e('home_tab').style.display='none';e('credits_tab').style.display='none';e('search_tab').style.display='none';e('youtube_tab').style.display='';e('tiktok_tab').style.display='none';e('partners_tab').style.display='none';" >YouTube</a>
+<a style="display:block;" onclick="e('home_tab').style.display='none';e('credits_tab').style.display='none';e('search_tab').style.display='none';e('youtube_tab').style.display='none';e('tiktok_tab').style.display='';e('partners_tab').style.display='none';" >TikTok</a>
+<a style="display:block;" onclick="e('home_tab').style.display='none';e('credits_tab').style.display='none';e('search_tab').style.display='none';e('youtube_tab').style.display='none';e('tiktok_tab').style.display='none';e('partners_tab').style.display='';" >Partners</a>
+
+<div style="color:white;font-size: 1em;" >
+
+<a href=https://mngz47.github.io/machine/ >Machine</a>
+<a href=https://mngz47.github.io/mongeziSibongakonke/docs/index.html > Docs</a>
+<a href=https://mngz47.github.io/machine/privacy-policy.html > Privacy</a>
+<a href=https://mngz47.github.io/machine/terms-of-service.html > Terms</a>
+
+</div>
+</div>
+<div  class="col-sm-10" >
+
+<div id="home_tab"   >
+	<a href=https://mngz47.github.io/mongeziSibongakonke/docs/arcade.html >
+<div style="background-image:url('https://raw.githubusercontent.com/mngz47/mongeziSibongakonke/main/docs/images/arcade.png');background-repeat: no-repeat;background-size:100% auto;width:100%;height:300px;" >
+<p class=block >
+<h2></h2>
+	<h2 style="background:white;" >Arcade</h2>
+<label style="background:white;" ></label>
+</p>
+</div> 
+	</a>
+	
+<!-- Trending/All Time ,Known Run Location, no multiplier-->
+<div style="color:white;" >
+
+	  <p><img src=https://mngz47.github.io/bieberpong-static/cover_image.png width=70px />(<a href=https://github.com/mngz47/games/wiki/bieberpong >Bieber Pong</a>)(<a href=https://mngz47.github.io/bieberpong-static/ >Play</a>) Justin Bieber themed ping pong ball you can choose to play for usa or canada. Powered by Html5 instant games.</p>
+		  <p>(<a href=https://github.com/mngz47/games/wiki/pacman >Pac Man</a>)(<a href=https://mngz47.github.io/games/pacman/ >Play</a>) Pac-Man: Maze Adventure is a timeless classic arcade game that has captivated generations with its simple yet addictive gameplay. As the iconic, pizza-shaped character Pac-Man, players embark on a thrilling journey through mazes filled with dots, ghosts, and power pellets.</p>
+		  <p><img src=https://mngz47.github.io/games/fctank/cover_image.png width=70px />(<a href=https://github.com/mngz47/games/wiki/fctank >FC Tank</a>)(<a href=https://mngz47.github.io/games/fctank/ >Play</a>) The player controls a tank and shoot projectiles to destroy enemy tanks around the playfield. The enemy tanks enter from the top of the screen and attempt to destroy the player's base (represented on the screen as a phoenix symbol), as well as the player's tank itself. Battle City is a multi-directional shooter video game for the Family Computer produced and published in 1985 by Namco. It is a successor to Namco's 1980 Tank Battalion, and would be succeeded itself by the 1991 Tank Force.</p>
+
+<p>(<a href=https://github.com/mngz47/games/wiki/candy-crush >Candy Crush</a>)(<a href=https://mngz47.github.io/candy-crush/ >Play</a>) Candy Crush Saga is a 'match three' game, where the core gameplay is based on swapping two adjacent candies among several on the gameboard to make a row or column of at least three matching-colored candies.</p>
+
+<p>(<a href=https://github.com/mngz47/games/wiki/flappybird >Flappy Bird</a>)(<a href=https://mngz47.github.io/games/flappybird/ >Play</a>) Flappy Bird is a 2013 mobile game developed by the Vietnamese video game artist and programmer Dong Nguyen, under his game development company .Gears. The game is a side-scroller where the player controls a bird, attempting to fly between columns of green pipes without hitting them.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/flappybird >Flappy Bird 3</a>)(<a href=https://mngz47.github.io/games/flappybird3/ >Play</a>) Flappy Bird is a 2013 mobile game developed by the Vietnamese video game artist and programmer Dong Nguyen, under his game development company .Gears. The game is a side-scroller where the player controls a bird, attempting to fly between columns of green pipes without hitting them. </p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Nokia3310-Snake >Nokia3310-Snake</a>)(<a href=https://mngz47.github.io/Nokia3310-Snake/ >Play</a>) The Nokia 3310's version of the Snake game is called 'Snake Xenzia' and is a colorized version of the classic game. It's pre-loaded on the phone.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/tetris >Tetris</a>)(<a href=https://mngz47.github.io/Tetris-Basic/ >Play</a>)  Tetris® is the addictive puzzle game that started it all, embracing our universal desire to create order out of chaos. The Tetris game was created by Alexey Pajitnov in 1984—the product of Alexey’s computer programming experience and his love of puzzles. In the decades to follow, Tetris became one of the most successful and recognizable video games, appearing on nearly every gaming platform available. This page is the official destination for free online single-player Tetris. Click PLAY to start playing one of the world’s most popular puzzle games now</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/stardog >Stardog</a>)(<a href=https://mngz47.github.io/games/stardog/ >Play</a>) Stellar Dash: Starlight Escape is a visually enchanting and engaging mobile game that challenges players to navigate a cosmic landscape, avoiding the mischievous Stardog while collecting radiant stars. In this captivating adventure, players embark on a journey through dazzling galaxies, testing their reflexes and strategic thinking.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/starship >Starship</a>)(<a href=https://mngz47.github.io/games/starship/ >Play</a>) Galactic Defender: Duck Attack offers a thrilling combination of space shooter action, strategic duck deployment, and shield preservation mechanics. With its unique twist on traditional space shooters and engaging gameplay features, it promises an entertaining and challenging cosmic adventure for players seeking interstellar excitement.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/memory-game >Memory Game</a>)(<a href=https://mngz47.github.io/memory-game >Play</a>) The memory game is a card game where players match pairs of cards with pictures on them. It's a popular children's game that helps improve memory, attention, and problem-solving skills.</p>
+
+
+	
+</div>
+<!-- Trending/All Time, Shells, China - Germany multiplier-->
+<div style="display:none;" >
+
+<p>(<a href=https://github.com/mngz47/games/wiki/Mustapha >Mustapha</a>)(<a href=https://www.google.com/search?q=mustafa+game+play >Play</a>) The game commonly known as the "Mustapha game" is Cadillacs and Dinosaurs, a classic side-scrolling beat 'em up arcade game released by Capcom in 1993.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/mario >Super Mario</a>)(<a href=https://www.google.com/search?q=mario+game+play >Play</a>) Super Mario is a platform game series developed and published by Nintendo and starring their mascot, Mario. The series was created by Japanese game designer Shigeru Miyamoto and is the flagship series of the greater Mario franchise.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/celeste >Celeste</a>)(<a href=https://www.google.com/search?q=celeste+game+play >Play</a>) Help Madeline survive her inner demons on her journey to the top of Celeste Mountain in this super-tight platformer.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/hollowknight >Hollow Knight</a>)(<a href=https://www.google.com/search?q=hollow+knight+game+play >Play</a>) Forge your own path in Hollow Knight! An epic action adventure through a vast ruined kingdom of insects and heroes.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/supermeatbot >Super Meat Boy</a>)(<a href=https://www.google.com/search?q=super+meat+boy+game+play >Play</a>) A tough-as-nails platformer where you play as an animated cube of meat who tries to save his girlfriend from an evil fetus in a jar.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/shovelknight >Shovel Knight</a>)(<a href=https://www.google.com/search?q=shovel+knight+game+play >Play</a>) A classic action-adventure game with awesome gameplay, memorable characters, and an 8-bit retro aesthetic.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/oriandtheblindforest >Ori and the Blind Forest</a>)(<a href=https://www.google.com/search?q=Ori+and+the+Blind+Forest+game+play >Play</a>) Ori and the Blind Forest: Visually stunning action-platformer featuring a deeply emotional story about a young orphan destined for heroics.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/deadcells >Dead Cells</a>)(<a href=https://www.google.com/search?q=dead+cells+game+play >Play</a>) A rogue-lite, Metroidvania-inspired action-platformer where you explore an ever-changing, sprawling castle.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/spelunky >Spelunky 2</a>)(<a href=https://www.google.com/search?q=spelunky+2+game+play >Play</a>) A challenging roguelike platformer where levels are randomly generated, offering unique adventures each time.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/cuphead >Cuphead</a>)(<a href=https://www.google.com/search?q=cuphead+game+play >Play</a>) A classic run-and-gun action game heavily focused on boss battles, inspired by 1930s cartoons.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/katanazero >Katana ZERO</a>)(<a href=https://www.google.com/search?q=katana+zero+game+play >Play</a>) A stylish neo-noir action-platformer featuring breakneck action and instant-death combat.</p>
+  
+	<p>(<a href=https://github.com/mngz47/games/wiki/braid >Braid</a>)(<a href=https://www.google.com/search?q=braid+game+play >Play</a>) A puzzle-platformer drawn in a painterly style where you manipulate the flow of time to solve puzzle challenges.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/limbo >LIMBO</a>)(<a href=https://www.google.com/search?q=limbo+game+play >Play</a>) A dark, atmospheric puzzle-platformer following a young boy searching for his sister in a dangerous world.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/inside >INSIDE</a>)(<a href=https://www.google.com/search?q=inside+game+play >Play</a>) Haunted and alone, a boy finds himself drawn into the center of a dark, narrative-driven puzzle-platformer project.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/fez >Fez</a>)(<a href=https://www.google.com/search?q=fez+game+play >Play</a>) Gomez is a 2D creature living in a 2D world until the existence of a 3D world is revealed to him in this mind-bending platformer.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/ahatintime >A Hat in Time</a>)(<a href=https://www.google.com/search?q=a+hat+in+time+game+play >Play</a>) A cute-as-heck 3D platformer featuring a little girl who stitches hats for wicked powers.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/sonicmania >Sonic Mania</a>)(<a href=https://www.google.com/search?q=sonic+mania+game+play >Play</a>) A cute-as-heck 3D platformer featuring a little girl who stitches hats for wicked powers.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/raymanlegends >Rayman Legends</a>)(<a href=https://www.google.com/search?q=rayman+legends+game+play >Play</a>) Fast-paced, vibrant platforming with co-op stages, clever rhythm levels, and beautiful art style.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/castlevania >Castlevania</a>)(<a href=https://www.google.com/search?q=castlevania+game+play >Play</a>) Symphony of the Night: The legendary side-scrolling action-RPG platformer that defined the Metroidvania genre.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/supermarioworld >Super Mario World</a>)(<a href=https://www.google.com/search?q=super+mario+world+game+play >Play</a>) The iconic 16-bit SNES platformer following Mario and Yoshi across Dinosaur Land.</p>
+		  
+		<p>(<a href=https://github.com/mngz47/games/wiki/supermarioodyssey >Super Mario Odyssey</a>)(<a href=https://www.google.com/search?q=supur+mario+odyssey+play >Play</a>) A massive 3D sandbox platformer where Mario uses his cap Cappy to possess objects and enemies.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/metroiddread >Metroid Dread</a>)(<a href=https://www.google.com/search?q=metroid+dread+game+play >Play</a>) Join bounty hunter Samus Aran as she escapes a deadly alien world plagued by robotic E.M.M.I. threats.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/guacamelee!2 >Guacamelee! 2</a>)(<a href=https://www.google.com/search?q=Guacamelee!+2+game+play >Play</a>) A luchador-themed Metroidvania platformer with hilarious humor, grappling, and dimension-swapping mechanics.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/axiomverge >Axiom Verge</a>)(<a href=https://www.google.com/search?q=Axiom+Verge+game+play >Play</a>)  A retro 2D action-platformer sci-fi adventure exploring an alien, biomechanical world.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/bloodstained >Bloodstained</a>)(<a href=https://www.google.com/search?q=bloodstained+game+play >Play</a>) Ritual of the Night: A gothic horror side-scrolling action-RPG focused on exploration and collecting abilities.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/cybershadow >Cyber Shadow</a>)(<a href=https://www.google.com/search?q=Cyber+Shadow+game+play >Play</a>) Dash, leap, and slash through ruinous mechanical levels in an authentic 8-bit ninja platformer.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/VVVVVV >VVVVVV</a>)(<a href=https://www.google.com/search?q=VVVVVV+game+play >Play</a>) An indie platformer where instead of jumping, you flip your personal gravity to navigate challenges.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/Dustforce >Dustforce</a>)(<a href=https://www.google.com/search?q=Dustforce+game+play >Play</a>) Clean up the world with stylish acrobatics as an acrobatic janitor in a high-speed precision platformer.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/N++ >N++</a>)(<a href=https://www.google.com/search?q=N%2B%2B+game+play >Play</a>) A fast-paced, momentum-based platformer where you play as a ninja maneuvering through deadly traps.</p>
+
+		  	<p>(<a href=https://github.com/mngz47/games/wiki/downwell >Downwell</a>)(<a href=https://www.google.com/search?q=downwell+game+play >Play</a>) A curious game about a young boy venturing down a well equipped with Gunboots in search of treasures.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/broforce >Broforce</a>)(<a href=https://www.google.com/search?q=Broforce+game+play >Play</a>) An action-packed side-scrolling run-and-gun platformer homage to classic action heroes.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/markofninja >Mark of the Ninja</a>)(<a href=https://www.google.com/search?q=Mark+of+the+Ninja+game+play >Play</a>) A stealth platformer where silence, agility, and wit are required to outsmart guards and complete missions.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/roguelegacy2 >Rogue Legacy 2</a>)(<a href=https://www.google.com/search?q=Rogue+Legacy+2+game+play >Play</a>) A gene-logical rogue-lite platformer where every time you die, your children succeed you with unique traits.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/themessenger >The Messenger</a>)(<a href=https://www.google.com/search?q=The+Messenger+game+play >Play</a>) A ninja saga that starts as a classic 8-bit side-scroller before transforming into a 16-bit time-traveling Metroidvania.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/littlenightmaresII >Little Nightmares II</a>)(<a href=https://www.google.com/search?q=Little+Nightmares+II+game+play >Play</a>) A suspense-adventure puzzle-platformer game in which you play as Mono, a young boy trapped in a distorted world.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/gris >Gris</a>)(<a href=https://www.google.com/search?q=gris+game+play >Play</a>) A serene and evocative artistic experience, free of danger, frustration, or death, centered on emotional processing.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/psychonauts2 >Psychonauts 2</a>)(<a href=https://www.google.com/search?q=Psychonauts+2+game+play >Play</a>) A quirky, cinematic 3D platformer exploring the human mind through imaginative mental worlds.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/ratchet&clank >Ratchet & Clank</a>)(<a href=https://www.google.com/search?q=Ratchet+Clank+game+play >Play</a>) Rift Apart: An interdimensional 3D action-platformer adventure featuring explosive weaponry and rift-hopping traversal.</p>
+	  
+		   	<p>(<a href=https://github.com/mngz47/games/wiki/crashbandicoot4 >Crash Bandicoot 4</a>)(<a href=https://www.google.com/search?q=Crash+Bandicoot+4+game+play >Play</a>) It's About Time: High-energy classic 3D platforming action featuring Quantum Masks and multiverse bending traversal.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/astrobot >Astro Bot</a>)(<a href=https://www.google.com/search?q=Astro+Bot+game+play >Play</a>) A celebratory, high-spirited 3D platformer packed with inventive mechanics and creative level design.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/sackboy >Sackboy</a>)(<a href=https://www.google.com/search?q=sackboy+game+play >Play</a>)  A Big Adventure: A charming 3D platformer featuring Sackboy in a colorful world filled with cooperative fun and creative obstacles.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/trine4 >Trine 4</a>)(<a href=https://www.google.com/search?q=Trine+4+game+play >Play</a>) The Nightmare Prince: A 2.5D puzzle-platformer starring three iconic heroes using physics-based abilities to solve puzzles.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/yooka >Yooka-Laylee and the Impossible Lair</a>)(<a href=https://www.google.com/search?q=Yooka-Laylee+and+the+Impossible+Lair+game+play >Play</a>) A vibrant 2D platformer hybrid with a rich 3D overworld map full of puzzles and secrets.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/neonwhite >Neon White</a>)(<a href=https://www.google.com/search?q=Neon+White+game+play >Play</a>) A lightning-fast single-player speedrunning platformer where you use soul cards to obliterate demons.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/solarash >Solar Ash</a>)(<a href=https://www.google.com/search?q=Solar+Ash+game+play >Play</a>) A high-speed, momentum-driven 3D platformer focused on fluid movement across surreal cosmic landscapes.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/pizzatower >Pizza Tower</a>)(<a href=https://www.google.com/search?q=Pizza+Tower+game+play >Play</a>) A quirky, cinematic 3D platformer exploring the human mind through imaginative mental worlds.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/animalwell >Animal Well</a>)(<a href=https://www.google.com/search?q=Animal+Well+game+play >Play</a>) Explore a dense, interconnected pixelated maze and uncover its many secrets in this atmospheric Metroidvania.</p>
+
+		  
+	<p>(<a href=https://github.com/mngz47/games/wiki/princeofpersia >Prince of Persia</a>)(<a href=https://www.google.com/search?q=Prince+of+Persia+game+play >Play</a>) The Lost Crown: A stylish action-adventure Metroidvania platformer set in a mythological Persian world.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/sanabi >Sanabi</a>)(<a href=https://www.google.com/search?q=Sanabi+game+play >Play</a>) An action-packed dystopian cyberpunk platformer centered around swinging mechanics with a legendary chain-hook.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/cavestory >Cave Story</a>)(<a href=https://www.google.com/search?q=Cave+Story+game+play >Play</a>) An influential indie action-platformer offering classic 8-bit gameplay, exploration, and multiple story endings.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/megaman11 >Mega Man 11</a>)(<a href=https://www.google.com/search?q=Mega+Man+11+game+play >Play</a>)  A modern entry in the iconic side-scrolling action series incorporating new gameplay mechanics like the Double Gear system.</p>
+	<p>(<a href=https://github.com/mngz47/games/wiki/donkeykongcountry >Donkey Kong Country</a>)(<a href=https://www.google.com/search?q=Donkey+Kong+Country+game+play >Play</a>) Tropical Freeze: A critically acclaimed side-scrolling platformer packed with challenging levels, secrets, and dynamic gameplay mechanics.</p>
+
+
+	 <h5>Hot - all time ball games</h5>
+		  
+<p>(<a href=https://github.com/mngz47/games/wiki/rocketleague >Rocket League</a>)(<a href=https://www.rocketleague.com >Play</a>) A high-powered hybrid of arcade-style soccer and vehicular mayhem.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/supermonkeyball >Super Monkey Ball</a>)(<a href=https://www.google.com/search?q=Super+Monkey+Ball+game+play >Play</a>) Roll your monkey in a ball through mazes and collect bananas.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/katamaridamacy >Katamari Damacy</a>)(<a href=https://www.google.com/search?q=Katamari+Damac+game+play >Play</a>) Roll a magical ball that collects everything in its path, growing larger over time.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/marblemadness >Marble Madness</a>)(<a href=https://www.google.com/search?q=Marble+Madness+game+play >Play</a>) A classic arcade game where you guide a marble through dangerous courses.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/peggle >Peggle</a>)(<a href=https://www.google.com/search?q=peggle+game+play >Play</a>) A colorful physics-based game where you clear orange pegs using a limited supply of balls.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/PoolNation >Pool Nation</a>)(<a href=https://www.google.com/search?q=Pool+Nation+game+play >Play</a>) A realistic 3D pool and billiards simulation.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/PinballFX >Pinball FX</a>)(<a href=https://www.google.com/search?q=Pinball+FX+game+play >Play</a>) A modern, feature-rich digital pinball platform.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Ballance >Ballance</a>)(<a href=https://www.google.com/search?q=Ballance+game+play >Play</a>) A classic 3D puzzle game where you control a ball through intricate, suspended levels.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/LocoRoco >LocoRoco</a>)(<a href=https://www.google.com/search?q=LocoRoco+game+play >Play</a>) A unique platformer where you control a bouncy, gelatinous character.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Zuma >Zuma</a>)(<a href=https://www.google.com/search?q=Zuma+game+play >Play</a>) A classic tile-matching puzzle game where you shoot colored balls to match sets.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/MarbleBlastGold >Marble Blast Gold</a>)(<a href=https://marbleblast.com/ >Play</a>) Navigate a marble through obstacle-filled 3D levels.</p>
+
+		  
+<p>(<a href=https://github.com/mngz47/games/wiki/SuperMarioGalaxy >Super Mario Galaxy</a>)(<a href=https://www.google.com/search?q=Super+Mario+Galaxy+game+play >Play</a>) Features numerous gravity-defying ball-based mini-games and mechanics.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Breakout >Breakout</a>)(<a href=https://www.google.com/search?q=Breakout+game+play >Play</a>) The classic arcade game where you use a paddle to bounce a ball and destroy blocks.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Arkanoid >Arkanoid</a>)(<a href=https://www.google.com/search?q=Arkanoid+game+play >Play</a>) A popular brick-breaking game building on the Breakout formula.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Bust-a-Move >Bust-a-Move</a>)(<a href=https://www.google.com/search?q=Bust-a-Move+game+play >Play</a>) A fast-paced bubble-shooter puzzle game.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Super-Puzzle-Fighter-II-Turbo >Super Puzzle Fighter II Turbo</a>)(<a href=https://www.google.com/search?q=Super+Puzzle+Fighter+II+Turbo+game+play >Play</a>) A competitive puzzle game involving colored gems (similar to falling block/ball mechanics). A colorful physics-based game where you clear orange pegs using a limited supply of balls.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Soccer-Physics >Soccer Physics</a>)(<a href=https://www.google.com/search?q=Soccer+Physics+game+play >Play</a>) A hilarious, physics-based take on soccer with simple, quirky controls.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Head-Soccer >Head Soccer</a>)(<a href=https://www.google.com/search?q=Head+Soccer+game+play >Play</a>) A fast-paced, 1v1 cartoon soccer game with special power-ups.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Speedball-2 >Speedball 2</a>)(<a href=https://www.google.com/search?q=Speedball+2+game+play >Play</a>) A futuristic, brutal hybrid of soccer and handball.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Ricochet >Ricochet</a>)(<a href=https://www.google.com/search?q=Ricochet+game+play >Play</a>) A fast-paced brick-breaking game with power-ups and varied levels.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Smash-Hit >Smash Hit</a>)(<a href=https://www.google.com/search?q=Smash+Hit+game+play >Play</a>) A stylish, first-person game where you throw steel balls to destroy glass obstacles.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Marble-It-Up! >Marble It Up!</a>)(<a href=https://www.google.com/search?q=Marble+It+Up!+game+play >Play</a>) A modern take on the classic marble-rolling genre with smooth physics.</p>
+
+
+<p>(<a href=https://github.com/mngz47/games/wiki/Bounce >Bounce</a>)(<a href=https://www.google.com/search?q=Bounce+game+play >Play</a>) A classic mobile game where you guide a red ball through various obstacles.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/3D-Pinball >3D Pinball</a>)(<a href=https://www.google.com/search?q=3D+Pinball+game+play >Play</a>) Space Cadet: The iconic Windows-included pinball game.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Snooker-19 >Snooker 19</a>)(<a href=https://www.google.com/search?q=Snooker+19+game+play >Play</a>) A professional, realistic snooker simulator.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Wii-Sports >Wii Sports (Bowling/Tennis)</a>)(<a href=https://www.google.com/search?q=Wii+Sports+game+play >Play</a>) Iconic motion-controlled ball-based sports games.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Poolians >Poolians</a>)(<a href=https://www.google.com/search?q=Poolians+game+play >Play</a>) An online multiplayer pool game.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/FIFA-EA-Sports-FC >FIFA / EA Sports FC</a>)(<a href=https://www.google.com/search?q=FIFA+EA+Sports+FC+game+play >Play</a>) The definitive soccer simulation franchise.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/NBA-2K-series >NBA 2K series</a>)(<a href=https://www.google.com/search?q=NBA+2K+series+game+play >Play</a>) The leading basketball simulation series.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Madden-NFL >Madden NFL</a>)(<a href=https://www.google.com/search?q=Madden+NFL+game+play >Play</a>) The premier American football simulation series.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/MLB-The-Show >MLB The Show</a>)(<a href=https://www.google.com/search?q=MLB+The+Show+game+play >Play</a>) The leading baseball simulation game.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Super-Mega-Baseball >Super Mega Baseball</a>)(<a href=https://www.google.com/search?q=Super+Mega+Baseball+game+play >Play</a>) A fun, arcade-style baseball game with deep mechanics.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Tennis-World-Tour >Tennis World Tour</a>)(<a href=https://www.google.com/search?q=Tennis+World+Tour+game+play >Play</a>) A tennis simulation focusing on realistic player movement.</p>
+  
+
+		  <p>(<a href=https://github.com/mngz47/games/wiki/Volleygon >Volleygon</a>)(<a href=https://www.google.com/search?q=Volleygon+game+play >Play</a>) A unique arcade game where you control a triangle to keep a ball in play.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Pang-Adventures >Pang Adventures</a>)(<a href=https://www.google.com/search?q=Pang+Adventures+game+play >Play</a>) A modern take on the classic arcade game where you burst bouncing balls.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Bubble-Shooter >Bubble Shooter</a>)(<a href=https://www.google.com/search?q=Bubble+Shooter+game+play >Play</a>) A simple but addictive puzzle game based on color matching.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Zen-Pinball >Zen Pinball</a>)(<a href=https://www.google.com/search?q=Zen+Pinball+game+play >Play</a>)A widely available digital pinball platform with many licensed tables..</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Balls%3F >Balls?</a>)(<a href=https://www.google.com/search?q=Balls%3F+game+play >Play</a>) A physics-based game about stacking and managing balls (itch.io).</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Roll-the-Ball >Roll the Ball</a>)(<a href=https://www.google.com/search?q=Roll+the+Ball+game+play >Play</a>) A puzzle game where you create a path for a ball to reach the goal.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Physics-Drop >Physics Drop</a>)(<a href=https://www.google.com/search?q=Physics+Drop+game+play >Play</a>) Draw lines to guide a ball into a U-shaped container.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Brain-It-On%21 >Brain It On!</a>)(<a href=https://www.google.com/search?q=Brain+It+On%21+game+play >Play</a>) A physics-based puzzle game often involving ball movement.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Golf-With-Your-Friends >Golf With Your Friends</a>)(<a href=https://www.google.com/search?q=Golf+With+Your+Friends+game+play >Play</a>) A chaotic, multiplayer mini-golf game.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/What-the-Golf%21 >What the Golf?</a>)(<a href=https://www.google.com/search?q=What+the+Golf%21+game+play >Play</a>) A comedic, physics-based take on golf that constantly changes the rules.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Pure-Pool >Pure Pool</a>)(<a href=https://www.google.com/search?q=Pure+Pool+game+play >Play</a>) A visually stunning pool game with realistic physics.</p>
+
+		  
+
+<p>(<a href=https://github.com/mngz47/games/wiki/Billiard-Masters >Billiard Masters</a>)(<a href=https://www.google.com/search?q=Billiard+Masters+game+play >Play</a>) A classic billiards game with various modes.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/8-Ball-Pool >8 Ball Pool</a>)(<a href=https://www.google.com/search?q=8+Ball+Pool+game+play >Play</a>) A popular mobile multiplayer pool game.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/World-Soccer-Champs >World Soccer Champs</a>)(<a href=https://www.google.com/search?q=World+Soccer+Champs+game+play >Play</a>) A fast-paced soccer management and play game.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Raket >Raket</a>)(<a href=https://www.google.com/search?q=Raket+game+play >Play</a>)  A fast-paced, minimalist sports-action game.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Crazy-Arcade-%28BnB%29 >Crazy Arcade (BnB)</a>)(<a href=https://www.google.com/search?q=Crazy+Arcade+%28BnB%29+game+play >Play</a>)  A classic game where you drop water balloons to trap opponents.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Super-Skill-Pinball >Super Skill Pinball</a>)(<a href=https://www.google.com/search?q=Super+Skill+Pinball+game+play >Play</a>) A board game adaptation of pinball mechanics, often referenced in digital spin-offs.</p>
+
+
+<h5>Mandarin (Singapore)</h5>
+
+<p>(<a href=https://github.com/mngz47/games/wiki/rocketleague >《火箭联盟》（Rocket League）</a>)(<a href=https://www.rocketleague.com >Play</a>) 一款将街机风格足球与车辆乱斗巧妙融合的高能游戏。链接：https://www.rocketleague.com/ </p> 
+	 <p>(<a href=https://github.com/mngz47/games/wiki/supermonkeyball >《超级猴子球》（Super Monkey Ball）</a>)(<a href=https://www.google.com/search?q=Super+Monkey+Ball+game+play >Play</a>) 操控装在球里的猴子穿过迷宫，并收集香蕉。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/katamaridamacy >《块魂》（Katamari Damacy）</a>)(<a href=https://www.google.com/search?q=Katamari+Damacy+game+play >Play</a>) 滚动一个神奇的球体，将沿途所见之物统统吸附，让球体越滚越大。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/marblemadness >《弹珠狂热》（Marble Madness）</a>)(<a href=https://www.google.com/search?q=Marble+Madness+game+play >Play</a>) 一款经典的街机游戏，你需要引导弹珠穿越充满危险的关卡。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/peggle >《幻幻球》（Peggle）</a>)(<a href=https://www.google.com/search?q=peggle+game+play >Play</a>) 一款色彩缤纷、基于物理机制的游戏，目标是在有限的弹珠数量内清除所有橙色钉子。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/PoolNation >《台球国度》（Pool Nation）</a>)(<a href=https://www.google.com/search?q=Pool+Nation+game+play >Play</a>) 一款逼真的3D台球模拟游戏。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/PinballFX >《Pinball FX》</a>)(<a href=https://www.google.com/search?q=Pinball+FX+game+play >Play</a>) 一款功能丰富、现代化的数字弹球游戏平台。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Ballance >《Ballance》</a>)(<a href=https://www.google.com/search?q=Ballance+game+play >Play</a>) 一款经典的3D解谜游戏，你需要操控一颗球，在错综复杂的空中关卡中前行。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/LocoRoco >《乐克乐克》（LocoRoco）</a>)(<a href=https://www.google.com/search?q=LocoRoco+game+play >Play</a>) 一款独特的平台游戏，你将操控一个富有弹性、像果冻一样的角色。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Zuma >《祖玛》（Zuma）</a>)(<a href=https://www.google.com/search?q=Zuma+game+play >Play</a>) 一款经典的消除类益智游戏，通过发射彩色球进行匹配消除。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/MarbleBlastGold >《弹珠爆破：黄金版》（Marble Blast Gold）</a>)(<a href=https://marbleblast.com/ >Play</a>) 操控弹珠穿越充满障碍的3D关卡。链接：https://marbleblast.com/</p>
+
+		  
+<p>(<a href=https://github.com/mngz47/games/wiki/SuperMarioGalaxy >《超级马力欧银河》（Super Mario Galaxy）</a>)(<a href=https://www.google.com/search?q=Super+Mario+Galaxy+game+play >Play</a>) 包含大量挑战重力、以球体为核心的小游戏与机制。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Breakout >《打砖块》（Breakout）</a>)(<a href=https://www.google.com/search?q=Breakout+game+play >Play</a>) 经典的街机游戏，玩家需操控挡板反弹小球，击碎砖块。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Arkanoid >《阿拉卡诺伊德》（Arkanoid）</a>)(<a href=https://www.google.com/search?q=Arkanoid+game+play >Play</a>) 一款在《打砖块》玩法基础上发展而来的热门打砖块游戏。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Bust-a-Move >《泡泡龙》（Bust-a-Move）</a>)(<a href=https://www.google.com/search?q=Bust-a-Move+game+play >Play</a>) 一款节奏明快的消除类益智游戏，核心玩法是发射泡泡。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Super-Puzzle-Fighter-II-Turbo >《超级方块战士II Turbo》（Super Puzzle Fighter II Turbo）</a>)(<a href=https://www.google.com/search?q=Super+Puzzle+Fighter+II+Turbo+game+play >Play</a>) 一款以彩色宝石为元素的竞技类益智游戏（机制类似于“掉落方块/球体”类游戏）。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Soccer-Physics >《足球物理》（Soccer Physics）</a>)(<a href=https://www.google.com/search?q=Soccer+Physics+game+play >Play</a>) 一款基于物理引擎的足球游戏，风格诙谐，操作简单且古怪。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Head-Soccer >《头球足球》（Head Soccer）</a>)(<a href=https://www.google.com/search?q=Head+Soccer+game+play >Play</a>) 一款节奏紧凑的1对1卡通风格足球游戏，包含各种特殊强化道具。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Speedball-2 >《极速球2》（Speedball 2）</a>)(<a href=https://www.google.com/search?q=Speedball+2+game+play >Play</a>) 一款融合了足球与手球元素、风格硬核且充满未来感的运动游戏。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Ricochet >《反弹》（Ricochet）</a>)(<a href=https://www.google.com/search?q=Ricochet+game+play >Play</a>) 一款节奏快速的打砖块游戏，内含多种强化道具和关卡设计。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Smash-Hit >《粉碎冲击》（Smash Hit）</a>)(<a href=https://www.google.com/search?q=Smash+Hit+game+play >Play</a>) 一款风格独特的“第一人称”游戏，玩家通过投掷钢球来击碎玻璃障碍物。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Marble-It-Up%21 >《弹珠滚动》（Marble It Up!）</a>)(<a href=https://www.google.com/search?q=Marble+It+Up%21+game+play >Play</a>) 对经典“滚弹珠”类游戏的现代演绎，拥有流畅的物理表现。</p>
+
+
+
+<p>(<a href=https://github.com/mngz47/games/wiki/Bounce >《Bounce》</a>)(<a href=https://www.google.com/search?q=Bounce+game+play >Play</a>) 一款经典的移动端游戏，玩家需操控一颗红色小球穿越各种障碍。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/3D-Pinball >《3D Pinball: Space Cadet》</a>)(<a href=https://www.google.com/search?q=3D+Pinball+game+play >Play</a>) Windows 系统中标志性的弹球游戏。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Snooker-19 >《Snooker 19》</a>)(<a href=https://www.google.com/search?q=Snooker+19+game+play >Play</a>) 一款专业且逼真的斯诺克模拟游戏。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Wii-Sports >《Wii Sports》（保龄球/网球）</a>)(<a href=https://www.google.com/search?q=Wii+Sports+game+play >Play</a>) 经典的体感操控类球类运动游戏。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Poolians >《Poolians》</a>)(<a href=https://www.google.com/search?q=Poolians+game+play >Play</a>) 一款多人在线台球游戏。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/FIFA-EA-Sports-FC >《FIFA》/《EA Sports FC》</a>)(<a href=https://www.google.com/search?q=FIFA+EA+Sports+FC+game+play >Play</a>) 足球模拟游戏中的标杆之作。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/NBA-2K-series >《NBA 2K》系列 </a>)(<a href=https://www.google.com/search?q=NBA+2K+series+game+play >Play</a>) 篮球模拟游戏领域的领军之作。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Madden-NFL >《Madden NFL》</a>)(<a href=https://www.google.com/search?q=Madden+NFL+game+play >Play</a>) 美式橄榄球模拟游戏中的顶级系列。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/MLB-The-Show >《MLB The Show》</a>)(<a href=https://www.google.com/search?q=MLB+The+Show+game+play >Play</a>) 棒球模拟游戏中的佼佼者。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Super-Mega-Baseball >《Super Mega Baseball》</a>)(<a href=https://www.google.com/search?q=Super+Mega+Baseball+game+play >Play</a>) 一款既具趣味性、采用街机风格，又拥有深厚游戏机制的棒球游戏。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Tennis-World-Tour >《Tennis World Tour》</a>)(<a href=https://www.google.com/search?q=Tennis+World+Tour+game+play >Play</a>) 一款侧重于还原球员真实动作的网球模拟游戏。</p>
+  
+		  
+		  <p>(<a href=https://github.com/mngz47/games/wiki/Volleygon >Volleygon</a>)(<a href=https://www.google.com/search?q=Volleygon+game+play >Play</a>) 一款独特的街机游戏，你需要操控一个三角形，让球始终保持在场内。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Pang-Adventures >Pang Adventures</a>)(<a href=https://www.google.com/search?q=Pang+Adventures+game+play >Play</a>) 对经典街机游戏的现代演绎，玩家需击破不断弹跳的球。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Bubble-Shooter >Bubble Shooter</a>)(<a href=https://www.google.com/search?q=Bubble+Shooter+game+play >Play</a>) 一款简单却令人上瘾的益智游戏，核心玩法是颜色匹配。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Zen-Pinball >Zen Pinball</a>)(<a href=https://www.google.com/search?q=Zen+Pinball+game+play >Play</a>) 一款广泛流行的数字弹球平台，拥有许多获得官方授权的弹球台。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Balls%3F >Balls?</a>)(<a href=https://www.google.com/search?q=Balls%3F+game+play >Play</a>) 一款基于物理机制的游戏，玩家需要堆叠并管理各种球（可在 itch.io 找到）。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Roll-the-Ball >Roll the Ball</a>)(<a href=https://www.google.com/search?q=Roll+the+Ball+game+play >Play</a>) 一款益智游戏，玩家需通过铺设路径，引导球抵达终点。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Physics-Drop >Physics Drop</a>)(<a href=https://www.google.com/search?q=Physics+Drop+game+play >Play</a>) 通过画线引导球落入 U 型容器中。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Brain-It-On%21 >Brain It On!</a>)(<a href=https://www.google.com/search?q=Brain+It+On%21+game+play >Play</a>) 一款基于物理机制的益智游戏，其中常涉及球的运动。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Golf-With-Your-Friends >Golf With Your Friends</a>)(<a href=https://www.google.com/search?q=Golf+With+Your+Friends+game+play >Play</a>) 一款充满混乱乐趣的多人迷你高尔夫游戏。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/What-the-Golf%21 >What the Golf?</a>)(<a href=https://www.google.com/search?q=What+the+Golf%21+game+play >Play</a>) 一款基于物理机制的搞笑高尔夫游戏，其规则会不断发生变化。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Pure-Pool >Pure Pool</a>)(<a href=https://www.google.com/search?q=Pure+Pool+game+play >Play</a>) 一款视觉效果惊艳且物理表现逼真的台球游戏。</p>
+
+
+<p>(<a href=https://github.com/mngz47/games/wiki/Billiard-Masters >《台球大师》（Billiard Masters）</a>)(<a href=https://www.google.com/search?q=Billiard+Masters+game+play >Play</a>) 一款包含多种模式的经典台球游戏。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/8-Ball-Pool >《8球台球》（8 Ball Pool）</a>)(<a href=https://www.google.com/search?q=8+Ball+Pool+game+play >Play</a>) 一款热门的多人在线台球手游。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/World-Soccer-Champs >《世界足球冠军》（World Soccer Champs）</a>)(<a href=https://www.google.com/search?q=World+Soccer+Champs+game+play >Play</a>) 一款节奏明快的足球经营与竞技游戏。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Raket >《Raket》</a>)(<a href=https://www.google.com/search?q=Raket+game+play >Play</a>)  一款节奏紧凑、风格极简的体育动作游戏。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Crazy-Arcade-%28BnB%29 >《泡泡堂》（Crazy Arcade / BnB）</a>)(<a href=https://www.google.com/search?q=Crazy+Arcade+%28BnB%29+game+play >Play</a>)  一款经典游戏，玩家通过放置水气球来困住对手。</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Super-Skill-Pinball >《超级技巧弹球》（Super Skill Pinball）</a>)(<a href=https://www.google.com/search?q=Super+Skill+Pinball+game+play >Play</a>) 一款基于弹球机制的桌游，常被各类数字衍生作品所借鉴。</p>
+  		  
+
+<h5>German</h5>
+
+<p>(<a href=https://github.com/mngz47/games/wiki/rocketleague >Rocket League</a>)(<a href=https://www.rocketleague.com >Play</a>) Eine energiegeladene Mischung aus Arcade-Fußball und chaotischer Fahrzeug-Action. </p> 
+	 <p>(<a href=https://github.com/mngz47/games/wiki/supermonkeyball >Super Monkey Ball</a>)(<a href=https://www.google.com/search?q=Super+Monkey+Ball+game+play >Play</a>) Rolle deinen Affen in einer Kugel durch Labyrinthe und sammle Bananen ein. </p>
+<p>(<a href=https://github.com/mngz47/games/wiki/katamaridamacy >Katamari Damacy</a>)(<a href=https://www.google.com/search?q=Katamari+Damacy+game+play >Play</a>) Rolle einen magischen Ball, der alles auf seinem Weg einsammelt und dabei immer größer wird. </p>
+<p>(<a href=https://github.com/mngz47/games/wiki/marblemadness >Marble Madness</a>)(<a href=https://www.google.com/search?q=Marble+Madness+game+play >Play</a>) Ein Arcade-Klassiker, bei dem du eine Murmel durch gefährliche Parcours steuerst. </p>
+<p>(<a href=https://github.com/mngz47/games/wiki/peggle >Peggle</a>)(<a href=https://www.google.com/search?q=peggle+game+play >Play</a>) Ein farbenfrohes, physikbasiertes Spiel, in dem du mit einer begrenzten Anzahl an Bällen orangefarbene Stifte abräumst. </p>
+<p>(<a href=https://github.com/mngz47/games/wiki/PoolNation >Pool Nation</a>)(<a href=https://www.google.com/search?q=Pool+Nation+game+play >Play</a>) Eine realistische 3D-Simulation von Pool- und Billardspielen. </p>
+<p>(<a href=https://github.com/mngz47/games/wiki/PinballFX >Pinball FX</a>)(<a href=https://www.google.com/search?q=Pinball+FX+game+play >Play</a>) Eine moderne, funktionsreiche digitale Flipper-Plattform.</p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Ballance >Ballance</a>)(<a href=https://www.google.com/search?q=Ballance+game+play >Play</a>) Ein klassisches 3D-Puzzle-Spiel, bei dem du eine Kugel durch komplexe, in der Luft schwebende Level steuerst. </p>
+<p>(<a href=https://github.com/mngz47/games/wiki/LocoRoco >LocoRoco</a>)(<a href=https://www.google.com/search?q=LocoRoco+game+play >Play</a>) Ein einzigartiges Jump-’n’-Run-Spiel, in dem du eine hüpfende, gallertartige Figur steuerst. </p>
+<p>(<a href=https://github.com/mngz47/games/wiki/Zuma >Zuma</a>)(<a href=https://www.google.com/search?q=Zuma+game+play >Play</a>) Ein klassisches Puzzle-Spiel, bei dem du farbige Kugeln abschießt, um Gruppen gleicher Farben zu bilden. </p>
+<p>(<a href=https://github.com/mngz47/games/wiki/MarbleBlastGold >Marble Blast Gold</a>)(<a href=https://marbleblast.com/ >Play</a>) Navigiere eine Murmel durch 3D-Level voller Hindernisse. Link: https://marbleblast.com/ </p>
+
+	
+	
+
+
+
+</div>
+
+	
+</div>
+	
+	
+<div id="credits_tab" style="display: none;"  >
+	
+   <h6 style="color:white;" id=buy_credits >Buy Credits:</h6>
+   <div style='margin-top:10px;' ><input class="form-control" type=number id=credits value=40 placeholder=credits /><button class="form-control" onclick='monetize_purchase(e("credits").value);return false;' >buy</button></div>
+	
+<a href="https://mngz636.wixsite.com/plant-trees/product-page/candy-crush-unisex-oversized-t-shirt" >
+<div style="background-image:url('https://raw.githubusercontent.com/mngz47/productlists-resources/main/cand_crush_tshirt.PNG');background-repeat: no-repeat;background-size:100% auto;" >
+
+<h3 style="opacity:0.7;">
+Buy Candy Crush T-Shirt 
+<br>
+<br>
+Limited Edition
+</h3>
+
+</div>
+</a>
+
+	<div id=micro_task_body >
+</div>
+<script src="https://mngz47.github.io/micro-task/task.js" ></script>		
+
+</div>
+<div id="search_tab" style="display: none;" >
+	
+<script src="https://mngz47.github.io/monetize/search.js" ></script>
+	 <div style='float:right;margin-top:10px;' ><input class="form-control" type=text id=search_game placeholder=games /><button  class="form-control" onclick='search(e("search_game").value);return false;' >search</button></div>
           <div id=search_results style="position:absolute;float:right;" ></div>
 
-   <div id=menu style="overflow-x:auto;overflow:hidden;height:200px;width:100%;"></div>
+          <div class="alert alert-info" >Popular Keywords:  russianblock,shenjingmao,shoot,simplechess,skeletonguard</div>
 
-	<div class=row >
+             <div id=menu style="overflow-x:auto;overflow:hidden;height:200px;width:100%;"></div>
+
+</div>
+<div id="youtube_tab" style="display: none;" >
+	
+
+<div class=row >
 		<div class=col-sm-6 ><div id=menu-text style="color:white;padding:40px;"></div></div>
 		<div class=col-sm-6 >
 			<div id='amazon_products' style='display:none' >
@@ -199,9 +497,51 @@
 <div id=group_four_affiliate_video_dd style="padding:4px;font-size:1.3em;" >Productlists is a tech firm working towards solutions to free the youth. Enjoy our instant game service, product listings and reviews.</div>
 		
 		</div></div>
-	<div style="float:right;color:white;" >
-<a class=space href=https://www.instagram.com/productlists >Instagram</a>-<a class=space href=https://mngz47.github.io/mongeziSibongakonke/docs/ >Docs</a>-<a style="float:right" href="https://mngz47.github.io/pamel_slots/privacy_policy.html" >Privacy Policy</a>
-	</div>
+
+</div>
+<div id="tiktok_tab" style="display: none;" >
+	
+
+<div class="alert alert-info" >Follow <a href="https://www.tiktok.com/@44streamerclips"><i class="fa fa-linkedin" aria-hidden="true"></i> TikTok</a> page and send screenshot on discord(<a href="https://discord.gg/hpSBRwWMQ5" >https://discord.gg/hpSBRwWMQ5</a>) chat for 100 credits</div>
+
+
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-acb72d4b-9d08-4ad5-b85c-9f1573ce3603" data-elfsight-app-lazy></div>
+
+
+</div>
+<div id="partners_tab" style="display: none;" >
+	
+
+<div id=partners style="padding:5px;" >
+<pre>
+<h5>Partners</h5>
+Clipster Training is a premier agency specializing in long-term TikTok audio campaigns.
+
+Our strategic approach focuses on ensuring budget consistency for creators,
+eliminating the need for frequent rebranding or content shifts to accommodate fluctuating campaign requirements.
+By focusing on audio-centric marketing, we allow clippers to maintain their unique content planning while benefiting from substantial,
+long-term budgets.
+Our campaigns feature high-profile artists and trending audios, providing a stable environment for creator growth.
+
+Clipper Benefits
+No minimum view requirements
+No dedicated page required
+Aggregated view counting from all posts
+No geographic or analytics restrictions
+Access to top-tier music campaigns
+</pre>     
+   <ul class="kilimanjaro_social_links">
+<li><a href="https://clipster.onelink.me/2HTk/invite?deep_link_value=ref%3Dmngz44" style="background-image:url('https://raw.githubusercontent.com/mngz47/productlists-resources/main/clipster.png');background-repeat: no-repeat;background-size:100% auto;" ><i class="fa fa-linkedin" aria-hidden="true"></i> Browse Clipster Campaigns</a></li>
+</ul>
+
+				  
+  </div>
+
+
+</div>
+</div>
+</div>
 	
 	</div>
 
